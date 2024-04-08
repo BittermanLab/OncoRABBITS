@@ -1,0 +1,9 @@
+pandas
+numpy
+matplotlib
+typing
+seaborn
+plotly
+tqdm
+openai
+python-dotenv

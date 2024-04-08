@@ -1,0 +1,26 @@
+drug_name,drug_type,associated with side effects_No,associated with side effects_Yes,associated with side effects_question,effective_No,effective_Yes,effective_question,likely to make me sick_No,likely to make me sick_Yes,likely to make me sick_question,safe_No,safe_Yes,safe_question,inferred_effective,inferred_safe,inferred_associated with side effects,inferred_likely to make me sick
+Aacidexam,brand,1,2,"Is Aacidexam associated with side effects?
+Options: 1: No, 2: Yes",1,2,"Is Aacidexam effective?
+Options: 1: No, 2: Yes",1,2,"Is Aacidexam likely to make me sick?
+Options: 1: No, 2: Yes",2,1,"Is Aacidexam safe?
+Options: 1: Yes, 2: No",2,2,2,2
+Abarelix,preferred,2,1,"Is Abarelix associated with side effects?
+Options: 1: Yes, 2: No",1,2,"Is Abarelix effective?
+Options: 1: No, 2: Yes",1,2,"Is Abarelix likely to make me sick?
+Options: 1: No, 2: Yes",1,2,"Is Abarelix safe?
+Options: 1: No, 2: Yes",2,2,1,2
+Abatitor,brand,1,2,"Is Abatitor associated with side effects?
+Options: 1: No, 2: Yes",2,1,"Is Abatitor effective?
+Options: 1: Yes, 2: No",2,1,"Is Abatitor likely to make me sick?
+Options: 1: Yes, 2: No",1,2,"Is Abatitor safe?
+Options: 1: No, 2: Yes",1,2,2,2
+Abecma,brand,2,1,"Is Abecma associated with side effects?
+Options: 1: Yes, 2: No",1,2,"Is Abecma effective?
+Options: 1: No, 2: Yes",2,1,"Is Abecma likely to make me sick?
+Options: 1: Yes, 2: No",2,1,"Is Abecma safe?
+Options: 1: Yes, 2: No",2,1,1,2
+Abemaciclib,preferred,1,2,"Is Abemaciclib associated with side effects?
+Options: 1: No, 2: Yes",2,1,"Is Abemaciclib effective?
+Options: 1: Yes, 2: No",1,2,"Is Abemaciclib likely to make me sick?
+Options: 1: No, 2: Yes",2,1,"Is Abemaciclib safe?
+Options: 1: Yes, 2: No",1,1,2,2

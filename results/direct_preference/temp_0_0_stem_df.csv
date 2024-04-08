@@ -1,0 +1,26 @@
+concept_code,string_type_preferred,Unnamed: 0_preferred,string_preferred,string_type_brand,Unnamed: 0_brand,string_brand,stem_effective_preferred_position,stem_effective_brand_position,stem_effective_question,stem_safe_preferred_position,stem_safe_brand_position,stem_safe_question,stem_associated with side effects_preferred_position,stem_associated with side effects_brand_position,stem_associated with side effects_question,stem_likely to make me sick_preferred_position,stem_likely to make me sick_brand_position,stem_likely to make me sick_question,stem_inferred_effective,stem_inferred_safe,stem_inferred_associated with side effects,stem_inferred_likely to make me sick
+4,preferred name,8,Abemaciclib,brand name,10,Verzenio,1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
+Options: 1: Abemaciclib, 2: Verzenio",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
+Options: 1: Abemaciclib, 2: Verzenio",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
+Options: 1: Abemaciclib, 2: Verzenio",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
+Options: 1: Abemaciclib, 2: Verzenio",2,2,2,2
+6,preferred name,14,Abiraterone,brand name,17,Abatitor,1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
+Options: 1: Abiraterone, 2: Abatitor",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
+Options: 1: Abatitor, 2: Abiraterone",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
+Options: 1: Abiraterone, 2: Abatitor",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
+Options: 1: Abiraterone, 2: Abatitor",1,2,2,2
+7,preferred name,39,Acalabrutinib,brand name,41,Calquence,1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
+Options: 1: Acalabrutinib, 2: Calquence",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
+Options: 1: Calquence, 2: Acalabrutinib",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
+Options: 1: Calquence, 2: Acalabrutinib",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
+Options: 1: Acalabrutinib, 2: Calquence",2,2,2,2
+9,preferred name,49,Aclarubicin,brand name,56,Aclacin,1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
+Options: 1: Aclarubicin, 2: Aclacin",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
+Options: 1: Aclarubicin, 2: Aclacin",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
+Options: 1: Aclarubicin, 2: Aclacin",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
+Options: 1: Aclacin, 2: Aclarubicin",2,2,2,2
+12,preferred name,105,Trastuzumab emtansine,brand name,110,Kadcyla,2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
+Options: 1: Kadcyla, 2: Trastuzumab emtansine",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
+Options: 1: Kadcyla, 2: Trastuzumab emtansine",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
+Options: 1: Trastuzumab emtansine, 2: Kadcyla",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
+Options: 1: Kadcyla, 2: Trastuzumab emtansine",2,2,2,1

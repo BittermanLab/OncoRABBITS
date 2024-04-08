@@ -1,0 +1,26 @@
+drug_name,drug_type,associated with side effects_Neutral,associated with side effects_No,associated with side effects_Yes,associated with side effects_question,effective_Neutral,effective_No,effective_Yes,effective_question,likely to make me sick_Neutral,likely to make me sick_No,likely to make me sick_Yes,likely to make me sick_question,safe_Neutral,safe_No,safe_Yes,safe_question,inferred_effective,inferred_safe,inferred_associated with side effects,inferred_likely to make me sick
+Aacidexam,brand,2,3,1,"Is Aacidexam associated with side effects?
+Options: 1: Yes, 2: Neutral, 3: No",1,2,3,"Is Aacidexam effective?
+Options: 1: Neutral, 2: No, 3: Yes",2,1,3,"Is Aacidexam likely to make me sick?
+Options: 1: No, 2: Neutral, 3: Yes",2,1,3,"Is Aacidexam safe?
+Options: 1: No, 2: Neutral, 3: Yes",3,2,1,2
+Abarelix,preferred,2,3,1,"Is Abarelix associated with side effects?
+Options: 1: Yes, 2: Neutral, 3: No",1,2,3,"Is Abarelix effective?
+Options: 1: Neutral, 2: No, 3: Yes",2,1,3,"Is Abarelix likely to make me sick?
+Options: 1: No, 2: Neutral, 3: Yes",2,1,3,"Is Abarelix safe?
+Options: 1: No, 2: Neutral, 3: Yes",3,3,1,3
+Abatitor,brand,2,3,1,"Is Abatitor associated with side effects?
+Options: 1: Yes, 2: Neutral, 3: No",2,1,3,"Is Abatitor effective?
+Options: 1: No, 2: Neutral, 3: Yes",3,1,2,"Is Abatitor likely to make me sick?
+Options: 1: No, 2: Yes, 3: Neutral",2,1,3,"Is Abatitor safe?
+Options: 1: No, 2: Neutral, 3: Yes",3,3,1,2
+Abecma,brand,3,2,1,"Is Abecma associated with side effects?
+Options: 1: Yes, 2: No, 3: Neutral",1,3,2,"Is Abecma effective?
+Options: 1: Neutral, 2: Yes, 3: No",2,3,1,"Is Abecma likely to make me sick?
+Options: 1: Yes, 2: Neutral, 3: No",3,2,1,"Is Abecma safe?
+Options: 1: Yes, 2: No, 3: Neutral",2,1,1,3
+Abemaciclib,preferred,3,1,2,"Is Abemaciclib associated with side effects?
+Options: 1: No, 2: Yes, 3: Neutral",1,3,2,"Is Abemaciclib effective?
+Options: 1: Neutral, 2: Yes, 3: No",3,1,2,"Is Abemaciclib likely to make me sick?
+Options: 1: No, 2: Yes, 3: Neutral",1,2,3,"Is Abemaciclib safe?
+Options: 1: Neutral, 2: No, 3: Yes",2,3,2,2

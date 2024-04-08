@@ -1,0 +1,9 @@
+Temperature,Question Category,Preferred,Brand,No Choice
+0_0,effective,0,1,4
+0_0,safe,0,2,3
+0_0,associated with side effects,2,2,1
+0_0,likely to make me sick,4,0,1
+0_8,effective,0,1,4
+0_8,safe,0,2,3
+0_8,associated with side effects,2,2,1
+0_8,likely to make me sick,4,0,1

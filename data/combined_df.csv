@@ -1,0 +1,368 @@
+concept_code,string_type_preferred,Unnamed: 0_preferred,string_preferred,string_type_brand,Unnamed: 0_brand,string_brand
+4,preferred name,8,Abemaciclib,brand name,10,Verzenio
+6,preferred name,14,Abiraterone,brand name,17,Abatitor
+7,preferred name,39,Acalabrutinib,brand name,41,Calquence
+9,preferred name,49,Aclarubicin,brand name,56,Aclacin
+12,preferred name,105,Trastuzumab emtansine,brand name,110,Kadcyla
+13,preferred name,112,Afatinib,brand name,116,Afanix
+15,preferred name,124,Aldesleukin,brand name,127,Macrolin
+16,preferred name,129,Alectinib,brand name,136,Alecensa
+17,preferred name,140,Alemtuzumab,brand name,142,Campath
+20,preferred name,323,All-trans retinoic acid,brand name,327,CA ATRA
+23,preferred name,354,Altretamine,brand name,357,Hexalen
+28,preferred name,374,Aminoglutethimide,brand name,375,Aminoblastin
+30,preferred name,384,Amrubicin,brand name,388,Calsed
+31,preferred name,389,Amsacrine,brand name,396,Amekrin
+33,preferred name,404,Anastrozole,brand name,405,Altraz
+39,preferred name,434,Apalutamide,brand name,436,Erleada
+40,preferred name,437,Apatinib,brand name,440,Aitan
+44,preferred name,452,Arsenic trioxide,brand name,453,Arsenol
+45,preferred name,457,Asparaginase,brand name,462,Asparaginasa
+46,preferred name,478,Asparaginase Erwinia chrysanthemi,brand name,484,Erwinase
+49,preferred name,734,Atezolizumab,brand name,738,Tecentriq
+53,preferred name,748,Avelumab,brand name,750,Bavencio
+54,preferred name,751,Axicabtagene ciloleucel,brand name,755,Yescarta
+55,preferred name,756,Axitinib,brand name,759,Axishil
+56,preferred name,764,Azacitidine,brand name,767,Azacitidina
+59,preferred name,781,Bacillus Calmette-Guerin,brand name,783,TheraCys
+61,preferred name,787,Bavituximab,brand name,789,Tarvacin
+63,preferred name,792,Belinostat,brand name,794,Beleodaq
+64,preferred name,795,Belotecan,brand name,798,Camptobell
+65,preferred name,799,Bendamustine,brand name,806,Belrapzo
+68,preferred name,827,Bevacizumab,brand name,829,Altuzan
+69,preferred name,833,Bexarotene,brand name,835,Bexgratin
+70,preferred name,837,Bicalutamide,brand name,838,Calutide
+71,preferred name,842,Binimetinib,brand name,846,Mektovi
+73,preferred name,850,Bleomycin,brand name,851,Blenoxane
+74,preferred name,857,Blinatumomab,brand name,861,Blincyto
+75,preferred name,862,Bortezomib,brand name,866,Biocure
+76,preferred name,885,Bosutinib,brand name,887,Bosulif
+77,preferred name,888,Brentuximab vedotin,brand name,891,Adcetris
+78,preferred name,892,Brigatinib,brand name,894,Alunbrig
+80,preferred name,900,Busulfan,brand name,901,Busilvex
+81,preferred name,904,Cabazitaxel,brand name,908,Cabapan
+82,preferred name,919,Cabozantinib,brand name,922,Cabometyx
+83,preferred name,928,Calaspargase,brand name,930,Asparlas
+86,preferred name,937,Capecitabine,brand name,941,Cabita
+88,preferred name,959,Carboplatin,brand name,961,Biocarb
+89,preferred name,1007,Carfilzomib,brand name,1010,Carfilnat
+90,preferred name,1012,Carmustine,brand name,1016,Becenun
+91,preferred name,1022,Carmustine wafer polifeprosan 20,brand name,1027,Biodel
+94,preferred name,1043,Cediranib,brand name,1045,Recentin
+95,preferred name,1046,Cemiplimab,brand name,1049,Libtayo
+96,preferred name,1050,Ceritinib,brand name,1052,Lucicer
+98,preferred name,1063,Cetuximab,brand name,1065,Cetuxim
+99,preferred name,1067,Chidamide,brand name,1071,Epidaza
+100,preferred name,1072,Chlorambucil,brand name,1073,Chlorambusil
+105,preferred name,1089,Cisplatin,brand name,1097,Abiplatin
+107,preferred name,1168,Cladribine,brand name,1171,Leustatin
+108,preferred name,1174,Clarithromycin,brand name,1175,Biaxin
+111,preferred name,1205,Clofarabine,brand name,1207,Clolar
+113,preferred name,1224,Cobimetinib,brand name,1227,Cotellic
+115,preferred name,1231,Copanlisib,brand name,1233,Aliqopa
+119,preferred name,1241,Crizotinib,brand name,1244,Crizalk
+122,preferred name,1260,Cyclophosphamide,brand name,1268,Alkyloxan
+125,preferred name,1324,Cyproterone acetate,brand name,1325,Androcur
+126,preferred name,1326,Cytarabine,brand name,1331,Alcysten
+127,preferred name,1370,Cytarabine and daunorubicin liposomal,brand name,1372,Vyxeos
+131,preferred name,1384,Dabrafenib,brand name,1388,Rafinlar
+132,preferred name,1390,Dacarbazine,brand name,1394,Bazipar
+133,preferred name,1405,Dacomitinib,brand name,1407,Vizimpro
+134,preferred name,1408,Dactinomycin,brand name,1411,Cosmegen
+137,preferred name,1429,Danazol,brand name,1430,Danatrol
+139,preferred name,1439,Daratumumab,brand name,1442,Darzalex
+141,preferred name,1455,Darolutamide,brand name,1458,Nubeqa
+142,preferred name,1459,Dasatinib,brand name,1461,Sprycel
+143,preferred name,1462,Daunorubicin,brand name,1464,Cerubidin
+144,preferred name,1479,Daunorubicin liposomal,brand name,1481,DaunoXome
+145,preferred name,1482,Decitabine,brand name,1484,Dacogen
+151,preferred name,1506,Degarelix,brand name,1510,Firmagon
+152,preferred name,1511,Denileukin diftitox,brand name,1517,Ontak
+154,preferred name,1520,Denosumab,brand name,1521,Prolia
+156,preferred name,1530,Dexamethasone,brand name,1537,Aacidexam
+158,preferred name,1951,Dexrazoxane,brand name,1955,Cardioxane
+159,preferred name,1960,Diethylstilbestrol,brand name,1964,Desplex
+161,preferred name,1971,Dinutuximab,brand name,1975,Unituxin
+164,preferred name,1980,Docetaxel,brand name,1983,Asodocel
+169,preferred name,2023,Doxifluridine,brand name,2024,Didox
+170,preferred name,2025,Doxorubicin,brand name,2030,Adriablastina
+173,preferred name,2095,Durvalumab,brand name,2097,Imfinzi
+174,preferred name,2098,Dutasteride,brand name,2099,Avodart
+175,preferred name,2100,Duvelisib,brand name,2102,Copiktra
+178,preferred name,2110,Edrecolomab,brand name,2111,Panorex
+179,preferred name,2112,Elotuzumab,brand name,2118,Empliciti
+182,preferred name,2128,Enasidenib,brand name,2132,Idhifa
+183,preferred name,2133,Encorafenib,brand name,2135,Braftovi
+188,preferred name,2164,Entrectinib,brand name,2166,Rozlytrek
+189,preferred name,2167,Enzalutamide,brand name,2169,Azel
+191,preferred name,2179,Epirubicin,brand name,2182,Alrubicin
+196,preferred name,2239,Erdafitinib,brand name,2241,Balversa
+197,preferred name,2242,Eribulin,brand name,2247,Brutravon
+198,preferred name,2254,Erlotinib,brand name,2259,Erlocip
+200,preferred name,2267,Estramustine,brand name,2269,Emcyt
+201,preferred name,2274,Etoposide,brand name,2279,Aside
+202,preferred name,2331,Everolimus,brand name,2334,Advacan
+203,preferred name,2346,Exemestane,brand name,2348,Aromadex
+222,preferred name,2464,Floxuridine,brand name,2469,FUDR
+224,preferred name,2472,Fludarabine,brand name,2475,Beneflur
+225,preferred name,2480,Fluorouracil,brand name,2489,Accusite
+226,preferred name,2561,Fluoxymesterone,brand name,2562,Halotestin
+227,preferred name,2564,Flutamide,brand name,2565,Cytomid
+229,preferred name,2575,Folinic acid,brand name,2583,Antrex
+231,preferred name,2678,Formestane,brand name,2679,Lentaron
+232,preferred name,2680,Forodesine,brand name,2683,Fodosine
+234,preferred name,2689,Fostamatinib,brand name,2692,Tavalisse
+235,preferred name,2694,Fotemustine,brand name,2695,Muphoran
+237,preferred name,2699,Fulvestrant,brand name,2702,Faslodex
+242,preferred name,2718,Gefitinib,brand name,2720,Cangib
+243,preferred name,2734,Gemcitabine,brand name,2738,Gemcite
+244,preferred name,2741,Gemtuzumab ozogamicin,brand name,2742,Mylotarg
+245,preferred name,2743,Gilteritinib,brand name,2745,Xospata
+246,preferred name,2746,Glasdegib,brand name,2748,Daurismo
+248,preferred name,2752,Goserelin,brand name,2754,Novgos
+256,preferred name,2790,Histrelin,brand name,2792,Supprelin
+258,preferred name,2797,Hydrocortisone,brand name,2800,Cortef
+259,preferred name,2801,Hydroxyurea,brand name,2807,Biosupressin
+262,preferred name,2839,Ibritumomab tiuxetan,brand name,2840,Zevalin
+263,preferred name,2841,Ibrutinib,brand name,2844,Ibrunib
+264,preferred name,2848,Icotinib,brand name,2850,Conmana
+265,preferred name,2851,Idarubicin,brand name,2854,Idamycin
+267,preferred name,2862,Idelalisib,brand name,2866,Zydelig
+268,preferred name,2867,Ifosfamide,brand name,2868,Alquimid
+269,preferred name,2891,Imatinib,brand name,2897,Enliven
+272,preferred name,2917,Infigratinib,brand name,2919,Truseltiq
+273,preferred name,2920,Inotuzumab ozogamicin,brand name,2922,Besponsa
+274,preferred name,2923,Interferon alfa-2a,brand name,2924,Laroferon
+275,preferred name,2926,Interferon alfa-2b,brand name,2927,Advaferon
+276,preferred name,2961,Interferon gamma-1b,brand name,2962,Actimmune
+279,preferred name,2967,Ipilimumab,brand name,2970,Yervoy
+280,preferred name,2971,Irinotecan,brand name,2975,Axinotecan
+281,preferred name,2997,Irinotecan liposome,brand name,3002,Onivyde
+284,preferred name,3015,Isatuximab,brand name,3018,Sarclisa
+285,preferred name,3019,Isotretinoin,brand name,3027,Absorica
+287,preferred name,3044,Ivosidenib,brand name,3046,Tibsovo
+288,preferred name,3047,Ixabepilone,brand name,3051,Ixempra
+289,preferred name,3052,Ixazomib,brand name,3055,Ninlaro
+290,preferred name,3056,Ketoconazole,brand name,3057,Nizoral
+294,preferred name,3063,Lanreotide,brand name,3065,Ipstyl
+295,preferred name,3073,Lansoprazole,brand name,3074,Prevacid
+296,preferred name,3075,Lapatinib,brand name,3077,Abnib
+298,preferred name,3089,Larotrectinib,brand name,3091,Vitrakvi
+299,preferred name,3092,Lenalidomide,brand name,3096,Adlinod
+300,preferred name,3111,Lenograstim,brand name,3112,Granocyte
+301,preferred name,3114,Lenvatinib,brand name,3116,Kisplyx
+304,preferred name,3122,Letrozole,brand name,3124,Femara
+305,preferred name,3137,Leuprolide,brand name,3143,Camcevi
+306,preferred name,3171,Levamisole,brand name,3172,Ergamisol
+308,preferred name,3175,Levoleucovorin,brand name,3177,Fusilev
+311,preferred name,3183,Lomustine,brand name,3185,CeeNu
+314,preferred name,3191,Lorlatinib,brand name,3193,Lorbrena
+316,preferred name,3198,Lutetium Lu 177 dotatate,brand name,3199,Lutathera
+318,preferred name,3201,Tafasitamab,brand name,3206,Minjuvi
+322,preferred name,3213,Mechlorethamine,brand name,3216,Ledaga
+323,preferred name,3219,Medroxyprogesterone,brand name,3222,Depo-Provera
+324,preferred name,3224,Megestrol,brand name,3227,Maygace
+325,preferred name,3234,Melphalan,brand name,3240,Alkeran
+327,preferred name,3249,Mercaptopurine,brand name,3252,Purinethol
+328,preferred name,3254,Mesna,brand name,3255,Anti Uron
+329,preferred name,3271,Methotrexate,brand name,3274,Abitrexate
+330,preferred name,3343,Methoxsalen,brand name,3346,Ammoidin
+331,preferred name,3361,Methylprednisolone,brand name,3364,Adlone
+333,preferred name,3476,Midostaurin,brand name,3478,Rydapt
+334,preferred name,3480,Mitomycin,brand name,3483,Lyomit
+335,preferred name,3489,Mitotane,brand name,3491,Lysodren
+336,preferred name,3492,Mitoxantrone,brand name,3494,Nitrol
+338,preferred name,3499,Mogamulizumab,brand name,3502,Poteligeo
+342,preferred name,3514,Moxetumomab pasudotox,brand name,3518,Lumoxiti
+346,preferred name,3527,Nadroparin,brand name,3528,Fraxiparine
+347,preferred name,3530,Necitumumab,brand name,3532,Portrazza
+348,preferred name,3533,Nedaplatin,brand name,3536,Aqupla
+349,preferred name,3538,Nelarabine,brand name,3540,Arranon
+350,preferred name,3542,Neratinib,brand name,3544,Nerlynx
+352,preferred name,3548,Nilotinib,brand name,3550,Tasigna
+353,preferred name,3551,Nilutamide,brand name,3552,Anandron
+354,preferred name,3555,Nimustine,brand name,3558,Nidran
+355,preferred name,3559,Nintedanib,brand name,3561,Cyendiv
+356,preferred name,3570,Niraparib,brand name,3572,Niranib
+357,preferred name,3574,Nivolumab,brand name,3578,Opdivo
+359,preferred name,3581,Non-pegylated liposomal doxorubicin,brand name,3584,Myocet
+360,preferred name,3585,Norethandrolone,brand name,3586,Nilevar
+361,preferred name,3587,Obinutuzumab,brand name,3592,Gazyva
+362,preferred name,3594,Octreotide,brand name,3599,Longastatina
+363,preferred name,3608,Octreotide LAR,brand name,3611,Longastatina LAR
+364,preferred name,3616,Ofatumumab,brand name,3618,Arzerra
+366,preferred name,3622,Olaparib,brand name,3626,Lynparza
+367,preferred name,3629,Olaratumab,brand name,3632,Lartruvo
+368,preferred name,3633,Omacetaxine,brand name,3637,Omapro
+369,preferred name,3639,Omeprazole,brand name,3640,Prilosec
+375,preferred name,3747,Osimertinib,brand name,3749,Osimert
+377,preferred name,3754,Oxaliplatin,brand name,3758,Coxatin
+378,preferred name,3776,Paclitaxel nanoparticle albumin-bound,brand name,3784,Abraxane
+379,preferred name,3785,Paclitaxel,brand name,3786,Abitaxel
+380,preferred name,3843,Pacritinib,brand name,3845,Vonjo
+381,preferred name,3846,Palbociclib,brand name,3848,Ibrance
+384,preferred name,3862,Panitumumab,brand name,3865,Vectibix
+385,preferred name,3866,Panobinostat,brand name,3869,Faridak
+387,preferred name,3873,Pazopanib,brand name,3875,Pazopater
+388,preferred name,3877,Pegaspargase,brand name,3881,Oncaspar
+391,preferred name,3891,Peginterferon alfa-2a,brand name,3892,Pegasys
+392,preferred name,3893,Peginterferon alfa-2b,brand name,3899,PEG-Intron
+393,preferred name,3903,Pegylated liposomal doxorubicin,brand name,3906,Caelyx
+394,preferred name,3920,Pembrolizumab,brand name,3924,Keytruda
+395,preferred name,3925,Pemetrexed,brand name,3927,Alimta
+397,preferred name,3950,Pentostatin,brand name,3953,Nipent
+400,preferred name,3958,Pertuzumab,brand name,3961,Omnitarg
+405,preferred name,3978,Pirarubicin,brand name,3982,Pinorubicin
+406,preferred name,3985,Pixantrone,brand name,3988,Pixuvri
+408,preferred name,3992,Plicamycin,brand name,3994,Mithracin
+410,preferred name,3997,Pomalidomide,brand name,4001,Actimid
+411,preferred name,4006,Ponatinib,brand name,4009,Iclusig
+414,preferred name,4014,Pralatrexate,brand name,4015,Folotyn
+416,preferred name,4026,Pravastatin,brand name,4027,Pravachol
+417,preferred name,4028,Prednisolone,brand name,4035,Adnisolone
+418,preferred name,4086,Prednisone,brand name,4088,Artinizona
+419,preferred name,4170,Procarbazine,brand name,4176,Indicarb
+424,preferred name,4200,Quinine,brand name,4201,Qualaquin
+426,preferred name,4204,Quizartinib,brand name,4207,Vanflyta
+429,preferred name,4218,Radotinib,brand name,4220,Supect
+431,preferred name,4225,Raltitrexed,brand name,4229,Tomudex
+433,preferred name,4235,Ramucirumab,brand name,4238,Cyramza
+434,preferred name,4239,Ranimustine,brand name,4242,Cymer
+438,preferred name,4254,Regorafenib,brand name,4256,Nublexa
+441,preferred name,4265,Ribociclib,brand name,4268,Kisqali
+446,preferred name,4283,Rituximab,brand name,4289,Ikgdar
+447,preferred name,4297,Rituximab and hyaluronidase human,brand name,4298,Rituxan Hycela
+451,preferred name,4310,Romidepsin,brand name,4315,Istodax
+453,preferred name,4318,Ropeginterferon alfa-2b,brand name,4320,Besremi
+454,preferred name,4321,Rucaparib,brand name,4325,Rubraca
+455,preferred name,4326,Ruxolitinib,brand name,4329,Jakafi
+456,preferred name,4331,Sacituzumab govitecan,brand name,4335,Trodelvy
+459,preferred name,4345,Sargramostim,brand name,4349,Leukine
+461,preferred name,4353,Selinexor,brand name,4355,Nexpovio
+462,preferred name,4357,Selumetinib,brand name,4359,Koselugo
+464,preferred name,4362,Semustine,brand name,4366,Semustina
+467,preferred name,4375,Sipuleucel-T,brand name,4377,Provenge
+469,preferred name,4386,Sonidegib,brand name,4389,Odomzo
+470,preferred name,4390,Sorafenib,brand name,4393,Nexavar
+472,preferred name,4399,Streptozocin,brand name,4401,Zanosar
+473,preferred name,4402,Sunitinib,brand name,4406,Kitent
+475,preferred name,4416,Tagraxofusp,brand name,4419,Elzonris
+476,preferred name,4420,Talazoparib,brand name,4422,Talzenna
+477,preferred name,4423,Talimogene laherparepvec,brand name,4425,Imlygic
+478,preferred name,4427,Tamibarotene,brand name,4428,Amnoid
+479,preferred name,4430,Tamoxifen,brand name,4435,Istubal
+481,preferred name,4442,Tegafur gimeracil oteracil,brand name,4444,Teysuno
+482,preferred name,4446,Tegafur and uracil,brand name,4448,Ftorafur
+484,preferred name,4457,Temozolomide,brand name,4459,Gliotem
+485,preferred name,4469,Temsirolimus,brand name,4471,Torisel
+486,preferred name,4472,Teniposide,brand name,4474,Vumon
+488,preferred name,4477,Thalidomide,brand name,4478,Contergan
+489,preferred name,4497,Thioguanine,brand name,4502,Lanvis
+490,preferred name,4505,Thiotepa,brand name,4509,Tepadina
+498,preferred name,4528,Tisagenlecleucel,brand name,4532,Kymriah
+500,preferred name,4535,Tivozanib,brand name,4537,Fotivda
+503,preferred name,4544,Topotecan,brand name,4546,Evotopin
+504,preferred name,4551,Toremifene,brand name,4552,Acapodene
+506,preferred name,4557,Tositumomab and I-131,brand name,4560,Bexxar
+507,preferred name,4561,Trabectedin,brand name,4563,Yondelis
+508,preferred name,4564,Trametinib,brand name,4569,Mekinist
+509,preferred name,4571,Tranexamic acid,brand name,4572,Amixam
+512,preferred name,4583,Trastuzumab,brand name,4584,Biceltis
+514,preferred name,4591,Tremelimumab,brand name,4595,Imjudo
+515,preferred name,4596,Treosulfan,brand name,4597,Ovastat
+516,preferred name,4599,Trifluridine and tipiracil,brand name,4603,Lonsurf
+518,preferred name,5334,Triptorelin,brand name,5338,Decapeptyl
+527,preferred name,5385,Valproate,brand name,5387,Depacon
+528,preferred name,5397,Valrubicin,brand name,5399,Valstar
+529,preferred name,5401,Vandetanib,brand name,5404,Caprelsa
+533,preferred name,5414,Vemurafenib,brand name,5418,Zelboraf
+534,preferred name,5419,Venetoclax,brand name,5422,Venclexta
+535,preferred name,5424,Vinblastine,brand name,5430,Alkaban-AQ
+536,preferred name,5446,Vincristine,brand name,5451,Alcrist
+537,preferred name,5486,Vincristine liposomal,brand name,5489,Marqibo
+538,preferred name,5490,Vindesine,brand name,5496,Eldesine
+539,preferred name,5502,Vinflunine,brand name,5503,Javlor
+540,preferred name,5504,Vinorelbine,brand name,5508,Binorel
+541,preferred name,5518,Vismodegib,brand name,5520,Erivedge
+545,preferred name,5543,Vorinostat,brand name,5544,Zolinza
+548,preferred name,5596,Zidovudine,brand name,5600,Aztec
+549,preferred name,5602,Ziv-aflibercept,brand name,5605,Zaltrap
+3231,preferred name,5620,Capmatinib,brand name,5623,Tabrecta
+3563,preferred name,5625,Enfortumab vedotin,brand name,5628,Padcev
+3590,preferred name,5629,Trastuzumab deruxtecan,brand name,5632,Enhertu
+3652,preferred name,5633,Abarelix,brand name,5634,Plenaxis
+4380,preferred name,5635,Belantamab mafodotin,brand name,5638,Blenrep
+4683,preferred name,5639,Tucatinib,brand name,5643,Tukysa
+4940,preferred name,5644,Daratumumab and hyaluronidase,brand name,5646,Darzalex Faspro
+6008,preferred name,5648,Alitretinoin,brand name,5651,Panretin
+6632,preferred name,5656,Brexucabtagene autoleucel,brand name,5658,Tecartus
+10396,preferred name,5661,Alpelisib,brand name,5663,Piqray
+10767,preferred name,5664,Amonafide,brand name,5665,Quinamed
+11533,preferred name,5668,Amoxicillin,brand name,5669,Amoxi
+12637,preferred name,5678,Aumolertinib,brand name,5681,Amelie
+13351,preferred name,5688,Pemigatinib,brand name,5690,Pemazyre
+13651,preferred name,5691,Ripretinib,brand name,5693,Qinlock
+13759,preferred name,5696,Selpercatinib,brand name,5698,Retevmo
+14235,preferred name,5700,Decitabine and cedazuridine,brand name,5702,Inqovi
+14330,preferred name,5704,Bismuth subsalicylate,brand name,5705,Pepto-Bismol
+14742,preferred name,5706,Camrelizumab,brand name,5709,AiRuiKa
+18352,preferred name,5711,Relugolix,brand name,5713,Orgovyx
+18359,preferred name,5715,Elacestrant,brand name,5717,Orserdu
+18846,preferred name,5720,Trimetrexate,brand name,5722,Neutrexin
+19782,preferred name,5725,Tepotinib,brand name,5729,Tepmetko
+20248,preferred name,5732,Futibatinib,brand name,5734,Lytgobi
+20851,preferred name,5735,NovoTTF-100A system (Optune),brand name,5737,Optune
+21215,preferred name,5738,Lisocabtagene maraleucel,brand name,5740,Breyanzi
+23426,preferred name,5749,Idecabtagene vicleucel,brand name,5752,Abecma
+25334,preferred name,5753,Avapritinib,brand name,5755,Ayvakit
+25485,preferred name,5757,Pexidartinib,brand name,5759,Turalio
+25527,preferred name,5760,Pralsetinib,brand name,5762,Gavreto
+26763,preferred name,5765,Lurbinectedin,brand name,5767,Zepzelca
+26852,preferred name,5768,Metronidazole,brand name,5769,Flagyl
+26950,preferred name,5770,Naxitamab,brand name,5772,Danyelza
+27930,preferred name,5782,Tetracycline,brand name,5783,Panmycin
+27982,preferred name,5788,Tripotassium dicitratobismuthate,brand name,5789,De-Noltab
+29688,preferred name,5799,Belzutifan,brand name,5802,Welireg
+29753,preferred name,5803,Amivantamab,brand name,5806,Rybrevant
+29973,preferred name,5807,Azacitidine oral,brand name,5809,Onureg
+34403,preferred name,5820,Colchicine,brand name,5821,Colcrys
+34976,preferred name,5824,Dostarlimab,brand name,5827,Jemperli
+35064,preferred name,5828,Serplulimab,brand name,5830,Hansizhuang
+36080,preferred name,5831,Sugemalimab,brand name,5832,Cejemly
+43485,preferred name,5845,Sirolimus protein-bound particles,brand name,5849,Fyarro
+45472,preferred name,5854,Suramin,brand name,5855,Antrypol
+45753,preferred name,5865,Adagrasib,brand name,5867,Krazati
+47700,preferred name,5879,Tebentafusp,brand name,5882,Kimmtrak
+48561,preferred name,5891,Fedratinib,brand name,5894,Inrebic
+49082,preferred name,5898,Trastuzumab and hyaluronidase,brand name,5900,Herceptin Hylecta
+50482,preferred name,5901,Zanubrutinib,brand name,5903,Brukinsa
+51224,preferred name,5904,Furmonertinib,brand name,5910,Ivesa
+51229,preferred name,5911,Ciltacabtagene autoleucel,brand name,5915,Carvykti
+53780,preferred name,5918,Asciminib,brand name,5920,Scemblix
+53908,preferred name,5921,Loncastuximab tesirine,brand name,5924,Zynlonta
+54224,preferred name,5931,Tazemetostat,brand name,5934,Tazverik
+59120,preferred name,5937,Nivolumab and relatlimab,brand name,5940,Opdualag
+59220,preferred name,5943,Interferon alfa-2c,brand name,5944,Berofor
+59221,preferred name,5945,Interferon alfa-n1,brand name,5946,Wellferon
+59291,preferred name,5947,Margetuximab,brand name,5949,Margenza
+59461,preferred name,5950,Sotorasib,brand name,5952,Lumakras
+59505,preferred name,5954,Umbralisib,brand name,5956,Ukoniq
+61131,preferred name,5957,Sintilimab,brand name,5959,Tyvyt
+61419,preferred name,5965,Pirtobrutinib,brand name,5967,Jaypirca
+64471,preferred name,5974,Toripalimab,brand name,5977,Tuoyi
+65150,preferred name,5978,Teclistamab,brand name,5982,Tecvayli
+69109,preferred name,5991,Mobocertinib,brand name,5994,Exkivity
+71307,preferred name,5999,Tisotumab vedotin,brand name,6002,Tivdak
+75279,preferred name,6007,Lanreotide LAR,brand name,6009,Somatuline Depot
+75337,preferred name,6010,Pimitespib,brand name,6012,Jeselhy
+76031,preferred name,6013,Prednimustine,brand name,6014,Mostarina
+76563,preferred name,6016,Pipobroman,brand name,6017,Vercite
+93818,preferred name,6027,Polatuzumab vedotin,brand name,6030,Polivy
+109643,preferred name,6037,Mirvetuximab soravtansine,brand name,6040,Elahere
+111261,preferred name,6047,Mosunetuzumab,brand name,6051,Lunsumio
+111273,preferred name,6052,Nadofaragene firadenovec,brand name,6055,Adstiladrin
+111358,preferred name,6057,Olutasidenib,brand name,6059,Rezlidhia
+111427,preferred name,6063,Pyrotinib,brand name,6064,Irene
+114346,preferred name,6072,Buserelin,brand name,6076,Bigonist
+114432,preferred name,6084,Lifileuecel,brand name,6086,Contego
+114494,preferred name,6094,Tabelecleucel,brand name,6097,Ebvallo

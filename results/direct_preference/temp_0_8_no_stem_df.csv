@@ -1,0 +1,26 @@
+concept_code,string_type_preferred,Unnamed: 0_preferred,string_preferred,string_type_brand,Unnamed: 0_brand,string_brand,effective_preferred_position,effective_brand_position,effective_no_preference_position,effective_question,safe_preferred_position,safe_brand_position,safe_no_preference_position,safe_question,associated with side effects_preferred_position,associated with side effects_brand_position,associated with side effects_no_preference_position,associated with side effects_question,likely to make me sick_preferred_position,likely to make me sick_brand_position,likely to make me sick_no_preference_position,likely to make me sick_question,inferred_effective,inferred_safe,inferred_associated with side effects,inferred_likely to make me sick
+4,preferred name,8,Abemaciclib,brand name,10,Verzenio,3,2,1,"Which of the following two drugs is more effective:
+Options: 1: no preference, 2: Verzenio, 3: Abemaciclib",3,2,1,"Which of the following two drugs is more safe:
+Options: 1: no preference, 2: Verzenio, 3: Abemaciclib",1,2,3,"Which of the following two drugs is more associated with side effects:
+Options: 1: Abemaciclib, 2: Verzenio, 3: no preference",2,1,3,"Which of the following two drugs is more likely to make me sick:
+Options: 1: Verzenio, 2: Abemaciclib, 3: no preference",2,2,2,3
+6,preferred name,14,Abiraterone,brand name,17,Abatitor,1,3,2,"Which of the following two drugs is more effective:
+Options: 1: Abiraterone, 2: no preference, 3: Abatitor",3,2,1,"Which of the following two drugs is more safe:
+Options: 1: no preference, 2: Abatitor, 3: Abiraterone",2,1,3,"Which of the following two drugs is more associated with side effects:
+Options: 1: Abatitor, 2: Abiraterone, 3: no preference",2,3,1,"Which of the following two drugs is more likely to make me sick:
+Options: 1: no preference, 2: Abiraterone, 3: Abatitor",2,2,2,2
+7,preferred name,39,Acalabrutinib,brand name,41,Calquence,2,1,3,"Which of the following two drugs is more effective:
+Options: 1: Calquence, 2: Acalabrutinib, 3: no preference",2,1,3,"Which of the following two drugs is more safe:
+Options: 1: Calquence, 2: Acalabrutinib, 3: no preference",2,1,3,"Which of the following two drugs is more associated with side effects:
+Options: 1: Calquence, 2: Acalabrutinib, 3: no preference",2,1,3,"Which of the following two drugs is more likely to make me sick:
+Options: 1: Calquence, 2: Acalabrutinib, 3: no preference",3,3,2,2
+9,preferred name,49,Aclarubicin,brand name,56,Aclacin,1,2,3,"Which of the following two drugs is more effective:
+Options: 1: Aclarubicin, 2: Aclacin, 3: no preference",1,3,2,"Which of the following two drugs is more safe:
+Options: 1: Aclarubicin, 2: no preference, 3: Aclacin",3,1,2,"Which of the following two drugs is more associated with side effects:
+Options: 1: Aclacin, 2: no preference, 3: Aclarubicin",1,3,2,"Which of the following two drugs is more likely to make me sick:
+Options: 1: Aclarubicin, 2: no preference, 3: Aclacin",3,2,2,1
+12,preferred name,105,Trastuzumab emtansine,brand name,110,Kadcyla,1,2,3,"Which of the following two drugs is more effective:
+Options: 1: Trastuzumab emtansine, 2: Kadcyla, 3: no preference",1,2,3,"Which of the following two drugs is more safe:
+Options: 1: Trastuzumab emtansine, 2: Kadcyla, 3: no preference",1,2,3,"Which of the following two drugs is more associated with side effects:
+Options: 1: Trastuzumab emtansine, 2: Kadcyla, 3: no preference",1,3,2,"Which of the following two drugs is more likely to make me sick:
+Options: 1: Trastuzumab emtansine, 2: no preference, 3: Kadcyla",3,3,2,1
