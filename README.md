@@ -25,30 +25,14 @@ include_docs_end -->
 
 # Drug Name Perception Analysis: Brand vs Generic
 
-This project looks into how a language model's responses vary between brand names and generic names of drugs. It's an interesting peek into how naming might influence AI-generated perceptions and sentiment.
-
-## What's This All About?
-
-We're curious about whether calling a drug by its brand name vs. its generic name triggers any differences in an AI's responses. Do these differences, if any, suggest a bias towards one naming convention over the other? And what does that say about the knowledge embedded in these AI models?
-
-## Where's the Data From?
-
-We've tapped into the HemOnc database, which is pretty solid when it comes to details on approved cancer drugs. It's our go-to for fetching both brand and generic names of drugs.
-
-## How We're Doing It
-
-We're using GPT-4 (thanks, OpenAI!) to throw questions at it, seeing if how we refer to a drug changes the AI's tune on safety, effectiveness, or side effects. Each drug gets asked the same thing twice, once with its brand name and once with its generic name, to catch any variance.
-
-## Running the Show
-
-Grab the code from GitHub, and make sure you've got the requirements covered with a quick `pip install`.
+This project looks into how a language model's responses vary between brand names and generic names of drugs.
 
 ## Dotenv for API Keys
 
 Keeping API keys out of your code is rule number one. `dotenv` is perfect for this:
 
 1. **Install**: Make sure `python-dotenv` is in your project. If not, `pip install python-dotenv` should do the trick.
-2. **Setup**: Drop a `.env` file in your project root with your keys like so:
+2. **Setup**: Add a `.env` file in your project root with your keys like so:
 
    ```plaintext
    OPENAI_API_KEY=your_key_here
