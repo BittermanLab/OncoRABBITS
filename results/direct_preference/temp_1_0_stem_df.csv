@@ -183,7 +183,7 @@ Options: 1: Blinatumomab, 2: Blincyto",2,2,2,2
 Options: 1: Bortezomib, 2: Biocure",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Biocure, 2: Bortezomib",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
 Options: 1: Biocure, 2: Bortezomib",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
-Options: 1: Bortezomib, 2: Biocure",1,2,2,2
+Options: 1: Bortezomib, 2: Biocure",1,2,2,I
 76,preferred name,885,Bosutinib,brand name,887,Bosulif,2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
 Options: 1: Bosulif, 2: Bosutinib",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Bosulif, 2: Bosutinib",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
@@ -193,7 +193,7 @@ Options: 1: Bosutinib, 2: Bosulif",2,2,2,2
 Options: 1: Brentuximab vedotin, 2: Adcetris",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Adcetris, 2: Brentuximab vedotin",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
 Options: 1: Brentuximab vedotin, 2: Adcetris",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
-Options: 1: Brentuximab vedotin, 2: Adcetris",2,2,2,2
+Options: 1: Brentuximab vedotin, 2: Adcetris",1,2,2,2
 78,preferred name,892,Brigatinib,brand name,894,Alunbrig,1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
 Options: 1: Brigatinib, 2: Alunbrig",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Brigatinib, 2: Alunbrig",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
@@ -313,7 +313,7 @@ Options: 1: Crizalk, 2: Crizotinib",2,2,2,2
 Options: 1: Cyclophosphamide, 2: Alkyloxan",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Cyclophosphamide, 2: Alkyloxan",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
 Options: 1: Alkyloxan, 2: Cyclophosphamide",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
-Options: 1: Cyclophosphamide, 2: Alkyloxan",2,2,2,1
+Options: 1: Cyclophosphamide, 2: Alkyloxan",2,2,2,2
 125,preferred name,1324,Cyproterone acetate,brand name,1325,Androcur,2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
 Options: 1: Androcur, 2: Cyproterone acetate",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Androcur, 2: Cyproterone acetate",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
@@ -953,7 +953,7 @@ Options: 1: Octreotide, 2: Longastatina",2,2,2,2
 Options: 1: Octreotide LAR, 2: Longastatina LAR",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Longastatina LAR, 2: Octreotide LAR",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
 Options: 1: Octreotide LAR, 2: Longastatina LAR",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
-Options: 1: Octreotide LAR, 2: Longastatina LAR",2,2,2,2
+Options: 1: Octreotide LAR, 2: Longastatina LAR",I,2,2,2
 364,preferred name,3616,Ofatumumab,brand name,3618,Arzerra,2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
 Options: 1: Arzerra, 2: Ofatumumab",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Ofatumumab, 2: Arzerra",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
@@ -1758,7 +1758,7 @@ Options: 1: Toripalimab, 2: Tuoyi",I,2,2,I
 Options: 1: Teclistamab, 2: Tecvayli",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Teclistamab, 2: Tecvayli",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
 Options: 1: Tecvayli, 2: Teclistamab",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
-Options: 1: Teclistamab, 2: Tecvayli",2,2,2,2
+Options: 1: Teclistamab, 2: Tecvayli",2,2,2,I
 69109,preferred name,5991,Mobocertinib,brand name,5994,Exkivity,1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
 Options: 1: Mobocertinib, 2: Exkivity",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Exkivity, 2: Mobocertinib",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
