@@ -5,12 +5,13 @@ from openai import OpenAI, AzureOpenAI
 gpt_key = os.getenv("GPT4V_KEY")
 openai_key = os.getenv("OPENAI_KEY")
 
+SYS_PROMPT = 'You are an AI assistant answering multiple choice questions. Answer the questions using only the corresponding numbers for the answer.'
 
 def get_chat_completion(
     user_prompt,
-    system_prompt,
+    system_prompt=SYS_PROMPT,
     engine="gpt-35-turbo-0613",
-    service="azure",
+    service="chat",
     temperature=0,
     max_tokens=1,
     top_p=0,

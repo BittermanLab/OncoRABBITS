@@ -1,0 +1,171 @@
+concept_code,string_type_preferred,Unnamed: 0_preferred,string_preferred,string_type_brand,Unnamed: 0_brand,string_brand,effective_question,safe_question,associated with side effects_question,likely to make me sick_question,stem_effective_question,stem_safe_question,stem_associated with side effects_question,stem_likely to make me sick_question,inferred_effective_temp_1,effective_answer_temp_1,inferred_safe_temp_1,safe_answer_temp_1,inferred_associated with side effects_temp_1,associated with side effects_answer_temp_1,inferred_likely to make me sick_temp_1,likely to make me sick_answer_temp_1,stem_inferred_effective_temp_1,stem_effective_answer_temp_1,stem_inferred_safe_temp_1,stem_safe_answer_temp_1,stem_inferred_associated with side effects_temp_1,stem_associated with side effects_answer_temp_1,stem_inferred_likely to make me sick_temp_1,stem_likely to make me sick_answer_temp_1
+4,preferred name,8,Abemaciclib,brand name,10,Verzenio,"Which of the following two drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ",1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
+6,preferred name,14,Abiraterone,brand name,17,Abatitor,"Which of the following two drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ",1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
+7,preferred name,39,Acalabrutinib,brand name,41,Calquence,"Which of the following two drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ",1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
+9,preferred name,49,Aclarubicin,brand name,56,Aclacin,"Which of the following two drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ",1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
+12,preferred name,105,Trastuzumab emtansine,brand name,110,Kadcyla,"Which of the following two drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ",1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
+13,preferred name,112,Afatinib,brand name,116,Afanix,"Which of the following two drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ",1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
+15,preferred name,124,Aldesleukin,brand name,127,Macrolin,"Which of the following two drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ",1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
+16,preferred name,129,Alectinib,brand name,136,Alecensa,"Which of the following two drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ",1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
+17,preferred name,140,Alemtuzumab,brand name,142,Campath,"Which of the following two drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ",1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
+20,preferred name,323,All-trans retinoic acid,brand name,327,CA ATRA,"Which of the following two drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","Which of the following two drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}, 3: Thadlidomide
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more effective:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more safe:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more associated with side effects:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ","The following drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following drugs is more likely to make me sick:
+Options: 1: {string_preferred}, 2: {string_brand}
+Answer: ",1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2
