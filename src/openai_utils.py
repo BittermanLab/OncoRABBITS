@@ -69,7 +69,7 @@ def get_chat_completion(
     else:
         client = OpenAI(api_key=openai_key)
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo-0613",
+            model="gpt-4-turbo",
             messages=message_text,
             temperature=temperature,
             max_tokens=max_tokens,

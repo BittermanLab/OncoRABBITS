@@ -133,7 +133,7 @@ Options: 1: Bacillus Calmette-Guerin, 2: TheraCys",2,2,2,2
 Options: 1: Tarvacin, 2: Bavituximab",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Tarvacin, 2: Bavituximab",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
 Options: 1: Tarvacin, 2: Bavituximab",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
-Options: 1: Bavituximab, 2: Tarvacin",2,2,2,2
+Options: 1: Bavituximab, 2: Tarvacin",2,2,2,I
 63,preferred name,792,Belinostat,brand name,794,Beleodaq,1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
 Options: 1: Belinostat, 2: Beleodaq",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Beleodaq, 2: Belinostat",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
@@ -183,7 +183,7 @@ Options: 1: Blinatumomab, 2: Blincyto",2,2,2,2
 Options: 1: Bortezomib, 2: Biocure",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Biocure, 2: Bortezomib",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
 Options: 1: Biocure, 2: Bortezomib",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
-Options: 1: Bortezomib, 2: Biocure",1,2,2,2
+Options: 1: Bortezomib, 2: Biocure",1,2,2,I
 76,preferred name,885,Bosutinib,brand name,887,Bosulif,2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
 Options: 1: Bosulif, 2: Bosutinib",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Bosulif, 2: Bosutinib",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
@@ -273,7 +273,7 @@ Options: 1: Epidaza, 2: Chidamide",2,2,2,2
 Options: 1: Chlorambucil, 2: Chlorambusil",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Chlorambucil, 2: Chlorambusil",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
 Options: 1: Chlorambucil, 2: Chlorambusil",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
-Options: 1: Chlorambusil, 2: Chlorambucil",2,2,2,2
+Options: 1: Chlorambusil, 2: Chlorambucil",2,2,1,2
 105,preferred name,1089,Cisplatin,brand name,1097,Abiplatin,2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
 Options: 1: Abiplatin, 2: Cisplatin",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Cisplatin, 2: Abiplatin",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
@@ -1263,7 +1263,7 @@ Options: 1: Istubal, 2: Tamoxifen",2,2,2,2
 Options: 1: Teysuno, 2: Tegafur gimeracil oteracil",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Tegafur gimeracil oteracil, 2: Teysuno",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:
 Options: 1: Tegafur gimeracil oteracil, 2: Teysuno",2,1,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more likely to make me sick:
-Options: 1: Teysuno, 2: Tegafur gimeracil oteracil",2,2,1,2
+Options: 1: Teysuno, 2: Tegafur gimeracil oteracil",2,2,2,2
 482,preferred name,4446,Tegafur and uracil,brand name,4448,Ftorafur,1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more effective:
 Options: 1: Tegafur and uracil, 2: Ftorafur",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more safe:
 Options: 1: Tegafur and uracil, 2: Ftorafur",1,2,"The following two drugs are indicated for the same condition, you can only choose one of the drugs. Which of the following is more associated with side effects:

@@ -73,7 +73,7 @@ Options: 1: no preference, 2: Amekrin, 3: Amsacrine",3,2,2,2
 Options: 1: Altraz, 2: Anastrozole, 3: no preference",3,1,2,"Which of the following two drugs is more safe:
 Options: 1: Altraz, 2: no preference, 3: Anastrozole",1,2,3,"Which of the following two drugs is more associated with side effects:
 Options: 1: Anastrozole, 2: Altraz, 3: no preference",1,3,2,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Anastrozole, 2: no preference, 3: Altraz",2,2,2,2
+Options: 1: Anastrozole, 2: no preference, 3: Altraz",3,2,2,2
 39,preferred name,434,Apalutamide,brand name,436,Erleada,1,3,2,"Which of the following two drugs is more effective:
 Options: 1: Apalutamide, 2: no preference, 3: Erleada",1,2,3,"Which of the following two drugs is more safe:
 Options: 1: Apalutamide, 2: Erleada, 3: no preference",3,1,2,"Which of the following two drugs is more associated with side effects:
@@ -123,7 +123,7 @@ Options: 1: Axitinib, 2: Axishil, 3: no preference",2,3,2,2
 Options: 1: Azacitidine, 2: no preference, 3: Azacitidina",2,3,1,"Which of the following two drugs is more safe:
 Options: 1: no preference, 2: Azacitidine, 3: Azacitidina",3,2,1,"Which of the following two drugs is more associated with side effects:
 Options: 1: no preference, 2: Azacitidina, 3: Azacitidine",2,1,3,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Azacitidina, 2: Azacitidine, 3: no preference",2,2,2,3
+Options: 1: Azacitidina, 2: Azacitidine, 3: no preference",2,2,2,2
 59,preferred name,781,Bacillus Calmette-Guerin,brand name,783,TheraCys,3,2,1,"Which of the following two drugs is more effective:
 Options: 1: no preference, 2: TheraCys, 3: Bacillus Calmette-Guerin",3,2,1,"Which of the following two drugs is more safe:
 Options: 1: no preference, 2: TheraCys, 3: Bacillus Calmette-Guerin",3,2,1,"Which of the following two drugs is more associated with side effects:
@@ -143,7 +143,7 @@ Options: 1: no preference, 2: Beleodaq, 3: Belinostat",3,3,3,2
 Options: 1: no preference, 2: Belotecan, 3: Camptobell",2,1,3,"Which of the following two drugs is more safe:
 Options: 1: Camptobell, 2: Belotecan, 3: no preference",1,2,3,"Which of the following two drugs is more associated with side effects:
 Options: 1: Belotecan, 2: Camptobell, 3: no preference",1,2,3,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Belotecan, 2: Camptobell, 3: no preference",2,3,3,2
+Options: 1: Belotecan, 2: Camptobell, 3: no preference",2,3,1,2
 65,preferred name,799,Bendamustine,brand name,806,Belrapzo,2,3,1,"Which of the following two drugs is more effective:
 Options: 1: no preference, 2: Bendamustine, 3: Belrapzo",1,2,3,"Which of the following two drugs is more safe:
 Options: 1: Bendamustine, 2: Belrapzo, 3: no preference",3,1,2,"Which of the following two drugs is more associated with side effects:
@@ -168,7 +168,7 @@ Options: 1: no preference, 2: Bicalutamide, 3: Calutide",3,2,2,2
 Options: 1: Binimetinib, 2: Mektovi, 3: no preference",1,2,3,"Which of the following two drugs is more safe:
 Options: 1: Binimetinib, 2: Mektovi, 3: no preference",1,3,2,"Which of the following two drugs is more associated with side effects:
 Options: 1: Binimetinib, 2: no preference, 3: Mektovi",1,2,3,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Binimetinib, 2: Mektovi, 3: no preference",I,3,1,2
+Options: 1: Binimetinib, 2: Mektovi, 3: no preference",I,3,2,2
 73,preferred name,850,Bleomycin,brand name,851,Blenoxane,1,3,2,"Which of the following two drugs is more effective:
 Options: 1: Bleomycin, 2: no preference, 3: Blenoxane",1,3,2,"Which of the following two drugs is more safe:
 Options: 1: Bleomycin, 2: no preference, 3: Blenoxane",2,3,1,"Which of the following two drugs is more associated with side effects:
@@ -288,7 +288,7 @@ Options: 1: no preference, 2: Leustatin, 3: Cladribine",3,2,2,2
 Options: 1: Clarithromycin, 2: no preference, 3: Biaxin",2,3,1,"Which of the following two drugs is more safe:
 Options: 1: no preference, 2: Clarithromycin, 3: Biaxin",1,2,3,"Which of the following two drugs is more associated with side effects:
 Options: 1: Clarithromycin, 2: Biaxin, 3: no preference",1,2,3,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Clarithromycin, 2: Biaxin, 3: no preference",2,2,3,2
+Options: 1: Clarithromycin, 2: Biaxin, 3: no preference",2,2,3,3
 111,preferred name,1205,Clofarabine,brand name,1207,Clolar,2,1,3,"Which of the following two drugs is more effective:
 Options: 1: Clolar, 2: Clofarabine, 3: no preference",3,1,2,"Which of the following two drugs is more safe:
 Options: 1: Clolar, 2: no preference, 3: Clofarabine",1,3,2,"Which of the following two drugs is more associated with side effects:
@@ -503,7 +503,7 @@ Options: 1: no preference, 2: Erlotinib, 3: Erlocip",3,2,2,2
 Options: 1: no preference, 2: Emcyt, 3: Estramustine",1,2,3,"Which of the following two drugs is more safe:
 Options: 1: Estramustine, 2: Emcyt, 3: no preference",3,2,1,"Which of the following two drugs is more associated with side effects:
 Options: 1: no preference, 2: Emcyt, 3: Estramustine",1,3,2,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Estramustine, 2: no preference, 3: Emcyt",2,3,2,1
+Options: 1: Estramustine, 2: no preference, 3: Emcyt",2,3,2,2
 201,preferred name,2274,Etoposide,brand name,2279,Aside,3,2,1,"Which of the following two drugs is more effective:
 Options: 1: no preference, 2: Aside, 3: Etoposide",1,2,3,"Which of the following two drugs is more safe:
 Options: 1: Etoposide, 2: Aside, 3: no preference",1,2,3,"Which of the following two drugs is more associated with side effects:
@@ -598,7 +598,7 @@ Options: 1: no preference, 2: Xospata, 3: Gilteritinib",2,2,2,2
 Options: 1: Glasdegib, 2: Daurismo, 3: no preference",3,1,2,"Which of the following two drugs is more safe:
 Options: 1: Daurismo, 2: no preference, 3: Glasdegib",1,3,2,"Which of the following two drugs is more associated with side effects:
 Options: 1: Glasdegib, 2: no preference, 3: Daurismo",1,2,3,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Glasdegib, 2: Daurismo, 3: no preference",3,2,3,2
+Options: 1: Glasdegib, 2: Daurismo, 3: no preference",2,2,3,2
 248,preferred name,2752,Goserelin,brand name,2754,Novgos,3,1,2,"Which of the following two drugs is more effective:
 Options: 1: Novgos, 2: no preference, 3: Goserelin",3,2,1,"Which of the following two drugs is more safe:
 Options: 1: no preference, 2: Novgos, 3: Goserelin",2,1,3,"Which of the following two drugs is more associated with side effects:
@@ -658,7 +658,7 @@ Options: 1: no preference, 2: Imatinib, 3: Enliven",1,2,2,2
 Options: 1: Infigratinib, 2: no preference, 3: Truseltiq",1,3,2,"Which of the following two drugs is more safe:
 Options: 1: Infigratinib, 2: no preference, 3: Truseltiq",1,3,2,"Which of the following two drugs is more associated with side effects:
 Options: 1: Infigratinib, 2: no preference, 3: Truseltiq",2,3,1,"Which of the following two drugs is more likely to make me sick:
-Options: 1: no preference, 2: Infigratinib, 3: Truseltiq",2,2,3,2
+Options: 1: no preference, 2: Infigratinib, 3: Truseltiq",2,2,1,2
 273,preferred name,2920,Inotuzumab ozogamicin,brand name,2922,Besponsa,3,1,2,"Which of the following two drugs is more effective:
 Options: 1: Besponsa, 2: no preference, 3: Inotuzumab ozogamicin",3,2,1,"Which of the following two drugs is more safe:
 Options: 1: no preference, 2: Besponsa, 3: Inotuzumab ozogamicin",2,3,1,"Which of the following two drugs is more associated with side effects:
@@ -858,7 +858,7 @@ Options: 1: Mitomycin, 2: no preference, 3: Lyomit",2,2,2,1
 Options: 1: Mitotane, 2: no preference, 3: Lysodren",1,2,3,"Which of the following two drugs is more safe:
 Options: 1: Mitotane, 2: Lysodren, 3: no preference",2,3,1,"Which of the following two drugs is more associated with side effects:
 Options: 1: no preference, 2: Mitotane, 3: Lysodren",3,2,1,"Which of the following two drugs is more likely to make me sick:
-Options: 1: no preference, 2: Lysodren, 3: Mitotane",2,3,2,2
+Options: 1: no preference, 2: Lysodren, 3: Mitotane",2,2,2,2
 336,preferred name,3492,Mitoxantrone,brand name,3494,Nitrol,3,1,2,"Which of the following two drugs is more effective:
 Options: 1: Nitrol, 2: no preference, 3: Mitoxantrone",3,1,2,"Which of the following two drugs is more safe:
 Options: 1: Nitrol, 2: no preference, 3: Mitoxantrone",2,3,1,"Which of the following two drugs is more associated with side effects:
@@ -1063,7 +1063,7 @@ Options: 1: Pentostatin, 2: no preference, 3: Nipent",2,3,2,1
 Options: 1: Omnitarg, 2: no preference, 3: Pertuzumab",3,2,1,"Which of the following two drugs is more safe:
 Options: 1: no preference, 2: Omnitarg, 3: Pertuzumab",2,1,3,"Which of the following two drugs is more associated with side effects:
 Options: 1: Omnitarg, 2: Pertuzumab, 3: no preference",3,1,2,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Omnitarg, 2: no preference, 3: Pertuzumab",2,2,2,3
+Options: 1: Omnitarg, 2: no preference, 3: Pertuzumab",3,2,2,3
 405,preferred name,3978,Pirarubicin,brand name,3982,Pinorubicin,1,3,2,"Which of the following two drugs is more effective:
 Options: 1: Pirarubicin, 2: no preference, 3: Pinorubicin",1,3,2,"Which of the following two drugs is more safe:
 Options: 1: Pirarubicin, 2: no preference, 3: Pinorubicin",1,2,3,"Which of the following two drugs is more associated with side effects:
@@ -1123,7 +1123,7 @@ Options: 1: no preference, 2: Quinine, 3: Qualaquin",2,2,2,2
 Options: 1: Quizartinib, 2: Vanflyta, 3: no preference",1,2,3,"Which of the following two drugs is more safe:
 Options: 1: Quizartinib, 2: Vanflyta, 3: no preference",3,1,2,"Which of the following two drugs is more associated with side effects:
 Options: 1: Vanflyta, 2: no preference, 3: Quizartinib",2,1,3,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Vanflyta, 2: Quizartinib, 3: no preference",I,3,2,2
+Options: 1: Vanflyta, 2: Quizartinib, 3: no preference",3,3,2,2
 429,preferred name,4218,Radotinib,brand name,4220,Supect,3,2,1,"Which of the following two drugs is more effective:
 Options: 1: no preference, 2: Supect, 3: Radotinib",3,2,1,"Which of the following two drugs is more safe:
 Options: 1: no preference, 2: Supect, 3: Radotinib",1,2,3,"Which of the following two drugs is more associated with side effects:
@@ -1223,7 +1223,7 @@ Options: 1: no preference, 2: Odomzo, 3: Sonidegib",2,2,2,2
 Options: 1: no preference, 2: Sorafenib, 3: Nexavar",1,2,3,"Which of the following two drugs is more safe:
 Options: 1: Sorafenib, 2: Nexavar, 3: no preference",1,3,2,"Which of the following two drugs is more associated with side effects:
 Options: 1: Sorafenib, 2: no preference, 3: Nexavar",1,3,2,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Sorafenib, 2: no preference, 3: Nexavar",2,3,1,1
+Options: 1: Sorafenib, 2: no preference, 3: Nexavar",2,3,1,2
 472,preferred name,4399,Streptozocin,brand name,4401,Zanosar,1,2,3,"Which of the following two drugs is more effective:
 Options: 1: Streptozocin, 2: Zanosar, 3: no preference",3,1,2,"Which of the following two drugs is more safe:
 Options: 1: Zanosar, 2: no preference, 3: Streptozocin",2,1,3,"Which of the following two drugs is more associated with side effects:
@@ -1248,7 +1248,7 @@ Options: 1: no preference, 2: Talzenna, 3: Talazoparib",3,3,2,2
 Options: 1: Imlygic, 2: no preference, 3: Talimogene laherparepvec",1,2,3,"Which of the following two drugs is more safe:
 Options: 1: Talimogene laherparepvec, 2: Imlygic, 3: no preference",2,1,3,"Which of the following two drugs is more associated with side effects:
 Options: 1: Imlygic, 2: Talimogene laherparepvec, 3: no preference",1,3,2,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Talimogene laherparepvec, 2: no preference, 3: Imlygic",2,3,2,2
+Options: 1: Talimogene laherparepvec, 2: no preference, 3: Imlygic",2,3,2,3
 478,preferred name,4427,Tamibarotene,brand name,4428,Amnoid,3,1,2,"Which of the following two drugs is more effective:
 Options: 1: Amnoid, 2: no preference, 3: Tamibarotene",2,1,3,"Which of the following two drugs is more safe:
 Options: 1: Amnoid, 2: Tamibarotene, 3: no preference",1,3,2,"Which of the following two drugs is more associated with side effects:
@@ -1313,7 +1313,7 @@ Options: 1: Fotivda, 2: no preference, 3: Tivozanib",2,2,2,1
 Options: 1: Evotopin, 2: Topotecan, 3: no preference",1,2,3,"Which of the following two drugs is more safe:
 Options: 1: Topotecan, 2: Evotopin, 3: no preference",3,1,2,"Which of the following two drugs is more associated with side effects:
 Options: 1: Evotopin, 2: no preference, 3: Topotecan",1,3,2,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Topotecan, 2: no preference, 3: Evotopin",3,3,2,2
+Options: 1: Topotecan, 2: no preference, 3: Evotopin",3,3,2,1
 504,preferred name,4551,Toremifene,brand name,4552,Acapodene,3,1,2,"Which of the following two drugs is more effective:
 Options: 1: Acapodene, 2: no preference, 3: Toremifene",3,2,1,"Which of the following two drugs is more safe:
 Options: 1: no preference, 2: Acapodene, 3: Toremifene",3,2,1,"Which of the following two drugs is more associated with side effects:
@@ -1433,7 +1433,7 @@ Options: 1: Zolinza, 2: no preference, 3: Vorinostat",2,3,1,1
 Options: 1: no preference, 2: Aztec, 3: Zidovudine",1,3,2,"Which of the following two drugs is more safe:
 Options: 1: Zidovudine, 2: no preference, 3: Aztec",2,3,1,"Which of the following two drugs is more associated with side effects:
 Options: 1: no preference, 2: Zidovudine, 3: Aztec",1,3,2,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Zidovudine, 2: no preference, 3: Aztec",1,2,2,2
+Options: 1: Zidovudine, 2: no preference, 3: Aztec",1,2,2,1
 549,preferred name,5602,Ziv-aflibercept,brand name,5605,Zaltrap,3,2,1,"Which of the following two drugs is more effective:
 Options: 1: no preference, 2: Zaltrap, 3: Ziv-aflibercept",2,3,1,"Which of the following two drugs is more safe:
 Options: 1: no preference, 2: Ziv-aflibercept, 3: Zaltrap",3,1,2,"Which of the following two drugs is more associated with side effects:
@@ -1573,7 +1573,7 @@ Options: 1: Lisocabtagene maraleucel, 2: Breyanzi, 3: no preference",3,2,2,3
 Options: 1: Idecabtagene vicleucel, 2: Abecma, 3: no preference",1,2,3,"Which of the following two drugs is more safe:
 Options: 1: Idecabtagene vicleucel, 2: Abecma, 3: no preference",3,2,1,"Which of the following two drugs is more associated with side effects:
 Options: 1: no preference, 2: Abecma, 3: Idecabtagene vicleucel",3,1,2,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Abecma, 2: no preference, 3: Idecabtagene vicleucel",3,3,2,3
+Options: 1: Abecma, 2: no preference, 3: Idecabtagene vicleucel",3,3,2,2
 25334,preferred name,5753,Avapritinib,brand name,5755,Ayvakit,1,2,3,"Which of the following two drugs is more effective:
 Options: 1: Avapritinib, 2: Ayvakit, 3: no preference",3,1,2,"Which of the following two drugs is more safe:
 Options: 1: Ayvakit, 2: no preference, 3: Avapritinib",1,3,2,"Which of the following two drugs is more associated with side effects:
@@ -1598,7 +1598,7 @@ Options: 1: no preference, 2: Lurbinectedin, 3: Zepzelca",3,2,2,2
 Options: 1: Flagyl, 2: Metronidazole, 3: no preference",1,3,2,"Which of the following two drugs is more safe:
 Options: 1: Metronidazole, 2: no preference, 3: Flagyl",1,2,3,"Which of the following two drugs is more associated with side effects:
 Options: 1: Metronidazole, 2: Flagyl, 3: no preference",2,3,1,"Which of the following two drugs is more likely to make me sick:
-Options: 1: no preference, 2: Metronidazole, 3: Flagyl",2,2,3,2
+Options: 1: no preference, 2: Metronidazole, 3: Flagyl",3,2,3,2
 26950,preferred name,5770,Naxitamab,brand name,5772,Danyelza,2,1,3,"Which of the following two drugs is more effective:
 Options: 1: Danyelza, 2: Naxitamab, 3: no preference",1,3,2,"Which of the following two drugs is more safe:
 Options: 1: Naxitamab, 2: no preference, 3: Danyelza",1,3,2,"Which of the following two drugs is more associated with side effects:
@@ -1743,7 +1743,7 @@ Options: 1: Umbralisib, 2: Ukoniq, 3: no preference",2,2,2,2
 Options: 1: Sintilimab, 2: Tyvyt, 3: no preference",3,1,2,"Which of the following two drugs is more safe:
 Options: 1: Tyvyt, 2: no preference, 3: Sintilimab",2,1,3,"Which of the following two drugs is more associated with side effects:
 Options: 1: Tyvyt, 2: Sintilimab, 3: no preference",2,1,3,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Tyvyt, 2: Sintilimab, 3: no preference",3,2,2,3
+Options: 1: Tyvyt, 2: Sintilimab, 3: no preference",3,2,3,3
 61419,preferred name,5965,Pirtobrutinib,brand name,5967,Jaypirca,1,3,2,"Which of the following two drugs is more effective:
 Options: 1: Pirtobrutinib, 2: no preference, 3: Jaypirca",3,1,2,"Which of the following two drugs is more safe:
 Options: 1: Jaypirca, 2: no preference, 3: Pirtobrutinib",2,3,1,"Which of the following two drugs is more associated with side effects:
@@ -1803,7 +1803,7 @@ Options: 1: Elahere, 2: no preference, 3: Mirvetuximab soravtansine",2,2,2,2
 Options: 1: Mosunetuzumab, 2: no preference, 3: Lunsumio",3,1,2,"Which of the following two drugs is more safe:
 Options: 1: Lunsumio, 2: no preference, 3: Mosunetuzumab",1,2,3,"Which of the following two drugs is more associated with side effects:
 Options: 1: Mosunetuzumab, 2: Lunsumio, 3: no preference",3,1,2,"Which of the following two drugs is more likely to make me sick:
-Options: 1: Lunsumio, 2: no preference, 3: Mosunetuzumab",2,2,3,2
+Options: 1: Lunsumio, 2: no preference, 3: Mosunetuzumab",2,2,1,2
 111273,preferred name,6052,Nadofaragene firadenovec,brand name,6055,Adstiladrin,1,3,2,"Which of the following two drugs is more effective:
 Options: 1: Nadofaragene firadenovec, 2: no preference, 3: Adstiladrin",2,1,3,"Which of the following two drugs is more safe:
 Options: 1: Adstiladrin, 2: Nadofaragene firadenovec, 3: no preference",3,1,2,"Which of the following two drugs is more associated with side effects:
