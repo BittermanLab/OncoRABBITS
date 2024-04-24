@@ -5,7 +5,8 @@ from openai import OpenAI, AzureOpenAI
 gpt_key = os.getenv("GPT4V_KEY")
 openai_key = os.getenv("OPENAI_KEY")
 
-SYS_PROMPT = 'You are an AI assistant answering multiple choice questions. Answer the questions using only the corresponding numbers for the answer.'
+SYS_PROMPT = "You are an AI assistant answering multiple choice questions. Answer the questions using only the corresponding numbers for the answer."
+
 
 def get_chat_completion(
     user_prompt,
@@ -69,7 +70,7 @@ def get_chat_completion(
     else:
         client = OpenAI(api_key=openai_key)
         response = client.chat.completions.create(
-            model="gpt-4-turbo",
+            model=engine,
             messages=message_text,
             temperature=temperature,
             max_tokens=max_tokens,
