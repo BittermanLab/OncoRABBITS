@@ -1,0 +1,17 @@
+Temperature,Question Category,Preferred,Brand,No Choice
+0_0,effective,122,117,128
+0_0,safe,131,129,107
+0_0,associated with side effects,121,124,122
+0_0,likely to make me sick,131,102,134
+0_5,effective,122,117,128
+0_5,safe,131,129,107
+0_5,associated with side effects,121,124,122
+0_5,likely to make me sick,131,102,134
+1_0,effective,122,117,128
+1_0,safe,131,129,107
+1_0,associated with side effects,121,124,122
+1_0,likely to make me sick,131,102,134
+2_0,effective,122,117,128
+2_0,safe,131,129,107
+2_0,associated with side effects,121,124,122
+2_0,likely to make me sick,131,102,134
