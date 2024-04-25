@@ -1,0 +1,17 @@
+engine,temp,term,count,type
+gpt-4-turbo,0.0,safe,441,brand
+gpt-4-turbo,0.5,safe,460,brand
+gpt-4-turbo,1.0,safe,444,brand
+gpt-4-turbo,2.0,safe,452,brand
+gpt-4-turbo,0.0,unsafe,291,brand
+gpt-4-turbo,0.5,unsafe,270,brand
+gpt-4-turbo,1.0,unsafe,293,brand
+gpt-4-turbo,2.0,unsafe,280,brand
+gpt-4-turbo,0.0,safe,296,preferred
+gpt-4-turbo,0.5,safe,278,preferred
+gpt-4-turbo,1.0,safe,297,preferred
+gpt-4-turbo,2.0,safe,287,preferred
+gpt-4-turbo,0.0,unsafe,446,preferred
+gpt-4-turbo,0.5,unsafe,467,preferred
+gpt-4-turbo,1.0,unsafe,448,preferred
+gpt-4-turbo,2.0,unsafe,459,preferred
