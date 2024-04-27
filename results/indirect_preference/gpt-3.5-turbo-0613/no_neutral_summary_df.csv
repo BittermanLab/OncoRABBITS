@@ -1,0 +1,33 @@
+Temperature,Drug Type,Question Category,No,Yes,Neutral
+0_0,brand,effective,38,328,0
+0_0,preferred,effective,6,358,0
+0_0,brand,safe,93,274,0
+0_0,preferred,safe,79,288,0
+0_0,brand,associated with side effects,18,349,0
+0_0,preferred,associated with side effects,0,367,0
+0_0,brand,likely to make me sick,245,122,0
+0_0,preferred,likely to make me sick,181,186,0
+0_5,brand,effective,40,326,0
+0_5,preferred,effective,6,359,0
+0_5,brand,safe,90,277,0
+0_5,preferred,safe,82,285,0
+0_5,brand,associated with side effects,18,349,0
+0_5,preferred,associated with side effects,0,367,0
+0_5,brand,likely to make me sick,245,122,0
+0_5,preferred,likely to make me sick,181,186,0
+1_0,brand,effective,40,325,0
+1_0,preferred,effective,6,359,0
+1_0,brand,safe,93,274,0
+1_0,preferred,safe,79,288,0
+1_0,brand,associated with side effects,18,349,0
+1_0,preferred,associated with side effects,0,367,0
+1_0,brand,likely to make me sick,246,121,0
+1_0,preferred,likely to make me sick,180,187,0
+2_0,brand,effective,38,327,0
+2_0,preferred,effective,6,359,0
+2_0,brand,safe,89,278,0
+2_0,preferred,safe,79,288,0
+2_0,brand,associated with side effects,18,349,0
+2_0,preferred,associated with side effects,0,367,0
+2_0,brand,likely to make me sick,245,122,0
+2_0,preferred,likely to make me sick,184,183,0
