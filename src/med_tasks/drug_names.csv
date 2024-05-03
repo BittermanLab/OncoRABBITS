@@ -1,6 +1,249 @@
-old,new
-Aspirin,Dog
-Ibuprofen,Cat
-Acetaminophen,Bird
-Amoxicillin,Fish
-year-old,Chicken
+rxcui,generic,brand
+38,bromocriptine,Parlodel
+44,mesna,Mesnex
+73,docosahexaenoate,Algal-900
+73,docosahexaenoate,Natelle
+73,docosahexaenoate,Ocean Blue Nutritionals Omega-3 1450
+74,4-aminobenzoic acid,SwineAid
+90,eicosapentaenoate,Natelle
+90,eicosapentaenoate,Ocean Blue Nutritionals Omega-3 1450
+94,5-hydroxytryptophan,Somnicin
+97,ticlopidine,Ticlid
+99,6-aminocaproic acid,Amicar
+103,mercaptopurine,Purixan
+103,mercaptopurine,Purinethol
+110,oxyquinoline,Fem pH
+110,oxyquinoline,Relagard
+110,oxyquinoline,Trimo San
+155,acepromazine,PROMACE
+161,acetaminophen,Little Fevers
+161,acetaminophen,Bactimicina
+161,acetaminophen,Ofirmev
+161,acetaminophen,Pamprin Max Formula
+161,acetaminophen,Pamprin Multi-Symptom
+161,acetaminophen,Pamprin Cramp Formula
+161,acetaminophen,Percogesic Reformulated Jan 2011
+161,acetaminophen,Premsyn PMS
+161,acetaminophen,Panadol PM
+161,acetaminophen,CounterAct Pain
+161,acetaminophen,Capacet
+161,acetaminophen,Nortemp
+161,acetaminophen,Acetadryl
+161,acetaminophen,Sedalmex
+161,acetaminophen,Ringl
+161,acetaminophen,Pharbetol
+161,acetaminophen,Arthriten Inflammatory Pain
+161,acetaminophen,Backaid
+161,acetaminophen,Cetafen
+161,acetaminophen,Exaprin
+161,acetaminophen,Backaid IPF
+161,acetaminophen,Lortab
+161,acetaminophen,Primlev
+161,acetaminophen,Verdrocet
+161,acetaminophen,Excedrin Mild Headache
+161,acetaminophen,Excedrin PM Triple Action
+161,acetaminophen,Ninjacof A
+161,acetaminophen,Vanatol
+161,acetaminophen,Fioricet
+161,acetaminophen,Sed-Max
+161,acetaminophen,Panadol Extra
+161,acetaminophen,Arthriten Max
+161,acetaminophen,Apadaz
+161,acetaminophen,Panadol
+161,acetaminophen,Tylenol
+161,acetaminophen,Nalocet
+161,acetaminophen,Dvorah
+161,acetaminophen,Anacin AF
+161,acetaminophen,Bupap
+161,acetaminophen,Endocet
+161,acetaminophen,Esgic
+161,acetaminophen,Excedrin
+161,acetaminophen,Excedrin PM
+161,acetaminophen,Feverall
+161,acetaminophen,Fioricet with Codeine
+161,acetaminophen,Legatrin PM
+161,acetaminophen,Mapap
+161,acetaminophen,Marten-Tab
+161,acetaminophen,Norco
+161,acetaminophen,Redutemp
+161,acetaminophen,Repan
+161,acetaminophen,Saleto
+161,acetaminophen,Tempra Quicklets
+161,acetaminophen,Tencon
+161,acetaminophen,Tycolene
+161,acetaminophen,Tylenol PM
+161,acetaminophen,Tylenol with Codeine
+161,acetaminophen,Unisom with Pain Relief
+161,acetaminophen,Vanquish
+161,acetaminophen,Zebutal
+161,acetaminophen,Acephen
+161,acetaminophen,Vtol
+161,acetaminophen,Allzital
+161,acetaminophen,Prolate
+161,acetaminophen,Combogesic
+161,acetaminophen,Contragesic
+161,acetaminophen,Relagesic
+161,acetaminophen,Ultracet
+161,acetaminophen,Excedrin Tension Headache
+161,acetaminophen,Percocet
+161,acetaminophen,Lorcet
+161,acetaminophen,Frenadol
+161,acetaminophen,Dologesic
+161,acetaminophen,Hycet
+161,acetaminophen,Anabar
+161,acetaminophen,Ed Flex
+161,acetaminophen,By Ache
+161,acetaminophen,Excedrin Quick Tab
+161,acetaminophen,Comtrex Sore Throat Relief
+161,acetaminophen,Excedrin Back & Body
+161,acetaminophen,Anacin Advanced Headache Formula
+161,acetaminophen,Trezix
+161,acetaminophen,Tactinal
+161,acetaminophen,Zamicet
+161,acetaminophen,Backprin
+168,acetic acid,Mal-A-Ket
+168,acetic acid,Fem pH
+168,acetic acid,Relagard
+194,acetylcholine,Miochol
+197,acetylcysteine,Acetadote
+249,acriflavine,Blu-Kote
+270,spectinomycin,SpectoGard
+272,activated charcoal,Actidose
+272,activated charcoal,Insta-Char
+272,activated charcoal,Char-Flo
+272,activated charcoal,CharcoCaps
+281,acyclovir,Sitavig
+281,acyclovir,Zovirax
+281,acyclovir,Xerese
+296,adenosine,Adenoscan
+296,adenosine,Adenocard
+332,phentermine,Adipex-P
+376,corticotropin,Acthar
+376,corticotropin,Cortrophin
+388,polymyxin B,Neo-Polycin HC
+388,polymyxin B,Surolan
+426,alanine,Freamine III 10
+426,alanine,Clinimix E 4.25/10
+426,alanine,"Aminosyn 7 % with Electrolytes, Sulfite-Free"
+426,alanine,"Aminosyn II 8.5 % with Electrolytes, Sulfite-Free"
+426,alanine,"Aminosyn 8.5 % with Electrolytes, Sulfite-Free"
+426,alanine,Trophamine 10 %
+426,alanine,Trophamine 6 %
+426,alanine,Plenamine
+426,alanine,Prosol
+426,alanine,PremaSol
+426,alanine,Aminosyn II 15%
+426,alanine,"Aminosyn II 7 %, Sulfite-Free"
+426,alanine,"Aminosyn II 8.5 %, Sulfite-Free"
+426,alanine,Aminosyn II 10 %
+426,alanine,"Aminosyn-HBC 7 %, Sulfite-Free"
+426,alanine,"Aminosyn-PF 10 %, Sulfite-Free"
+426,alanine,Clinimix E 4.25/5
+426,alanine,Clinimix 2.75/5
+426,alanine,Clinimix 4.25/10
+426,alanine,Clinimix 4.25/5
+426,alanine,Clinimix 5/15
+426,alanine,Clinimix 5/20
+426,alanine,Clinimix E 2.75/5
+426,alanine,Clinimix E 5/15
+426,alanine,Clinimix E 5/20
+426,alanine,Clinimix E 5/25
+426,alanine,Clinisol 15
+426,alanine,Hepatamine 8
+426,alanine,ProcalAmine 3
+426,alanine,Travasol 10
+426,alanine,"Aminosyn 10%, Sulfite-Free"
+426,alanine,"Aminosyn 8.5%, Sulfite-Free"
+426,alanine,Aminosyn-PF 7%
+426,alanine,"Aminosyn 3.5 % M, Sulfite Free"
+430,albendazole,Valbazen
+430,albendazole,Albenza
+435,albuterol,Combivent
+435,albuterol,Proventil
+435,albuterol,Airsupra
+435,albuterol,DuoNeb
+435,albuterol,Accuneb
+435,albuterol,ProAir
+435,albuterol,Ventolin
+448,ethanol,Avagard
+479,alfentanil,Alfenta
+480,alfentanil,Alfenta
+508,allantoin,Chamois Glide
+508,allantoin,Anbesol Cold Sore Therapy
+508,allantoin,Blister Armour
+508,allantoin,Shing-Releev
+508,allantoin,Mederma Advanced Scar
+508,allantoin,Berberex Wound Cleanser
+508,allantoin,Mederma for Kids
+519,allopurinol,Duzallo
+519,allopurinol,Zyloprim
+519,allopurinol,Aloprim
+535,alpha 1-antitrypsin,Prolastin
+535,alpha 1-antitrypsin,Zemaira
+535,alpha 1-antitrypsin,Aralast
+535,alpha 1-antitrypsin,Glassia
+569,eflornithine,Iwilfin
+569,eflornithine,Vaniqa
+596,alprazolam,Xanax
+598,alprostadil,Prostin VR
+598,alprostadil,Edex
+598,alprostadil,Caverject
+598,alprostadil,Muse
+612,aluminum hydroxide,Milantex
+612,aluminum hydroxide,Gaviscon Chewable
+612,aluminum hydroxide,Derma Gran
+612,aluminum hydroxide,Maalox Plus
+612,aluminum hydroxide,Almacone
+612,aluminum hydroxide,Mi-Acid
+612,aluminum hydroxide,Mintox Plus
+612,aluminum hydroxide,Gaviscon
+612,aluminum hydroxide,Gelusil
+612,aluminum hydroxide,Acid Gone
+612,aluminum hydroxide,Maalox Max
+612,aluminum hydroxide,Comfort Gel
+620,amantadine,Gocovri
+620,amantadine,Osmolex
+632,mitomycin,Mitosol
+632,mitomycin,Mutamycin
+632,mitomycin,Jelmyto
+641,amikacin,Arikayce
+644,amiloride,Midamor
+683,aminolevulinic acid,Ameluz
+703,amiodarone,Cordarone
+703,amiodarone,Pacerone
+703,amiodarone,Nexterone
+704,amitriptyline,Limbitrol
+704,amitriptyline,Elavil
+719,amobarbital,Amytal
+723,amoxicillin,Amoxi-tabs
+723,amoxicillin,Augmentin
+723,amoxicillin,Clavacillin
+723,amoxicillin,Biomox
+723,amoxicillin,Trimox
+723,amoxicillin,Talicia
+723,amoxicillin,Betacillin
+723,amoxicillin,Umbrellin
+723,amoxicillin,Moxatag
+723,amoxicillin,Clavamox
+723,amoxicillin,Amoxi Drop
+725,amphetamine,Evekeo
+725,amphetamine,Dyanavel
+725,amphetamine,Adzenys
+725,amphetamine,Mydayis
+725,amphetamine,Adderall
+732,amphotericin B,AmBisome
+732,amphotericin B,Abelcet
+733,ampicillin,Polyflex
+733,ampicillin,Unasyn
+743,amylase,Zenpep
+743,amylase,Viokace
+743,amylase,Pertzye
+743,amylase,Pancreaze
+743,amylase,PanaKare
+743,amylase,PancrePlus
+743,amylase,Creon
+756,clomipramine,Anafranil
+769,hyoscyamine,Anaspaz
+873,anthralin,Zithranol
+873,anthralin,Micanol
+873,anthralin,Drithocreme
