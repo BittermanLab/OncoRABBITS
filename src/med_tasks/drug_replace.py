@@ -20,8 +20,60 @@ def load_drug_map(csv_path, reverse_map=False):
     )
 
 
-def load_hf_dataset(dataset_name="augtoma/usmle_step_2", split="train", cache_dir=None):
-    return load_dataset(dataset_name, split=split, cache_dir=cache_dir)
+def process_mmlu_dataset(df):
+
+    # rename choices to options
+    df = df.rename_column("choices", "options")
+
+    # Define a mapping from index number to label
+    idx_to_label = {i: chr(65 + i) for i in range(26)}  # A-Z
+
+    # Helper function to transform choices list into a formatted string
+    def format_choices(choices):
+        return {
+            f"{idx_to_label[i]}": f"{idx_to_label[i]}: {choice}"
+            for i, choice in enumerate(choices)
+        }
+
+    # Convert 'answer' to 'answer_idx' (zero-based index) and create new formatted 'answer' column
+    df["answer_idx"] = df["answer"].apply(
+        lambda x: x[-1]
+    )  # Assuming the last character is always the answer label
+    df["answer_idx"] = df["answer_idx"].apply(
+        lambda x: idx_to_label.index(x)
+    )  # Convert label to index
+    df["choices"] = df["choices"].apply(format_choices)  # Format choices
+
+    # Map 'answer_idx' back to the formatted choice
+    def get_full_answer(row):
+        label = idx_to_label[row["answer_idx"]]
+        return row["choices"][label]
+
+    df["answer"] = df.apply(get_full_answer, axis=1)
+
+    return df
+
+
+def load_hf_dataset(dataset_name, split, cache_dir=None):
+    # USMLE Step 2
+    if dataset_name == "usmle_step_2":
+        dataset = load_dataset("augtoma/usmle_step_2", split=split, cache_dir=cache_dir)
+
+    # MMLU professional medicine
+    elif dataset_name == "mmlu_professional_medicine":
+        dataset = load_dataset(
+            "cais/mmlu", "professional_medicine", split=split, cache_dir=cache_dir
+        )
+        print("Dataset Schema:", dataset.column_names)
+
+        print("\n" * 50)
+        print("Processing MMLU professional medicine dataset...")
+        dataset = process_mmlu_dataset(dataset)
+        # print 50 blank lines
+        print("\n" * 50)
+    else:
+        raise ValueError(f"Invalid dataset name: {dataset_name}")
+    return dataset
 
 
 def format_question(instruction, question, options):
@@ -125,8 +177,8 @@ def generate_questions(dataset_name, split, csv_path, filter, mode):
 
 if __name__ == "__main__":
     questions_df = generate_questions(
-        "augtoma/usmle_step_2",
-        "train",
+        "mmlu_professional_medicine",
+        "dev",
         "src/med_tasks/drug_names.csv",
         True,
         "swap_all",

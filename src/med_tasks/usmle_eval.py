@@ -28,36 +28,36 @@ def load_model(model_name):
     return model, tokenizer
 
 
-def strip_special_chars(input_str):
-    """Remove special characters from string start/end"""
-    if not input_str:
-        return input_str
+# def strip_special_chars(input_str):
+#     """Remove special characters from string start/end"""
+#     if not input_str:
+#         return input_str
 
-    start_index = 0
-    end_index = len(input_str) - 1
+#     start_index = 0
+#     end_index = len(input_str) - 1
 
-    while (
-        start_index < len(input_str)
-        and input_str[start_index] not in string.ascii_letters + string.digits
-    ):
-        start_index += 1
+#     while (
+#         start_index < len(input_str)
+#         and input_str[start_index] not in string.ascii_letters + string.digits
+#     ):
+#         start_index += 1
 
-    while (
-        end_index >= 0
-        and input_str[end_index] not in string.ascii_letters + string.digits
-    ):
-        end_index -= 1
+#     while (
+#         end_index >= 0
+#         and input_str[end_index] not in string.ascii_letters + string.digits
+#     ):
+#         end_index -= 1
 
-    if start_index <= end_index:
-        return input_str[start_index : end_index + 1]
-    else:
-        return ""
+#     if start_index <= end_index:
+#         return input_str[start_index : end_index + 1]
+#     else:
+#         return ""
 
 
-def starts_with_capital_letter(input_str):
-    """Check if the response starts correctly with a capital letter and follows MCQ answer formats."""
-    pattern = r"^[A-Z](:|\.|) .+"
-    return bool(re.match(pattern, input_str))
+# def starts_with_capital_letter(input_str):
+#     """Check if the response starts correctly with a capital letter and follows MCQ answer formats."""
+#     pattern = r"^[A-Z](:|\.|) .+"
+#     return bool(re.match(pattern, input_str))
 
 
 def evaluate_multiple_choice_questions(model, tokenizer, questions_df, outname):
@@ -159,8 +159,9 @@ if __name__ == "__main__":
     parser.add_argument(
         "--dataset_name",
         type=str,
-        default="augtoma/usmle_step_2",
-        help="Hugging Face dataset to load (default: augtoma/usmle_step_2)",
+        default="usmle_step_2",
+        choices=["usmle_step_2", "mmlu_professional_medicine"],
+        help="Hugging Face dataset to load (default: usmle_step_2)",
     )
     parser.add_argument(
         "--model_name",
@@ -195,7 +196,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--filter",
         type=bool,
-        default=True,
+        default=False,
         help="Only evaluate questions with flagged keywords.",
     )
     parser.add_argument(
