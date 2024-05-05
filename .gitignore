@@ -1,2 +1,4 @@
 .env
 **/*.pyc
+**/*.RData
+src/hemonc_processing/hemonc_joined.csv
