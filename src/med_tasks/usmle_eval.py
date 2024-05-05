@@ -9,6 +9,10 @@ from datasets import load_dataset
 from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 import torch
 from tqdm.auto import tqdm
+import argparse
+
+## Generate questions
+from drug_replace import generate_questions
 
 # root of project
 root_dir = "../../"
@@ -26,38 +30,6 @@ def load_model(model_name):
     if tokenizer.pad_token_id is None:
         tokenizer.pad_token_id = tokenizer.eos_token_id
     return model, tokenizer
-
-
-# def strip_special_chars(input_str):
-#     """Remove special characters from string start/end"""
-#     if not input_str:
-#         return input_str
-
-#     start_index = 0
-#     end_index = len(input_str) - 1
-
-#     while (
-#         start_index < len(input_str)
-#         and input_str[start_index] not in string.ascii_letters + string.digits
-#     ):
-#         start_index += 1
-
-#     while (
-#         end_index >= 0
-#         and input_str[end_index] not in string.ascii_letters + string.digits
-#     ):
-#         end_index -= 1
-
-#     if start_index <= end_index:
-#         return input_str[start_index : end_index + 1]
-#     else:
-#         return ""
-
-
-# def starts_with_capital_letter(input_str):
-#     """Check if the response starts correctly with a capital letter and follows MCQ answer formats."""
-#     pattern = r"^[A-Z](:|\.|) .+"
-#     return bool(re.match(pattern, input_str))
 
 
 def evaluate_multiple_choice_questions(model, tokenizer, questions_df, outname):
@@ -109,10 +81,6 @@ def evaluate_multiple_choice_questions(model, tokenizer, questions_df, outname):
             }
         )
 
-    # Save results after processing all questions
-    with open(outname, "w") as file:
-        json.dump(answers, file)
-
     return pd.DataFrame(answers)
 
 
@@ -154,25 +122,69 @@ def summarize_results(results_df):
     return pd.DataFrame(data)
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Process USMLE Dataset")
-    parser.add_argument(
-        "--dataset_name",
-        type=str,
-        default="usmle_step_2",
-        choices=["usmle_step_2", "mmlu_professional_medicine"],
-        help="Hugging Face dataset to load (default: usmle_step_2)",
+def process_dataset(
+    model_name, dataset_name, split, csv_path, output_dir, filter_questions, swap_mode
+):
+    print(
+        f"Processing with dataset: {dataset_name}, model: {model_name}, swap mode: {swap_mode}, filter: {filter_questions}"
     )
-    parser.add_argument(
-        "--model_name",
-        type=str,
-        default="EleutherAI/gpt-neo-2.7B",
-        choices=[
-            "EleutherAI/gpt-neo-2.7B",
-            "EleutherAI/pythia-70m",
-            "BioMistral/BioMistral-7B",
-        ],
-        help="Model to use for evaluation (default: EleutherAI/gpt-neo-2.7B)",
+
+    # Setup output directory
+    model_dir = model_name.split("/")[-1]
+    dataset_dir = dataset_name.split("/")[-1]
+    results_folder = os.path.join(
+        output_dir, dataset_dir, model_dir, f"{filter_questions}_{swap_mode}"
+    )
+    os.makedirs(results_folder, exist_ok=True)
+
+    # Generate questions
+    questions_df = generate_questions(
+        dataset_name, split, csv_path, filter_questions, swap_mode
+    )
+    print(questions_df.head())
+
+    # Load the model
+    model, tokenizer = load_model(model_name)
+
+    results = evaluate_multiple_choice_questions(
+        model, tokenizer, questions_df, results_folder
+    )
+
+    # Save results
+    results.to_json(os.path.join(results_folder, "results.json"))
+
+    # Summarize and save results
+    summary = summarize_results(results)
+    summary.to_csv(os.path.join(results_folder, "summary.csv"), index=False)
+
+    return summary
+
+
+def main(args):
+    models = [
+        "EleutherAI/gpt-neo-2.7B",
+        "EleutherAI/pythia-70m",
+    ]
+    datasets = ["usmle_step_2"]
+    swap_modes = ["brand_to_generic", "generic_to_brand", "swap_all", "NA"]
+
+    for dataset_name in datasets:
+        for model_name in models:
+            for swap_mode in swap_modes:
+                process_dataset(
+                    model_name=model_name,
+                    dataset_name=dataset_name,
+                    split=args.split,
+                    csv_path=args.csv_path,
+                    output_dir=args.output_dir,
+                    filter_questions=args.filter,
+                    swap_mode=swap_mode,
+                )
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Process multiple datasets with different models and keyword replacement strategies"
     )
     parser.add_argument(
         "--split",
@@ -186,7 +198,6 @@ if __name__ == "__main__":
         default="src/med_tasks/drug_names.csv",
         help="Path to CSV file containing keywords",
     )
-
     parser.add_argument(
         "--output_dir",
         type=str,
@@ -199,50 +210,6 @@ if __name__ == "__main__":
         default=False,
         help="Only evaluate questions with flagged keywords.",
     )
-    parser.add_argument(
-        "--swap_mode",
-        type=str,
-        default="NA",
-        choices=["brand_to_generic", "generic_to_brand", "swap_all", "NA"],
-        help="Mode to swap keywords in questions (default: NA)",
-    )
 
     args = parser.parse_args()
-
-    ## Generate questions
-    from drug_replace import generate_questions
-
-    questions_df = generate_questions(
-        args.dataset_name, args.split, args.csv_path, args.filter, args.swap_mode
-    )
-
-    print(questions_df.head())
-
-    ## Models
-
-    # create run directory
-    model_dir = args.model_name.split("/")[-1]
-    dataset_dir = args.dataset_name.split("/")[-1]
-
-    output_dir = os.path.join(args.output_dir, dataset_dir, model_dir)
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-
-    results_path = os.path.join(output_dir, f"{args.filter}_{args.swap_mode}.json")
-
-    # Load the model
-    model, tokenizer = load_model(args.model_name)
-    results = evaluate_multiple_choice_questions(
-        model, tokenizer, questions_df, results_path
-    )
-
-    print(results.head())
-
-    # Summarize results
-    summary = summarize_results(results)
-    print(summary)
-
-    summary.to_csv(
-        os.path.join(output_dir, f"{args.filter}_{args.swap_mode}_summary.csv"),
-        index=False,
-    )
+    main(args)
