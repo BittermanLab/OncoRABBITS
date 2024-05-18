@@ -100,7 +100,7 @@ def generate_batch_api_payload_jsonl(
     return batch_tasks
 
 
-def main():
+def main(debug=False):
     data_dir = "data/"
     combined_df = load_and_process_data(os.path.join(data_dir, "HemOnc_drug_list.csv"))
 
@@ -109,7 +109,10 @@ def main():
     combined_df["prompt2"] = combined_df.apply(generate_prompt2, axis=1)
     combined_df["unique_id"] = combined_df.index + 1
 
-    models = ["gpt-4"]
+    if debug:
+        combined_df = combined_df.head(10)
+
+    models = ["gpt-4o"]  # "gpt-4-turbo", "gpt-3.5-turbo-0125"
     temperatures = [0.0, 0.7, 2.0]
     max_tokens = 150
     system_prompt = "You are a helpful AI assistant. Please provide the requested information accurately and concisely."
@@ -180,4 +183,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    debug = True
+    main(debug=debug)

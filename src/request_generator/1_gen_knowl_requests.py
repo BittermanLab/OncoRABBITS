@@ -141,6 +141,7 @@ def generate_batch_api_payload_jsonl(
 
 
 if __name__ == "__main__":
+    DEBUG = True
 
     data_dir = "data/"
     combined_df = pd.read_csv(os.path.join(data_dir, "combined_df.csv"))
@@ -232,7 +233,10 @@ if __name__ == "__main__":
     combined_questions_df = pd.concat([brand_questions_df, preferred_questions_df])
     combined_questions_df["unique_id"] = combined_questions_df.index + 1
 
-    models = ["gpt-4"]
+    if DEBUG:
+        combined_questions_df = combined_questions_df.head(10)
+
+    models = ["gpt-4o"]  # "gpt-4-turbo", "gpt-3.5-turbo-0125"
     temperatures = [0.0, 0.7, 2.0]
     max_tokens = 150
     system_prompt = "You are a helpful AI assistant. Please provide the requested information accurately and concisely. You will be given multiple choice questions. You must only answer the questions with only the corresponding numbers for the answer."
