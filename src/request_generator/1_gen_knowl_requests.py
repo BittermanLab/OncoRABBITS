@@ -112,13 +112,19 @@ def generate_name_questions(row):
 
 
 def generate_batch_api_payload_jsonl(
-    data, model_name, temperatures, max_tokens, system_prompt, user_prompt_template
+    data,
+    model_name,
+    temperatures,
+    max_tokens,
+    system_prompt,
+    user_prompt_template,
+    task_name,
 ):
     batch_tasks = []
     for temperature in temperatures:
         for _, row in data.iterrows():
             user_message_content = user_prompt_template.format(**row)
-            task_id = f"{row['unique_id']}_task_{temperature}_{model_name}"
+            task_id = f"{row['unique_id']}_{task_name}_{temperature}_{model_name}"
             task = {
                 "custom_id": task_id,
                 "method": "POST",
@@ -144,7 +150,7 @@ if __name__ == "__main__":
     DEBUG = True
 
     data_dir = "data/"
-    combined_df = pd.read_csv(os.path.join(data_dir, "combined_df.csv"))
+    combined_df = pd.read_csv(os.path.join(data_dir, "drug_names/combined_df.csv"))
 
     all_preferred_names = combined_df["string_preferred"].unique()
     all_brand_names = combined_df["string_brand"].unique()
@@ -236,11 +242,17 @@ if __name__ == "__main__":
     if DEBUG:
         combined_questions_df = combined_questions_df.head(10)
 
+    # save gen_knowl_df
+    combined_questions_df.to_csv(
+        os.path.join(data_dir, "questions/general_knowledge.csv"), index=False
+    )
+
     models = ["gpt-4o"]  # "gpt-4-turbo", "gpt-3.5-turbo-0125"
     temperatures = [0.0, 0.7, 2.0]
     max_tokens = 150
     system_prompt = "You are a helpful AI assistant. Please provide the requested information accurately and concisely. You will be given multiple choice questions. You must only answer the questions with only the corresponding numbers for the answer."
     user_prompt_template = "Question: {final_question}"
+    task_name = "general_knowledge"
 
     all_tasks = []
     for model in models:
@@ -251,6 +263,7 @@ if __name__ == "__main__":
             max_tokens=max_tokens,
             system_prompt=system_prompt,
             user_prompt_template=user_prompt_template,
+            task_name=task_name,
         )
         all_tasks.extend(batch_api_payload_jsonl)
 

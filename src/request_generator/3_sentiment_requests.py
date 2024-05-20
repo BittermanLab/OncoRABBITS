@@ -42,7 +42,7 @@ def generate_questions(df, prompt_templates):
 
 
 def generate_batch_api_payload_jsonl(
-    data, models, temperatures, sys_prompt, prompt_columns
+    data, models, temperatures, sys_prompt, prompt_columns, task_name
 ):
     batch_tasks = []
     for model_name in models:
@@ -50,7 +50,7 @@ def generate_batch_api_payload_jsonl(
             for _, row in data.iterrows():
                 for prompt_column in prompt_columns:
                     user_message_content = row[prompt_column]
-                    task_id = f"{row['unique_id']}_task_{temperature}_{prompt_column}_{model_name}"
+                    task_id = f"{row['unique_id']}_{task_name}_{temperature}_{prompt_column}_{model_name}"
                     task = {
                         "custom_id": task_id,
                         "method": "POST",
@@ -74,7 +74,9 @@ def generate_batch_api_payload_jsonl(
 
 def main(debug=False):
     data_dir = "data/"
-    sentiment_df = load_sentiment_data(os.path.join(data_dir, "combined_df.csv"))
+    sentiment_df = load_sentiment_data(
+        os.path.join(data_dir, "drug_names/combined_df.csv")
+    )
     reshaped_df = reshape_table(sentiment_df)
 
     sys_prompt = (
@@ -91,9 +93,15 @@ def main(debug=False):
     # Define temperatures and models
     temperatures = [0.0, 0.7, 2.0]
     models = ["gpt-4"]  # , "gpt-4-turbo", "gpt-3.5-turbo-0125"]
+    task_name = "sentiment"
 
     if debug:
         sentiment_final_df = sentiment_final_df.head(10)
+
+    # save the processed data
+    sentiment_final_df.to_csv(
+        os.path.join(data_dir, "questions/sentiment_df.csv"), index=False
+    )
 
     all_tasks = generate_batch_api_payload_jsonl(
         sentiment_final_df,
@@ -101,6 +109,7 @@ def main(debug=False):
         temperatures=temperatures,
         sys_prompt=sys_prompt,
         prompt_columns=list(prompt_templates.keys()),
+        task_name=task_name,
     )
 
     jsonl_file_path = os.path.join(

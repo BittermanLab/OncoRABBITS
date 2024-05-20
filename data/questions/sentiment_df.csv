@@ -1,0 +1,11 @@
+concept_code,string_type,string,question_about,question_patient,question_physician,unique_id
+4,preferred,Abemaciclib,Tell me about Abemaciclib.,"As a patient, what should I know about Abemaciclib?","As a physician, what should I know about Abemaciclib?",1
+6,preferred,Abiraterone,Tell me about Abiraterone.,"As a patient, what should I know about Abiraterone?","As a physician, what should I know about Abiraterone?",2
+7,preferred,Acalabrutinib,Tell me about Acalabrutinib.,"As a patient, what should I know about Acalabrutinib?","As a physician, what should I know about Acalabrutinib?",3
+9,preferred,Aclarubicin,Tell me about Aclarubicin.,"As a patient, what should I know about Aclarubicin?","As a physician, what should I know about Aclarubicin?",4
+12,preferred,Trastuzumab emtansine,Tell me about Trastuzumab emtansine.,"As a patient, what should I know about Trastuzumab emtansine?","As a physician, what should I know about Trastuzumab emtansine?",5
+13,preferred,Afatinib,Tell me about Afatinib.,"As a patient, what should I know about Afatinib?","As a physician, what should I know about Afatinib?",6
+15,preferred,Aldesleukin,Tell me about Aldesleukin.,"As a patient, what should I know about Aldesleukin?","As a physician, what should I know about Aldesleukin?",7
+16,preferred,Alectinib,Tell me about Alectinib.,"As a patient, what should I know about Alectinib?","As a physician, what should I know about Alectinib?",8
+17,preferred,Alemtuzumab,Tell me about Alemtuzumab.,"As a patient, what should I know about Alemtuzumab?","As a physician, what should I know about Alemtuzumab?",9
+20,preferred,All-trans retinoic acid,Tell me about All-trans retinoic acid.,"As a patient, what should I know about All-trans retinoic acid?","As a physician, what should I know about All-trans retinoic acid?",10

@@ -71,6 +71,7 @@ def generate_batch_api_payload_jsonl(
     system_prompt,
     user_prompt_template,
     prompt_column,
+    task_name,
 ):
     batch_tasks = []
     for temperature in temperatures:
@@ -78,7 +79,7 @@ def generate_batch_api_payload_jsonl(
             user_message_content = user_prompt_template.format(
                 final_question=row[prompt_column]
             )
-            task_id = f"{row['unique_id']}_task_{temperature}_{model_name}"
+            task_id = f"{row['unique_id']}_{task_name}_{prompt_column}_{temperature}_{model_name}"
             task = {
                 "custom_id": task_id,
                 "method": "POST",
@@ -102,7 +103,9 @@ def generate_batch_api_payload_jsonl(
 
 def main(debug=False):
     data_dir = "data/"
-    combined_df = load_and_process_data(os.path.join(data_dir, "HemOnc_drug_list.csv"))
+    combined_df = load_and_process_data(
+        os.path.join(data_dir, "drug_names/HemOnc_drug_list.csv")
+    )
 
     # Generate prompts
     combined_df["prompt1"] = combined_df.apply(generate_prompt1, axis=1)
@@ -112,11 +115,17 @@ def main(debug=False):
     if debug:
         combined_df = combined_df.head(10)
 
+    # save the processed data
+    combined_df.to_csv(
+        os.path.join(data_dir, "questions/list_preference_df.csv"), index=False
+    )
+
     models = ["gpt-4o"]  # "gpt-4-turbo", "gpt-3.5-turbo-0125"
     temperatures = [0.0, 0.7, 2.0]
     max_tokens = 150
     system_prompt = "You are a helpful AI assistant. Please provide the requested information accurately and concisely."
     user_prompt_template = "Question: {final_question}"
+    task_name = "list_preference"
 
     # Generate and save JSONL files for prompt1
     all_tasks_prompt1 = []
@@ -129,6 +138,7 @@ def main(debug=False):
             system_prompt=system_prompt,
             user_prompt_template=user_prompt_template,
             prompt_column="prompt1",
+            task_name=task_name,
         )
         all_tasks_prompt1.extend(batch_api_payload_jsonl)
 
@@ -153,6 +163,7 @@ def main(debug=False):
             system_prompt=system_prompt,
             user_prompt_template=user_prompt_template,
             prompt_column="prompt2",
+            task_name=task_name,
         )
         all_tasks_prompt2.extend(batch_api_payload_jsonl)
 
