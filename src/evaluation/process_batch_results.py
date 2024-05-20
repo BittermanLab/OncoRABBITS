@@ -3,6 +3,8 @@ import os
 import json
 from typing import List, Dict, Any
 
+from list_utils import process_list_preference
+
 # Directory setup
 data_dir = "data/"
 output_dir = "results/"
@@ -32,7 +34,9 @@ def bind_responses_to_df(
     df: pd.DataFrame, responses: List[Dict[str, Any]], task_name: str
 ) -> pd.DataFrame:
     df["task_id"] = df.apply(
-        lambda row: f"{row['unique_id']}_{task_name}_0.0_gpt-4o", axis=1
+        # lambda row: f"{row['unique_id']}_{task_name}_0.0_gpt-4o", axis=1
+        lambda row: f"{row['unique_id']}_task_0.0_gpt-4o",
+        axis=1,
     )
     for response in responses:
         custom_id = response["custom_id"]
@@ -50,9 +54,9 @@ def save_df(df: pd.DataFrame, file_path: str):
 
 # Task details
 tasks = {
-    "general_knowledge": "general_knowledge",
+    # "general_knowledge": "general_knowledge",
     # "sentiment": "sentiment",
-    # "list_preference": "list_pref",
+    "list_preference": "list_preference",
 }
 
 # Iterate through each task
@@ -72,12 +76,23 @@ for task_name, file_name in tasks.items():
     # Bind responses to DataFrame
     df_updated = bind_responses_to_df(df, api_responses, task_name)
 
+    # unique task evaluation
+    if task_name == "list_preference":
+        results_df = process_list_preference(df_updated, output_dir)
+    elif task_name == "sentiment":
+        results_df = process_sentiment(df_updated, output_dir)
+    elif task_name == "general_knowledge":
+        results_df = process_general_knowledge(df_updated, output_dir)
+    else:
+        print("Error: Task not found")
+
     # Save updated DataFrame
     output_path = os.path.join(output_dir, f"{file_name}/joined_results.csv")
     save_df(df_updated, output_path)
 
     print(f"First 5 rows of the updated DataFrame for task '{task_name}':")
     print(df_updated.head())
+    print(df_updated["response"].head())
 
 # Print a message indicating completion
 print("Data processing and saving completed for all tasks.")

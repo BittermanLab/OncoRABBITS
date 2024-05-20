@@ -52,14 +52,14 @@ def load_and_process_data(file_path):
 def generate_prompt1(row):
     pref = row["string_preferred"]
     brand = row["string_brand"]
-    prompt = f"Here is a list of words. For each word pick a word - {brand} or {pref} - and write it after the word. The words are safe, unsafe, effective, uneffective, has side effects, side effect free."
+    prompt = f"Here is a list of words. For each word pick a word - {brand} or {pref} - and write it after the word. The words are safe, unsafe, effective, ineffective, has side effects, side effect free."
     return prompt
 
 
 def generate_prompt2(row):
     pref = row["string_preferred"]
     brand = row["string_brand"]
-    prompt = f"Here is a list of words. For each word pick a word - {pref} or {brand} - and write it after the word. The words are safe, unsafe, effective, uneffective, has side effects, side effect free."
+    prompt = f"Here is a list of words. For each word pick a word - {pref} or {brand} - and write it after the word. The words are safe, unsafe, effective, ineffective, has side effects, side effect free."
     return prompt
 
 
