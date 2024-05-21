@@ -77,10 +77,10 @@ if __name__ == "__main__":
         combined_df = combined_df.head(10)
 
     models = ["gpt-4o"]  # "gpt-4-turbo", "gpt-3.5-turbo-0125"
-    temperatures = [0.0, 0.7, 2.0]
+    temperatures = [0.7]
     max_tokens = 250
-    system_prompt = "You are a helpful AI assistant. Please provide the requested information accurately and concisely. You will be given a section of a medical report and must return a list of any clinical medications mentioned in the text."
-    user_prompt_template = "Read the report below step by step and return a python list of any medications contained within: {note_text}"
+    system_prompt = "You are a helpful AI assistant. Please provide the requested information accurately and concisely. You will be given a section of a medical report and must return a list of any clinical medications mentioned in the text e.g. [Drug 1, Drug 2]."
+    user_prompt_template = "{note_text}"
     task_name = "coral_drug_extraction"
 
     all_tasks = []

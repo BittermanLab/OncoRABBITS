@@ -1,7 +1,7 @@
 Temperature,Type,Correct,Incorrect,Not Available,Accuracy w/o N/A (%),Accuracy w/ N/A (%)
-0.0,Brand,2,4,4,33.33333333333333,20.0
+0.0,Brand,10,0,0,100.0,100.0
 0.0,Preferred,0,0,10,,0.0
-0.7,Brand,4,5,1,44.44444444444444,40.0
+0.7,Brand,9,0,1,100.0,90.0
 0.7,Preferred,0,0,10,,0.0
-2.0,Brand,2,3,5,40.0,20.0
-2.0,Preferred,0,0,10,,0.0
+1.0,Brand,10,0,0,100.0,100.0
+1.0,Preferred,0,0,10,,0.0

@@ -91,7 +91,7 @@ def main(debug=False):
     sentiment_final_df["unique_id"] = sentiment_final_df.index + 1
 
     # Define temperatures and models
-    temperatures = [0.0, 0.7, 2.0]
+    temperatures = [0.0, 0.7, 1.0]
     models = ["gpt-4o"]  # , "gpt-4-turbo", "gpt-3.5-turbo-0125"]
     task_name = "sentiment"
 

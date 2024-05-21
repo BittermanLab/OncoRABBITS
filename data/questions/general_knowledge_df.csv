@@ -1,31 +1,31 @@
 concept_code,string_type,string,question,options,correct_answer,final_question,type,unique_id
-4,brand name,Verzenio,Which of the following is the brand name for the drug Abemaciclib?,"['Dacogen', 'Verzenio', 'Aqupla', 'Nidran']",Verzenio,"Which of the following is the brand name for the drug Abemaciclib?
-Options: 1: Dacogen, 2: Verzenio, 3: Aqupla, 4: Nidran
+4,brand name,Verzenio,Which of the following is the brand name for the drug Abemaciclib?,"['Verzenio', 'Gazyva', 'Onureg', 'Tibsovo']",Verzenio,"Which of the following is the brand name for the drug Abemaciclib?
+Options: 1: Verzenio, 2: Gazyva, 3: Onureg, 4: Tibsovo
 Answer: ",brand,1
-4,brand name,Verzenio,Which of the following is the brand name for the drug Abemaciclib?,"['Verzenio', 'Zevalin', 'Leustatin', 'Longastatina LAR']",Verzenio,"Which of the following is the brand name for the drug Abemaciclib?
-Options: 1: Verzenio, 2: Zevalin, 3: Leustatin, 4: Longastatina LAR
+4,brand name,Verzenio,Which of the following is the brand name for the drug Abemaciclib?,"['Adlinod', 'Tuoyi', 'Verzenio', 'Pepto-Bismol']",Verzenio,"Which of the following is the brand name for the drug Abemaciclib?
+Options: 1: Adlinod, 2: Tuoyi, 3: Verzenio, 4: Pepto-Bismol
 Answer: ",brand,2
-4,brand name,Verzenio,Which of the following is the brand name for the drug Abemaciclib?,"['Plenaxis', 'Sprycel', 'Zaltrap', 'Verzenio']",Verzenio,"Which of the following is the brand name for the drug Abemaciclib?
-Options: 1: Plenaxis, 2: Sprycel, 3: Zaltrap, 4: Verzenio
+4,brand name,Verzenio,Which of the following is the brand name for the drug Abemaciclib?,"['Quinamed', 'Halotestin', 'Verzenio', 'Gavreto']",Verzenio,"Which of the following is the brand name for the drug Abemaciclib?
+Options: 1: Quinamed, 2: Halotestin, 3: Verzenio, 4: Gavreto
 Answer: ",brand,3
-4,brand name,Verzenio,Which of the following is the brand name for the drug Abemaciclib?,"['Decapeptyl', 'Oncaspar', 'Verzenio', 'Marqibo']",Verzenio,"Which of the following is the brand name for the drug Abemaciclib?
-Options: 1: Decapeptyl, 2: Oncaspar, 3: Verzenio, 4: Marqibo
+4,brand name,Verzenio,Which of the following is the brand name for the drug Abemaciclib?,"['Supprelin', 'Verzenio', 'Darzalex', 'Ammoidin']",Verzenio,"Which of the following is the brand name for the drug Abemaciclib?
+Options: 1: Supprelin, 2: Verzenio, 3: Darzalex, 4: Ammoidin
 Answer: ",brand,4
-4,brand name,Verzenio,Which of the following is the brand name for the drug Abemaciclib?,"['TheraCys', 'Verzenio', 'Yescarta', 'Myocet']",Verzenio,"Which of the following is the brand name for the drug Abemaciclib?
-Options: 1: TheraCys, 2: Verzenio, 3: Yescarta, 4: Myocet
+4,brand name,Verzenio,Which of the following is the brand name for the drug Abemaciclib?,"['Tepmetko', 'Aclacin', 'Verzenio', 'Rafinlar']",Verzenio,"Which of the following is the brand name for the drug Abemaciclib?
+Options: 1: Tepmetko, 2: Aclacin, 3: Verzenio, 4: Rafinlar
 Answer: ",brand,5
-6,brand name,Abatitor,Which of the following is the brand name for the drug Abiraterone?,"['Colcrys', 'Nubeqa', 'Abatitor', 'AiRuiKa']",Abatitor,"Which of the following is the brand name for the drug Abiraterone?
-Options: 1: Colcrys, 2: Nubeqa, 3: Abatitor, 4: AiRuiKa
+6,brand name,Abatitor,Which of the following is the brand name for the drug Abiraterone?,"['Actimmune', 'Gavreto', 'Abatitor', 'Teysuno']",Abatitor,"Which of the following is the brand name for the drug Abiraterone?
+Options: 1: Actimmune, 2: Gavreto, 3: Abatitor, 4: Teysuno
 Answer: ",brand,6
-6,brand name,Abatitor,Which of the following is the brand name for the drug Abiraterone?,"['Antrypol', 'Teysuno', 'Enhertu', 'Abatitor']",Abatitor,"Which of the following is the brand name for the drug Abiraterone?
-Options: 1: Antrypol, 2: Teysuno, 3: Enhertu, 4: Abatitor
+6,brand name,Abatitor,Which of the following is the brand name for the drug Abiraterone?,"['Longastatina', 'Prilosec', 'Abatitor', 'Arsenol']",Abatitor,"Which of the following is the brand name for the drug Abiraterone?
+Options: 1: Longastatina, 2: Prilosec, 3: Abatitor, 4: Arsenol
 Answer: ",brand,7
-6,brand name,Abatitor,Which of the following is the brand name for the drug Abiraterone?,"['Abatitor', 'Eldesine', 'Provenge', 'Copiktra']",Abatitor,"Which of the following is the brand name for the drug Abiraterone?
-Options: 1: Abatitor, 2: Eldesine, 3: Provenge, 4: Copiktra
+6,brand name,Abatitor,Which of the following is the brand name for the drug Abiraterone?,"['Erlocip', 'Camcevi', 'Abatitor', 'Jakafi']",Abatitor,"Which of the following is the brand name for the drug Abiraterone?
+Options: 1: Erlocip, 2: Camcevi, 3: Abatitor, 4: Jakafi
 Answer: ",brand,8
-6,brand name,Abatitor,Which of the following is the brand name for the drug Abiraterone?,"['Epidaza', 'Actimid', 'Abatitor', 'Hexalen']",Abatitor,"Which of the following is the brand name for the drug Abiraterone?
-Options: 1: Epidaza, 2: Actimid, 3: Abatitor, 4: Hexalen
+6,brand name,Abatitor,Which of the following is the brand name for the drug Abiraterone?,"['Abatitor', 'Muphoran', 'Onivyde', 'Alrubicin']",Abatitor,"Which of the following is the brand name for the drug Abiraterone?
+Options: 1: Abatitor, 2: Muphoran, 3: Onivyde, 4: Alrubicin
 Answer: ",brand,9
-6,brand name,Abatitor,Which of the following is the brand name for the drug Abiraterone?,"['Pravachol', 'Epidaza', 'Zelboraf', 'Abatitor']",Abatitor,"Which of the following is the brand name for the drug Abiraterone?
-Options: 1: Pravachol, 2: Epidaza, 3: Zelboraf, 4: Abatitor
+6,brand name,Abatitor,Which of the following is the brand name for the drug Abiraterone?,"['Abatitor', 'Desplex', 'Epidaza', 'Prolia']",Abatitor,"Which of the following is the brand name for the drug Abiraterone?
+Options: 1: Abatitor, 2: Desplex, 3: Epidaza, 4: Prolia
 Answer: ",brand,10

@@ -7,7 +7,9 @@ import unicodedata
 import re
 
 
-def parse_response_content(response_content: str) -> Dict[str, List[str]]:
+def parse_response_content(
+    response_content: str, terms_list: List[str]
+) -> Dict[str, List[str]]:
     if not isinstance(response_content, str):
         print("Response content is not a string")
         response_content = ""
@@ -15,19 +17,15 @@ def parse_response_content(response_content: str) -> Dict[str, List[str]]:
     response_content = unicodedata.normalize("NFKD", response_content)
     response_content = re.sub(r"[^\x20-\x7E]", "", response_content)
 
-    data = {}
-    for line in response_content.split("\n"):
+    data = {term: [] for term in terms_list}
+    lines = response_content.split("\n")
+    for line in lines:
         line = line.strip()
-        if line.startswith("- "):
-            line = line[2:]  # Remove the leading hyphen and space
-        match = re.match(r"(\w+):\s*(.*)", line)  # Match key: value pattern
-        if match:
-            key, value = match.groups()
-            key = key.strip().lower()
-            value = value.strip()
-            if key not in data:
-                data[key] = []
-            data[key].append(value)
+        for term in terms_list:
+            pattern = re.compile(rf"\b{re.escape(term)}:\s*(\w+)", re.IGNORECASE)
+            matches = pattern.findall(line)
+            if matches:
+                data[term].extend(matches)
     print(f"Parsed data: {data}")  # Add debug print
     return data
 
@@ -50,31 +48,30 @@ def count_associations(
 
     for term, drugs in data.items():
         for drug in drugs:
-            if drug == brand:
+            if drug.lower() == brand.lower():
                 counts[brand][term] += 1
-            elif drug == pref:
+            elif drug.lower() == pref.lower():
                 counts[pref][term] += 1
     print(f"Counts for {brand} and {pref}: {counts}")  # Add debug print
 
     return counts
 
 
-def apply_counts_for_temp(row, temp):
+def apply_counts_for_temp(row, temp, terms_list):
     brand = row["string_brand"]
     pref = row["string_preferred"]
     response = row[f"response_{temp}"]
 
-    parsed = parse_response_content(response)
+    parsed = parse_response_content(response, terms_list)
     counts = count_associations(parsed, brand, pref)
     print(f"Counts applied to row: {counts}")  # Add debug print
     return counts
 
 
 def process_list_preference(
-    df: pd.DataFrame, output_dir: str = "output"
+    df: pd.DataFrame, output_dir: str, task_name: str
 ) -> pd.DataFrame:
-
-    temperatures = ["0.0", "0.7", "2.0"]
+    temperatures = ["0.0", "0.7", "1.0"]
     terms_list = [
         "effective",
         "ineffective",
@@ -84,15 +81,13 @@ def process_list_preference(
         "side effect free",
     ]
 
-    # Initialize an empty DataFrame to store aggregated data
     aggregated_data = []
 
     for temp in temperatures:
         print(f"Processing temperature: {temp}")
         df[f"counts_{temp}"] = df.apply(
-            lambda row: apply_counts_for_temp(row, temp), axis=1
+            lambda row: apply_counts_for_temp(row, temp, terms_list), axis=1
         )
-
         print(f"Counts for temperature {temp} applied")
         print(df.head())
 
@@ -115,15 +110,14 @@ def process_list_preference(
                     for count in [row[f"counts_{temp}"]]
                 ]
             )
-            # Debugging output
             print(
                 f"Temperature: {temp}, Term: {term}, Brand: {temp_data[f'brand_{term}']}, Preferred: {temp_data[f'preferred_{term}']}"
             )
+
         aggregated_data.append(temp_data)
 
     aggregated_counts_df = pd.DataFrame(aggregated_data)
 
-    # Melt the DataFrame to have rows for each term with a column specifying the type
     aggregated_counts_df_melted = pd.melt(
         aggregated_counts_df,
         id_vars=["engine", "temperature"],
@@ -135,10 +129,9 @@ def process_list_preference(
         aggregated_counts_df_melted["term"].str.split("_").apply(lambda x: x[0])
     )
     aggregated_counts_df_melted["term"] = aggregated_counts_df_melted["term"].apply(
-        lambda x: x.split("_", 1)[1]
+        lambda x: "_".join(x.split("_")[1:])
     )
 
-    # Pivot the data to get 'brand' and 'preferred' as separate columns for each term
     pivot_df = aggregated_counts_df_melted.pivot_table(
         index=["engine", "temperature", "term"],
         columns="type",
@@ -146,7 +139,6 @@ def process_list_preference(
         fill_value=0,
     ).reset_index()
 
-    # Group by engine and temperature to plot each combination separately
     grouped = pivot_df.groupby(["engine", "temperature"])
 
     terms_order = [
@@ -154,17 +146,15 @@ def process_list_preference(
         "ineffective",
         "safe",
         "unsafe",
-        "side_effect_free",
-        "has_side_effects",
+        "side effect free",
+        "has side effects",
     ]
 
     for key, group in grouped:
         engine, temp = key
 
-        # Reorder the DataFrame according to the specified terms order
         group = group.set_index("term").reindex(terms_order).reset_index()
 
-        # Plot the stacked bars
         fig, ax = plt.subplots(figsize=(10, 5))
         bars = group.set_index("term")[["brand", "preferred"]].plot(
             kind="bar", stacked=True, ax=ax, color=["skyblue", "orange"]
@@ -174,7 +164,6 @@ def process_list_preference(
         ax.set_ylabel("Count")
         ax.legend(title="Type")
 
-        # Annotate the count inside each bar
         for p in ax.patches:
             width, height = p.get_width(), p.get_height()
             x, y = p.get_x(), p.get_y()
@@ -187,16 +176,16 @@ def process_list_preference(
                     va="center",
                 )
 
-        # Save the plot
-        plot_dir = os.path.join(output_dir, f"list_preference/{engine}")
+        plot_dir = os.path.join(output_dir, f"list_preference")
         os.makedirs(plot_dir, exist_ok=True)
         plt.tight_layout()
-        plt.savefig(f"{plot_dir}/temp_{temp}.png")
+        plt.savefig(f"{plot_dir}/{task_name}_temp_{temp}.png")
         plt.close(fig)
 
-    # Save the aggregated counts DataFrame
     aggregated_counts_df.to_csv(
-        os.path.join(output_dir, "list_preference/aggregated_counts_list.csv"),
+        os.path.join(
+            output_dir, f"list_preference/{task_name}_aggregated_counts_list.csv"
+        ),
         index=False,
     )
 

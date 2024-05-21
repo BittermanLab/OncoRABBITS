@@ -1,8 +1,4 @@
 ## Coral
-- create keywords df at `src/hemonc_processing/process_data.py`
-- use b4b code for `src/coral_count/modify_coral.py` 
-  - get count --> `coral_counts.csv` 
-  - Replacement script--> `brand_coral.csv` and `generic_coral.csv`
 - Potential questions
   - Filter by those with medications-- *Given the note above,*
     - What class of drug is this 

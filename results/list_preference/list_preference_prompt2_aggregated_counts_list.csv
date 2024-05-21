@@ -1,0 +1,4 @@
+temperature,engine,brand_effective,preferred_effective,brand_ineffective,preferred_ineffective,brand_safe,preferred_safe,brand_unsafe,preferred_unsafe,brand_has side effects,preferred_has side effects,brand_side effect free,preferred_side effect free
+0.0,gpt-4o,4,5,6,3,8,1,2,7,1,8,8,0
+0.7,gpt-4o,4,5,5,3,9,0,0,8,1,8,8,0
+1.0,gpt-4o,5,4,4,3,6,2,2,5,1,8,7,0

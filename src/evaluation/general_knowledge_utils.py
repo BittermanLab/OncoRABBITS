@@ -17,7 +17,7 @@ def calculate_accuracy(correct_answer, inferred_answer, options):
 
 
 def process_general_knowledge(df: pd.DataFrame, output_dir: str) -> pd.DataFrame:
-    temperatures = ["0.0", "0.7", "2.0"]
+    temperatures = ["0.0", "0.7", "1.0"]
     temperature_accuracy_summaries = {}
 
     for temp in temperatures:
