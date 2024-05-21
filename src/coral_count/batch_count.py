@@ -69,6 +69,7 @@ if __name__ == "__main__":
     DEBUG = True
 
     data_dir = "src/coral_count/coral-expert-curated-medical-oncology-reports-to-advance-language-model-inference-1.0/coral/unannotated/data/"
+    request_dir = "data/request/"
 
     combined_df = load_and_process_data(data_dir)
 
@@ -96,7 +97,7 @@ if __name__ == "__main__":
         all_tasks.extend(batch_api_payload_jsonl)
 
     jsonl_file_path = os.path.join(
-        data_dir, "request", "batch_coral_extract_all_models_all_temperatures.jsonl"
+        request_dir, "batch_coral_extract_all_models_all_temperatures.jsonl"
     )
     if not os.path.exists(os.path.dirname(jsonl_file_path)):
         os.makedirs(os.path.dirname(jsonl_file_path))

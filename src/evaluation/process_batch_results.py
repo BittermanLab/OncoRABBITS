@@ -5,6 +5,7 @@ from typing import List, Dict, Any
 
 from list_utils import process_list_preference
 from general_knowledge_utils import process_general_knowledge
+from sentiment_utils import process_sentiment
 
 # Directory setup
 data_dir = "data/"
@@ -14,6 +15,9 @@ os.makedirs(output_dir, exist_ok=True)
 
 # Load data function
 def load_data(file_path: str) -> pd.DataFrame:
+    # if contains list -> remove before first _
+    if "list" in file_path:
+        file_path = "data/questions/list_preference_df.csv"
     return pd.read_csv(file_path)
 
 
@@ -34,17 +38,32 @@ def load_api_responses(json_file: str) -> List[Dict[str, Any]]:
 def bind_responses_to_df(
     df: pd.DataFrame, responses: List[Dict[str, Any]], task_name: str
 ) -> pd.DataFrame:
-    df["task_id"] = df.apply(
-        # lambda row: f"{row['unique_id']}_{task_name}_0.0_gpt-4o", axis=1
-        lambda row: f"{row['unique_id']}_task_0.0_gpt-4o",
-        axis=1,
-    )
+
+    temperatures = ["0.0", "0.7", "2.0"]
+
+    # Initialize response columns for each temperature
+    for temp in temperatures:
+        df[f"response_{temp}"] = ""
+
     for response in responses:
         custom_id = response["custom_id"]
         response_content = response["response"]["body"]["choices"][0]["message"][
             "content"
         ]
-        df.loc[df["task_id"] == custom_id, "response"] = response_content
+        # # Extract the temperature from the custom_id
+        # parts = custom_id.rsplit("_", 2)
+        parts = custom_id.rsplit(
+            "_", 4
+        )  # Delete this after re run batching as old format
+        temp = parts[1]
+
+        if temp in temperatures:
+            df.loc[
+                df["unique_id"].apply(lambda x: f"{x}_{task_name}_{temp}_gpt-4o")
+                == custom_id,
+                f"response_{temp}",
+            ] = response_content
+
     return df
 
 
@@ -56,12 +75,17 @@ def save_df(df: pd.DataFrame, file_path: str):
 # Task details
 tasks = {
     # "general_knowledge": "general_knowledge",
-    # "sentiment": "sentiment",
-    "list_preference": "list_preference",
+    "sentiment_question_about": "sentiment_question_about",
+    "sentiment_question_patient": "sentiment_question_patient",
+    "sentiment_question_physician": "sentiment_question_physician",
+    # "list_preference_prompt1": "list_preference_prompt1",
+    # "list_preference_prompt2": "list_preference_prompt2",
 }
+
 
 # Iterate through each task
 for task_name, file_name in tasks.items():
+
     df_path = os.path.join(data_dir, f"questions/{file_name}_df.csv")
     responses_path = os.path.join(
         data_dir, f"api_responses/{file_name}_responses.jsonl"
@@ -74,26 +98,32 @@ for task_name, file_name in tasks.items():
     df = load_data(df_path)
     api_responses = load_api_responses(responses_path)
 
+    print(f"First row of the DataFrame for task '{task_name}':")
+    print(df.head(1))
+
+    print(f"First response from the API for task '{task_name}':")
+    print(api_responses[0])
+
     # Bind responses to DataFrame
     df_updated = bind_responses_to_df(df, api_responses, task_name)
 
+    print(f"First row of the updated DataFrame for task '{task_name}':")
+    print(df_updated.head(1))
+    print(df_updated.columns)
+
     # unique task evaluation
-    if task_name == "list_preference":
+    if task_name == "list_preference_prompt1" or task_name == "list_preference_prompt2":
         results_df = process_list_preference(df_updated, output_dir)
-    elif task_name == "sentiment":
+    elif (
+        task_name == "sentiment_question_about"
+        or task_name == "sentiment_question_patient"
+        or task_name == "sentiment_question_physician"
+    ):
         results_df = process_sentiment(df_updated, output_dir)
     elif task_name == "general_knowledge":
         results_df = process_general_knowledge(df_updated, output_dir)
     else:
         print("Error: Task not found")
 
-    # Save updated DataFrame
-    output_path = os.path.join(output_dir, f"{file_name}/joined_results.csv")
-    save_df(df_updated, output_path)
-
-    print(f"First 5 rows of the updated DataFrame for task '{task_name}':")
-    print(df_updated.head())
-    print(df_updated["response"].head())
-
-# Print a message indicating completion
-print("Data processing and saving completed for all tasks.")
+    # Print a message indicating completion
+    print("Data processing and saving completed for all tasks.")

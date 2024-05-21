@@ -1,8 +1,9 @@
 import pandas as pd
 import os
+import random
 
 # Directory containing the data file
-data_dir = "data/"
+data_dir = "data/drug_names"
 
 
 def load_and_process_data(file_path):
@@ -51,21 +52,52 @@ def load_and_process_data(file_path):
     return combined_df
 
 
-def get_all_keywords(file_path):
+def get_all_keywords(file_path, seed=42):
+    # Set the seed for the random number generator
+    random.seed(seed)
+
     # Load the data
     df = pd.read_csv(file_path)
 
     # Filter out rows that are not "preferred name" or "brand name"
     filtered_df = df[df["string_type"].isin(["preferred name", "brand name"])]
 
-    # Each concept should only have one generic name--> check this
+    # Identify the unique generic name for each concept_code
+    generic_names = filtered_df[
+        filtered_df["string_type"] == "preferred name"
+    ].drop_duplicates(subset="concept_code", keep="first")
 
-    # Create a one to many df where each generic name can be mapped to many brand names
+    # Initialize a list to store the results
+    brand_to_generic = []
 
-    # Create a df with one column brand and one generic
+    # For each concept_code, map brand names to the corresponding generic name
+    for concept_code in filtered_df["concept_code"].unique():
+        generic_name = generic_names[generic_names["concept_code"] == concept_code][
+            "string"
+        ].values[0]
+        brand_names = filtered_df[
+            (filtered_df["concept_code"] == concept_code)
+            & (filtered_df["string_type"] == "brand name")
+        ]["string"].tolist()
+        for brand_name in brand_names:
+            brand_to_generic.append({"brand": brand_name, "generic": generic_name})
 
-    # return this
-    return keyword_df
+    # Convert the results to a DataFrame
+    brand_to_generic_df = pd.DataFrame(brand_to_generic)
+
+    # generic to brand is one to many therefore we need to select a random brand name
+    # here we will use the same as was selected in combined_df
+
+    # load combined_df
+    combined_df = load_and_process_data(file_path)
+
+    # string_preferred is the generic name and string_brand is the brand name
+    # select only those columns and name generic,brand -> csv
+    generic_to_brand_df = combined_df[["string_preferred", "string_brand"]]
+    generic_to_brand_df.columns = ["generic", "brand"]
+
+    # Return the DataFrames
+    return brand_to_generic_df, generic_to_brand_df
 
 
 if __name__ == "__main__":
@@ -76,7 +108,15 @@ if __name__ == "__main__":
     combined_df.to_csv(os.path.join(data_dir, "combined_df.csv"), index=False)
 
     # Get all keywords
-    keywords_df = get_all_keywords(os.path.join(data_dir, "HemOnc_drug_list.csv"))
+    brand_to_generic_df, generic_to_brand_df = get_all_keywords(
+        os.path.join(data_dir, "HemOnc_drug_list.csv")
+    )
 
     # save keywords
-    keywords_df.to_csv(os.path.join(data_dir, "keywords_df.csv"), index=False)
+    brand_to_generic_df.to_csv(
+        os.path.join(data_dir, "brand_to_generic_df.csv"), index=False
+    )
+
+    generic_to_brand_df.to_csv(
+        os.path.join(data_dir, "generic_to_brand_df.csv"), index=False
+    )

@@ -5,6 +5,7 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from tqdm import tqdm
 import re
 import gc
+from datasets import load_dataset
 
 # Set up logging
 logging.basicConfig(
@@ -51,7 +52,6 @@ def process_batch(
     batch_data_df,
     cols_of_interest,
     keywords,
-    split_name,
     keyword_type,
     batch_index,
     output_dir,
@@ -64,13 +64,11 @@ def process_batch(
                 keyword_counts[keyword] += count
 
     # Write the result to a file
-    batch_file = os.path.join(
-        output_dir, f"{split_name}_{keyword_type}_batch_{batch_index}.parquet"
-    )
+    batch_file = os.path.join(output_dir, f"{keyword_type}_batch_{batch_index}.parquet")
     df = pd.DataFrame(list(keyword_counts.items()), columns=["keyword", "count"])
     df.to_parquet(batch_file, index=False)
     logging.info(
-        f"Processed and saved batch {batch_index} for split {split_name} and keyword type {keyword_type}"
+        f"Processed and saved batch {batch_index} and keyword type {keyword_type}"
     )
 
     # Clear memory
@@ -89,7 +87,6 @@ def count_keywords_parallel(
     split_data,
     cols_of_interest,
     keywords,
-    split_name,
     keyword_type,
     output_dir,
     max_workers=4,
@@ -101,6 +98,10 @@ def count_keywords_parallel(
     batch_size = min((total_rows + max_workers - 1) // max_workers, MAX_BATCH_SIZE)
     num_batches = (total_rows + batch_size - 1) // batch_size
 
+    print(
+        f"Total rows: {total_rows}, batch size: {batch_size}, num batches: {num_batches}"
+    )
+
     futures = []
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -108,7 +109,7 @@ def count_keywords_parallel(
     with ProcessPoolExecutor(max_workers=max_workers) as executor:
         with tqdm(
             total=num_batches,
-            desc=f"Submitting batches for {split_name} ({keyword_type})",
+            desc=f"Submitting batches for {keyword_type})",
             unit="batch",
         ) as submit_progress:
             for batch_index, start in enumerate(range(0, total_rows, batch_size)):
@@ -120,7 +121,6 @@ def count_keywords_parallel(
                         batch_data_df,
                         cols_of_interest,
                         keywords,
-                        split_name,
                         keyword_type,
                         batch_index,
                         output_dir,
@@ -130,7 +130,7 @@ def count_keywords_parallel(
 
         with tqdm(
             total=num_batches,
-            desc=f"Collecting results for {split_name} ({keyword_type})",
+            desc=f"Collecting results for {keyword_type})",
             unit="batch",
         ) as collect_progress:
             for future in as_completed(futures):
@@ -148,19 +148,19 @@ def count_keywords_parallel(
 
 
 # Function to aggregate results from all batch files
-def aggregate_results(output_dir, split_name, keyword_type, final_output_file):
+def aggregate_results(output_dir, keyword_type, final_output_file):
     batch_files = [
         os.path.join(output_dir, f)
         for f in os.listdir(output_dir)
-        if f.startswith(f"{split_name}_{keyword_type}_batch_")
+        if f.startswith(f"{keyword_type}_batch_")
     ]
 
     # Debug: Log the batch files found
-    logging.info(f"Batch files found for {split_name} ({keyword_type}): {batch_files}")
+    logging.info(f"Batch files found for ({keyword_type}): {batch_files}")
 
     if not batch_files:
         logging.error(
-            f"No batch files found for split {split_name} and keyword type {keyword_type} in directory {output_dir}"
+            f"No batch files found and keyword type {keyword_type} in directory {output_dir}"
         )
         return
 
@@ -177,6 +177,9 @@ def aggregate_results(output_dir, split_name, keyword_type, final_output_file):
 
 # Main function to run the processing
 def main(args):
+
+    debug = False
+
     if not os.path.exists(args.output_dir):
         os.makedirs(args.output_dir)
 
@@ -187,93 +190,53 @@ def main(args):
         "generic"
     ].tolist()
 
-    hf_datasets = {
-        # "medmcqa": ["question", "opa", "opb", "opc", "opd"],
-        # "bigbio/pubmed_qa": ["CONTEXTS", "QUESTION"],
-        # "GBaker/MedQA-USMLE-4-options-hf": [
-        #     "sent1",
-        #     "ending0",
-        #     "ending1",
-        #     "ending2",
-        #     "ending3",
-        # ],
-        # "augtoma/usmle_step_1": ["question", "options"],
-        # "augtoma/usmle_step_2": ["question", "options"],
-        # "augtoma/usmle_step_3": ["question", "options"],
-        # "hails/mmlu_no_train/anatomy": ["question", "choices"],
-        # "hails/mmlu_no_train/clinical_knowledge": ["question", "choices"],
-        # "hails/mmlu_no_train/college_medicine": ["question", "choices"],
-        # "hails/mmlu_no_train/medical_genetics": ["question", "choices"],
-        # "hails/mmlu_no_train/professional_medicine": ["question", "choices"],
-        # "hails/mmlu_no_train/college_biology": ["question", "choices"],
-    }
+    cols_of_interest = ["note_text"]
 
-    datasets_to_process = (
-        [args.dataset_name]
-        if args.dataset_name.lower() != "all"
-        else hf_datasets.keys()
+    dataset = pd.read_csv(args.dataset_path)
+
+    if debug:
+        dataset = dataset.head(5)
+
+    print(len(dataset))
+
+    dataset_output_dir = os.path.join(args.output_dir, "coral_count")
+
+    if not os.path.exists(dataset_output_dir):
+        os.makedirs(dataset_output_dir)
+
+    # Process brand to generic keywords
+    count_keywords_parallel(
+        dataset,
+        cols_of_interest,
+        brand_to_generic_keywords,
+        keyword_type="brand_to_generic",
+        output_dir=dataset_output_dir,
+        max_workers=args.max_workers,
     )
 
-    for dataset_name in tqdm(datasets_to_process, desc="Overall Progress"):
-        print(f"Processing dataset: {dataset_name}")
-        if dataset_name in hf_datasets:
-            cols_of_interest = hf_datasets[dataset_name]
-            # if dataset_name contains hails-> we need to split hails/mmlu_no_train/anatomy into load-dataset(hails/mmlu_no_train, anatomy)
-            if "hails" in dataset_name:
-                local_dataset_name = dataset_name.split("/")
-                dataset = load_dataset("hails/mmlu_no_train", local_dataset_name[2])
-            else:
-                dataset = load_dataset(dataset_name)
-            dataset_output_dir = os.path.join(
-                args.output_dir, dataset_name.replace("/", "_")
-            )
-            if not os.path.exists(dataset_output_dir):
-                os.makedirs(dataset_output_dir)
+    # Process generic to brand keywords
+    count_keywords_parallel(
+        dataset,
+        cols_of_interest,
+        generic_to_brand_keywords,
+        keyword_type="generic_to_brand",
+        output_dir=dataset_output_dir,
+        max_workers=args.max_workers,
+    )
 
-            for split in dataset.keys():
-                output_folder = os.path.join(dataset_output_dir, split)
-                if not os.path.exists(output_folder):
-                    os.makedirs(output_folder)
+    # Aggregate results and save
+    brand_to_generic_file = os.path.join(
+        dataset_output_dir, f"brand_to_generic.parquet"
+    )
+    generic_to_brand_file = os.path.join(
+        dataset_output_dir, f"generic_to_brand.parquet"
+    )
 
-                # Process brand to generic keywords
-                count_keywords_parallel(
-                    dataset[split],
-                    cols_of_interest,
-                    brand_to_generic_keywords,
-                    split_name=split,
-                    keyword_type="brand_to_generic",
-                    output_dir=output_folder,
-                    max_workers=args.max_workers,
-                )
+    aggregate_results(dataset_output_dir, "brand_to_generic", brand_to_generic_file)
+    aggregate_results(dataset_output_dir, "generic_to_brand", generic_to_brand_file)
 
-                # Process generic to brand keywords
-                count_keywords_parallel(
-                    dataset[split],
-                    cols_of_interest,
-                    generic_to_brand_keywords,
-                    split_name=split,
-                    keyword_type="generic_to_brand",
-                    output_dir=output_folder,
-                    max_workers=args.max_workers,
-                )
-
-                # Aggregate results and save
-                brand_to_generic_file = os.path.join(
-                    output_folder, f"{split}_brand_to_generic.parquet"
-                )
-                generic_to_brand_file = os.path.join(
-                    output_folder, f"{split}_generic_to_brand.parquet"
-                )
-
-                aggregate_results(
-                    output_folder, split, "brand_to_generic", brand_to_generic_file
-                )
-                aggregate_results(
-                    output_folder, split, "generic_to_brand", generic_to_brand_file
-                )
-
-                # Clear memory
-                gc.collect()
+    # Clear memory
+    gc.collect()
 
 
 if __name__ == "__main__":
@@ -283,14 +246,20 @@ if __name__ == "__main__":
     parser.add_argument(
         "--brand_to_generic_csv_path",
         type=str,
-        default="RxNorm_eval/brand_to_generic.csv",
+        default="data/drug_names/brand_to_generic_df.csv",
         help="Path to the CSV file containing brand to generic drug mappings.",
     )
     parser.add_argument(
         "--generic_to_brand_csv_path",
         type=str,
-        default="RxNorm_eval/generic_to_brand.csv",
+        default="data/drug_names/generic_to_brand_df.csv",
         help="Path to the CSV file containing generic to brand drug mappings.",
+    )
+    parser.add_argument(
+        "--dataset_path",
+        type=str,
+        default="src/coral_count/coral-expert-curated-medical-oncology-reports-to-advance-language-model-inference-1.0/coral/unannotated/data/combined_notes.csv",
+        help="Path to the dataset to process.",
     )
     parser.add_argument(
         "--output_dir",
@@ -315,7 +284,9 @@ if __name__ == "__main__":
     main(args)
 
     # Check the aggregation
-    final_output_file = "counts/augtoma_usmle_step_1/test/test_generic_to_brand.parquet"
+    # final_output_file = "counts/coral_count/generic_to_brand.parquet"
+    final_output_file = "counts/coral_count/brand_to_generic.parquet"
 
     df = pd.read_parquet(final_output_file)
-    print(df.head())
+    df = df.sort_values("count", ascending=False)
+    print(df.head(20))

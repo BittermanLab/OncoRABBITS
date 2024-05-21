@@ -14,16 +14,10 @@
 
 ## GPT4o diffs
 - check one to many concept mapping
-- Check model, infeffective, token count, temps
-- Create eval script for each debug version
-- Run on all 
-
 
 ## Jackson
 - make an account on physionet
-- download coral from physionet-> https://physionet.org/content/curated-oncology-reports/1.0/ -> put in coral_count folder as readme
-- run `src/coral_count/batch_count.py` -> look at `combined_notes.csv` (this is the unmodified notes in one file)
-- run `src/coral_count/modify_coral.py`-> look at the following:
-  - `coral_counts.csv` -> this is the number of replacements in the regex-- look for words that should be included in replacement (words that are likely not drugs)
-  - `brand_coral.csv` --> this is the `combined_notes.csv` with all generic drugs swapped to a brand equivalent-- check that we have replaced these words correctly 
-  - `generic_coral.csv` --> this is the `combined_notes.csv` with all brand drugs swapped to a generic equivalent-- check that we have replaced these words correctly
+- download coral from physionet-> https://physionet.org/content/curated-oncology-reports/1.0/ -> put in coral_count folder 
+- run `src/coral_count/batch_count.py` -> look at `combined_notes.csv` in the unannotated data folder (this is the unmodified notes in one file)
+- run `src/coral_count/run_count.py`-> look at summary parquets in the counts folder
+- run `src/coral_count/run_process.py` -> look at the datasets in the data/coral folder and compare to the original notes

@@ -12,32 +12,48 @@ def calculate_accuracy(correct_answer, inferred_answer, options):
             inferred_answer = int(inferred_answer)
             answer_position = options.index(correct_answer) + 1  # 1-indexed
             return "Correct" if inferred_answer == answer_position else "Incorrect"
-        except ValueError:
+        except (ValueError, IndexError):
             return "N/A"
 
 
 def process_general_knowledge(df: pd.DataFrame, output_dir: str) -> pd.DataFrame:
-    temperatures = df["temperature"].unique()
-    temperature_accuracy_summaries = {}  # Store accuracy summaries for each temperature
+    temperatures = ["0.0", "0.7", "2.0"]
+    temperature_accuracy_summaries = {}
 
     for temp in temperatures:
-        temp_df = df[df["temperature"] == temp]
+        temp_brand_col = f"response_{temp}"
+        temp_preferred_col = f"response_{temp}"
+
+        print(f"Example options and correct answer for temperature {temp}:")
+        print(df[["options", "correct_answer", temp_brand_col]].head(1))
 
         # Calculate accuracy
-        temp_df["brand_accuracy"] = temp_df.apply(
-            lambda row: calculate_accuracy(
-                row["correct_answer_brand"],
-                row["inferred_brand_answer"],
-                row["options_brand"],
+        df[f"brand_accuracy_{temp}"] = df.apply(
+            lambda row: (
+                calculate_accuracy(
+                    row["correct_answer"],
+                    row[temp_brand_col],
+                    eval(
+                        row["options"]
+                    ),  # Evaluate the string representation of the list
+                )
+                if row["string_type"] == "brand name"
+                else "N/A"
             ),
             axis=1,
         )
 
-        temp_df["preferred_accuracy"] = temp_df.apply(
-            lambda row: calculate_accuracy(
-                row["correct_answer_preferred"],
-                row["inferred_preferred_answer"],
-                row["options_preferred"],
+        df[f"preferred_accuracy_{temp}"] = df.apply(
+            lambda row: (
+                calculate_accuracy(
+                    row["correct_answer"],
+                    row[temp_preferred_col],
+                    eval(
+                        row["options"]
+                    ),  # Evaluate the string representation of the list
+                )
+                if row["string_type"] == "preferred name"
+                else "N/A"
             ),
             axis=1,
         )
@@ -47,16 +63,16 @@ def process_general_knowledge(df: pd.DataFrame, output_dir: str) -> pd.DataFrame
             "Temperature": temp,
             "Type": ["Brand", "Preferred"],
             "Correct": [
-                (temp_df["brand_accuracy"] == "Correct").sum(),
-                (temp_df["preferred_accuracy"] == "Correct").sum(),
+                (df[f"brand_accuracy_{temp}"] == "Correct").sum(),
+                (df[f"preferred_accuracy_{temp}"] == "Correct").sum(),
             ],
             "Incorrect": [
-                (temp_df["brand_accuracy"] == "Incorrect").sum(),
-                (temp_df["preferred_accuracy"] == "Incorrect").sum(),
+                (df[f"brand_accuracy_{temp}"] == "Incorrect").sum(),
+                (df[f"preferred_accuracy_{temp}"] == "Incorrect").sum(),
             ],
             "Not Available": [
-                (temp_df["brand_accuracy"] == "N/A").sum(),
-                (temp_df["preferred_accuracy"] == "N/A").sum(),
+                (df[f"brand_accuracy_{temp}"] == "N/A").sum(),
+                (df[f"preferred_accuracy_{temp}"] == "N/A").sum(),
             ],
         }
 
@@ -98,7 +114,7 @@ def process_general_knowledge(df: pd.DataFrame, output_dir: str) -> pd.DataFrame
 
     # Save the final results summary to a CSV file
     final_results_summary.to_csv(
-        os.path.join(output_dir, "general_knowledge_accuracy_summary.csv"), index=False
+        os.path.join(output_dir, "general_knowledge/accuracy_summary.csv"), index=False
     )
 
     return final_results_summary

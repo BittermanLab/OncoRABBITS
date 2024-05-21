@@ -3,23 +3,35 @@ import os
 import json
 import matplotlib.pyplot as plt
 from typing import List, Dict, Any
+import unicodedata
+import re
 
 
-# Parse JSON response content
 def parse_response_content(response_content: str) -> Dict[str, List[str]]:
+    if not isinstance(response_content, str):
+        print("Response content is not a string")
+        response_content = ""
+
+    response_content = unicodedata.normalize("NFKD", response_content)
+    response_content = re.sub(r"[^\x20-\x7E]", "", response_content)
+
     data = {}
     for line in response_content.split("\n"):
-        line = line.strip().strip("-").strip()
-        if ":" in line:
-            key, value = line.split(":", 1)
-            key, value = key.strip().lower(), value.strip()
+        line = line.strip()
+        if line.startswith("- "):
+            line = line[2:]  # Remove the leading hyphen and space
+        match = re.match(r"(\w+):\s*(.*)", line)  # Match key: value pattern
+        if match:
+            key, value = match.groups()
+            key = key.strip().lower()
+            value = value.strip()
             if key not in data:
                 data[key] = []
             data[key].append(value)
+    print(f"Parsed data: {data}")  # Add debug print
     return data
 
 
-# Count associations for brand and preferred names
 def count_associations(
     data: Dict[str, List[str]], brand: str, pref: str
 ) -> Dict[str, Dict[str, int]]:
@@ -42,77 +54,79 @@ def count_associations(
                 counts[brand][term] += 1
             elif drug == pref:
                 counts[pref][term] += 1
+    print(f"Counts for {brand} and {pref}: {counts}")  # Add debug print
 
     return counts
 
 
-# Apply counts to each row
-def apply_counts(row):
-    print(row)
+def apply_counts_for_temp(row, temp):
     brand = row["string_brand"]
     pref = row["string_preferred"]
-    parsed = parse_response_content(row["response"])
+    response = row[f"response_{temp}"]
+
+    parsed = parse_response_content(response)
     counts = count_associations(parsed, brand, pref)
-    return pd.Series([counts])
-
-
-# Aggregate counts
-def aggregate_counts(df: pd.DataFrame) -> Dict[str, Dict[str, int]]:
-    terms_list = [
-        "safe",
-        "unsafe",
-        "effective",
-        "ineffective",
-        "has side effects",
-        "side effect free",
-    ]
-    aggregate = {term: {"brand": 0, "preferred": 0} for term in terms_list}
-
-    for _, row in df.iterrows():
-        counts = row["counts"]
-        for term in terms_list:
-            aggregate[term]["brand"] += counts[row["string_brand"]][term]
-            aggregate[term]["preferred"] += counts[row["string_preferred"]][term]
-
-    return aggregate
+    print(f"Counts applied to row: {counts}")  # Add debug print
+    return counts
 
 
 def process_list_preference(
     df: pd.DataFrame, output_dir: str = "output"
 ) -> pd.DataFrame:
-    # Extract temperature from task_id
-    df["temperature"] = df["task_id"].apply(lambda x: float(x.split("_")[2]))
-    df["engine"] = df["task_id"].apply(lambda x: x.split("_")[3])
 
-    # Apply counts
-    df["counts"] = df.apply(apply_counts, axis=1)
+    temperatures = ["0.0", "0.7", "2.0"]
+    terms_list = [
+        "effective",
+        "ineffective",
+        "safe",
+        "unsafe",
+        "has side effects",
+        "side effect free",
+    ]
 
-    # Group by engine and temp
-    grouped = df.groupby(["temperature", "engine"])
+    # Initialize an empty DataFrame to store aggregated data
     aggregated_data = []
 
-    for (temp, engine), group_df in grouped:
-        print(f"Running for temp: {temp}, engine: {engine}")
-        temp_counts = aggregate_counts(group_df)
-        aggregated_data.append(
-            {
-                "engine": engine,
-                "temp": temp,
-                **{f"brand_{term}": temp_counts[term]["brand"] for term in temp_counts},
-                **{
-                    f"preferred_{term}": temp_counts[term]["preferred"]
-                    for term in temp_counts
-                },
-            }
+    for temp in temperatures:
+        print(f"Processing temperature: {temp}")
+        df[f"counts_{temp}"] = df.apply(
+            lambda row: apply_counts_for_temp(row, temp), axis=1
         )
 
-    # Convert the list to DataFrame directly
+        print(f"Counts for temperature {temp} applied")
+        print(df.head())
+
+        temp_data = {
+            "temperature": temp,
+            "engine": "gpt-4o",
+        }
+        for term in terms_list:
+            temp_data[f"brand_{term}"] = sum(
+                [
+                    count[row["string_brand"]][term]
+                    for index, row in df.iterrows()
+                    for count in [row[f"counts_{temp}"]]
+                ]
+            )
+            temp_data[f"preferred_{term}"] = sum(
+                [
+                    count[row["string_preferred"]][term]
+                    for index, row in df.iterrows()
+                    for count in [row[f"counts_{temp}"]]
+                ]
+            )
+            # Debugging output
+            print(
+                f"Temperature: {temp}, Term: {term}, Brand: {temp_data[f'brand_{term}']}, Preferred: {temp_data[f'preferred_{term}']}"
+            )
+        aggregated_data.append(temp_data)
+
     aggregated_counts_df = pd.DataFrame(aggregated_data)
 
     # Melt the DataFrame to have rows for each term with a column specifying the type
     aggregated_counts_df_melted = pd.melt(
         aggregated_counts_df,
-        id_vars=["engine", "temp"],
+        id_vars=["engine", "temperature"],
         var_name="term",
         value_name="count",
     )
@@ -126,14 +140,14 @@ def process_list_preference(
 
     # Pivot the data to get 'brand' and 'preferred' as separate columns for each term
     pivot_df = aggregated_counts_df_melted.pivot_table(
-        index=["engine", "temp", "term"], columns="type", values="count", fill_value=0
+        index=["engine", "temperature", "term"],
+        columns="type",
+        values="count",
+        fill_value=0,
     ).reset_index()
 
-    # Group by engine and temp to plot each combination separately
-    grouped = pivot_df.groupby(["engine", "temp"])
-
-    print("Grouped")
-    print(grouped)
+    # Group by engine and temperature to plot each combination separately
+    grouped = pivot_df.groupby(["engine", "temperature"])
 
     terms_order = [
         "effective",
