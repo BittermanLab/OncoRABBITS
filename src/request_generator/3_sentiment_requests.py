@@ -92,7 +92,7 @@ def main(debug=False):
 
     # Define temperatures and models
     temperatures = [0.0, 0.7, 2.0]
-    models = ["gpt-4"]  # , "gpt-4-turbo", "gpt-3.5-turbo-0125"]
+    models = ["gpt-4o"]  # , "gpt-4-turbo", "gpt-3.5-turbo-0125"]
     task_name = "sentiment"
 
     if debug:

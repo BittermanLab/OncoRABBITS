@@ -4,6 +4,7 @@ import json
 from typing import List, Dict, Any
 
 from list_utils import process_list_preference
+from general_knowledge_utils import process_general_knowledge
 
 # Directory setup
 data_dir = "data/"

@@ -7,3 +7,5 @@ The source code for this project is organized into several subdirectories within
 - `/src/request_generator`: This directory contains the code that processes the combined DataFrame and generates the batch requests for the GPT-4 OpenAI API.
 
 - `/src/evaluation`: This directory contains the code that processes the batch responses from the API and evaluates the generated questions.
+
+- `/src/coral_count`: This directory contains the code for loading, batching, and evaluating the coral dataset

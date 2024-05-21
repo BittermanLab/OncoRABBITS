@@ -178,11 +178,12 @@ def process_list_preference(
         os.makedirs(plot_dir, exist_ok=True)
         plt.tight_layout()
         plt.savefig(f"{plot_dir}/temp_{temp}.png")
-        plt.close(fig)  # Close the figure to free up memory
+        plt.close(fig)
 
     # Save the aggregated counts DataFrame
     aggregated_counts_df.to_csv(
-        os.path.join(output_dir, "aggregated_counts_list_preference.csv"), index=False
+        os.path.join(output_dir, "list_preference/aggregated_counts_list.csv"),
+        index=False,
     )
 
     return aggregated_counts_df

@@ -51,12 +51,32 @@ def load_and_process_data(file_path):
     return combined_df
 
 
+def get_all_keywords(file_path):
+    # Load the data
+    df = pd.read_csv(file_path)
+
+    # Filter out rows that are not "preferred name" or "brand name"
+    filtered_df = df[df["string_type"].isin(["preferred name", "brand name"])]
+
+    # Each concept should only have one generic name--> check this
+
+    # Create a one to many df where each generic name can be mapped to many brand names
+
+    # Create a df with one column brand and one generic
+
+    # return this
+    return keyword_df
+
+
 if __name__ == "__main__":
     # Load and process the data
     combined_df = load_and_process_data(os.path.join(data_dir, "HemOnc_drug_list.csv"))
 
-    # Display the combined DataFrame
-    print(combined_df.head())
-
     # Save the combined DataFrame
     combined_df.to_csv(os.path.join(data_dir, "combined_df.csv"), index=False)
+
+    # Get all keywords
+    keywords_df = get_all_keywords(os.path.join(data_dir, "HemOnc_drug_list.csv"))
+
+    # save keywords
+    keywords_df.to_csv(os.path.join(data_dir, "keywords_df.csv"), index=False)

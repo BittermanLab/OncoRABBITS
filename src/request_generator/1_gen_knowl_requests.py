@@ -244,7 +244,7 @@ if __name__ == "__main__":
 
     # save gen_knowl_df
     combined_questions_df.to_csv(
-        os.path.join(data_dir, "questions/general_knowledge.csv"), index=False
+        os.path.join(data_dir, "questions/general_knowledge_df.csv"), index=False
     )
 
     models = ["gpt-4o"]  # "gpt-4-turbo", "gpt-3.5-turbo-0125"
