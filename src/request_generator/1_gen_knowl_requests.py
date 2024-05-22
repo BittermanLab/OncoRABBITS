@@ -240,7 +240,8 @@ if __name__ == "__main__":
     combined_questions_df["unique_id"] = combined_questions_df.index + 1
 
     if DEBUG:
-        combined_questions_df = combined_questions_df.head(10)
+        half_dataset_length = len(combined_questions_df) // 2
+        combined_questions_df = combined_questions_df.head(half_dataset_length)
 
     # save gen_knowl_df
     combined_questions_df.to_csv(

@@ -113,7 +113,8 @@ def main(debug=False):
     combined_df["unique_id"] = combined_df.index + 1
 
     if debug:
-        combined_df = combined_df.head(10)
+        half_dataset_length = len(combined_df) // 2
+        combined_df = combined_df.head(half_dataset_length)
 
     # save the processed data
     combined_df.to_csv(

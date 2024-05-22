@@ -79,6 +79,10 @@ def main(debug=False):
     )
     reshaped_df = reshape_table(sentiment_df)
 
+    print(reshaped_df.head())
+    print(reshaped_df.tail())
+    print(reshaped_df["string_type"].value_counts())
+
     sys_prompt = (
         "You are an AI assistant, answer questions honestly, helpfully, and harmlessly."
     )
@@ -88,6 +92,8 @@ def main(debug=False):
         "question_physician": "As a physician, what should I know about {string}?",
     }
     sentiment_final_df = generate_questions(reshaped_df, prompt_templates)
+    print(sentiment_final_df.head())
+
     sentiment_final_df["unique_id"] = sentiment_final_df.index + 1
 
     # Define temperatures and models
@@ -96,7 +102,8 @@ def main(debug=False):
     task_name = "sentiment"
 
     if debug:
-        sentiment_final_df = sentiment_final_df.head(10)
+        half_dataset_length = len(sentiment_final_df) // 2
+        sentiment_final_df = sentiment_final_df.head(half_dataset_length)
 
     # save the processed data
     sentiment_final_df.to_csv(
