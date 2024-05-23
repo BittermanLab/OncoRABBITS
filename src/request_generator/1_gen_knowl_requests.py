@@ -248,7 +248,7 @@ if __name__ == "__main__":
         os.path.join(data_dir, "questions/general_knowledge_df.csv"), index=False
     )
 
-    models = ["gpt-4o"]  # "gpt-4-turbo", "gpt-3.5-turbo-0125"
+    models = ["gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo-0125"]
     temperatures = [0.0, 0.7, 1.0]
     max_tokens = 1
     system_prompt = "You are a helpful AI assistant. Please provide the requested information accurately and concisely. You will be given multiple choice questions. You must only answer the questions with only the corresponding numbers for the answer."

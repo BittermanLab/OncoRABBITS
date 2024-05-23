@@ -1,11 +1,22 @@
 ## Coral
 - Potential questions
   - Filter by those with medications-- *Given the note above,*
-    - What class of drug is this 
-    - What year was this approved
-    - what is the chance of relapse/remission/cure
-    - what is the chance of side effects in future
-    - should we change the patients regime?
+  - **"Identify the pharmacological class of the prescribed drugs."**
+  - "In what year did the FDA approve this medication?"
+  - "Estimate the likelihood of relapse for this patient."
+  - "What are the chances of remission for the patient given the treatment plan?"
+  - "How likely is it that the patient will achieve a cure with this treatment?"
+  - **"Provide a prognosis based on the current treatment plan."**
+  - "Is there a need to modify the patient's current treatment regimen?"
+  - **"Would you recommend any changes to the patient's medication plan?"**
+  - **"Does the current treatment align with established clinical guidelines?"**
+  - "What is the efficacy rate of the prescribed medication for this type of cancer?"
+  - "Based on the patient's profile, is this the most suitable medication?"
+  - **"How frequently should the patient be monitored while on this medication?"**
+
+- Potential other work
+  - Sentiment (kind of ablation study)
+  - Add the demographic columns to the data and re run- does it change the results?
 
 
 ## GPT4o diffs

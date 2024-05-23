@@ -121,7 +121,7 @@ def main(debug=False):
         os.path.join(data_dir, "questions/list_preference_df.csv"), index=False
     )
 
-    models = ["gpt-4o"]  # "gpt-4-turbo", "gpt-3.5-turbo-0125"
+    models = ["gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo-0125"]
     temperatures = [0.0, 0.7, 1.0]
     max_tokens = 150
     system_prompt = "You are a helpful AI assistant. Please provide the requested information accurately and concisely."
@@ -195,5 +195,5 @@ def main(debug=False):
 
 
 if __name__ == "__main__":
-    debug = True
+    debug = False
     main(debug=debug)

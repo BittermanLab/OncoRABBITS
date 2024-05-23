@@ -548,3 +548,555 @@ concept_code,string_type_preferred,Unnamed: 0_preferred,string_preferred,string_
 354,preferred name,3555,Nimustine,brand name,3558,Nidran,"Here is a list of words. For each word pick a word - Nidran or Nimustine - and write it after the word e.g. Safe: Drug A 
  Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Nimustine or Nidran - and write it after the word e.g. Safe: Drug A 
  Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",183
+355,preferred name,3559,Nintedanib,brand name,3561,Cyendiv,"Here is a list of words. For each word pick a word - Cyendiv or Nintedanib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Nintedanib or Cyendiv - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",184
+356,preferred name,3570,Niraparib,brand name,3572,Niranib,"Here is a list of words. For each word pick a word - Niranib or Niraparib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Niraparib or Niranib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",185
+357,preferred name,3574,Nivolumab,brand name,3578,Opdivo,"Here is a list of words. For each word pick a word - Opdivo or Nivolumab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Nivolumab or Opdivo - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",186
+359,preferred name,3581,Non-pegylated liposomal doxorubicin,brand name,3584,Myocet,"Here is a list of words. For each word pick a word - Myocet or Non-pegylated liposomal doxorubicin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Non-pegylated liposomal doxorubicin or Myocet - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",187
+360,preferred name,3585,Norethandrolone,brand name,3586,Nilevar,"Here is a list of words. For each word pick a word - Nilevar or Norethandrolone - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Norethandrolone or Nilevar - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",188
+361,preferred name,3587,Obinutuzumab,brand name,3592,Gazyva,"Here is a list of words. For each word pick a word - Gazyva or Obinutuzumab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Obinutuzumab or Gazyva - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",189
+362,preferred name,3594,Octreotide,brand name,3599,Longastatina,"Here is a list of words. For each word pick a word - Longastatina or Octreotide - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Octreotide or Longastatina - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",190
+363,preferred name,3608,Octreotide LAR,brand name,3611,Longastatina LAR,"Here is a list of words. For each word pick a word - Longastatina LAR or Octreotide LAR - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Octreotide LAR or Longastatina LAR - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",191
+364,preferred name,3616,Ofatumumab,brand name,3618,Arzerra,"Here is a list of words. For each word pick a word - Arzerra or Ofatumumab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Ofatumumab or Arzerra - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",192
+366,preferred name,3622,Olaparib,brand name,3626,Lynparza,"Here is a list of words. For each word pick a word - Lynparza or Olaparib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Olaparib or Lynparza - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",193
+367,preferred name,3629,Olaratumab,brand name,3632,Lartruvo,"Here is a list of words. For each word pick a word - Lartruvo or Olaratumab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Olaratumab or Lartruvo - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",194
+368,preferred name,3633,Omacetaxine,brand name,3637,Omapro,"Here is a list of words. For each word pick a word - Omapro or Omacetaxine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Omacetaxine or Omapro - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",195
+369,preferred name,3639,Omeprazole,brand name,3640,Prilosec,"Here is a list of words. For each word pick a word - Prilosec or Omeprazole - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Omeprazole or Prilosec - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",196
+375,preferred name,3747,Osimertinib,brand name,3749,Osimert,"Here is a list of words. For each word pick a word - Osimert or Osimertinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Osimertinib or Osimert - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",197
+377,preferred name,3754,Oxaliplatin,brand name,3758,Coxatin,"Here is a list of words. For each word pick a word - Coxatin or Oxaliplatin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Oxaliplatin or Coxatin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",198
+378,preferred name,3776,Paclitaxel nanoparticle albumin-bound,brand name,3784,Abraxane,"Here is a list of words. For each word pick a word - Abraxane or Paclitaxel nanoparticle albumin-bound - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Paclitaxel nanoparticle albumin-bound or Abraxane - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",199
+379,preferred name,3785,Paclitaxel,brand name,3786,Abitaxel,"Here is a list of words. For each word pick a word - Abitaxel or Paclitaxel - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Paclitaxel or Abitaxel - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",200
+380,preferred name,3843,Pacritinib,brand name,3845,Vonjo,"Here is a list of words. For each word pick a word - Vonjo or Pacritinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pacritinib or Vonjo - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",201
+381,preferred name,3846,Palbociclib,brand name,3848,Ibrance,"Here is a list of words. For each word pick a word - Ibrance or Palbociclib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Palbociclib or Ibrance - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",202
+384,preferred name,3862,Panitumumab,brand name,3865,Vectibix,"Here is a list of words. For each word pick a word - Vectibix or Panitumumab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Panitumumab or Vectibix - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",203
+385,preferred name,3866,Panobinostat,brand name,3869,Faridak,"Here is a list of words. For each word pick a word - Faridak or Panobinostat - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Panobinostat or Faridak - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",204
+387,preferred name,3873,Pazopanib,brand name,3875,Pazopater,"Here is a list of words. For each word pick a word - Pazopater or Pazopanib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pazopanib or Pazopater - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",205
+388,preferred name,3877,Pegaspargase,brand name,3881,Oncaspar,"Here is a list of words. For each word pick a word - Oncaspar or Pegaspargase - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pegaspargase or Oncaspar - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",206
+391,preferred name,3891,Peginterferon alfa-2a,brand name,3892,Pegasys,"Here is a list of words. For each word pick a word - Pegasys or Peginterferon alfa-2a - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Peginterferon alfa-2a or Pegasys - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",207
+392,preferred name,3893,Peginterferon alfa-2b,brand name,3899,PEG-Intron,"Here is a list of words. For each word pick a word - PEG-Intron or Peginterferon alfa-2b - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Peginterferon alfa-2b or PEG-Intron - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",208
+393,preferred name,3903,Pegylated liposomal doxorubicin,brand name,3906,Caelyx,"Here is a list of words. For each word pick a word - Caelyx or Pegylated liposomal doxorubicin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pegylated liposomal doxorubicin or Caelyx - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",209
+394,preferred name,3920,Pembrolizumab,brand name,3924,Keytruda,"Here is a list of words. For each word pick a word - Keytruda or Pembrolizumab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pembrolizumab or Keytruda - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",210
+395,preferred name,3925,Pemetrexed,brand name,3927,Alimta,"Here is a list of words. For each word pick a word - Alimta or Pemetrexed - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pemetrexed or Alimta - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",211
+397,preferred name,3950,Pentostatin,brand name,3953,Nipent,"Here is a list of words. For each word pick a word - Nipent or Pentostatin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pentostatin or Nipent - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",212
+400,preferred name,3958,Pertuzumab,brand name,3961,Omnitarg,"Here is a list of words. For each word pick a word - Omnitarg or Pertuzumab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pertuzumab or Omnitarg - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",213
+405,preferred name,3978,Pirarubicin,brand name,3982,Pinorubicin,"Here is a list of words. For each word pick a word - Pinorubicin or Pirarubicin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pirarubicin or Pinorubicin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",214
+406,preferred name,3985,Pixantrone,brand name,3988,Pixuvri,"Here is a list of words. For each word pick a word - Pixuvri or Pixantrone - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pixantrone or Pixuvri - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",215
+408,preferred name,3992,Plicamycin,brand name,3994,Mithracin,"Here is a list of words. For each word pick a word - Mithracin or Plicamycin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Plicamycin or Mithracin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",216
+410,preferred name,3997,Pomalidomide,brand name,4001,Actimid,"Here is a list of words. For each word pick a word - Actimid or Pomalidomide - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pomalidomide or Actimid - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",217
+411,preferred name,4006,Ponatinib,brand name,4009,Iclusig,"Here is a list of words. For each word pick a word - Iclusig or Ponatinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Ponatinib or Iclusig - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",218
+414,preferred name,4014,Pralatrexate,brand name,4015,Folotyn,"Here is a list of words. For each word pick a word - Folotyn or Pralatrexate - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pralatrexate or Folotyn - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",219
+416,preferred name,4026,Pravastatin,brand name,4027,Pravachol,"Here is a list of words. For each word pick a word - Pravachol or Pravastatin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pravastatin or Pravachol - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",220
+417,preferred name,4028,Prednisolone,brand name,4035,Adnisolone,"Here is a list of words. For each word pick a word - Adnisolone or Prednisolone - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Prednisolone or Adnisolone - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",221
+418,preferred name,4086,Prednisone,brand name,4088,Artinizona,"Here is a list of words. For each word pick a word - Artinizona or Prednisone - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Prednisone or Artinizona - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",222
+419,preferred name,4170,Procarbazine,brand name,4176,Indicarb,"Here is a list of words. For each word pick a word - Indicarb or Procarbazine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Procarbazine or Indicarb - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",223
+424,preferred name,4200,Quinine,brand name,4201,Qualaquin,"Here is a list of words. For each word pick a word - Qualaquin or Quinine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Quinine or Qualaquin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",224
+426,preferred name,4204,Quizartinib,brand name,4207,Vanflyta,"Here is a list of words. For each word pick a word - Vanflyta or Quizartinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Quizartinib or Vanflyta - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",225
+429,preferred name,4218,Radotinib,brand name,4220,Supect,"Here is a list of words. For each word pick a word - Supect or Radotinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Radotinib or Supect - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",226
+431,preferred name,4225,Raltitrexed,brand name,4229,Tomudex,"Here is a list of words. For each word pick a word - Tomudex or Raltitrexed - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Raltitrexed or Tomudex - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",227
+433,preferred name,4235,Ramucirumab,brand name,4238,Cyramza,"Here is a list of words. For each word pick a word - Cyramza or Ramucirumab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Ramucirumab or Cyramza - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",228
+434,preferred name,4239,Ranimustine,brand name,4242,Cymer,"Here is a list of words. For each word pick a word - Cymer or Ranimustine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Ranimustine or Cymer - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",229
+438,preferred name,4254,Regorafenib,brand name,4256,Nublexa,"Here is a list of words. For each word pick a word - Nublexa or Regorafenib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Regorafenib or Nublexa - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",230
+441,preferred name,4265,Ribociclib,brand name,4268,Kisqali,"Here is a list of words. For each word pick a word - Kisqali or Ribociclib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Ribociclib or Kisqali - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",231
+446,preferred name,4283,Rituximab,brand name,4289,Ikgdar,"Here is a list of words. For each word pick a word - Ikgdar or Rituximab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Rituximab or Ikgdar - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",232
+447,preferred name,4297,Rituximab and hyaluronidase human,brand name,4298,Rituxan Hycela,"Here is a list of words. For each word pick a word - Rituxan Hycela or Rituximab and hyaluronidase human - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Rituximab and hyaluronidase human or Rituxan Hycela - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",233
+451,preferred name,4310,Romidepsin,brand name,4315,Istodax,"Here is a list of words. For each word pick a word - Istodax or Romidepsin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Romidepsin or Istodax - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",234
+453,preferred name,4318,Ropeginterferon alfa-2b,brand name,4320,Besremi,"Here is a list of words. For each word pick a word - Besremi or Ropeginterferon alfa-2b - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Ropeginterferon alfa-2b or Besremi - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",235
+454,preferred name,4321,Rucaparib,brand name,4325,Rubraca,"Here is a list of words. For each word pick a word - Rubraca or Rucaparib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Rucaparib or Rubraca - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",236
+455,preferred name,4326,Ruxolitinib,brand name,4329,Jakafi,"Here is a list of words. For each word pick a word - Jakafi or Ruxolitinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Ruxolitinib or Jakafi - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",237
+456,preferred name,4331,Sacituzumab govitecan,brand name,4335,Trodelvy,"Here is a list of words. For each word pick a word - Trodelvy or Sacituzumab govitecan - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Sacituzumab govitecan or Trodelvy - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",238
+459,preferred name,4345,Sargramostim,brand name,4349,Leukine,"Here is a list of words. For each word pick a word - Leukine or Sargramostim - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Sargramostim or Leukine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",239
+461,preferred name,4353,Selinexor,brand name,4355,Nexpovio,"Here is a list of words. For each word pick a word - Nexpovio or Selinexor - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Selinexor or Nexpovio - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",240
+462,preferred name,4357,Selumetinib,brand name,4359,Koselugo,"Here is a list of words. For each word pick a word - Koselugo or Selumetinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Selumetinib or Koselugo - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",241
+464,preferred name,4362,Semustine,brand name,4366,Semustina,"Here is a list of words. For each word pick a word - Semustina or Semustine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Semustine or Semustina - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",242
+467,preferred name,4375,Sipuleucel-T,brand name,4377,Provenge,"Here is a list of words. For each word pick a word - Provenge or Sipuleucel-T - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Sipuleucel-T or Provenge - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",243
+469,preferred name,4386,Sonidegib,brand name,4389,Odomzo,"Here is a list of words. For each word pick a word - Odomzo or Sonidegib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Sonidegib or Odomzo - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",244
+470,preferred name,4390,Sorafenib,brand name,4393,Nexavar,"Here is a list of words. For each word pick a word - Nexavar or Sorafenib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Sorafenib or Nexavar - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",245
+472,preferred name,4399,Streptozocin,brand name,4401,Zanosar,"Here is a list of words. For each word pick a word - Zanosar or Streptozocin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Streptozocin or Zanosar - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",246
+473,preferred name,4402,Sunitinib,brand name,4406,Kitent,"Here is a list of words. For each word pick a word - Kitent or Sunitinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Sunitinib or Kitent - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",247
+475,preferred name,4416,Tagraxofusp,brand name,4419,Elzonris,"Here is a list of words. For each word pick a word - Elzonris or Tagraxofusp - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tagraxofusp or Elzonris - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",248
+476,preferred name,4420,Talazoparib,brand name,4422,Talzenna,"Here is a list of words. For each word pick a word - Talzenna or Talazoparib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Talazoparib or Talzenna - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",249
+477,preferred name,4423,Talimogene laherparepvec,brand name,4425,Imlygic,"Here is a list of words. For each word pick a word - Imlygic or Talimogene laherparepvec - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Talimogene laherparepvec or Imlygic - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",250
+478,preferred name,4427,Tamibarotene,brand name,4428,Amnoid,"Here is a list of words. For each word pick a word - Amnoid or Tamibarotene - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tamibarotene or Amnoid - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",251
+479,preferred name,4430,Tamoxifen,brand name,4435,Istubal,"Here is a list of words. For each word pick a word - Istubal or Tamoxifen - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tamoxifen or Istubal - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",252
+481,preferred name,4442,Tegafur gimeracil oteracil,brand name,4444,Teysuno,"Here is a list of words. For each word pick a word - Teysuno or Tegafur gimeracil oteracil - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tegafur gimeracil oteracil or Teysuno - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",253
+482,preferred name,4446,Tegafur and uracil,brand name,4448,Ftorafur,"Here is a list of words. For each word pick a word - Ftorafur or Tegafur and uracil - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tegafur and uracil or Ftorafur - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",254
+484,preferred name,4457,Temozolomide,brand name,4459,Gliotem,"Here is a list of words. For each word pick a word - Gliotem or Temozolomide - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Temozolomide or Gliotem - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",255
+485,preferred name,4469,Temsirolimus,brand name,4471,Torisel,"Here is a list of words. For each word pick a word - Torisel or Temsirolimus - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Temsirolimus or Torisel - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",256
+486,preferred name,4472,Teniposide,brand name,4474,Vumon,"Here is a list of words. For each word pick a word - Vumon or Teniposide - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Teniposide or Vumon - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",257
+488,preferred name,4477,Thalidomide,brand name,4478,Contergan,"Here is a list of words. For each word pick a word - Contergan or Thalidomide - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Thalidomide or Contergan - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",258
+489,preferred name,4497,Thioguanine,brand name,4502,Lanvis,"Here is a list of words. For each word pick a word - Lanvis or Thioguanine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Thioguanine or Lanvis - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",259
+490,preferred name,4505,Thiotepa,brand name,4509,Tepadina,"Here is a list of words. For each word pick a word - Tepadina or Thiotepa - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Thiotepa or Tepadina - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",260
+498,preferred name,4528,Tisagenlecleucel,brand name,4532,Kymriah,"Here is a list of words. For each word pick a word - Kymriah or Tisagenlecleucel - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tisagenlecleucel or Kymriah - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",261
+500,preferred name,4535,Tivozanib,brand name,4537,Fotivda,"Here is a list of words. For each word pick a word - Fotivda or Tivozanib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tivozanib or Fotivda - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",262
+503,preferred name,4544,Topotecan,brand name,4546,Evotopin,"Here is a list of words. For each word pick a word - Evotopin or Topotecan - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Topotecan or Evotopin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",263
+504,preferred name,4551,Toremifene,brand name,4552,Acapodene,"Here is a list of words. For each word pick a word - Acapodene or Toremifene - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Toremifene or Acapodene - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",264
+506,preferred name,4557,Tositumomab and I-131,brand name,4560,Bexxar,"Here is a list of words. For each word pick a word - Bexxar or Tositumomab and I-131 - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tositumomab and I-131 or Bexxar - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",265
+507,preferred name,4561,Trabectedin,brand name,4563,Yondelis,"Here is a list of words. For each word pick a word - Yondelis or Trabectedin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Trabectedin or Yondelis - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",266
+508,preferred name,4564,Trametinib,brand name,4569,Mekinist,"Here is a list of words. For each word pick a word - Mekinist or Trametinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Trametinib or Mekinist - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",267
+509,preferred name,4571,Tranexamic acid,brand name,4572,Amixam,"Here is a list of words. For each word pick a word - Amixam or Tranexamic acid - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tranexamic acid or Amixam - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",268
+512,preferred name,4583,Trastuzumab,brand name,4584,Biceltis,"Here is a list of words. For each word pick a word - Biceltis or Trastuzumab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Trastuzumab or Biceltis - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",269
+514,preferred name,4591,Tremelimumab,brand name,4595,Imjudo,"Here is a list of words. For each word pick a word - Imjudo or Tremelimumab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tremelimumab or Imjudo - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",270
+515,preferred name,4596,Treosulfan,brand name,4597,Ovastat,"Here is a list of words. For each word pick a word - Ovastat or Treosulfan - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Treosulfan or Ovastat - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",271
+516,preferred name,4599,Trifluridine and tipiracil,brand name,4603,Lonsurf,"Here is a list of words. For each word pick a word - Lonsurf or Trifluridine and tipiracil - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Trifluridine and tipiracil or Lonsurf - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",272
+518,preferred name,5334,Triptorelin,brand name,5338,Decapeptyl,"Here is a list of words. For each word pick a word - Decapeptyl or Triptorelin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Triptorelin or Decapeptyl - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",273
+527,preferred name,5385,Valproate,brand name,5387,Depacon,"Here is a list of words. For each word pick a word - Depacon or Valproate - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Valproate or Depacon - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",274
+528,preferred name,5397,Valrubicin,brand name,5399,Valstar,"Here is a list of words. For each word pick a word - Valstar or Valrubicin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Valrubicin or Valstar - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",275
+529,preferred name,5401,Vandetanib,brand name,5404,Caprelsa,"Here is a list of words. For each word pick a word - Caprelsa or Vandetanib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Vandetanib or Caprelsa - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",276
+533,preferred name,5414,Vemurafenib,brand name,5418,Zelboraf,"Here is a list of words. For each word pick a word - Zelboraf or Vemurafenib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Vemurafenib or Zelboraf - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",277
+534,preferred name,5419,Venetoclax,brand name,5422,Venclexta,"Here is a list of words. For each word pick a word - Venclexta or Venetoclax - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Venetoclax or Venclexta - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",278
+535,preferred name,5424,Vinblastine,brand name,5430,Alkaban-AQ,"Here is a list of words. For each word pick a word - Alkaban-AQ or Vinblastine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Vinblastine or Alkaban-AQ - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",279
+536,preferred name,5446,Vincristine,brand name,5451,Alcrist,"Here is a list of words. For each word pick a word - Alcrist or Vincristine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Vincristine or Alcrist - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",280
+537,preferred name,5486,Vincristine liposomal,brand name,5489,Marqibo,"Here is a list of words. For each word pick a word - Marqibo or Vincristine liposomal - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Vincristine liposomal or Marqibo - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",281
+538,preferred name,5490,Vindesine,brand name,5496,Eldesine,"Here is a list of words. For each word pick a word - Eldesine or Vindesine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Vindesine or Eldesine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",282
+539,preferred name,5502,Vinflunine,brand name,5503,Javlor,"Here is a list of words. For each word pick a word - Javlor or Vinflunine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Vinflunine or Javlor - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",283
+540,preferred name,5504,Vinorelbine,brand name,5508,Binorel,"Here is a list of words. For each word pick a word - Binorel or Vinorelbine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Vinorelbine or Binorel - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",284
+541,preferred name,5518,Vismodegib,brand name,5520,Erivedge,"Here is a list of words. For each word pick a word - Erivedge or Vismodegib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Vismodegib or Erivedge - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",285
+545,preferred name,5543,Vorinostat,brand name,5544,Zolinza,"Here is a list of words. For each word pick a word - Zolinza or Vorinostat - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Vorinostat or Zolinza - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",286
+548,preferred name,5596,Zidovudine,brand name,5600,Aztec,"Here is a list of words. For each word pick a word - Aztec or Zidovudine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Zidovudine or Aztec - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",287
+549,preferred name,5602,Ziv-aflibercept,brand name,5605,Zaltrap,"Here is a list of words. For each word pick a word - Zaltrap or Ziv-aflibercept - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Ziv-aflibercept or Zaltrap - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",288
+3231,preferred name,5620,Capmatinib,brand name,5623,Tabrecta,"Here is a list of words. For each word pick a word - Tabrecta or Capmatinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Capmatinib or Tabrecta - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",289
+3563,preferred name,5625,Enfortumab vedotin,brand name,5628,Padcev,"Here is a list of words. For each word pick a word - Padcev or Enfortumab vedotin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Enfortumab vedotin or Padcev - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",290
+3590,preferred name,5629,Trastuzumab deruxtecan,brand name,5632,Enhertu,"Here is a list of words. For each word pick a word - Enhertu or Trastuzumab deruxtecan - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Trastuzumab deruxtecan or Enhertu - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",291
+3652,preferred name,5633,Abarelix,brand name,5634,Plenaxis,"Here is a list of words. For each word pick a word - Plenaxis or Abarelix - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Abarelix or Plenaxis - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",292
+4380,preferred name,5635,Belantamab mafodotin,brand name,5638,Blenrep,"Here is a list of words. For each word pick a word - Blenrep or Belantamab mafodotin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Belantamab mafodotin or Blenrep - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",293
+4683,preferred name,5639,Tucatinib,brand name,5643,Tukysa,"Here is a list of words. For each word pick a word - Tukysa or Tucatinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tucatinib or Tukysa - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",294
+4940,preferred name,5644,Daratumumab and hyaluronidase,brand name,5646,Darzalex Faspro,"Here is a list of words. For each word pick a word - Darzalex Faspro or Daratumumab and hyaluronidase - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Daratumumab and hyaluronidase or Darzalex Faspro - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",295
+6008,preferred name,5648,Alitretinoin,brand name,5651,Panretin,"Here is a list of words. For each word pick a word - Panretin or Alitretinoin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Alitretinoin or Panretin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",296
+6632,preferred name,5656,Brexucabtagene autoleucel,brand name,5658,Tecartus,"Here is a list of words. For each word pick a word - Tecartus or Brexucabtagene autoleucel - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Brexucabtagene autoleucel or Tecartus - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",297
+10396,preferred name,5661,Alpelisib,brand name,5663,Piqray,"Here is a list of words. For each word pick a word - Piqray or Alpelisib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Alpelisib or Piqray - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",298
+10767,preferred name,5664,Amonafide,brand name,5665,Quinamed,"Here is a list of words. For each word pick a word - Quinamed or Amonafide - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Amonafide or Quinamed - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",299
+11533,preferred name,5668,Amoxicillin,brand name,5669,Amoxi,"Here is a list of words. For each word pick a word - Amoxi or Amoxicillin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Amoxicillin or Amoxi - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",300
+12637,preferred name,5678,Aumolertinib,brand name,5681,Amelie,"Here is a list of words. For each word pick a word - Amelie or Aumolertinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Aumolertinib or Amelie - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",301
+13351,preferred name,5688,Pemigatinib,brand name,5690,Pemazyre,"Here is a list of words. For each word pick a word - Pemazyre or Pemigatinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pemigatinib or Pemazyre - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",302
+13651,preferred name,5691,Ripretinib,brand name,5693,Qinlock,"Here is a list of words. For each word pick a word - Qinlock or Ripretinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Ripretinib or Qinlock - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",303
+13759,preferred name,5696,Selpercatinib,brand name,5698,Retevmo,"Here is a list of words. For each word pick a word - Retevmo or Selpercatinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Selpercatinib or Retevmo - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",304
+14235,preferred name,5700,Decitabine and cedazuridine,brand name,5702,Inqovi,"Here is a list of words. For each word pick a word - Inqovi or Decitabine and cedazuridine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Decitabine and cedazuridine or Inqovi - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",305
+14330,preferred name,5704,Bismuth subsalicylate,brand name,5705,Pepto-Bismol,"Here is a list of words. For each word pick a word - Pepto-Bismol or Bismuth subsalicylate - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Bismuth subsalicylate or Pepto-Bismol - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",306
+14742,preferred name,5706,Camrelizumab,brand name,5709,AiRuiKa,"Here is a list of words. For each word pick a word - AiRuiKa or Camrelizumab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Camrelizumab or AiRuiKa - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",307
+18352,preferred name,5711,Relugolix,brand name,5713,Orgovyx,"Here is a list of words. For each word pick a word - Orgovyx or Relugolix - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Relugolix or Orgovyx - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",308
+18359,preferred name,5715,Elacestrant,brand name,5717,Orserdu,"Here is a list of words. For each word pick a word - Orserdu or Elacestrant - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Elacestrant or Orserdu - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",309
+18846,preferred name,5720,Trimetrexate,brand name,5722,Neutrexin,"Here is a list of words. For each word pick a word - Neutrexin or Trimetrexate - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Trimetrexate or Neutrexin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",310
+19782,preferred name,5725,Tepotinib,brand name,5729,Tepmetko,"Here is a list of words. For each word pick a word - Tepmetko or Tepotinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tepotinib or Tepmetko - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",311
+20248,preferred name,5732,Futibatinib,brand name,5734,Lytgobi,"Here is a list of words. For each word pick a word - Lytgobi or Futibatinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Futibatinib or Lytgobi - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",312
+20851,preferred name,5735,NovoTTF-100A system (Optune),brand name,5737,Optune,"Here is a list of words. For each word pick a word - Optune or NovoTTF-100A system (Optune) - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - NovoTTF-100A system (Optune) or Optune - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",313
+21215,preferred name,5738,Lisocabtagene maraleucel,brand name,5740,Breyanzi,"Here is a list of words. For each word pick a word - Breyanzi or Lisocabtagene maraleucel - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Lisocabtagene maraleucel or Breyanzi - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",314
+23426,preferred name,5749,Idecabtagene vicleucel,brand name,5752,Abecma,"Here is a list of words. For each word pick a word - Abecma or Idecabtagene vicleucel - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Idecabtagene vicleucel or Abecma - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",315
+25334,preferred name,5753,Avapritinib,brand name,5755,Ayvakit,"Here is a list of words. For each word pick a word - Ayvakit or Avapritinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Avapritinib or Ayvakit - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",316
+25485,preferred name,5757,Pexidartinib,brand name,5759,Turalio,"Here is a list of words. For each word pick a word - Turalio or Pexidartinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pexidartinib or Turalio - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",317
+25527,preferred name,5760,Pralsetinib,brand name,5762,Gavreto,"Here is a list of words. For each word pick a word - Gavreto or Pralsetinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pralsetinib or Gavreto - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",318
+26763,preferred name,5765,Lurbinectedin,brand name,5767,Zepzelca,"Here is a list of words. For each word pick a word - Zepzelca or Lurbinectedin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Lurbinectedin or Zepzelca - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",319
+26852,preferred name,5768,Metronidazole,brand name,5769,Flagyl,"Here is a list of words. For each word pick a word - Flagyl or Metronidazole - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Metronidazole or Flagyl - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",320
+26950,preferred name,5770,Naxitamab,brand name,5772,Danyelza,"Here is a list of words. For each word pick a word - Danyelza or Naxitamab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Naxitamab or Danyelza - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",321
+27930,preferred name,5782,Tetracycline,brand name,5783,Panmycin,"Here is a list of words. For each word pick a word - Panmycin or Tetracycline - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tetracycline or Panmycin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",322
+27982,preferred name,5788,Tripotassium dicitratobismuthate,brand name,5789,De-Noltab,"Here is a list of words. For each word pick a word - De-Noltab or Tripotassium dicitratobismuthate - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tripotassium dicitratobismuthate or De-Noltab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",323
+29688,preferred name,5799,Belzutifan,brand name,5802,Welireg,"Here is a list of words. For each word pick a word - Welireg or Belzutifan - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Belzutifan or Welireg - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",324
+29753,preferred name,5803,Amivantamab,brand name,5806,Rybrevant,"Here is a list of words. For each word pick a word - Rybrevant or Amivantamab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Amivantamab or Rybrevant - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",325
+29973,preferred name,5807,Azacitidine oral,brand name,5809,Onureg,"Here is a list of words. For each word pick a word - Onureg or Azacitidine oral - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Azacitidine oral or Onureg - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",326
+34403,preferred name,5820,Colchicine,brand name,5821,Colcrys,"Here is a list of words. For each word pick a word - Colcrys or Colchicine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Colchicine or Colcrys - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",327
+34976,preferred name,5824,Dostarlimab,brand name,5827,Jemperli,"Here is a list of words. For each word pick a word - Jemperli or Dostarlimab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Dostarlimab or Jemperli - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",328
+35064,preferred name,5828,Serplulimab,brand name,5830,Hansizhuang,"Here is a list of words. For each word pick a word - Hansizhuang or Serplulimab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Serplulimab or Hansizhuang - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",329
+36080,preferred name,5831,Sugemalimab,brand name,5832,Cejemly,"Here is a list of words. For each word pick a word - Cejemly or Sugemalimab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Sugemalimab or Cejemly - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",330
+43485,preferred name,5845,Sirolimus protein-bound particles,brand name,5849,Fyarro,"Here is a list of words. For each word pick a word - Fyarro or Sirolimus protein-bound particles - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Sirolimus protein-bound particles or Fyarro - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",331
+45472,preferred name,5854,Suramin,brand name,5855,Antrypol,"Here is a list of words. For each word pick a word - Antrypol or Suramin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Suramin or Antrypol - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",332
+45753,preferred name,5865,Adagrasib,brand name,5867,Krazati,"Here is a list of words. For each word pick a word - Krazati or Adagrasib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Adagrasib or Krazati - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",333
+47700,preferred name,5879,Tebentafusp,brand name,5882,Kimmtrak,"Here is a list of words. For each word pick a word - Kimmtrak or Tebentafusp - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tebentafusp or Kimmtrak - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",334
+48561,preferred name,5891,Fedratinib,brand name,5894,Inrebic,"Here is a list of words. For each word pick a word - Inrebic or Fedratinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Fedratinib or Inrebic - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",335
+49082,preferred name,5898,Trastuzumab and hyaluronidase,brand name,5900,Herceptin Hylecta,"Here is a list of words. For each word pick a word - Herceptin Hylecta or Trastuzumab and hyaluronidase - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Trastuzumab and hyaluronidase or Herceptin Hylecta - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",336
+50482,preferred name,5901,Zanubrutinib,brand name,5903,Brukinsa,"Here is a list of words. For each word pick a word - Brukinsa or Zanubrutinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Zanubrutinib or Brukinsa - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",337
+51224,preferred name,5904,Furmonertinib,brand name,5910,Ivesa,"Here is a list of words. For each word pick a word - Ivesa or Furmonertinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Furmonertinib or Ivesa - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",338
+51229,preferred name,5911,Ciltacabtagene autoleucel,brand name,5915,Carvykti,"Here is a list of words. For each word pick a word - Carvykti or Ciltacabtagene autoleucel - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Ciltacabtagene autoleucel or Carvykti - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",339
+53780,preferred name,5918,Asciminib,brand name,5920,Scemblix,"Here is a list of words. For each word pick a word - Scemblix or Asciminib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Asciminib or Scemblix - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",340
+53908,preferred name,5921,Loncastuximab tesirine,brand name,5924,Zynlonta,"Here is a list of words. For each word pick a word - Zynlonta or Loncastuximab tesirine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Loncastuximab tesirine or Zynlonta - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",341
+54224,preferred name,5931,Tazemetostat,brand name,5934,Tazverik,"Here is a list of words. For each word pick a word - Tazverik or Tazemetostat - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tazemetostat or Tazverik - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",342
+59120,preferred name,5937,Nivolumab and relatlimab,brand name,5940,Opdualag,"Here is a list of words. For each word pick a word - Opdualag or Nivolumab and relatlimab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Nivolumab and relatlimab or Opdualag - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",343
+59220,preferred name,5943,Interferon alfa-2c,brand name,5944,Berofor,"Here is a list of words. For each word pick a word - Berofor or Interferon alfa-2c - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Interferon alfa-2c or Berofor - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",344
+59221,preferred name,5945,Interferon alfa-n1,brand name,5946,Wellferon,"Here is a list of words. For each word pick a word - Wellferon or Interferon alfa-n1 - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Interferon alfa-n1 or Wellferon - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",345
+59291,preferred name,5947,Margetuximab,brand name,5949,Margenza,"Here is a list of words. For each word pick a word - Margenza or Margetuximab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Margetuximab or Margenza - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",346
+59461,preferred name,5950,Sotorasib,brand name,5952,Lumakras,"Here is a list of words. For each word pick a word - Lumakras or Sotorasib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Sotorasib or Lumakras - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",347
+59505,preferred name,5954,Umbralisib,brand name,5956,Ukoniq,"Here is a list of words. For each word pick a word - Ukoniq or Umbralisib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Umbralisib or Ukoniq - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",348
+61131,preferred name,5957,Sintilimab,brand name,5959,Tyvyt,"Here is a list of words. For each word pick a word - Tyvyt or Sintilimab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Sintilimab or Tyvyt - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",349
+61419,preferred name,5965,Pirtobrutinib,brand name,5967,Jaypirca,"Here is a list of words. For each word pick a word - Jaypirca or Pirtobrutinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pirtobrutinib or Jaypirca - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",350
+64471,preferred name,5974,Toripalimab,brand name,5977,Tuoyi,"Here is a list of words. For each word pick a word - Tuoyi or Toripalimab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Toripalimab or Tuoyi - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",351
+65150,preferred name,5978,Teclistamab,brand name,5982,Tecvayli,"Here is a list of words. For each word pick a word - Tecvayli or Teclistamab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Teclistamab or Tecvayli - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",352
+69109,preferred name,5991,Mobocertinib,brand name,5994,Exkivity,"Here is a list of words. For each word pick a word - Exkivity or Mobocertinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Mobocertinib or Exkivity - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",353
+71307,preferred name,5999,Tisotumab vedotin,brand name,6002,Tivdak,"Here is a list of words. For each word pick a word - Tivdak or Tisotumab vedotin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tisotumab vedotin or Tivdak - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",354
+75279,preferred name,6007,Lanreotide LAR,brand name,6009,Somatuline Depot,"Here is a list of words. For each word pick a word - Somatuline Depot or Lanreotide LAR - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Lanreotide LAR or Somatuline Depot - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",355
+75337,preferred name,6010,Pimitespib,brand name,6012,Jeselhy,"Here is a list of words. For each word pick a word - Jeselhy or Pimitespib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pimitespib or Jeselhy - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",356
+76031,preferred name,6013,Prednimustine,brand name,6014,Mostarina,"Here is a list of words. For each word pick a word - Mostarina or Prednimustine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Prednimustine or Mostarina - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",357
+76563,preferred name,6016,Pipobroman,brand name,6017,Vercite,"Here is a list of words. For each word pick a word - Vercite or Pipobroman - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pipobroman or Vercite - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",358
+93818,preferred name,6027,Polatuzumab vedotin,brand name,6030,Polivy,"Here is a list of words. For each word pick a word - Polivy or Polatuzumab vedotin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Polatuzumab vedotin or Polivy - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",359
+109643,preferred name,6037,Mirvetuximab soravtansine,brand name,6040,Elahere,"Here is a list of words. For each word pick a word - Elahere or Mirvetuximab soravtansine - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Mirvetuximab soravtansine or Elahere - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",360
+111261,preferred name,6047,Mosunetuzumab,brand name,6051,Lunsumio,"Here is a list of words. For each word pick a word - Lunsumio or Mosunetuzumab - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Mosunetuzumab or Lunsumio - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",361
+111273,preferred name,6052,Nadofaragene firadenovec,brand name,6055,Adstiladrin,"Here is a list of words. For each word pick a word - Adstiladrin or Nadofaragene firadenovec - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Nadofaragene firadenovec or Adstiladrin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",362
+111358,preferred name,6057,Olutasidenib,brand name,6059,Rezlidhia,"Here is a list of words. For each word pick a word - Rezlidhia or Olutasidenib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Olutasidenib or Rezlidhia - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",363
+111427,preferred name,6063,Pyrotinib,brand name,6064,Irene,"Here is a list of words. For each word pick a word - Irene or Pyrotinib - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Pyrotinib or Irene - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",364
+114346,preferred name,6072,Buserelin,brand name,6076,Bigonist,"Here is a list of words. For each word pick a word - Bigonist or Buserelin - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Buserelin or Bigonist - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",365
+114432,preferred name,6084,Lifileuecel,brand name,6086,Contego,"Here is a list of words. For each word pick a word - Contego or Lifileuecel - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Lifileuecel or Contego - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",366
+114494,preferred name,6094,Tabelecleucel,brand name,6097,Ebvallo,"Here is a list of words. For each word pick a word - Ebvallo or Tabelecleucel - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.","Here is a list of words. For each word pick a word - Tabelecleucel or Ebvallo - and write it after the word e.g. Safe: Drug A 
+ Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",367

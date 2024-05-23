@@ -98,7 +98,7 @@ def main(debug=False):
 
     # Define temperatures and models
     temperatures = [0.0, 0.7, 1.0]
-    models = ["gpt-4o"]  # , "gpt-4-turbo", "gpt-3.5-turbo-0125"]
+    models = ["gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo-0125"]
     task_name = "sentiment"
 
     if debug:
@@ -142,5 +142,5 @@ def main(debug=False):
 
 
 if __name__ == "__main__":
-    DEBUG = True
+    DEBUG = False
     main(debug=DEBUG)
