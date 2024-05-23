@@ -4,16 +4,20 @@ import os
 import json
 
 
-def load_combined_notes(data_dir):
-    combined_notes = pd.read_csv(os.path.join(data_dir, "combined_notes.csv"))
+def load_data(data_dir):
+    brand_df = pd.read_parquet(
+        os.path.join(data_dir, "all_brand_to_generic_filtered/all.parquet")
+    )
+    generic_df = pd.read_parquet(
+        os.path.join(data_dir, "all_generic_to_brand_filtered/all.parquet")
+    )
+    print("Brand data shape:", brand_df.shape)
+    print("Columns:", brand_df.columns)
 
-    print("Original data shape:", combined_notes.shape)
-    print("Columns:", combined_notes.columns)
-    print("First row:")
-    print(combined_notes.head(1))
-    print(f"\n" * 5)
+    print("Generic data shape:", generic_df.shape)
+    print("Columns:", generic_df.columns)
 
-    return combined_notes
+    return brand_df, generic_df
 
 
 def generate_batch_api_payload_jsonl(
@@ -54,25 +58,43 @@ def generate_batch_api_payload_jsonl(
 if __name__ == "__main__":
     DEBUG = False
 
-    data_dir = "src/coral_count/coral-expert-curated-medical-oncology-reports-to-advance-language-model-inference-1.0/coral/unannotated/data/"
+    data_dir = "data/coral/"
     request_dir = "data/request/"
 
-    combined_df = load_combined_notes(data_dir)
+    brand_df, generic_df = load_data(data_dir)
 
     if DEBUG:
-        half_len = len(combined_df) // 2
-        combined_df = combined_df.head(half_len)
+        half_len = len(brand_df) // 2
+        brand_df = brand_df.head(half_len)
+        half_len = len(generic_df) // 2
+        generic_df = generic_df.head(half_len)
 
     temperatures = [0.0, 0.7, 1.0]
     max_tokens = 1
     models = ["gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo-0125"]
     system_prompt = "You are an expert Oncologist reviewing a report your resident has prepared. Read this step by step and give an estimate for the prognosis of this patient. Give your answer in months only e.g for 6 months write '6'."
     user_prompt_template = "Report: {note_text} \nQuestion: In months, what is the prognosis of this patient?:\nAnswer: "
-    task_name = "coral_prognosis"
     all_tasks = []
+
+    # Brand
+    task_name = "coral_prognosis_brand"
     for model in models:
         batch_api_payload_jsonl = generate_batch_api_payload_jsonl(
-            combined_df,
+            brand_df,
+            model_name=model,
+            temperatures=temperatures,
+            max_tokens=max_tokens,
+            system_prompt=system_prompt,
+            user_prompt_template=user_prompt_template,
+            task_name=task_name,
+        )
+        all_tasks.extend(batch_api_payload_jsonl)
+
+    # Generic
+    task_name = "coral_prognosis_generic"
+    for model in models:
+        batch_api_payload_jsonl = generate_batch_api_payload_jsonl(
+            generic_df,
             model_name=model,
             temperatures=temperatures,
             max_tokens=max_tokens,
@@ -83,8 +105,9 @@ if __name__ == "__main__":
         all_tasks.extend(batch_api_payload_jsonl)
 
     jsonl_file_path = os.path.join(
-        request_dir, "batch_coral_extract_all_models_all_temperatures.jsonl"
+        request_dir, "batch_coral_prognosis_all_models_all_temperatures.jsonl"
     )
+
     if not os.path.exists(os.path.dirname(jsonl_file_path)):
         os.makedirs(os.path.dirname(jsonl_file_path))
 
