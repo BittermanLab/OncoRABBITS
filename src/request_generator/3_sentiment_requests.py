@@ -44,7 +44,10 @@ def generate_questions(df, prompt_templates):
 def generate_batch_api_payload_jsonl(
     data, models, temperatures, sys_prompt, prompt_columns, task_name
 ):
-    batch_tasks = {prompt_column: [] for prompt_column in prompt_columns}
+    batch_tasks = {
+        model_name: {prompt_column: [] for prompt_column in prompt_columns}
+        for model_name in models
+    }
     for model_name in models:
         for temperature in temperatures:
             for _, row in data.iterrows():
@@ -68,7 +71,7 @@ def generate_batch_api_payload_jsonl(
                             "presence_penalty": 0,
                         },
                     }
-                    batch_tasks[prompt_column].append(json.dumps(task))
+                    batch_tasks[model_name][prompt_column].append(json.dumps(task))
     return batch_tasks
 
 
@@ -105,7 +108,7 @@ def main(debug=False):
         half_dataset_length = len(sentiment_final_df) // 2
         sentiment_final_df = sentiment_final_df.head(half_dataset_length)
 
-    # save the processed data
+    # Save the processed data
     sentiment_final_df.to_csv(
         os.path.join(data_dir, "questions/sentiment_df.csv"), index=False
     )
@@ -120,25 +123,26 @@ def main(debug=False):
     )
 
     # Save each group of tasks to separate JSONL files
-    for prompt_column, tasks in all_tasks.items():
-        jsonl_file_path = os.path.join(
-            data_dir,
-            "request",
-            f"batch_sentiment_{prompt_column}_all_models_all_temperatures.jsonl",
-        )
-        if not os.path.exists(os.path.dirname(jsonl_file_path)):
-            os.makedirs(os.path.dirname(jsonl_file_path))
+    for model_name, tasks_per_prompt in all_tasks.items():
+        for prompt_column, tasks in tasks_per_prompt.items():
+            jsonl_file_path = os.path.join(
+                data_dir,
+                "request",
+                f"batch_sentiment_{model_name}_{prompt_column}_all_temperatures.jsonl",
+            )
+            if not os.path.exists(os.path.dirname(jsonl_file_path)):
+                os.makedirs(os.path.dirname(jsonl_file_path))
 
-        with open(jsonl_file_path, "w") as file:
-            for line in tasks:
-                file.write(line + "\n")
+            with open(jsonl_file_path, "w") as file:
+                for line in tasks:
+                    file.write(line + "\n")
 
-        print(f"Sample from JSONL file for {prompt_column}:")
-        with open(jsonl_file_path, "r") as file:
-            for i, line in enumerate(file):
-                print(json.loads(line))
-                if i > 0:
-                    break
+            print(f"Sample from JSONL file for {model_name} - {prompt_column}:")
+            with open(jsonl_file_path, "r") as file:
+                for i, line in enumerate(file):
+                    print(json.loads(line))
+                    if i > 0:
+                        break
 
 
 if __name__ == "__main__":

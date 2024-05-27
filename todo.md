@@ -19,8 +19,15 @@
   - Add the demographic columns to the data and re run- does it change the results?
 
 
-## GPT4o diffs
-- check one to many concept mapping
+## Part 1
+- list preference 
+  - regex needs refining - should have same total across models and temps
+  - same drug counts
+- sentiment
+  - unequal totals- search for NAs
+  - 
+
+- 
 
 ## Jackson
 - make an account on physionet

@@ -116,7 +116,7 @@ def main(debug=False):
         half_dataset_length = len(combined_df) // 2
         combined_df = combined_df.head(half_dataset_length)
 
-    # save the processed data
+    # Save the processed data
     combined_df.to_csv(
         os.path.join(data_dir, "questions/list_preference_df.csv"), index=False
     )
@@ -128,72 +128,39 @@ def main(debug=False):
     user_prompt_template = "Question: {final_question}"
     task_name = "list_preference"
 
-    # Generate and save JSONL files for prompt1
-    all_tasks_prompt1 = []
     for model in models:
-        batch_api_payload_jsonl = generate_batch_api_payload_jsonl(
-            combined_df,
-            model_name=model,
-            temperatures=temperatures,
-            max_tokens=max_tokens,
-            system_prompt=system_prompt,
-            user_prompt_template=user_prompt_template,
-            prompt_column="prompt1",
-            task_name=task_name,
-        )
-        all_tasks_prompt1.extend(batch_api_payload_jsonl)
+        for prompt_type in ["prompt1", "prompt2"]:
+            combined_df["prompt"] = combined_df[prompt_type]
 
-    jsonl_file_path_prompt1 = os.path.join(
-        data_dir, "request", "batch_prompt1_all_models_all_temperatures.jsonl"
-    )
-    if not os.path.exists(os.path.dirname(jsonl_file_path_prompt1)):
-        os.makedirs(os.path.dirname(jsonl_file_path_prompt1))
+            batch_api_payload_jsonl = generate_batch_api_payload_jsonl(
+                combined_df,
+                model_name=model,
+                temperatures=temperatures,
+                max_tokens=max_tokens,
+                system_prompt=system_prompt,
+                user_prompt_template=user_prompt_template,
+                task_name=task_name,
+                prompt_column="prompt",
+            )
 
-    with open(jsonl_file_path_prompt1, "w") as file:
-        for line in all_tasks_prompt1:
-            file.write(line + "\n")
+            jsonl_file_path = os.path.join(
+                data_dir,
+                "request",
+                f"batch_list_preference_{model}_{prompt_type}_all_temperatures.jsonl",
+            )
+            if not os.path.exists(os.path.dirname(jsonl_file_path)):
+                os.makedirs(os.path.dirname(jsonl_file_path))
 
-    # Generate and save JSONL files for prompt2
-    all_tasks_prompt2 = []
-    for model in models:
-        batch_api_payload_jsonl = generate_batch_api_payload_jsonl(
-            combined_df,
-            model_name=model,
-            temperatures=temperatures,
-            max_tokens=max_tokens,
-            system_prompt=system_prompt,
-            user_prompt_template=user_prompt_template,
-            prompt_column="prompt2",
-            task_name=task_name,
-        )
-        all_tasks_prompt2.extend(batch_api_payload_jsonl)
+            with open(jsonl_file_path, "w") as file:
+                for line in batch_api_payload_jsonl:
+                    file.write(line + "\n")
 
-    jsonl_file_path_prompt2 = os.path.join(
-        data_dir, "request", "batch_prompt2_all_models_all_temperatures.jsonl"
-    )
-    if not os.path.exists(os.path.dirname(jsonl_file_path_prompt2)):
-        os.makedirs(os.path.dirname(jsonl_file_path_prompt2))
-
-    with open(jsonl_file_path_prompt2, "w") as file:
-        for line in all_tasks_prompt2:
-            file.write(line + "\n")
-
-    # Display a few lines from each JSONL file
-    print("Sample from prompt1 JSONL file:")
-    with open(jsonl_file_path_prompt1, "r") as file:
-        for i, line in enumerate(file):
-            print(json.loads(line))
-            if i > 0:
-                break
-
-    print("Sample from prompt2 JSONL file:")
-    with open(jsonl_file_path_prompt2, "r") as file:
-        for i, line in enumerate(file):
-            print(json.loads(line))
-            if i > 0:
-                break
+            with open(jsonl_file_path, "r") as file:
+                for i, line in enumerate(file):
+                    print(json.loads(line))
+                    if i > 0:
+                        break
 
 
 if __name__ == "__main__":
-    debug = False
-    main(debug=debug)
+    main(debug=False)

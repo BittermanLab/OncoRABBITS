@@ -1,7 +1,0 @@
-Temperature,Type,Correct,Incorrect,Not Available,Accuracy w/o N/A (%),Accuracy w/ N/A (%)
-0.0,Brand,1789,35,11,98.08114035087719,97.49318801089917
-0.0,Preferred,0,0,1835,,0.0
-0.7,Brand,1783,42,10,97.6986301369863,97.16621253405995
-0.7,Preferred,0,0,1835,,0.0
-1.0,Brand,1782,43,10,97.64383561643835,97.11171662125341
-1.0,Preferred,0,0,1835,,0.0

@@ -147,7 +147,7 @@ def generate_batch_api_payload_jsonl(
 
 
 if __name__ == "__main__":
-    DEBUG = True
+    DEBUG = False
 
     data_dir = "data/"
     combined_df = pd.read_csv(os.path.join(data_dir, "drug_names/combined_df.csv"))
@@ -236,17 +236,26 @@ if __name__ == "__main__":
         inplace=True,
     )
 
+    # Concatenate the DataFrames
     combined_questions_df = pd.concat([brand_questions_df, preferred_questions_df])
+    combined_questions_df.reset_index(drop=True, inplace=True)
     combined_questions_df["unique_id"] = combined_questions_df.index + 1
 
     if DEBUG:
         half_dataset_length = len(combined_questions_df) // 2
-        combined_questions_df = combined_questions_df.head(half_dataset_length)
+        combined_questions_df = combined_questions_df.tail(half_dataset_length)
 
     # save gen_knowl_df
     combined_questions_df.to_csv(
-        os.path.join(data_dir, "questions/general_knowledge_df.csv"), index=False
+        os.path.join(data_dir, "questions/general_knowledge_df.csv"),
+        index=False,
     )
+
+    # print unique string types
+    print(combined_questions_df["string_type"].unique())
+    print(combined_questions_df.head())
+    print(combined_questions_df.tail())
+    print(combined_questions_df.shape)
 
     models = ["gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo-0125"]
     temperatures = [0.0, 0.7, 1.0]
@@ -255,7 +264,6 @@ if __name__ == "__main__":
     user_prompt_template = "Question: {final_question}"
     task_name = "general_knowledge"
 
-    all_tasks = []
     for model in models:
         batch_api_payload_jsonl = generate_batch_api_payload_jsonl(
             combined_questions_df,
@@ -266,20 +274,22 @@ if __name__ == "__main__":
             user_prompt_template=user_prompt_template,
             task_name=task_name,
         )
-        all_tasks.extend(batch_api_payload_jsonl)
 
-    jsonl_file_path = os.path.join(
-        data_dir, "request", "batch_general_knowledge_all_models_all_temperatures.jsonl"
-    )
-    if not os.path.exists(os.path.dirname(jsonl_file_path)):
-        os.makedirs(os.path.dirname(jsonl_file_path))
+        jsonl_file_path = os.path.join(
+            data_dir,
+            "request",
+            f"batch_general_knowledge_{model}_all_temperatures.jsonl",
+        )
+        print(jsonl_file_path)
+        if not os.path.exists(os.path.dirname(jsonl_file_path)):
+            os.makedirs(os.path.dirname(jsonl_file_path))
 
-    with open(jsonl_file_path, "w") as file:
-        for line in all_tasks:
-            file.write(line + "\n")
+        with open(jsonl_file_path, "w") as file:
+            for line in batch_api_payload_jsonl:
+                file.write(line + "\n")
 
-    with open(jsonl_file_path, "r") as file:
-        for i, line in enumerate(file):
-            print(json.loads(line))
-            if i > 0:
-                break
+        with open(jsonl_file_path, "r") as file:
+            for i, line in enumerate(file):
+                print(json.loads(line))
+                if i > 0:
+                    break
