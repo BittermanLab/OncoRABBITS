@@ -4,22 +4,6 @@ import os
 import json
 
 
-def load_data(data_dir):
-    brand_df = pd.read_parquet(
-        os.path.join(data_dir, "all_brand_to_generic_filtered/all.parquet")
-    )
-    generic_df = pd.read_parquet(
-        os.path.join(data_dir, "all_generic_to_brand_filtered/all.parquet")
-    )
-    print("Brand data shape:", brand_df.shape)
-    print("Columns:", brand_df.columns)
-
-    print("Generic data shape:", generic_df.shape)
-    print("Columns:", generic_df.columns)
-
-    return brand_df, generic_df
-
-
 def generate_batch_api_payload_jsonl(
     data,
     model_name,
@@ -58,15 +42,17 @@ def generate_batch_api_payload_jsonl(
 if __name__ == "__main__":
     DEBUG = False
 
-    data_dir = "data/coral/"
+    data_dir = "data/coral/post_edit"
     request_dir = "data/request/"
 
-    brand_df, generic_df = load_data(data_dir)
+    brand_df = pd.read_parquet(os.path.join(data_dir, "brand_to_generic.parquet"))
+    generic_df = pd.read_parquet(os.path.join(data_dir, "generic_to_brand.parquet"))
 
     if DEBUG:
         half_len = len(brand_df) // 2
         brand_df = brand_df.head(half_len)
         half_len = len(generic_df) // 2
+        generic_df = generic_df.head(half_len)
         generic_df = generic_df.head(half_len)
 
     temperatures = [0.0, 0.7, 1.0]
@@ -80,6 +66,9 @@ if __name__ == "__main__":
     # Brand
     task_name = "coral_sentiment_brand"
     for model in models:
+        print(f"Running {task_name} for {model}")
+        all_tasks = []
+
         batch_api_payload_jsonl = generate_batch_api_payload_jsonl(
             brand_df,
             model_name=model,
@@ -91,32 +80,39 @@ if __name__ == "__main__":
         )
         all_tasks.extend(batch_api_payload_jsonl)
 
+        jsonl_file_path = os.path.join(
+            request_dir, f"batch_{task_name}_{model}_all_temperatures.jsonl"
+        )
+        if not os.path.exists(os.path.dirname(jsonl_file_path)):
+            os.makedirs(os.path.dirname(jsonl_file_path))
+
+        with open(jsonl_file_path, "w") as file:
+            for line in all_tasks:
+                file.write(line + "\n")
+
     # Generic
-    task_name = "coral_sentiment_generic"
+    gen_task_name = "coral_sentiment_generic"
     for model in models:
-        batch_api_payload_jsonl = generate_batch_api_payload_jsonl(
+        print(f"Running {gen_task_name} for {model}")
+
+        gen_all_tasks = []
+        gen_batch_api_payload_jsonl = generate_batch_api_payload_jsonl(
             generic_df,
             model_name=model,
             temperatures=temperatures,
             max_tokens=max_tokens,
             system_prompt=system_prompt,
             user_prompt_template=user_prompt_template,
-            task_name=task_name,
+            task_name=gen_task_name,
         )
-        all_tasks.extend(batch_api_payload_jsonl)
+        gen_all_tasks.extend(gen_batch_api_payload_jsonl)
 
-    jsonl_file_path = os.path.join(
-        request_dir, "batch_coral_sentiment_all_models_all_temperatures.jsonl"
-    )
-    if not os.path.exists(os.path.dirname(jsonl_file_path)):
-        os.makedirs(os.path.dirname(jsonl_file_path))
+        gen_jsonl_file_path = os.path.join(
+            request_dir, f"batch_{gen_task_name}_{model}_all_temperatures.jsonl"
+        )
+        if not os.path.exists(os.path.dirname(gen_jsonl_file_path)):
+            os.makedirs(os.path.dirname(gen_jsonl_file_path))
 
-    with open(jsonl_file_path, "w") as file:
-        for line in all_tasks:
-            file.write(line + "\n")
-
-    with open(jsonl_file_path, "r") as file:
-        for i, line in enumerate(file):
-            print(json.loads(line))
-            if i > 0:
-                break
+        with open(gen_jsonl_file_path, "w") as file:
+            for line in all_tasks:
+                file.write(line + "\n")
