@@ -43,6 +43,10 @@ def summarize_sentiment(df):
     """
     Function to summarize sentiment values for brand names and preferred names.
     """
+    # if string_type not in df - check if type is and then rename this to string_type
+    if "string_type" not in df:
+        df["string_type"] = df["type"]
+
     sentiment_summary = (
         df.groupby("string_type")[
             [
@@ -118,7 +122,10 @@ def plot_mean_sentiment(
     ax.legend(title="String Type")
     ax.set_ylim(0, 1)
 
-    plot_dir = os.path.join(output_dir, "sentiment/plots")
+    if task_name == "coral_sentiment":
+        plot_dir = os.path.join(output_dir, "coral_sentiment/plots")
+    else:
+        plot_dir = os.path.join(output_dir, "sentiment/plots")
     os.makedirs(plot_dir, exist_ok=True)
     plot_file = os.path.join(plot_dir, f"{task_name}_{model_name}_sentiment_plot.png")
     plt.tight_layout()
@@ -135,7 +142,7 @@ def calculate_sentiment_counts(data, sentiment_cols):
 
     # Ensure all sentiment categories are represented, even if they have 0 count
     for col in sentiment_cols:
-        for sentiment in [0.0, 0.5, 1.0]:
+        for sentiment in [0.0, 1.0, 2.0]:
             if sentiment not in sentiment_counts[col]:
                 sentiment_counts[col][sentiment] = 0
 
@@ -144,10 +151,17 @@ def calculate_sentiment_counts(data, sentiment_cols):
 
 def plot_sentiment_counts(output_dir: str, task_name: str, model_name: str):
     # Load the data
-    data_file = os.path.join(
-        output_dir, f"sentiment/{task_name}_{model_name}_sentiment.parquet"
-    )
-    df = pd.read_parquet(data_file)
+    if task_name == "coral_sentiment":
+        data_file = os.path.join(
+            output_dir, f"coral_sentiment/{task_name}_{model_name}_sentiment.parquet"
+        )
+        df = pd.read_parquet(data_file)
+        df["string_type"] = df["type"]
+    else:
+        data_file = os.path.join(
+            output_dir, f"sentiment/{task_name}_{model_name}_sentiment.parquet"
+        )
+        df = pd.read_parquet(data_file)
 
     sentiment_cols = [
         "sentiment_response_0.0",
@@ -157,7 +171,10 @@ def plot_sentiment_counts(output_dir: str, task_name: str, model_name: str):
 
     # Separate the data into brand names and preferred (generic) names
     brand_data = df[df["string_type"] == "brand"]
-    preferred_data = df[df["string_type"] == "preferred"]
+    if task_name == "coral_sentiment":
+        preferred_data = df[df["string_type"] == "generic"]
+    else:
+        preferred_data = df[df["string_type"] == "preferred"]
 
     # Calculate sentiment counts for brand and preferred drugs
     sentiment_counts_brand = calculate_sentiment_counts(brand_data, sentiment_cols)
@@ -175,7 +192,7 @@ def plot_sentiment_counts(output_dir: str, task_name: str, model_name: str):
         "brand": {
             temp: [
                 sentiment_counts_brand[f"sentiment_response_{temp}"].get(sentiment, 0)
-                for sentiment in [0.0, 0.5, 1.0]
+                for sentiment in [0.0, 1.0, 2.0]
             ]
             for temp in temperatures
         },
@@ -184,7 +201,7 @@ def plot_sentiment_counts(output_dir: str, task_name: str, model_name: str):
                 sentiment_counts_preferred[f"sentiment_response_{temp}"].get(
                     sentiment, 0
                 )
-                for sentiment in [0.0, 0.5, 1.0]
+                for sentiment in [0.0, 1.0, 2.0]
             ]
             for temp in temperatures
         },
@@ -246,7 +263,10 @@ def plot_sentiment_counts(output_dir: str, task_name: str, model_name: str):
     plt.xticks(rotation=45)
 
     # Save the plot
-    plot_dir = os.path.join(output_dir, "sentiment/plots")
+    if task_name == "coral_sentiment":
+        plot_dir = os.path.join(output_dir, "coral_sentiment/plots")
+    else:
+        plot_dir = os.path.join(output_dir, "sentiment/plots")
     os.makedirs(plot_dir, exist_ok=True)
     plot_file = os.path.join(
         plot_dir, f"{task_name}_{model_name}_sentiment_counts_plot.png"
@@ -262,17 +282,33 @@ def plot_sentiment_counts(output_dir: str, task_name: str, model_name: str):
 
 def plot_sentiment(output_dir: str, task_name: str, model_name: str):
     # Load the data
-    data_file = os.path.join(
-        output_dir, f"sentiment/{task_name}_{model_name}_sentiment.parquet"
-    )
-    df = pd.read_parquet(data_file)
+    if task_name == "coral_sentiment":
+        data_file = os.path.join(
+            output_dir, f"coral_sentiment/{task_name}_{model_name}_sentiment.parquet"
+        )
+        df = pd.read_parquet(data_file)
+
+        # add string_type to df (type)
+        df["string_type"] = df["type"]
+
+    else:
+        data_file = os.path.join(
+            output_dir, f"sentiment/{task_name}_{model_name}_sentiment.parquet"
+        )
+        df = pd.read_parquet(data_file)
 
     sentiment_summary = summarize_sentiment(df)
 
     # Save sentiment summary to CSV
-    sentiment_summary_file = os.path.join(
-        output_dir, f"sentiment/summary_{task_name}_{model_name}.csv"
-    )
+    if task_name == "coral_sentiment":
+        sentiment_summary_file = os.path.join(
+            output_dir, f"coral_sentiment/summary_{task_name}_{model_name}.csv"
+        )
+    else:
+        sentiment_summary_file = os.path.join(
+            output_dir, f"sentiment/summary_{task_name}_{model_name}.csv"
+        )
+
     sentiment_summary.to_csv(sentiment_summary_file, index=False)
 
     print(f"Sentiment summary saved to {sentiment_summary_file}")

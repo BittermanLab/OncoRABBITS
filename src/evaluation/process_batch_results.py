@@ -80,8 +80,8 @@ tasks = {
     # "sentiment_question_about": "sentiment",
     # "sentiment_question_patient": "sentiment",
     # "sentiment_question_physician": "sentiment",
-    "list_preference_prompt1": "list_preference",
-    "list_preference_prompt2": "list_preference",
+    # "list_preference_prompt1": "list_preference",
+    # "list_preference_prompt2": "list_preference",
 }
 
 models = ["gpt-3.5-turbo-0125", "gpt-4o", "gpt-4-turbo"]

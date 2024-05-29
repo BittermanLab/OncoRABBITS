@@ -20,6 +20,7 @@ tasks = {
     "sentiment_question_physician": "sentiment",
     # "list_preference_prompt1": "list_preference",
     # "list_preference_prompt2": "list_preference",
+    "coral_sentiment": "sentiment",
 }
 
 models = ["gpt-3.5-turbo-0125", "gpt-4o", "gpt-4-turbo"]
@@ -46,6 +47,7 @@ for task_name, file_name in tasks.items():
             task_name == "sentiment_question_about"
             or task_name == "sentiment_question_patient"
             or task_name == "sentiment_question_physician"
+            or task_name == "coral_sentiment"
         ):
             plot_sentiment(model_output_dir, task_name, model)
         elif task_name == "general_knowledge":
