@@ -3,7 +3,8 @@ import os
 import json
 from typing import List, Dict, Any
 
-from sentiment_utils import process_sentiment, plot_sentiment
+from sentiment_utils import process_sentiment
+from other_utils import save_statistics
 
 pd.set_option("display.max_columns", None)
 pd.set_option("display.max_colwidth", None)
@@ -64,58 +65,76 @@ def bind_responses_to_df(
     return df
 
 
-# Define models, types, and temperatures
+# Define models, types, and tasks
 models = ["gpt-3.5-turbo-0125", "gpt-4o", "gpt-4-turbo"]
 types = ["brand", "generic"]
-task_name = "coral_sentiment"
-# Iterate through each model and type to process and save responses
-for model in models:
-    for type_ in types:
-        response_file_path = os.path.join(
-            data_dir, f"api_responses/{model}/coral_sentiment_{type_}_responses.jsonl"
+# tasks = ["coral_sentiment", "coral_clinic_appt", "coral_prognosis"]
+tasks = ["coral_clinic_appt", "coral_prognosis"]
+
+
+# Function to process and save responses for a given task
+def process_and_save_responses(task_name):
+    for model in models:
+        for type_ in types:
+            response_file_path = os.path.join(
+                data_dir, f"api_responses/{model}/{task_name}_{type_}_responses.jsonl"
+            )
+            responses = load_api_responses(response_file_path)
+
+            # Bind responses to DataFrame
+            df = bind_responses_to_df(responses, task_name, model, type_)
+
+            # Save the DataFrame to CSV
+            output_file_path = os.path.join(
+                output_dir, f"{model}_{type_}_responses.csv"
+            )
+            df.to_csv(output_file_path, index=False)
+            print(f"Saved responses for {model} {type_} to {output_file_path}")
+
+        # Join the two types for each model
+        df_brand = pd.read_csv(os.path.join(output_dir, f"{model}_brand_responses.csv"))
+        df_generic = pd.read_csv(
+            os.path.join(output_dir, f"{model}_generic_responses.csv")
         )
-        responses = load_api_responses(response_file_path)
 
-        # Bind responses to DataFrame
-        df = bind_responses_to_df(responses, task_name, model, type_)
+        print(f"Length of brand responses: {len(df_brand)}")
+        print(f"Length of generic responses: {len(df_generic)}")
 
-        # Save the DataFrame to CSV
-        output_file_path = os.path.join(output_dir, f"{model}_{type_}_responses.csv")
-        df.to_csv(output_file_path, index=False)
-        print(f"Saved responses for {model} {type_} to {output_file_path}")
+        model_df = pd.concat([df_brand, df_generic], axis=0)
+        model_out_path = os.path.join(
+            output_dir, f"{model}/{task_name}/all_responses.csv"
+        )
 
-    # Join the two types for each model
-    df_brand = pd.read_csv(os.path.join(output_dir, f"{model}_brand_responses.csv"))
-    df_generic = pd.read_csv(os.path.join(output_dir, f"{model}_generic_responses.csv"))
+        # Get the directory path
+        model_out_dir = os.path.dirname(model_out_path)
 
-    print(f"Length of brand responses: {len(df_brand)}")
-    print(f"Length of generic responses: {len(df_generic)}")
+        # Create the directory if it doesn't exist
+        if not os.path.exists(model_out_dir):
+            os.makedirs(model_out_dir)
 
-    model_df = pd.concat([df_brand, df_generic], axis=0)
-    model_out_path = os.path.join(
-        output_dir, f"{model}/coral_sentiment/all_responses.csv"
-    )
+        # Write the DataFrame to a CSV file
+        model_df.to_csv(model_out_path, index=False)
 
-    # Get the directory path
-    model_out_dir = os.path.dirname(model_out_path)
+        # Delete the individual type files
+        os.remove(os.path.join(output_dir, f"{model}_brand_responses.csv"))
+        os.remove(os.path.join(output_dir, f"{model}_generic_responses.csv"))
 
-    # Create the directory if it doesn't exist
-    if not os.path.exists(model_out_dir):
-        os.makedirs(model_out_dir)
+        # Print shape, unique types, and head of the combined DataFrame
+        print(f"Combined responses for {model}:")
+        print(f"Shape: {model_df.shape}")
+        print(f"Unique types: {model_df['type'].unique()}")
+        print(model_df.head())
+        print("\n")
 
-    # Write the DataFrame to a CSV file
-    model_df.to_csv(model_out_path, index=False)
+        # Process the responses based on the task
+        if "sentiment" in task_name:
+            results_df = process_sentiment(model_df, model_out_dir, task_name, model)
+        elif "clinic_appt" in task_name or "prognosis" in task_name:
+            save_statistics(model_df, model, task_name, output_dir)
 
-    # Delete the individual type files
-    os.remove(os.path.join(output_dir, f"{model}_brand_responses.csv"))
-    os.remove(os.path.join(output_dir, f"{model}_generic_responses.csv"))
 
-    # Print shape, unique types, and head of the combined DataFrame
-    print(f"Combined responses for {model}:")
-    print(f"Shape: {model_df.shape}")
-    print(f"Unique types: {model_df['type'].unique()}")
-    print(model_df.head())
-    print("\n")
+# Process each task
+for task in tasks:
+    process_and_save_responses(task)
 
-    # Perform sentiment analysis on the responses
-    results_df = process_sentiment(model_df, model_out_dir, task_name, model)
+print("Processing completed for all tasks.")

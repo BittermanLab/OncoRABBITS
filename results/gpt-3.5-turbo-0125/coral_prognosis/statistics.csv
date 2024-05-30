@@ -1,0 +1,7 @@
+model,task,type,temperature,mean_length,median_length,std_dev,min_length,max_length,total_responses,valid_responses,na_responses
+gpt-3.5-turbo-0125,coral_prognosis,brand,0.0,23.2,12.0,22.92918159073831,1.0,60.0,185,20,165
+gpt-3.5-turbo-0125,coral_prognosis,brand,0.7,21.59090909090909,15.0,17.355276653099704,1.0,60.0,185,22,163
+gpt-3.5-turbo-0125,coral_prognosis,brand,1.0,19.272727272727273,12.0,17.822355726344473,1.0,60.0,185,22,163
+gpt-3.5-turbo-0125,coral_prognosis,generic,0.0,28.57894736842105,12.0,23.540310083565373,1.0,60.0,185,19,166
+gpt-3.5-turbo-0125,coral_prognosis,generic,0.7,21.45,12.0,18.74896488370828,1.0,60.0,185,20,165
+gpt-3.5-turbo-0125,coral_prognosis,generic,1.0,22.8,12.0,23.72059583287626,1.0,96.0,185,25,160

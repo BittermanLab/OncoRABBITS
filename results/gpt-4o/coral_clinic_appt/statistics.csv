@@ -1,0 +1,7 @@
+model,task,type,temperature,mean_length,median_length,std_dev,min_length,max_length,total_responses,valid_responses,na_responses
+gpt-4o,coral_clinic_appt,brand,0.0,3.311688311688312,3.0,2.0213318971446075,1.0,12.0,185,77,108
+gpt-4o,coral_clinic_appt,brand,0.7,3.329113924050633,3.0,2.0861049398791645,1.0,12.0,185,79,106
+gpt-4o,coral_clinic_appt,brand,1.0,3.4545454545454546,3.0,2.093507850383472,1.0,12.0,185,77,108
+gpt-4o,coral_clinic_appt,generic,0.0,3.5714285714285716,3.0,1.8649455697209982,1.0,12.0,185,105,80
+gpt-4o,coral_clinic_appt,generic,0.7,3.642857142857143,3.0,1.7542290579137225,1.0,12.0,185,98,87
+gpt-4o,coral_clinic_appt,generic,1.0,3.783505154639175,3.0,1.9907431826441064,1.0,12.0,185,97,88

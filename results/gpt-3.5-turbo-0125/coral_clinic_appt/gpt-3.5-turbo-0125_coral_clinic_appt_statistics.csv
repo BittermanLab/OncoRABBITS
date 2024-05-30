@@ -1,0 +1,4 @@
+model,type,temperature,mean_length,median_length,std_dev,min_length,max_length,valid_responses
+gpt-3.5-turbo-0125,generic,0.0,2.2432432432432434,1.0,1.6853490371394118,1,5,370
+gpt-3.5-turbo-0125,generic,0.7,2.5216216216216214,1.0,1.8020817734582484,1,11,370
+gpt-3.5-turbo-0125,generic,1.0,2.7135135135135133,2.0,2.1296922894597636,1,11,370
