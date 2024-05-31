@@ -34,7 +34,7 @@ def generate_batch_api_payload_jsonl(
                     "max_tokens": max_tokens,
                     "temperature": temperature,
                     "top_p": 1.0,
-                    "frequcoral_regime_change_genericency_penalty": 0,
+                    "frequency_penalty": 0,
                     "presence_penalty": 0,
                 },
             }
