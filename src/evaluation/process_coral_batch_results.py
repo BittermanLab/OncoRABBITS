@@ -69,7 +69,7 @@ def bind_responses_to_df(
 models = ["gpt-3.5-turbo-0125", "gpt-4o", "gpt-4-turbo"]
 types = ["brand", "generic"]
 # tasks = ["coral_sentiment", "coral_clinic_appt", "coral_prognosis"]
-tasks = ["coral_clinic_appt", "coral_prognosis"]
+tasks = ["coral_clinic_appt", "coral_prognosis", "coral_regime_changes"]
 
 
 # Function to process and save responses for a given task
@@ -129,7 +129,11 @@ def process_and_save_responses(task_name):
         # Process the responses based on the task
         if "sentiment" in task_name:
             results_df = process_sentiment(model_df, model_out_dir, task_name, model)
-        elif "clinic_appt" in task_name or "prognosis" in task_name:
+        elif (
+            "clinic_appt" in task_name
+            or "prognosis" in task_name
+            or "regime_changes" in task_name
+        ):
             save_statistics(model_df, model, task_name, output_dir)
 
 
