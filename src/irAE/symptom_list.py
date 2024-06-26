@@ -263,7 +263,7 @@ if __name__ == "__main__":
 
     # Filter rows where keywords contain "mab" or "mib"
     filtered_oncqa = filter_df_by_keywords(
-        df_keywords, "Extracted_Text_keywords", ["mab", "mib", "tinib", "limus"]
+        df_keywords, "Extracted_Text_keywords", ["mab", "mib"]
     )
 
     # Save filtered DataFrame to CSV
