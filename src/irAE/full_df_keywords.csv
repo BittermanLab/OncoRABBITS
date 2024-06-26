@@ -1,0 +1,1031 @@
+pin,Extracted_Text,Extracted_Text_keywords
+0,"Sample 1 (active treatment):
+EHR Context:
+Age: 55 years
+Gender: Male
+Cancer diagnosis: Stage III non-small cell lung cancer (NSCLC)
+PMH: hypertension, hyperlipidemia
+Prior cancer treatments: None
+Current cancer treatments: radiotherapy with concurrent cisplatin (started 2 weeks ago)
+Current medication list: lisinopril, amlodipine, simvastatin, aspirin, pantoprazole
+Summary of most recent oncology visit (1 week ago): 55-year-old male with newly diagnosed stage III NSCLC. He is on chemoradiation and tolerating treatment well. No significant side effects were reported. Will continue treatment as planned.",['cisplatin']
+1,"Sample 2 (active treatment):
+EHR Context:
+Age: 47 years
+Gender: Female
+Cancer diagnosis: Stage II invasive ductal carcinoma of the breast
+PMH: asthma, obesity
+Prior cancer treatments: lumpectomy (completed 2 months ago)
+Current cancer treatments: adjuvant doxorubicin/cyclophosphamide (started 1 month ago)
+Current medication list: albuterol, montelukast, metformin, aspirin, atorvastatin, vitamin D
+Summary of most recent oncology visit (3 weeks ago): 47-year-old female with a history of stage II breast cancer s/p lumpectomy. She is on adjuvant doxorubicin/cyclophosphamide and tolerating treatment well. Will continue treatment as planned.","['cyclophosphamide', 'doxorubicin']"
+2,"Sample 3 (active treatment):
+EHR Context:
+Age: 68 years
+Gender: Male
+Cancer diagnosis: Stage IV colorectal cancer with liver metastases
+PMH: coronary artery disease, type 2 diabetes
+Prior cancer treatments: None
+Current cancer treatments: FOLFIRI + bevacizumab (started 2 months ago)
+Current medication list: metformin, aspirin, atorvastatin, metoprolol, lisinopril
+Summary of most recent oncology visit (6 weeks ago): 68-year-old male with newly diagnosed stage IV colorectal cancer with liver metastases. He is on first-line FOLFIRI + bevacizumab and tolerating treatment well. Will continue treatment as planned.",['bevacizumab']
+3,"Sample 4 (active treatment):
+EHR Context:
+Age: 72 years
+Gender: Female
+Cancer diagnosis: Stage III ovarian cancer
+PMH: osteoporosis, hypothyroidism
+Prior cancer treatments: debulking surgery (completed 3 months ago)
+Current cancer treatments: paclitaxel/carboplatin (started 2 months ago)
+Current medication list: levothyroxine, alendronate, calcium, vitamin D
+Summary of most recent oncology visit (4 weeks ago): 72-year-old female with stage III ovarian cancer s/p debulking surgery. She is on adjuvant paclitaxel/carboplatin and tolerating treatment well. Will continue treatment as planned.","['carboplatin', 'paclitaxel']"
+4,"Sample 5 (active treatment):
+EHR Context:
+Age: 39 years
+Gender: Male
+Cancer diagnosis: Stage IIA Hodgkin lymphoma
+PMH: None
+Prior cancer treatments: None
+Current cancer treatments: ABVD (started 1 month ago)
+Current medication list: None
+Summary of most recent oncology visit (2 weeks ago): 39-year-old male with newly diagnosed stage IIA Hodgkin lymphoma. He is on ABVD and tolerating treatment well. Will continue treatment as planned.",[]
+5,"Sample 6 (active treatment):
+EHR Context:
+Age: 58 years
+Gender: Female
+Cancer diagnosis: Stage IV pancreatic adenocarcinoma
+PMH: hypertension, type 2 diabetes
+Prior cancer treatments: None
+Current cancer treatments: FOLFIRINOX (started 1 month ago)
+Current medication list: metformin, lisinopril, amlodipine, aspirin
+Summary of most recent oncology visit (2 weeks ago): 58-year-old female with newly diagnosed stage IV pancreatic adenocarcinoma. She is on first-line FOLFIRINOX and tolerating treatment well. Will continue treatment as planned.",[]
+6,"Sample 7 (active treatment):
+EHR Context:
+Age: 64 years
+Gender: Male
+Cancer diagnosis: Stage III multiple myeloma
+PMH: hypertension, hyperlipidemia
+Prior cancer treatments: None
+Current cancer treatments: bortezomib/lenalidomide/dexamethasone (started 2 months ago)
+Current medication list: lisinopril, amlodipine, simvastatin, aspirin
+Summary of most recent oncology visit (4 weeks ago): 64-year-old male with newly diagnosed stage III multiple myeloma. He is on first-line bortezomib/lenalidomide/dexamethasone and tolerating treatment well. Will continue treatment as planned.","['bortezomib', 'lenalidomide', 'dexamethasone']"
+7,"Sample 8 (active treatment):
+EHR Context:
+Age: 51 years
+Gender: Female
+Cancer diagnosis: Stage IIIB melanoma
+PMH: hypothyroidism, osteoarthritis
+Prior cancer treatments: wide local excision (completed 3 months ago)
+Current cancer treatments: nivolumab/ipilimumab (started 1 month ago)
+Current medication list: levothyroxine, ibuprofen, acetaminophen
+Summary of most recent oncology visit (2 weeks ago): 51-year-old female with stage IIIB melanoma s/p wide local excision. She is on adjuvant nivolumab/ipilimumab and tolerating treatment well. Will continue treatment as planned.","['nivolumab', 'ipilimumab']"
+8,"Sample 9 (active treatment):
+EHR Context:
+Age: 45 years
+Gender: Male
+Cancer diagnosis: Stage IV renal cell carcinoma
+PMH: None
+Prior cancer treatments: None
+Current cancer treatments: sunitinib (started 2 months ago)
+Current medication list: None
+Summary of most recent oncology visit (4 weeks ago): 45-year-old male with newly diagnosed stage IV renal cell carcinoma. He is on first-line sunitinib and tolerating treatment well. Will continue treatment as planned.",['sunitinib']
+9,"Sample 10 (active treatment):
+EHR Context:
+Age: 70 years
+Gender: Female
+Cancer diagnosis: Stage IV diffuse large B-cell lymphoma
+PMH: hypertension, type 2 diabetes
+Prior cancer treatments: None
+Current cancer treatments: R-CHOP (started 1 month ago)
+Current medication list: metformin, lisinopril, amlodipine, aspirin
+Summary of most recent oncology visit (2 weeks ago): 70-year-old female with newly diagnosed stage IV diffuse large B-cell lymphoma. She is on R-CHOP and tolerating treatment well. Will continue treatment as planned.",[]
+10,"Sample 11 (active treatment):
+EHR Context:
+Age: 60 years
+Gender: Male
+Cancer diagnosis: Stage III esophageal adenocarcinoma
+PMH: gastroesophageal reflux disease, hypertension
+Prior cancer treatments: None
+Current cancer treatments: neoadjuvant chemoradiotherapy (started 1 month ago)
+Current medication list: omeprazole, lisinopril, amlodipine, aspirin
+Summary of most recent oncology visit (2 weeks ago): 60-year-old male with newly diagnosed stage III esophageal adenocarcinoma. He is on neoadjuvant chemoradiotherapy and tolerating treatment well. Will continue treatment as planned.",['omeprazole']
+11,"Sample 12 (active treatment):
+EHR Context:
+Age: 63 years
+Gender: Male
+Cancer diagnosis: Stage III diffuse large B-cell lymphoma
+PMH: hypertension, hyperlipidemia
+Prior cancer treatments: None
+Current cancer treatments: R-CHOP (started 1 month ago)
+Current medication list: lisinopril, amlodipine, simvastatin, aspirin
+Summary of most recent oncology visit (2 weeks ago): 63-year-old male with newly diagnosed stage III diffuse large B-cell lymphoma. He is on R-CHOP and tolerating treatment well. Will continue treatment as planned.",[]
+12,"Sample 13 (active treatment):
+EHR Context:
+Age: 52 years
+Gender: Male
+Cancer diagnosis: Stage III gastric adenocarcinoma
+PMH: peptic ulcer disease, hypertension
+Prior cancer treatments: None
+Current cancer treatments: FLOT regimen (started 1 month ago)
+Current medication list: omeprazole, lisinopril, amlodipine, aspirin
+Summary of most recent oncology visit (2 weeks ago): 52-year-old male with newly diagnosed stage III gastric adenocarcinoma. He is on peri-operative FLOT and tolerating treatment well. Will continue treatment as planned.",['omeprazole']
+13,"Sample 14 (active treatment):
+EHR Context:
+Age: 43 years
+Gender: Female
+Cancer diagnosis: Stage II triple-negative breast cancer
+PMH: None
+Prior cancer treatments: lumpectomy (completed 2 months ago)
+Current cancer treatments: adjuvant dose-dense doxorubicin/cyclophosphamide (started 1 month ago)
+Current medication list: None
+Summary of most recent oncology visit (3 weeks ago): 43-year-old female with stage II triple-negative breast cancer s/p lumpectomy. She is on adjuvant dose-dense doxorubicin/cyclophosphamide and tolerating treatment well. Will continue treatment as planned.","['cyclophosphamide', 'doxorubicin']"
+14,"Sample 15 (active treatment):
+EHR Context:
+Age: 57 years
+Gender: Male
+Cancer diagnosis: Stage IV prostate cancer
+PMH: benign prostatic hyperplasia, hypertension
+Prior cancer treatments: None
+Current cancer treatments: androgen deprivation therapy + abiraterone (started 2 months ago)
+Current medication list: tamsulosin, lisinopril, amlodipine, aspirin
+Summary of most recent oncology visit (4 weeks ago): 57-year-old male with newly diagnosed stage IV prostate cancer. He is on androgen deprivation therapy + abiraterone and tolerating treatment well. Will continue treatment as planned.",['abiraterone']
+15,"Sample 16 (active treatment):
+EHR Context:
+Age: 49 years
+Gender: Female
+Cancer diagnosis: Stage IIIA epithelial ovarian cancer
+PMH: hypothyroidism, obesity
+Prior cancer treatments: debulking surgery (completed 3 months ago)
+Current cancer treatments: paclitaxel/carboplatin (started 2 months ago)
+Current medication list: levothyroxine, metformin, aspirin, atorvastatin, vitamin D
+Summary of most recent oncology visit (4 weeks ago): 49-year-old female with stage IIIA epithelial ovarian cancer s/p debulking surgery. She is on adjuvant paclitaxel/carboplatin and tolerating treatment well. Will continue treatment as planned.","['carboplatin', 'paclitaxel']"
+16,"Sample 17 (active treatment):
+EHR Context:
+Age: 61 years
+Gender: Male
+Cancer diagnosis: Stage IV glioblastoma multiforme
+PMH: hypertension, type 2 diabetes
+Prior cancer treatments: surgical resection (completed 2 months ago)
+Current cancer treatments: temozolomide + radiation therapy (started 1 month ago)
+Current medication list: metformin, lisinopril, amlodipine, aspirin
+Summary of most recent oncology visit (2 weeks ago): 61-year-old male with stage IV glioblastoma multiforme s/p resection. He is on adjuvant temozolomide + radiation therapy and tolerating treatment well. Will continue treatment as planned.",['temozolomide']
+17,"Sample 18 (active treatment):
+EHR Context:
+Age: 65 years
+Gender: Female
+Cancer diagnosis: Stage IIIB non-small cell lung cancer (NSCLC)
+PMH: chronic obstructive pulmonary disease, hypertension
+Prior cancer treatments: concurrent carboplatin/pemetrexed and radiotherapy 
+Current cancer treatments: durvalumaby (started 3 months ago)
+Current medication list: tiotropium, albuterol, lisinopril, amlodipine, aspirin
+Summary of most recent oncology visit (4 weeks ago): 65-year-old female with unresectable stage IIIB NSCLC. She is on consolidation durvalumabd and tolerating treatment well. Will continue treatment as planned.","['carboplatin', 'pemetrexed']"
+18,"Sample 19 (active treatment):
+EHR Context:
+Age: 54 years
+Gender: Male
+Cancer diagnosis: Stage IV hepatocellular carcinoma
+PMH: cirrhosis, hepatitis C
+Prior cancer treatments: None
+Current cancer treatments: sorafenib (started 2 months ago)
+Current medication list: lactulose, spironolactone, furosemide, ledipasvir/sofosbuvir
+Summary of most recent oncology visit (6 weeks ago): 54-year-old male with newly diagnosed stage IV hepatocellular carcinoma. He is on first-line sorafenib and tolerating treatment well. Will continue treatment as planned.",['sorafenib']
+19,"Sample 20 (active treatment):
+EHR Context:
+Age: 59 years
+Gender: Female
+Cancer diagnosis: Stage IV cholangiocarcinoma
+PMH: hypertension, type 2 diabetes
+Prior cancer treatments: None
+Current cancer treatments: gemcitabine/cisplatin (started 2 months ago)
+Current medication list: metformin, lisinopril, amlodipine, aspirin
+Summary of most recent oncology visit (4 weeks ago): 59-year-old female with newly diagnosed stage IV cholangiocarcinoma. She is on first-line gemcitabine/cisplatin and tolerating treatment well. Will continue treatment as planned.","['cisplatin', 'gemcitabine']"
+20,"1. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 62 years
+Gender: Female
+Cancer diagnosis: Metastatic cervical squamous cell carcinoma
+PMH: hypothyroidism, diabetes
+Prior cancer treatments: radical hysterectomy and adjuvant chemoradiotherapy (completed 1 year ago)
+Current cancer treatments: chemotherapy and immunotherapy (started 2 months ago)
+Current medication list: levothyroxine, metformin, acetaminophen, aspirin, atorvastatin, vitamin D
+Summary of most recent oncology visit (6 weeks ago): 62 year old female with a history of cervical cancer s/p hysterectomy and adjuvant cisplatin-based chemoradiotherapy, now with distant recurrence to the liver and lungs. She is on first-line systemic therapy, and is doing well overall with mild neuropathy. Will continue treatment as planned.",['cisplatin']
+21,"2. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 58 years
+Gender: Male
+Cancer diagnosis: Stage II colorectal adenocarcinoma
+PMH: hypertension, hyperlipidemia
+Prior cancer treatments: surgery, adjuvant chemotherapy (completed 4 years ago)
+Current cancer treatments: chemotherapy (started 3 weeks ago)
+Current medication list: lisinopril, atorvastatin, aspirin, metoprolol, loperamide
+Summary of most recent oncology visit (4 weeks ago): 58 year old male with a history of colorectal cancer s/p surgery and adjuvant chemotherapy, now with no evidence of disease on recent imaging. He is tolerating the chemotherapy well with minimal side effects. Will continue treatment as planned.",[]
+22,"3. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 54 years
+Gender: Female
+Cancer diagnosis: Stage II triple-negative breast cancer
+PMH: none
+Prior cancer treatments: lumpectomy, adjuvant chemotherapy and radiation therapy (completed 10 years ago)
+Current cancer treatments: chemotherapy and targeted therapy (started 1 month ago)
+Current medication list: metformin, pregabalin
+Summary of most recent oncology visit (2 weeks ago): 54 year old female with a history of breast cancer s/p lumpectomy, adjuvant chemotherapy, and radiation therapy, now on neoadjuvant chemotherapy and targeted therapy. She is tolerating the treatment well with no significant side effects. Will continue treatment as planned.",[]
+23,"4. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 47 years
+Gender: Male
+Cancer diagnosis: Stage IV non-small cell lung cancer
+PMH: chronic obstructive pulmonary disease (COPD), hypertension
+Prior cancer treatments: none
+Current cancer treatments: chemo-immunotherapy (started 2 weeks ago)
+Current medication list: albuterol inhaler, fluticasone/salmeterol inhaler, amlodipine, lisinopril, atorvastatin, ibuprofen
+Summary of most recent oncology visit (1 week ago): 47 year old male with a new diagnosis of metastatic lung cancer. He has started first-line systemic therapy and is scheduled for imaging in about 2 months to assess response. No significant side effects noted. Will continue treatment as planned.",[]
+24,"5. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 69 years
+Gender: Female
+Cancer diagnosis: Stage III ovarian serous carcinoma
+PMH: hypertension, osteoporosis
+Prior cancer treatments: debulking surgery, adjuvant chemotherapy (completed 8 months ago)
+Current cancer treatments: chemotherapy (started 2 months ago)
+Current medication list: amlodipine, lisinopril, alendronate, calcium with vitamin D, acetaminophen
+Summary of most recent oncology visit (1 week ago): 69 year old female with a history of ovarian cancer s/p debulking surgery and adjuvant chemotherapy, now with suspected recurrence based on rising tumor markers. She has started chemotherapy and is tolerating it well with minimal side effects. Will continue treatment as planned.",[]
+25,"6. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 56 years
+Gender: Male
+Cancer diagnosis: locally advanced pancreatic adenocarcinoma
+PMH: diabetes, hyperlipidemia, chronic pancreatitis
+Prior cancer treatments: none
+Current cancer treatments: chemotherapy and radiation therapy (started 3 weeks ago)
+Current medication list: insulin glargine, metformin, atorvastatin, omeprazole
+Summary of most recent oncology visit (1 week ago): 56 year old male with a new diagnosis of locally advanced pancreatic cancer. He has started first-line systemic therapy and concurrent radiation therapy. Mild nausea and fatigue noted, but overall tolerating treatment. Will continue treatment as planned.",['omeprazole']
+26,"7. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 63 years
+Gender: Female
+Cancer diagnosis: Stage II triple-negative breast cancer
+PMH: hypertension, osteoporosis
+Prior cancer treatments: lumpectomy, adjuvant chemotherapy and radiation therapy (completed 4 years ago)
+Current cancer treatments: chemotherapy (started 1 month ago)
+Current medication list: lisinopril, alendronate, calcium with vitamin D, ibuprofen, ondansetron
+Summary of most recent oncology visit (3 weeks ago): 63 year old female with a history of breast cancer s/p lumpectomy, adjuvant chemotherapy, and radiation therapy, now with recurrence in the lungs, on first-line chemo. She is tolerating the treatment well with mild fatigue. Will continue treatment as planned.",[]
+27,"8. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 42 years
+Gender: Male
+Cancer diagnosis: Stage III Hodgkin's lymphoma
+PMH: none
+Prior cancer treatments: none
+Current cancer treatments: chemotherapy and immunotherapy (started 4 weeks ago)
+Current medication list: None
+Summary of most recent oncology visit (1 week ago): 42 year old male recently diagnosed with Hodgkin's lymphoma. He has started first-line systemic therapy and is tolerating it well with no significant side effects. Will continue treatment as planned.",[]
+28,"9. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 58 years
+Gender: Female
+Cancer diagnosis: Metastatic colorectal adenocarcinoma
+PMH: diabetes, hypertension
+Prior cancer treatments: surgery, adjuvant chemotherapy with oxaliplatin and capecitabine (completed 3 years ago)
+Current cancer treatments: chemotherapy only (started 2 months ago)
+Current medication list: metformin, lisinopril, atorvastatin, aspirin, insulin glulisine
+Summary of most recent oncology visit (6 weeks ago): 58 year old female with a history of colorectal cancer s/p surgery and adjuvant chemotherapy, now with distant metastases involving the liver, lungs. Since starting systemic therapy, she has had mild diarrhea. Will continue treatment as planned.","['capecitabine', 'oxaliplatin']"
+29,"10. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 61 years
+Gender: Male
+Cancer diagnosis: Stage IV prostate adenocarcinoma
+PMH: benign prostatic hyperplasia (BPH), coronary artery disease
+Prior cancer treatments: none
+Current cancer treatments: chemotherapy and androgen deprivation therapy (started 1 month ago)
+Current medication list: tamsulosin, metoprolol, atorvastatin, aspirin, finasteride
+Summary of most recent oncology visit (2 weeks ago): 61 year old male with a new diagnosis of metastatic prostate cancer. He has started first-line systemic therapy and androgen deprivation therapy. Mild fatigue and hot flashes noted, but overall tolerating treatment. Will continue treatment as planned.",[]
+30,"11. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 49 years
+Gender: Female
+Cancer diagnosis: Stage IIIA lung adenocarcinoma
+PMH: asthma, obesity
+Prior cancer treatments: none
+Current cancer treatments: chemotherapy and radiation therapy (started 3 weeks ago)
+Current medication list: albuterol inhaler, fluticasone inhaler, montelukast, ibuprofen
+Summary of most recent oncology visit (1 week ago): 49 year old female with a new diagnosis of locally advanced lung cancer. She has started first-line systemic therapy and concurrent radiation therapy. Mild cough and fatigue noted, but overall tolerating treatment well. Will start guaifenesin and continue treatment as planned.",[]
+31,"12. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 71 years
+Gender: Male
+Cancer diagnosis: favorable intermediate risk prostate adenocarcinoma
+PMH: benign prostatic hyperplasia (BPH), hypertension
+Prior cancer treatments: none
+Current cancer treatments: radiation therapy (started 2 weeks ago)
+Current medication list: tamsulosin, amlodipine, lisinopril, atorvastatin, aspirin
+Summary of most recent oncology visit (1 week ago): 71 year old male with a new diagnosis of intermediate-risk prostate cancer, on definitive radiotherapy. No significant side effects reported. Will continue treatment as planned.",[]
+32,"13. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 55 years
+Gender: Female
+Cancer diagnosis: Stage IV gastric adenocarcinoma
+PMH: GERD, anemia
+Prior cancer treatments: none
+Current cancer treatments: chemotherapy and targeted therapy (started 2 months ago)
+Current medication list: omeprazole, iron supplement
+Summary of most recent oncology visit (4 weeks ago): 55 year old female with a new diagnosis of metastatic gastric cancer. She is on first-line systemic therapy. Mild nausea and fatigue noted, but overall tolerating treatment.",['omeprazole']
+33,"14. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 64 years
+Gender: Male
+Cancer diagnosis: Stage III melanoma
+PMH: hypertension, hyperlipidemia
+Prior cancer treatments: wide excision and sentinel lymph node biopsy (completed 3 months ago)
+Current cancer treatments:  immunotherapy (started 5 months ago) 
+Current medication list: lisinopril, atorvastatin, aspirin
+Summary of most recent oncology visit (2 weeks ago): 64 year old male with a history of melanoma s/p surgery, now on adjuvant immunotherapy. Overall tolerating treatment.",[]
+34,"15. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 71 years
+Gender: Female
+Cancer diagnosis: Stage II breast cancer
+PMH: osteoporosis, osteoarthritis
+Prior cancer treatments: lumpectomy, adjuvant radiation therapy (completed 2 weeks ago)
+Current cancer treatments: tamoxifen (started 1 week ago)
+Current medication list: alendronate, calcium with vitamin D, acetaminophen, ibuprofen
+Summary of most recent oncology visit (3 weeks ago): 71 year old female with a history of breast cancer s/p lumpectomy and radiation therapy, now on tamoxifen.",['tamoxifen']
+35,"16. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 68 years
+Gender: Female
+Cancer diagnosis: Glioblastoma 
+PMH: hypertension, diabetes, osteoporosis
+Prior cancer treatments: gross total resection, radiotherapy with concurrent temozolomide
+Current cancer treatments:  adjuvant temozolomide
+Current medication list: levetiracetam, lisinopril, metformin, ativan, alendronate, calcium with vitamin D
+Summary of most recent oncology visit (4 weeks ago): 68 year old female with glioblastoma multiforme, on adjuvant temozolomide. Treatment has been complicated by mild nausea and cytopenias. Will continue treatment as planned.",['temozolomide']
+36,"17. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 55 years
+Gender: Male
+Cancer diagnosis: Metastatic prostate adenocarcinoma
+PMH: benign prostatic hyperplasia (BPH), hypertension
+Prior cancer treatments: hormone therapy and radiation therapy (completed 8 months ago)
+Current cancer treatments: androgen deprivation therapy (started 1 month ago)
+Current medication list: tamsulosin, finasteride, amlodipine, lisinopril, atorvastatin
+Summary of most recent oncology visit (3 weeks ago): 55 year old male with a history of prostate cancer s/p definitive treatment, now with metastatic disease involving the bones He is on androgen deprivation therapy. Mild fatigue and hot flashes noted, but overall tolerating treatment.",[]
+37,"18. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 59 years
+Gender: Female
+Cancer diagnosis: borderline resectable pancreatic adenocarcinoma
+PMH: diabetes, hyperlipidemia
+Prior cancer treatments: none
+Current cancer treatments: concurrent chemoradiation (started 1 month ago)
+Current medication list: insulin glargine, metformin, atorvastatin, prochlorperazine
+Summary of most recent oncology visit (2 weeks ago): 59 year old female with a new diagnosis of borderline resectable pancreatic cancer. She is on concurrent chemoradiation prior to consideration of surgery. Mild nausea and fatigue noted.",[]
+38,"19. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 47 years
+Gender: Male
+Cancer diagnosis: Stage III esophageal adenocarcinoma
+PMH: gastroesophageal reflux disease (GERD), obesity
+Prior cancer treatments: neoadjuvant chemoradiation and esophagectomy (completed 4 months ago)
+Current cancer treatments: immunotherapy (started 4 months ago)
+Current medication list: omeprazole, pantoprazole, metformin, ibuprofen
+Summary of most recent oncology visit (6 weeks ago): 47 year old male with a history of esophageal cancer s/p chemoradiation per CROSS, esophagectomy, now on neoadjuvant chemotherapy and targeted therapy. He is doing well with no major issues.",['omeprazole']
+39,"20. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 58 years
+Gender: Female
+Cancer diagnosis: Stage IIA breast cancer
+PMH: hypertension, hyperlipidemia
+Prior cancer treatments: lumpectomy and adjuvant radiation therapy (completed 6 years ago)
+Current cancer treatments: chemotherapy (started 3 months ago)
+Current medication list: lisinopril, atorvastatin, aspirin
+Summary of most recent oncology visit (4 weeks ago): 58 year old female with a history of breast cancer s/p surgery and adjuvant radiation therapy, now on chemotherapy for metastatic recurrence (brain). She has mild fatigue and peripheral neuropathy, but it is not particularly bothersome so will not make changes to treatment.",[]
+40,"21. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 61 years
+Gender: Male
+Cancer diagnosis: Stage IIIA non-small cell lung cancer
+PMH: chronic obstructive pulmonary disease (COPD), hypertension
+Prior cancer treatments: none
+Current cancer treatments: chemotherapy and radiation therapy (started 2 weeks ago)
+Current medication list: albuterol inhaler, fluticasone/salmeterol inhaler, amlodipine, lisinopril, atorvastatin, ibuprofen
+Summary of most recent oncology visit (1 week ago): 61 year old male with a new diagnosis of locally advanced lung cancer. He has started first-line systemic therapy and concurrent radiation therapy. He is starting to develop esophagitis as expected.",[]
+41,"22. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 67 years
+Gender: Female
+Cancer diagnosis: Stage IV colorectal adenocarcinoma
+PMH: hypertension, hyperlipidemia
+Prior cancer treatments: surgery, adjuvant chemotherapy (completed 3 years ago)
+Current cancer treatments: chemotherapy only (started 2 months ago)
+Current medication list: amlodipine, atorvastatin, aspirin
+Summary of most recent oncology visit (6 weeks ago): 67 year old female with a history of colorectal cancer s/p surgery and adjuvant chemotherapy, now with local and distant recurrence. She has started is tolerating chemotherapy well with mild fatigue.",[]
+42,"23. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 52 years
+Gender: Male
+Cancer diagnosis: Metastatic renal cell carcinoma
+PMH: none
+Prior cancer treatments: nephrectomy, targeted therapy with tyrosine kinase inhibitors 
+Current cancer treatments: immunotherapy (started 3 months ago)
+Current medication list: None
+Summary of most recent oncology visit (2 weeks ago): 52 year old male with a history of renal cell carcinoma s/p nephrectomy, now on immune checkpoint inhibitors. He is tolerating the treatment well with no significant side effects. Will return to clinic in 4 weeks for re-staging scans",[]
+43,"24. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 59 years
+Gender: Female
+Cancer diagnosis: Stage IIA endometrial adenocarcinoma
+PMH: obesity, hypertension, diabetes
+Prior cancer treatments: surgery (6 weeks ago)
+Current cancer treatments:  radiotherapy
+Current medication list: metformin, lisinopril, atorvastatin, ondansetron
+Summary of most recent oncology visit (1 week ago): 59 year old female with a history of endometrial cancer s/p surgery, now receiving adjuvant radiotherapy. Mild nausea and fatigue noted at today‚Äôs visit.",[]
+44,"25. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 61 years
+Gender: Male
+Cancer diagnosis: Stage IV colorectal adenocarcinoma
+PMH: hypertension, hyperlipidemia
+Prior cancer treatments: none
+Current cancer treatments: chemotherapy and targeted therapy (started 2 months ago)
+Current medication list: amlodipine, atorvastatin, aspirin
+Summary of most recent oncology visit (5 weeks ago): 61 year old male with metastatic colorectal cancer involving the liver, lungs, and lymph nodes, on started first-line systemics. He is doing very well with treatment, labs today showed mild AKI. Blood counts are lower limit of normal. Will continue to monitor.",[]
+45,"26. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 57 years
+Gender: Female
+Cancer diagnosis: locally advanced pancreatic adenocarcinoma
+PMH: diabetes, hypertension, hyperlipidemia
+Prior cancer treatments: FOLFIRINOX
+Current cancer treatments: stereotactic radiotherapy (started 3 day ago)
+Current medication list: metformin, lisinopril, atorvastatin, insulin glargine
+Summary of most recent oncology visit (2 weeks ago): 57 year old female with locally advanced pancreatic cancer s/p FOLFIRINOX with slight radiographic progression. She will start stereotactic radiation shortly, and next steps will be based on response.",[]
+46,"27. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 66 years
+Gender: Male
+Cancer diagnosis: Stage IV prostate adenocarcinoma
+PMH: benign prostatic hyperplasia (BPH), hypertension
+Prior cancer treatments: hormone therapy and radiation therapy (completed 7 months ago)
+Current cancer treatments: chemotherapy and androgen deprivation therapy (started 1 month ago)
+Current medication list: tamsulosin, amlodipine, lisinopril, atorvastatin, aspirin
+Summary of most recent oncology visit (4 weeks ago): 66 year old male with a history of prostate cancer s/p hormone therapy and radiation therapy, now with metastatic disease involving the bones and lymph nodes. He has started first-line chemotherapy and androgen deprivation therapy. Mild fatigue and hot flashes noted today.",[]
+47,"28. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 53 years
+Gender: Female
+Cancer diagnosis: Stage III triple-negative breast cancer
+PMH: none
+Prior cancer treatments: mastectomy, adjuvant chemotherapy and radiation therapy (completed 1 years ago)
+Current cancer treatments: chemotherapy and immunotherapy (started 3 months ago)
+Current medication list: None
+Summary of most recent oncology visit (4 weeks ago): 53 year old female with a history of breast cancer s/p mastectomy, adjuvant chemotherapy, and radiation therapy, now on chemotherapy and immunotherapy for metastatic recurrence. No issue today, she will return in 3 months for imaging.",[]
+48,"29. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 42 years
+Gender: Feale
+Cancer diagnosis: Stage IV cervical cancer
+PMH:  none
+Prior cancer treatments: Cisplatin/paclitaxel/bevacizumab
+Current cancer treatments: decetaxel (started 2 months ago)
+Current medication list: aspirin, prochlorperazine
+Summary of most recent oncology visit (1 week ago): 42 year old woman with metastatic cervical cancer, currently on second-line docetaxel She is extremely fatigued and having trouble keeping her weight up. She will come in again in 2 weeks for a symptom check, at which point we will re-evaluate her treatment plan.","['cisplatin', 'paclitaxel', 'bevacizumab', 'docetaxel']"
+49,"30. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 59 years
+Gender: Female
+Cancer diagnosis: Stage IV ovarian serous carcinoma
+PMH: hypertension, hyperlipidemia
+Prior cancer treatments: surgery, adjuvant chemotherapy (completed 10 months ago)
+Current cancer treatments: chemotherapy (started 2 months ago)
+Current medication list: lisinopril, atorvastatin, aspirin
+Summary of most recent oncology visit (6 weeks ago): 59 year old female with a history of ovarian cancer s/p surgery and adjuvant chemotherapy, now with distant metastases in the liver and brain. She has started second-line chemotherapy and is tolerating it well, although labs showed low-grade AKI today.",[]
+50,"1. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 62 years
+Gender: Female
+Cancer diagnosis: Stage IIIA cervical squamous cell carcinoma
+PMH: Hypothyroidism, diabetes
+Prior cancer treatments: Radiotherapy with concurrent cisplatin (completed 1 year ago)
+Current cancer treatments: None
+Current medication list: Levothyroxine, metformin, acetaminophen, aspirin, atorvastatin, vitamin D
+Summary of most recent oncology visit (6 weeks ago): 62-year-old female with a history of Stage IIIA cervical cancer s/p definitive cisplatin-based chemoradiation presents for follow-up one year post-treatment. She is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",['cisplatin']
+51,"2. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 52 years
+Gender: Male
+Cancer diagnosis: Stage IIIB lung adenocarcinoma
+PMH: Hypertension, chronic obstructive pulmonary disease (COPD)
+Prior cancer treatments: Chemotherapy with cisplatin and pemetrexed (completed 6 months ago)
+Current cancer treatments: None
+Current medication list: Lisinopril, albuterol, tiotropium, simvastatin, aspirin
+Summary of most recent oncology visit (3 months ago): 52-year-old male with a history of Stage IIIB lung cancer s/p cisplatin and pemetrexed chemotherapy presents for follow-up. Patient reports improvement in his symptoms and is clinically stable. Will continue ongoing surveillance.","['cisplatin', 'pemetrexed']"
+52,"3. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 63 years
+Gender: Female
+Cancer diagnosis: Stage IIB breast ductal carcinoma
+PMH: Hypertension, osteoporosis
+Prior cancer treatments: Lumpectomy followed by adjuvant chemotherapy with doxorubicin and cyclophosphamide and radiation (completed 8 months ago)
+Current cancer treatments: None
+Current medication list: Amlodipine, alendronate, oxycodone, ibuprofen
+Summary of most recent oncology visit (4 months ago): 63-year-old female with a history of Stage IIB breast cancer presents for routine follow-up visit. Patient is clinically without evidence of recurrence. Mammogram scheduled in 8 months.","['cyclophosphamide', 'doxorubicin']"
+53,"4. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 45 years
+Gender: Male
+Cancer diagnosis: Stage III colon adenocarcinoma
+PMH: None
+Prior cancer treatments: Surgery followed by adjuvant chemotherapy with FOLFOX (completed 10 months ago)
+Current cancer treatments: None
+Current medication list: None
+Summary of most recent oncology visit (6 weeks ago): 45-year-old male with a history of Stage III colon cancer s/p surgery and FOLFOX chemotherapy presents for follow-up. Patient is clinically and radiographically without evidence of recurrence.",[]
+54,"5. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 55 years
+Gender: Female
+Cancer diagnosis: Stage IV ovarian serous carcinoma
+PMH: Hypertension, hypothyroidism
+Prior cancer treatments: Debulking surgery followed by chemotherapy with carboplatin and paclitaxel (completed 4 months ago)
+Current cancer treatments: None
+Current medication list: Atenolol, levothyroxine, metformin
+Summary of most recent oncology visit (1 week): 55-year-old female with a history of Stage IV ovarian cancer s/p surgery and carboplatin-paclitaxel chemotherapy presents for follow-up. Imaging today showed a good response to treatment with no evidence of disease progression, CA-125 is stable. She has ongoing stable peripheral neuropathy.","['carboplatin', 'paclitaxel']"
+55,"6. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 67 years
+Gender: Male
+Cancer diagnosis: favorable intermediate risk prostate adenocarcinoma
+PMH: Benign prostatic hyperplasia (BPH), high cholesterol
+Prior cancer treatments: Radical prostatectomy followed by adjuvant radiation therapy (completed 1 year ago)
+Current cancer treatments: None
+Current medication list: Tamsulosin, finasteride, atorvastatin, aspirin
+Summary of most recent oncology visit (3 months ago): 67-year-old male with a history of prostate cancer s/p surgery and adjuvant radiation therapy presents for follow-up. Patient's PSA levels remain undetectable. Urinary incontinence, which occurred post-operatively, is slowly improving.",[]
+56,"7. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 59 years
+Gender: Female
+Cancer diagnosis: Stage IIA colorectal adenocarcinoma
+PMH: Hypertension, gastroesophageal reflux disease (GERD)
+Prior cancer treatments: Surgery followed by adjuvant chemotherapy with oxaliplatin and fluorouracil (completed 6 months ago)
+Current cancer treatments: None
+Current medication list: Losartan, omeprazole, simvastatin
+Summary of most recent oncology visit (4 months ago): 59-year-old female with a history of Stage IIA colorectal cancer s/p surgery and adjuvant chemotherapy presents for follow-up. Patient is clinically without evidence of recurrence but ongoing bowel issues with very frequent stools. Will trial bulking agents.","['fluorouracil', 'oxaliplatin', 'omeprazole']"
+57,"8. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 48 years
+Gender: Male
+Cancer diagnosis: Stage IIIC melanoma
+PMH: None
+Prior cancer treatments: Wide excision surgery followed by adjuvant immunotherapy with pembrolizumab (completed 7 months ago)
+Current cancer treatments: None
+Current medication list: None
+Summary of most recent oncology visit (2 months ago): 48-year-old male with a history of Stage IIIC melanoma s/p surgery and pembrolizumab immunotherapy presents for follow-up. Patient is clinically and radiographically without evidence of disease recurrence. He will be seen again in 3 months.",['pembrolizumab']
+58,"9. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 60 years
+Gender: Female
+Cancer diagnosis: Stage IB non-small cell lung cancer
+PMH: Chronic obstructive pulmonary disease (COPD)
+Prior cancer treatments: Stereotactic body radiotherapy (completed 9 months ago)
+Current cancer treatments: None
+Current medication list: Albuterol, tiotropium, prednisone, aspirin
+Summary of most recent oncology visit (3 months ago): 60-year-old female with a history of Stage IB lung cancer s/p stereotactic body radiation who presents for follow-up. Patient is clinically without evidence of recurrence.",['prednisone']
+59,"10. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 70 years
+Gender: Male
+Cancer diagnosis: Stage I prostate adenocarcinoma
+PMH: Benign prostatic hyperplasia (BPH), hypertension
+Prior cancer treatments: Radical prostatectomy (completed 1 year ago)
+Current cancer treatments: None
+Current medication list: Tamsulosin, doxazosin, metoprolol, aspirin
+Summary of most recent oncology visit (6 weeks ago): 70-year-old male with a history of Stage I prostate cancer s/p surgery presents for follow-up. Patient shows no signs of disease recurrence but has erectile dysfunction, for which he will see his urologist.",[]
+60,"11. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 74 years
+Gender: Female
+Cancer diagnosis: resectable pancreatic adenocarcinoma
+PMH: Diabetes, hypertension
+Prior cancer treatments: Whipple procedure followed by adjuvant chemotherapy with gemcitabine and nab-paclitaxel (completed 5 months ago)
+Current cancer treatments: None
+Current medication list: Insulin, metformin, lisinopril, atorvastatin
+Summary of most recent oncology visit (3 months ago): 74-year-old female with a history of resectable pancreatic cancer s/p surgery and chemotherapy presents for follow-up. Patient is without evidence of recurrence. Will continue ongoing surveillance.","['paclitaxel', 'gemcitabine']"
+61,"12. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 63 years
+Gender: Male
+Cancer diagnosis: Stage II gastric adenocarcinoma
+PMH: Hypertension, hyperlipidemia
+Prior cancer treatments: Per-operative chemotherapy and gastrectomy (completed 8 months ago)
+Current cancer treatments: None
+Current medication list: Amlodipine, atorvastatin, aspirin
+Summary of most recent oncology visit (4 months ago): 63-year-old male with a history of Stage II gastric cancer s/p perioperative chemotherapy and surgery and presents for follow-up. Imaging shows no evidence of disease.",[]
+62,"13. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 59 years
+Gender: Female
+Cancer diagnosis: Stage IV lung adenocarcinoma
+PMH: None
+Prior cancer treatments: Chemotherapy with carboplatin, pemetrexed, and pembrolizumab (completed 2 months ago)
+Current cancer treatments: None
+Current medication list: None
+Summary of most recent oncology visit (1 month ago): 59-year-old female with a history of Stage IV lung cancer, currently on a treatment break, who presents for follow-up. He is doing well, and imaging showed slight disease progression.","['pembrolizumab', 'carboplatin', 'pemetrexed']"
+63,"14. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 70 years
+Gender: Male
+Cancer diagnosis: Stage IV renal cell carcinoma
+PMH: Hypertension, diabetes
+Prior cancer treatments: Nephrectomy followed by sunitinib (completed 6 months ago)
+Current cancer treatments: None
+Current medication list: Lisinopril, metformin, atorvastatin
+Summary of most recent oncology visit (3 months ago): 70-year-old male with a history of Stage IV renal cancer s/p surgery and sunitinib presents for follow-up. Patient shows no evidence of disease.",['sunitinib']
+64,"15. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 47 years
+Gender: Female
+Cancer diagnosis: Stage IIIA breast ductal carcinoma
+PMH: None
+Prior cancer treatments: Neoadjuvant chemotherapy, lumpectomy with axillary lymph node dissection, and radiotherapy (completed 9 months ago)
+Current cancer treatments: None
+Current medication list: None
+Summary of most recent oncology visit (3 months ago): 47-year-old female with a history of Stage IIIA breast cancer s/p neoadjuvant chemotherapy, lumpectomy with axillary lymph nodes dissection, and radiotherapy presents for follow-up. No evidence of recurrence noted, plan is for mammogram in 3 months.",[]
+65,"16. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 58 years
+Gender: Male
+Cancer diagnosis: Stage III esophageal adenocarcinoma
+PMH: Gastroesophageal reflux disease (GERD)
+Prior cancer treatments: chemoradiation with carboplatin/paclitaxel followed by esophagectomy (completed 7 months ago)
+Current cancer treatments: None
+Current medication list: Omeprazole, ranitidine, metoclopramide
+Summary of most recent oncology visit (2 months ago): 58-year-old male with a history of Stage III esophageal cancer treated as per CROSS presents for follow-up. Patient is clinically without evidence of recurrence and is back at his pretreatment weight.","['carboplatin', 'paclitaxel', 'omeprazole']"
+66,"17. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 65 years
+Gender: Female
+Cancer diagnosis: Stage IA endometrial adenocarcinoma
+PMH: Hypertension, osteoporosis
+Prior cancer treatments: Total hysterectomy followed by vaginal cylinder brachytherapy (completed 10 months ago)
+Current cancer treatments: None
+Current medication list: Amlodipine, alendronate, aspirin
+Summary of most recent oncology visit (6 weeks ago): 65-year-old female with a history of Stage IA endometrial cancer s/p surgery and brachytherapy presents for follow-up. Patient is clinically without evidence of recurrence; physical exam showed expected post-treatment changes.",[]
+67,"18. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 60 years
+Gender: Male
+Cancer diagnosis: Stage II bladder urothelial carcinoma
+PMH: Benign prostatic hyperplasia (BPH), diabetes
+Prior cancer treatments: Transurethral resection of bladder tumor followed by intravesical chemotherapy (completed 9 months ago)
+Current cancer treatments: None
+Current medication list: Tamsulosin, metformin, lisinopril, aspirin
+Summary of most recent oncology visit (4 months ago): 60-year-old male with a history of Stage IIB bladder cancer s/p surgery and intravesical chemotherapy presents for follow-up. Patient is clinically without evidence of recurrence. Will continue ongoing surveillance.",[]
+68,"19. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 48 years
+Gender: Female
+Cancer diagnosis: Stage III ovarian serous carcinoma
+PMH: None
+Prior cancer treatments: Surgery followed by chemotherapy with carboplatin and paclitaxel (completed 5 months ago)
+Current cancer treatments: None
+Current medication list: None
+Summary of most recent oncology visit (3 months ago): 48-year-old female with a history of Stage III ovarian cancer s/p surgery and chemotherapy presents for follow-up. Patient is clinically without evidence of disease recurrence.","['carboplatin', 'paclitaxel']"
+69,"20. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 32 years
+Gender: Male
+Cancer diagnosis: Stage I testicular seminoma
+PMH: None
+Prior cancer treatments: Orchidectomy (completed 1 year ago)
+Current cancer treatments: None
+Current medication list: None
+Summary of most recent oncology visit (6 weeks ago): 32-year-old male with a history of Stage I testicular cancer s/p surgery presents for follow-up. Exam and imaging showed no evidence of recurrence. Will continue ongoing surveillance.",[]
+70,"21. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 67 years
+Gender: Female
+Cancer diagnosis: Stage III rectal adenocarcinoma
+PMH: Hypertension, osteoporosis
+Prior cancer treatments: Chemoradiation therapy with 5-fluorouracil followed by low anterior resection (completed 12 years8 months ago)
+Current cancer treatments: None
+Current medication list: Amlodipine, alendronate, aspirin
+Summary of most recent oncology visit (4 months ago): 67-year-old female with a history of locally advanced rectal cancer s/p chemoradiation and surgery seen in long-term follow-up. He is doing well but has struggled with frequent loose stools since his surgery. Patient is clinically without evidence of recurrence.",['fluorouracil']
+71,"22. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 56 years
+Gender: Male
+Cancer diagnosis: Stage I melanoma
+PMH: None
+Prior cancer treatments: Wide excision surgery (completed 6 months ago)
+Current cancer treatments: None
+Current medication list: None
+Summary of most recent oncology visit (3 months ago): 56-year-old male with a history of Stage I melanoma s/p wide local excision presents for follow-up. No evidence of disease recurrence noted.",[]
+72,"23. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 681 years
+Gender: Female
+Cancer diagnosis: Stage IIA breast ductal carcinoma
+PMH: Hypertension, osteoporosis
+Prior cancer treatments: Lumpectomy followed by radiotherapy (completed 8 year ago)
+Current cancer treatments: None
+Current medication list: Lisinopril, alendronate, aspirin
+Summary of most recent oncology visit (4 months ago): 81-year-old female with a history of Stage IIA breast cancer s/p breast conservation therapy presents for follow-up. Patient is clinically without evidence of recurrence.",[]
+73,"24. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 55 years
+Gender: Male
+Cancer diagnosis: Stage IIA colon adenocarcinoma
+PMH: None
+Prior cancer treatments: Surgery followed by adjuvant chemotherapy with oxaliplatin and fluorouracil (completed 7 months ago)
+Current cancer treatments: None
+Current medication list: None
+Summary of most recent oncology visit (3 months ago): 55-year-old male with a history of Stage IIA colon cancer s/p surgery and chemotherapy presents for follow-up. He is doing well, no evidence of disease recurrence observed.","['fluorouracil', 'oxaliplatin']"
+74,"25. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 47 years
+Gender: Female
+Cancer diagnosis:  Stage III retroperitoneal leiomyosarcoma
+PMH: None
+Prior cancer treatments: neoadjuvant radiation followed by surgery(completed 6 months ago)
+Current cancer treatments: None
+Current medication list: None
+Summary of most recent oncology visit (3 months ago): 47-year-old female with a history of Stage III retroperitoneal leiomyosarcoma presents for follow-up. No evidence of disease recurrence on imaging.",[]
+75,"26. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 64 years
+Gender: Male
+Cancer diagnosis: resectable pancreatic adenocarcinoma
+PMH: Hypertension, diabetes
+Prior cancer treatments: Whipple procedure followed by adjuvant gemcitabine/capecitabine and chemoradiotherapy(completed 2 years ago)
+Current cancer treatments: None
+Current medication list: Amlodipine, metformin, insulin
+Summary of most recent oncology visit (3 months ago): 64-year-old male with a history of resectable pancreatic cancer s/p surgery, gemcitabine/capecitabine, and chemoradiotherapy presents for follow-up. Patient remains without evidence of disease recurrence.","['capecitabine', 'gemcitabine']"
+76,"27. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 52 years
+Gender: Female
+Cancer diagnosis: Stage II lung adenocarcinoma
+PMH: None
+Prior cancer treatments: Lobectomy followed by adjuvant chemotherapy with cisplatin and pemetrexed (completed 6 months ago)
+Current cancer treatments: None
+Current medication list: None
+Summary of most recent oncology visit (3 months ago): 52-year-old female with a history of Stage II lung cancer s/p surgery and chemotherapy presents for routine follow-up. No evidence of disease recurrence observed.","['cisplatin', 'pemetrexed']"
+77,"28. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 67 years
+Gender: Male
+Cancer diagnosis: Stage IV prostate cancer
+PMH: Hypertension, diabetes, osteoarthritis
+Prior cancer treatments: intermittent androgen deprivation therapy (last 4 months ago)
+Current cancer treatments: None
+Current medication list: Amlodipine, metformin, insulin, aspirin
+Summary of most recent oncology visit (2 months ago): 67-year-old male with a history of Stage IV prostate cancer on intermittent androgen deprivation therapy. Will continue to monitor PSA and will re-image in 2 months.",[]
+78,"29. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 68 years
+Gender: Female
+Cancer diagnosis: Stage IB1 cervical squamous cell carcinoma
+PMH: Hypothyroidism, osteoporosis
+Prior cancer treatments: Radical hysterectomy followed by adjuvant radiotherapy with concurrent cisplatin (completed 9 months ago)
+Current cancer treatments: None
+Current medication list: Levothyroxine, alendronate, calcium supplement
+Summary of most recent oncology visit (5 months ago): 68-year-old female with a history of FIGO Stage IB1 cervical cancer s/p surgery and chemotherapy presents for follow-up. Patient is without evidence of disease recurrence. She has not been using the vaginal dilator, and dilator use was encouraged.",['cisplatin']
+79,"30. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 56 years
+Gender: Male
+Cancer diagnosis: Stage IIIA esophageal adenocarcinoma
+PMH: Gastroesophageal reflux disease (GERD), hypertension
+Prior cancer treatments: Chemoradiation therapy followed by esophagectomy (completed 1 year ago)
+Current cancer treatments: None
+Current medication list: Omeprazole, amlodipine, lisinopril
+Summary of most recent oncology visit (6 weeks ago): 56-year-old male with a history of Stage IIIA esophageal cancer s/p chemoradiation therapy and surgery presents for follow-up. Patient is without evidence of disease recurrence.",['omeprazole']
+80,"Sample 1 (Surveillance):
+EHR Context:
+Age: 55 years
+Gender: Male
+Cancer diagnosis: Stage IIIB non-small cell lung cancer
+PMH: hypertension, hyperlipidemia
+Prior cancer treatments: chemotherapy and radiation (completed 8 months ago)
+Current cancer treatments: None
+Current medication list: lisinopril, atorvastatin, aspirin, albuterol inhaler
+Summary of most recent oncology visit (2 months ago): 55-year-old male with a history of Stage IIIB non-small cell lung cancer s/p chemotherapy and radiation presents for follow-up 8 months post-treatment. He is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+81,"Sample 2 (Surveillance):
+EHR Context:
+Age: 48 years
+Gender: Female
+Cancer diagnosis: Stage IIA breast cancer
+PMH: hypothyroidism, anxiety
+Prior cancer treatments: lumpectomy and radiation therapy (completed 6 months ago)
+Current cancer treatments: None
+Current medication list: levothyroxine, sertraline, multivitamin
+Summary of most recent oncology visit (3 months ago): 48-year-old female with a history of Stage IIA breast cancer s/p lumpectomy and radiation therapy presents for follow-up 6 months post-treatment. She is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+82,"Sample 3 (Surveillance):
+EHR Context:
+Age: 67 years
+Gender: Male
+Cancer diagnosis: Stage II colorectal cancer
+PMH: type 2 diabetes, osteoarthritis
+Prior cancer treatments: surgery and adjuvant chemotherapy (completed 10 months ago)
+Current cancer treatments: None
+Current medication list: metformin, glipizide, celecoxib, calcium, vitamin D
+Summary of most recent oncology visit (1 month ago): 67-year-old male with a history of Stage IVA colorectal cancer s/p surgery and adjuvant chemotherapy presents for follow-up 10 months post-treatment. He is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+83,"Sample 4 (Surveillance):
+EHR Context:
+Age: 52 years
+Gender: Female
+Cancer diagnosis: Stage IIIC ovarian cancer
+PMH: hypertension, depression
+Prior cancer treatments: surgery and chemotherapy (completed 1 year ago)
+Current cancer treatments: None
+Current medication list: amlodipine, fluoxetine, ibuprofen
+Summary of most recent oncology visit (3 months ago): 52-year-old female with a history of Stage IIIC ovarian cancer s/p surgery and chemotherapy presents for follow-up 1 year post-treatment. She is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+84,"Sample 5 (Surveillance):
+EHR Context:
+Age: 45 years
+Gender: Male
+Cancer diagnosis: Stage IIB testicular cancer
+PMH: asthma, seasonal allergies
+Prior cancer treatments: orchiectomy and chemotherapy (completed 2 years ago)
+Current cancer treatments: None
+Current medication list: montelukast, fluticasone propionate, cetirizine
+Summary of most recent oncology visit (6 months ago): 45-year-old male with a history of Stage IIB testicular cancer s/p orchiectomy and chemotherapy presents for follow-up 2 years post-treatment. He is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+85,"Sample 6 (Surveillance):
+EHR Context:
+Age: 58 years
+Gender: Male
+Cancer diagnosis: favorable intermediate risk prostate cancer
+PMH: benign prostatic hyperplasia, type 2 diabetes
+Prior cancer treatments: radical prostatectomy (completed 1 year ago)
+Current cancer treatments: None
+Current medication list: tamsulosin, metformin, aspirin
+Summary of most recent oncology visit (3 months ago): 58-year-old male with a history of favorable intermediate risk prostate cancer s/p radical prostatectomy presents for follow-up 1 year post-treatment. He is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+86,"Sample 7 (Surveillance):
+EHR Context:
+Age: 63 years
+Gender: Female
+Cancer diagnosis: Stage II endometrial cancer
+PMH: hypertension, osteoporosis
+Prior cancer treatments: hysterectomy and radiation therapy (completed 18 months ago)
+Current cancer treatments: None
+Current medication list: lisinopril, alendronate, calcium, vitamin D
+Summary of most recent oncology visit (4 months ago): 63-year-old female with a history of Stage II endometrial cancer s/p hysterectomy and radiation therapy presents for follow-up 18 months post-treatment. She is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+87,"Sample 8 (Surveillance):
+EHR Context:
+Age: 70 years
+Gender: Male
+Cancer diagnosis: Stage IIIA bladder cancer
+PMH: coronary artery disease, chronic kidney disease
+Prior cancer treatments: transurethral resection of bladder tumor, neoadjuvant chemotherapy, and cystectomy(completed 9 months ago)
+Current cancer treatments: None
+Current medication list: aspirin, atorvastatin, metoprolol, furosemide
+Summary of most recent oncology visit (2 months ago): 70-year-old male with a history of Stage IIIA bladder cancer s/p transurethral resection , neoadjuvant chemotherapy, and radical cystectomy presents for follow-up 9 months post-treatment. He is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+88,"Sample 9 (Surveillance):
+EHR Context:
+Age: 50 years
+Gender: Female
+Cancer diagnosis: Stage IIB melanoma
+PMH: hypothyroidism, seasonal allergies
+Prior cancer treatments: wide local excision and sentinel lymph node biopsy (completed 6 months ago)
+Current cancer treatments: None
+Current medication list: levothyroxine, cetirizine, ibuprofen
+Summary of most recent oncology visit (3 months ago): 50-year-old female with a history of Stage IIB melanoma s/p wide local excision and sentinel lymph node biopsy presents for follow-up 6 months post-treatment. She is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+89,"Sample 10 (Surveillance):
+EHR Context:
+Age: 65 years
+Gender: Male
+Cancer diagnosis: Stage IVA head and neck cancer
+PMH: COPD, GERD
+Prior cancer treatments: surgery, radiation therapy, and chemotherapy (completed 1 year ago)
+Current cancer treatments: None
+Current medication list: tiotropium, omeprazole, acetaminophen
+Summary of most recent oncology visit (3 months ago): 65-year-old male with a history of Stage IVA head and neck cancer s/p surgery, radiation therapy, and chemotherapy presents for follow-up 1 year post-treatment. He is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",['omeprazole']
+90,"Sample 11 (Surveillance):
+EHR Context:
+Age: 60 years
+Gender: Female
+Cancer diagnosis: resectable pancreatic cancer
+PMH: type 2 diabetes, hypertension
+Prior cancer treatments: surgery and adjuvant chemotherapy (completed 8 months ago)
+Current cancer treatments: None
+Current medication list: metformin, lisinopril, atorvastatin
+Summary of most recent oncology visit (2 months ago): 60-year-old female with a history of resectable pancreatic cancer s/p surgery and adjuvant chemotherapy presents for follow-up 8 months post-treatment. She is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+91,"Sample 12 (surveillance):
+Sample Given 1:
+EHR Context:
+Age: 54 years
+Gender: Male
+Cancer diagnosis: Stage II colon adenocarcinoma
+PMH: hypertension, gastroesophageal reflux disease (GERD)
+Prior cancer treatments: Laparoscopic colectomy (completed 3 months ago)
+Current cancer treatments: Adjuvant CAPEOX chemotherapy (initiated 1 month ago)
+Current medication list: amlodipine, omeprazole, acetaminophen, ASA, oxaliplatin, capecitabine
+Summary of most recent oncology visit (1 month ago): 54 year old male with a history of Stage II colon adenocarcinoma s/p laparoscopic colectomy. Post-operative pathology showed clear margins and no nodal involvement. Initiated adjuvant CAPEOX chemotherapy to minimize risk of recurrence. Will continue follow-up every 2 weeks with a focus on monitoring toxicity and tolerability.","['capecitabine', 'oxaliplatin', 'omeprazole']"
+92,"EHR Context:
+Age: 47 years
+Gender: Female
+Cancer diagnosis: Stage IV malignant melanoma with lung metastases
+PMH: no significant history
+Prior cancer treatments: Excisional biopsy (2 years ago), targeted therapy (discontinued)
+Current cancer treatments: Pembrolizumab (initiated 4 months ago)
+Current medication list: loratadine, ibuprofen, acetaminophen, vitamin D
+Summary of most recent oncology visit (1 month ago): 47 year old female with Stage IV malignant melanoma presents for immunotherapy management. Prior targeted therapy discontinued due to limited response. Maintaining on pembrolizumab. Imaging last month showed stable disease with no new metastases.",['pembrolizumab']
+93,"Sample 14 (Surveillance):
+EHR Context:
+Age: 54 years
+Gender: Male
+Cancer diagnosis: Stage IIIA colon cancer
+PMH: hypertension, hyperlipidemia
+Prior cancer treatments: surgery and adjuvant chemotherapy (completed 9 months ago)
+Current cancer treatments: None
+Current medication list: lisinopril, atorvastatin, aspirin
+Summary of most recent oncology visit (2 months ago): 54-year-old male with a history of Stage IIIA colon cancer s/p surgery and adjuvant chemotherapy presents for follow-up 9 months post-treatment. He is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+94,"Sample 15 (Surveillance):
+EHR Context:
+Age: 47 years
+Gender: Female
+Cancer diagnosis: Stage IIA breast cancer
+PMH: hypothyroidism, depression
+Prior cancer treatments: mastectomy and radiation therapy (completed 6 months ago)
+Current cancer treatments: None
+Current medication list: levothyroxine, sertraline, ibuprofen
+Summary of most recent oncology visit (3 months ago): 47-year-old female with a history of Stage IIA breast cancer s/p mastectomy and radiation therapy presents for follow-up 6 months post-treatment. She is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+95,"Sample 16 (Surveillance):
+EHR Context:
+Age: 68 years
+Gender: Male
+Cancer diagnosis: Stage III gastric cancer
+PMH: type 2 diabetes, osteoarthritis
+Prior cancer treatments: surgery and peri-operative chemotherapy (completed 10 months ago)
+Current cancer treatments: None
+Current medication list: metformin, glipizide, celecoxib, calcium, vitamin D
+Summary of most recent oncology visit (1 month ago): 68-year-old male with a history of Stage III gastric cancer s/p surgery and peri-operative chemotherapy presents for follow-up 10 months post-treatment. He is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+96,"Sample 17 (Surveillance):
+EHR Context:
+Age: 53 years
+Gender: Female
+Cancer diagnosis: Stage IIIC endometrial cancer
+PMH: hypertension, obesity
+Prior cancer treatments: chemoradiotherapy (completed 1 year ago)
+Current cancer treatments: None
+Current medication list: lisinopril, metformin, aspirin
+Summary of most recent oncology visit (3 months ago): 53-year-old female with a history of Stage IIIC endometrial cancer s/p chemoradiotherapy presents for follow-up 1 year post-treatment. She is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]
+97,"Sample 18 (Surveillance):
+EHR Context:
+Age: 59 years
+Gender: Male
+Cancer diagnosis: Stage IIIB non-small cell lung cancer
+PMH: COPD, GERD
+Prior cancer treatments: chemotherapy and radiation therapy (completed 8 months ago)
+Current cancer treatments: None
+Current medication list: tiotropium, omeprazole, acetaminophen
+Summary of most recent oncology visit (2 months ago): 59-year-old male with a history of Stage IIIB non-small cell lung cancer s/p chemotherapy and radiation therapy presents for follow-up 8 months post-treatment. He is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",['omeprazole']
+98,"Sample 19 (Surveillance):
+EHR Context:
+Age: 64 years
+Gender: Female
+Cancer diagnosis: Stage IIA cervical cancer
+PMH: hypothyroidism, diabetes
+Prior cancer treatments: chemoradiotherapy (completed 1 year ago)
+Current cancer treatments: None
+Current medication list: levothyroxine, metformin, acetaminophen, aspirin, atorvastatin, vitamin D
+Summary of most recent oncology visit (6 weeks ago): 64-year-old female with a history of Stage IIA cervical cancer s/p definitive cisplatin-based chemoradiation presents for follow-up one year post-treatment. She is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",['cisplatin']
+99,"Sample 20 (Surveillance):
+EHR Context:
+Age: 57 years
+Gender: Male
+Cancer diagnosis: Stage IIB testicular cancer
+PMH: asthma, seasonal allergies
+Prior cancer treatments: orchiectomy and chemotherapy (completed 2 years ago)
+Current cancer treatments: None
+Current medication list: montelukast, fluticasone propionate, cetirizine
+Summary of most recent oncology visit (6 months ago): 57-year-old male with a history of Stage IIB testicular cancer s/p orchiectomy and chemotherapy presents for follow-up 2 years post-treatment. He is clinically and radiographically without evidence of recurrence. Will continue ongoing surveillance.",[]

@@ -1,0 +1,93 @@
+pin,Extracted_Text,Extracted_Text_keywords
+2,"Sample 3 (active treatment):
+EHR Context:
+Age: 68 years
+Gender: Male
+Cancer diagnosis: Stage IV colorectal cancer with liver metastases
+PMH: coronary artery disease, type 2 diabetes
+Prior cancer treatments: None
+Current cancer treatments: FOLFIRI + bevacizumab (started 2 months ago)
+Current medication list: metformin, aspirin, atorvastatin, metoprolol, lisinopril
+Summary of most recent oncology visit (6 weeks ago): 68-year-old male with newly diagnosed stage IV colorectal cancer with liver metastases. He is on first-line FOLFIRI + bevacizumab and tolerating treatment well. Will continue treatment as planned.",['bevacizumab']
+6,"Sample 7 (active treatment):
+EHR Context:
+Age: 64 years
+Gender: Male
+Cancer diagnosis: Stage III multiple myeloma
+PMH: hypertension, hyperlipidemia
+Prior cancer treatments: None
+Current cancer treatments: bortezomib/lenalidomide/dexamethasone (started 2 months ago)
+Current medication list: lisinopril, amlodipine, simvastatin, aspirin
+Summary of most recent oncology visit (4 weeks ago): 64-year-old male with newly diagnosed stage III multiple myeloma. He is on first-line bortezomib/lenalidomide/dexamethasone and tolerating treatment well. Will continue treatment as planned.","['bortezomib', 'lenalidomide', 'dexamethasone']"
+7,"Sample 8 (active treatment):
+EHR Context:
+Age: 51 years
+Gender: Female
+Cancer diagnosis: Stage IIIB melanoma
+PMH: hypothyroidism, osteoarthritis
+Prior cancer treatments: wide local excision (completed 3 months ago)
+Current cancer treatments: nivolumab/ipilimumab (started 1 month ago)
+Current medication list: levothyroxine, ibuprofen, acetaminophen
+Summary of most recent oncology visit (2 weeks ago): 51-year-old female with stage IIIB melanoma s/p wide local excision. She is on adjuvant nivolumab/ipilimumab and tolerating treatment well. Will continue treatment as planned.","['nivolumab', 'ipilimumab']"
+8,"Sample 9 (active treatment):
+EHR Context:
+Age: 45 years
+Gender: Male
+Cancer diagnosis: Stage IV renal cell carcinoma
+PMH: None
+Prior cancer treatments: None
+Current cancer treatments: sunitinib (started 2 months ago)
+Current medication list: None
+Summary of most recent oncology visit (4 weeks ago): 45-year-old male with newly diagnosed stage IV renal cell carcinoma. He is on first-line sunitinib and tolerating treatment well. Will continue treatment as planned.",['sunitinib']
+48,"29. Sample Given (active treatment - general chemo):
+EHR Context:
+Age: 42 years
+Gender: Feale
+Cancer diagnosis: Stage IV cervical cancer
+PMH:  none
+Prior cancer treatments: Cisplatin/paclitaxel/bevacizumab
+Current cancer treatments: decetaxel (started 2 months ago)
+Current medication list: aspirin, prochlorperazine
+Summary of most recent oncology visit (1 week ago): 42 year old woman with metastatic cervical cancer, currently on second-line docetaxel She is extremely fatigued and having trouble keeping her weight up. She will come in again in 2 weeks for a symptom check, at which point we will re-evaluate her treatment plan.","['cisplatin', 'paclitaxel', 'bevacizumab', 'docetaxel']"
+57,"8. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 48 years
+Gender: Male
+Cancer diagnosis: Stage IIIC melanoma
+PMH: None
+Prior cancer treatments: Wide excision surgery followed by adjuvant immunotherapy with pembrolizumab (completed 7 months ago)
+Current cancer treatments: None
+Current medication list: None
+Summary of most recent oncology visit (2 months ago): 48-year-old male with a history of Stage IIIC melanoma s/p surgery and pembrolizumab immunotherapy presents for follow-up. Patient is clinically and radiographically without evidence of disease recurrence. He will be seen again in 3 months.",['pembrolizumab']
+62,"13. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 59 years
+Gender: Female
+Cancer diagnosis: Stage IV lung adenocarcinoma
+PMH: None
+Prior cancer treatments: Chemotherapy with carboplatin, pemetrexed, and pembrolizumab (completed 2 months ago)
+Current cancer treatments: None
+Current medication list: None
+Summary of most recent oncology visit (1 month ago): 59-year-old female with a history of Stage IV lung cancer, currently on a treatment break, who presents for follow-up. He is doing well, and imaging showed slight disease progression.","['pembrolizumab', 'carboplatin', 'pemetrexed']"
+63,"14. Sample Given (Surveillance - specific chemo):
+
+EHR Context:
+Age: 70 years
+Gender: Male
+Cancer diagnosis: Stage IV renal cell carcinoma
+PMH: Hypertension, diabetes
+Prior cancer treatments: Nephrectomy followed by sunitinib (completed 6 months ago)
+Current cancer treatments: None
+Current medication list: Lisinopril, metformin, atorvastatin
+Summary of most recent oncology visit (3 months ago): 70-year-old male with a history of Stage IV renal cancer s/p surgery and sunitinib presents for follow-up. Patient shows no evidence of disease.",['sunitinib']
+92,"EHR Context:
+Age: 47 years
+Gender: Female
+Cancer diagnosis: Stage IV malignant melanoma with lung metastases
+PMH: no significant history
+Prior cancer treatments: Excisional biopsy (2 years ago), targeted therapy (discontinued)
+Current cancer treatments: Pembrolizumab (initiated 4 months ago)
+Current medication list: loratadine, ibuprofen, acetaminophen, vitamin D
+Summary of most recent oncology visit (1 month ago): 47 year old female with Stage IV malignant melanoma presents for immunotherapy management. Prior targeted therapy discontinued due to limited response. Maintaining on pembrolizumab. Imaging last month showed stable disease with no new metastases.",['pembrolizumab']
