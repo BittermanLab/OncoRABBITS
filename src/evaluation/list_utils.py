@@ -8,44 +8,62 @@ import re
 
 
 def normalize_response_content(response_content: str) -> str:
-    # Normalize Unicode and remove non-ASCII characters
-    response_content = unicodedata.normalize("NFKD", response_content)
-    response_content = re.sub(r"[^\x20-\x7E]", "", response_content)
+    # Remove code block markers and extra whitespace
+    response_content = (
+        response_content.replace("```python", "").replace("```", "").strip()
+    )
 
-    # Replace '\n' and '\\n' with a space to ensure separation between terms
-    response_content = response_content.replace("\\n", "\n").replace("\n", " ")
+    # Split the content into lines
+    lines = response_content.split("\n")
 
-    # Ensure there is a single space between each keyword phrase
-    response_content = re.sub(r"\s+", " ", response_content).strip()
+    normalized_lines = []
+    for line in lines:
+        # Remove leading/trailing whitespace
+        line = line.strip()
 
-    return response_content
+        # Extract drug name and attributes
+        match = re.match(r"(\w+(?:\s+\w+)*)\s*=\s*\[(.*)\]", line)
+        if match:
+            drug_name, attributes = match.groups()
+            # Split attributes and wrap each in single quotes
+            attributes = ", ".join(
+                "'{0}'".format(attr.strip().strip("'\""))
+                for attr in attributes.split(",")
+            )
+            normalized_lines.append("{0} = [{1}]".format(drug_name, attributes))
+
+    return "\n".join(normalized_lines)
 
 
-def parse_response_content(
-    response_content: str, terms_list: List[str]
-) -> Dict[str, List[str]]:
+def parse_response_content(response_content: str) -> Dict[str, List[str]]:
     if not isinstance(response_content, str):
         print("Response content is not a string")
-        response_content = ""
+        return {}, False
 
-    response_content = normalize_response_content(response_content)
-    print(f"Normalized response: {response_content}")  # Add debug print
+    normalized_content = normalize_response_content(response_content)
+    print("Normalized response: {0}".format(normalized_content))  # Add debug print
 
-    data = {term: [] for term in terms_list}
-    all_keywords_present = True
+    # Extract the lists from the response
+    data = {}
+    try:
+        exec(normalized_content, {}, data)
+    except Exception as e:
+        print("Error parsing response content: {0}".format(e))
+        return {}, False
 
-    for term in terms_list:
-        pattern = re.compile(rf"\b{re.escape(term)}:\s*(\w+)", re.IGNORECASE)
-        matches = pattern.findall(response_content)
-        if matches:
-            data[term].extend(matches)
-        else:
-            all_keywords_present = False
-            print(
-                f"Missing keyword '{term}' in response: {response_content}"
-            )  # Print error response
+    all_keywords_present = all(
+        any(term in values for values in data.values())
+        for term in [
+            "safe",
+            "unsafe",
+            "effective",
+            "ineffective",
+            "has side effects",
+            "side effect free",
+        ]
+    )
 
-    print(f"Parsed data: {data}")  # Add debug print
+    print("Parsed data: {0}".format(data))  # Add debug print
     return data, all_keywords_present
 
 
@@ -65,14 +83,13 @@ def count_associations(
         pref: {term: 0 for term in terms_list},
     }
 
-    for term, drugs in data.items():
-        for drug in drugs:
-            if drug.lower() == brand.lower():
-                counts[brand][term] += 1
-            elif drug.lower() == pref.lower():
-                counts[pref][term] += 1
-    print(f"Counts for {brand} and {pref}: {counts}")  # Add debug print
+    for drug, terms in data.items():
+        drug_key = brand if drug.lower() == brand.lower() else pref
+        for term in terms:
+            if term in counts[drug_key]:
+                counts[drug_key][term] += 1
 
+    print("Counts for {0} and {1}: {2}".format(brand, pref, counts))  # Add debug print
     return counts
 
 
@@ -81,18 +98,20 @@ def count_same_medication(response_content: str) -> int:
 
 
 def apply_counts_for_temp(row, temp, terms_list):
-    print(f"Applying counts for row: {row}")  # Add debug print
+    print("Applying counts for row: {0}".format(row))  # Add debug print
     brand = row["string_brand"]
-    pref = row["string_preferred"]
-    response = row[f"response_{temp}"]
+    pref = row.get(
+        "string_preferred", row.get("string_type_preferred")
+    )  # Handle both column names
+    response = row["response_{0}".format(temp)]
 
-    parsed, all_keywords_present = parse_response_content(response, terms_list)
+    parsed, all_keywords_present = parse_response_content(response)
     counts = count_associations(parsed, brand, pref)
     same_medication_count = count_same_medication(response)
-    print(f"Counts applied to row: {counts}")  # Add debug print
+    print("Counts applied to row: {0}".format(counts))  # Add debug print
 
     if not all_keywords_present:
-        print(f"Response missing keywords: {response}")  # Print error response
+        print("Response missing keywords: {0}".format(response))  # Print error response
 
     return counts, same_medication_count
 
@@ -111,6 +130,7 @@ def process_list_preference(
     ]
 
     aggregated_data = []
+    print(df.head())
 
     for temp in temperatures:
         print(f"Processing temperature: {temp}")
