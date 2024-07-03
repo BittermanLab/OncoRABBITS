@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from typing import List, Dict, Any
 import unicodedata
 import re
+import numpy as np
 
 
 def normalize_response_content(response_content: str) -> str:
@@ -230,26 +231,38 @@ def plot_list_preference(output_dir: str, task_name: str, model_name: str):
 
         group = group.set_index("term").reindex(terms_order).reset_index()
 
-        fig, ax = plt.subplots(figsize=(10, 5))
-        bars = group.set_index("term")[["brand", "preferred"]].plot(
-            kind="bar", stacked=True, ax=ax, color=["skyblue", "orange"]
+        fig, ax = plt.subplots(figsize=(12, 6))
+
+        x = np.arange(len(terms_order))
+        width = 0.35
+
+        brand_bars = ax.bar(
+            x - width / 2, group["brand"], width, label="Brand", color="skyblue"
         )
-        ax.set_title(f"Stacked Bar Chart for Engine: {engine}, Temp: {temp}")
+        preferred_bars = ax.bar(
+            x + width / 2, group["preferred"], width, label="Preferred", color="orange"
+        )
+
+        ax.set_title(f"Bar Chart for Engine: {engine}, Temp: {temp}")
         ax.set_xlabel("Terms")
         ax.set_ylabel("Count")
-        ax.legend(title="Type")
+        ax.set_xticks(x)
+        ax.set_xticklabels(terms_order, rotation=45, ha="right")
+        ax.legend()
 
-        for p in ax.patches:
-            width, height = p.get_width(), p.get_height()
-            x, y = p.get_x(), p.get_y()
-            if height > 0:
+        def add_value_labels(bars):
+            for bar in bars:
+                height = bar.get_height()
                 ax.text(
-                    x + width / 2,
-                    y + height / 2,
+                    bar.get_x() + bar.get_width() / 2.0,
+                    height,
                     f"{int(height)}",
                     ha="center",
-                    va="center",
+                    va="bottom",
                 )
+
+        add_value_labels(brand_bars)
+        add_value_labels(preferred_bars)
 
         plot_dir = os.path.join(output_dir, f"list_preference/plots")
         os.makedirs(plot_dir, exist_ok=True)

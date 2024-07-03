@@ -15,12 +15,12 @@ os.makedirs(output_dir, exist_ok=True)
 # Task details
 tasks = {
     # "general_knowledge": "general_knowledge",
-    "sentiment_question_about": "sentiment",
-    "sentiment_question_patient": "sentiment",
-    "sentiment_question_physician": "sentiment",
-    # "list_preference_prompt1": "list_preference",
-    # "list_preference_prompt2": "list_preference",
-    "coral_sentiment": "sentiment",
+    # "sentiment_question_about": "sentiment",
+    # "sentiment_question_patient": "sentiment",
+    # "sentiment_question_physician": "sentiment",
+    "list_preference_prompt1": "list_preference",
+    "list_preference_prompt2": "list_preference",
+    # "coral_sentiment": "sentiment",
 }
 
 models = ["gpt-3.5-turbo-0125", "gpt-4o", "gpt-4-turbo"]
