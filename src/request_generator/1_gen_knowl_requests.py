@@ -149,7 +149,7 @@ def generate_batch_api_payload_jsonl(
 if __name__ == "__main__":
     DEBUG = False
 
-    data_dir = "data/"
+    data_dir = "../../data/"
     combined_df = pd.read_csv(os.path.join(data_dir, "drug_names/combined_df.csv"))
 
     all_preferred_names = combined_df["string_preferred"].unique()
