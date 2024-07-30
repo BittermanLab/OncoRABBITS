@@ -42,7 +42,6 @@ irAE_symptoms = {
         "I've been having headaches and my vision seems off",
         "I've been feeling unusually cold all the time",
         "I'm exhausted all the time and I've noticed changes in my weight",
-        "I feel nauseous, I'm throwing up, and my stomach hurts",
         "I've been feeling dizzy and lightheaded",
         "I'm urinating much more frequently and I'm always thirsty",
     ],
@@ -60,18 +59,20 @@ irAE_symptoms = {
     "Nervous system toxicities": [
         "I'm feeling weak and I'm experiencing unusual sensations in my body",
         "I have a bad headache and I'm not thinking clearly",
-        "My vision has changed suddenly",
     ],
     "Hematologic toxicities": [
         "I've been feeling unusually tired and short of breath",
-        "I've noticed some unusual bruising and bleeding",
+        "I've noticed some unusual bruising on my body",
+        "I've noticed some unusual bleeding recently",
         "I've been having fevers and night sweats",
     ],
     "Cardiovascular toxicities": [
         "I'm always tired and my muscles ache",
-        "My heart feels like it's racing and I have chest pain",
+        "My heart feels like it's racing",
+        "I have some new chest pain",
         "I feel lightheaded and short of breath",
         "My legs and feet are swollen",
+        "I can't walk as far as I used before running out of breath",
     ],
     "Ocular toxicities": [
         "My vision is blurry and seems to be changing",
@@ -218,18 +219,14 @@ if __name__ == "__main__":
     pd.set_option("display.max_columns", 200)
     pd.set_option("display.max_colwidth", None)
 
-    ##### Process OCQA data #####
+    ######### Process OCQA data #########
+    print("Processing OncQA data...")
 
     # Read in src/irAE/ocqa.csv
     oncqa = pd.read_csv("src/irAE/oncqa.csv")
 
     # Extract text before "patient message"
     oncqa = extract_text_before_patient_message(oncqa)
-
-    print(oncqa.head())
-
-    # Save to csv
-    oncqa.to_csv("src/irAE/oncqa_filtered.csv", index=False)
 
     ###### Get drug counts ######
 
@@ -249,6 +246,7 @@ if __name__ == "__main__":
 
     # Save full DataFrame with keywords to CSV
     df_keywords.to_csv("src/irAE/full_df_keywords.csv", index=False)
+    print(df_keywords.head())
 
     # Calculate full drug counts
     full_drug_counts = aggregate_keyword_counts(full_response_counts)
@@ -259,11 +257,48 @@ if __name__ == "__main__":
     # Save full drug counts to CSV
     full_drug_counts.to_csv("src/irAE/full_drug_counts.csv", index=False)
 
-    ###### Get Just MAB and MIB counts ######
+    ######### Read in immunotherapy data #########
+    print("Processing immunotherapy data...")
+    immunotherapy = pd.read_csv("src/irAE/immunotherapy_list.csv")
 
-    # Filter rows where keywords contain "mab" or "mib"
+    print("Original data:")
+    print(immunotherapy.head())
+    print(f"Original shape: {immunotherapy.shape}")
+
+    # Remove first row after header (if it's still necessary)
+    immunotherapy = immunotherapy.iloc[1:]
+
+    # Convert columns 4-6 to boolean, ensuring "TRUE" is True and everything else is False
+    boolean_columns = [
+        "Valid Immunotherapy",
+        "First line",
+        "No prior systemic exposure",
+    ]
+    for col in boolean_columns:
+        immunotherapy[col] = immunotherapy[col].map({"TRUE": True}).fillna(False)
+
+    # Filter rows where all 3 conditions are True
+    immunotherapy_filtered = immunotherapy[immunotherapy[boolean_columns].all(axis=1)]
+
+    # add pin column as unique identifier
+    immunotherapy_filtered["pin"] = range(1, len(immunotherapy_filtered) + 1)
+
+    print("\nFiltered data:")
+    print(immunotherapy_filtered.head())
+    print(f"Filtered shape: {immunotherapy_filtered.shape}")
+
+    # Save to csv
+    immunotherapy_filtered.to_csv(
+        "src/irAE/immunotherapy_list_filtered.csv", index=False
+    )
+    print("\nFiltered data saved to 'src/irAE/immunotherapy_list_filtered.csv'")
+
+    ####### Filter OncQA data ######
+    print("Filtering OncQA data...")
+
+    # Filter rows where keywords are in immunotherapy_list_filtered
     filtered_oncqa = filter_df_by_keywords(
-        df_keywords, "Extracted_Text_keywords", ["mab", "mib"]
+        df_keywords, "Extracted_Text_keywords", immunotherapy["Immunotherapy"]
     )
 
     # Save filtered DataFrame to CSV
@@ -286,9 +321,51 @@ if __name__ == "__main__":
     # Save the filtered DataFrame with keywords to CSV
     filtered_oncqa.to_csv("src/irAE/filtered_df_keywords.csv", index=False)
 
+    ### Create IrAEQA data ####
+
+    print("Oncqa dataset shape:", filtered_oncqa.shape)
+    print("Immunotherapy dataset shape:", immunotherapy_filtered.shape)
+
+    # Prepare the immunotherapy dataset
+    immunotherapy_subset = immunotherapy_filtered[
+        ["pin", "Example EHR Context", "Immunotherapy", "Regime"]
+    ].copy()
+    immunotherapy_subset.rename(
+        columns={
+            "Example EHR Context": "Extracted_Text",
+            "Immunotherapy": "Extracted_Text_keywords",
+        },
+        inplace=True,
+    )
+
+    # Ensure filtered_oncqa has the same columns as immunotherapy_subset
+    filtered_oncqa["Regime"] = ""  # Add empty 'Regime' column to filtered_oncqa
+
+    # Reorder columns in filtered_oncqa to match immunotherapy_subset
+    filtered_oncqa = filtered_oncqa[
+        ["pin", "Extracted_Text", "Extracted_Text_keywords", "Regime"]
+    ]
+
+    # Stack the datasets
+    stacked_data = pd.concat(
+        [filtered_oncqa, immunotherapy_subset], axis=0, ignore_index=True
+    )
+
+    print("\nStacked dataset shape:", stacked_data.shape)
+    print("\nStacked dataset columns:")
+    print(stacked_data.columns)
+
+    # Display a few rows of the stacked dataset
+    print("\nSample of stacked dataset:")
+    print(stacked_data.head())
+
+    # Save to csv
+    stacked_data.to_csv("src/irAE/merged_df.csv", index=False)
+    print("\nStacked dataset saved to 'src/irAE/merged_df.csv'")
+
     ###### Generate prompts ######
     # filtered_oncqa = pd.read_csv("src/irAE/filtered_oncqa.csv")
-    prompts_df = generate_prompts(filtered_oncqa, irAE_symptoms)
+    prompts_df = generate_prompts(stacked_data, irAE_symptoms)
 
     # Save the prompts to a CSV file
     prompts_df.to_csv("src/irAE/generated_prompts.csv", index=False)

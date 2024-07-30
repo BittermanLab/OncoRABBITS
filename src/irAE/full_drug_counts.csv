@@ -3,14 +3,14 @@ omeprazole,11
 cisplatin,9
 carboplatin,7
 paclitaxel,7
-oxaliplatin,4
 pemetrexed,4
-doxorubicin,3
+oxaliplatin,4
+cyclophosphamide,3
 gemcitabine,3
 pembrolizumab,3
 fluorouracil,3
-cyclophosphamide,3
 capecitabine,3
+doxorubicin,3
 sunitinib,2
 bevacizumab,2
 temozolomide,2
@@ -21,6 +21,6 @@ sorafenib,1
 ipilimumab,1
 nivolumab,1
 dexamethasone,1
-lenalidomide,1
 bortezomib,1
+lenalidomide,1
 prednisone,1
