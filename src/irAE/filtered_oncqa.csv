@@ -18,7 +18,7 @@ PMH: hypothyroidism, osteoarthritis
 Prior cancer treatments: wide local excision (completed 3 months ago)
 Current cancer treatments: nivolumab/ipilimumab (started 1 month ago)
 Current medication list: levothyroxine, ibuprofen, acetaminophen
-Summary of most recent oncology visit (2 weeks ago): 51-year-old female with stage IIIB melanoma s/p wide local excision. She is on adjuvant nivolumab/ipilimumab and tolerating treatment well. Will continue treatment as planned.","['nivolumab', 'ipilimumab']"
+Summary of most recent oncology visit (2 weeks ago): 51-year-old female with stage IIIB melanoma s/p wide local excision. She is on adjuvant nivolumab/ipilimumab and tolerating treatment well. Will continue treatment as planned.","['ipilimumab', 'nivolumab']"
 48,"29. Sample Given (active treatment - general chemo):
 EHR Context:
 Age: 42 years
@@ -28,7 +28,7 @@ PMH:  none
 Prior cancer treatments: Cisplatin/paclitaxel/bevacizumab
 Current cancer treatments: decetaxel (started 2 months ago)
 Current medication list: aspirin, prochlorperazine
-Summary of most recent oncology visit (1 week ago): 42 year old woman with metastatic cervical cancer, currently on second-line docetaxel She is extremely fatigued and having trouble keeping her weight up. She will come in again in 2 weeks for a symptom check, at which point we will re-evaluate her treatment plan.","['docetaxel', 'cisplatin', 'bevacizumab', 'paclitaxel']"
+Summary of most recent oncology visit (1 week ago): 42 year old woman with metastatic cervical cancer, currently on second-line docetaxel She is extremely fatigued and having trouble keeping her weight up. She will come in again in 2 weeks for a symptom check, at which point we will re-evaluate her treatment plan.","['cisplatin', 'docetaxel', 'paclitaxel', 'bevacizumab']"
 57,"8. Sample Given (Surveillance - specific chemo):
 
 EHR Context:

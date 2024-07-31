@@ -7,10 +7,10 @@ from collections import Counter
 import pandas as pd
 
 
-patient_questions = [
-    "Most recent clinic note: {clinic_note}\n\nPatient's reported symptoms: {symptoms}\n\nBased on the patient's current use of {drug}, how likely is it that these symptoms represent an immune-related adverse event (irAE)? Please return the corresponding number as: 1 (very unlikely), 2 (unlikely), 3 (likely), 4 (very likely).",
-    "Most recent clinic note: {clinic_note}\n\nPatient's reported symptoms: {symptoms}\n\nConsidering the patient's history and current medications, what are the top 3 most likely diagnoses causing these symptoms? Please list them in order of probability.",
-]
+patient_questions = {
+    "irae_detection": "Most recent clinic note: {clinic_note}\n\nPatient's reported symptoms: {symptoms}\n\nBased on the patient's current use of {drug}, how likely is it that these symptoms represent an immune-related adverse event (irAE)? Please return the corresponding number as: 1 (very unlikely), 2 (unlikely), 3 (likely), 4 (very likely). Answer: ",
+    "differential": "Most recent clinic note: {clinic_note}\n\nPatient's reported symptoms: {symptoms}\n\nConsidering the patient's history and current medications, what are the top 3 most likely diagnoses causing these symptoms? Please list them in order of probability. Answer: [",
+}
 
 irAE_symptoms = {
     "Cutaneous toxicities": [
@@ -197,21 +197,25 @@ def generate_prompts(df, irAE_symptoms):
 
         for drug in drugs:
             for symptom_category, symptom_list in irAE_symptoms.items():
-                for symptom in symptom_list:
-                    for question in patient_questions:
-                        prompt = question.format(
+                for symptom_index, symptom in enumerate(symptom_list):
+                    for question_key, question_template in patient_questions.items():
+                        prompt = question_template.format(
                             clinic_note=context, symptoms=symptom, drug=drug
                         )
+                        # Generate unique ID
+                        unique_id = f"{row['pin']}_{drug}_{symptom_category}_{symptom_index}_{question_key}"
                         prompts.append(
                             {
+                                "unique_id": unique_id,
                                 "pin": row["pin"],
+                                "type": row["type"],
+                                "task_name": question_key,
                                 "drug": drug,
                                 "symptom_category": symptom_category,
                                 "symptom": symptom,
                                 "prompt": prompt,
                             }
                         )
-
     return pd.DataFrame(prompts)
 
 
@@ -326,9 +330,13 @@ if __name__ == "__main__":
     print("Oncqa dataset shape:", filtered_oncqa.shape)
     print("Immunotherapy dataset shape:", immunotherapy_filtered.shape)
 
+    # add type col to immunotherapy_filtered
+    immunotherapy_filtered["type"] = "immunotherapy"
+    filtered_oncqa["type"] = "oncqa"
+
     # Prepare the immunotherapy dataset
     immunotherapy_subset = immunotherapy_filtered[
-        ["pin", "Example EHR Context", "Immunotherapy", "Regime"]
+        ["pin", "Example EHR Context", "Immunotherapy", "Regime", "type"]
     ].copy()
     immunotherapy_subset.rename(
         columns={
@@ -343,7 +351,7 @@ if __name__ == "__main__":
 
     # Reorder columns in filtered_oncqa to match immunotherapy_subset
     filtered_oncqa = filtered_oncqa[
-        ["pin", "Extracted_Text", "Extracted_Text_keywords", "Regime"]
+        ["pin", "Extracted_Text", "Extracted_Text_keywords", "Regime", "type"]
     ]
 
     # Stack the datasets

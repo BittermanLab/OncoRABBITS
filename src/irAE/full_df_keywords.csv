@@ -18,7 +18,7 @@ PMH: asthma, obesity
 Prior cancer treatments: lumpectomy (completed 2 months ago)
 Current cancer treatments: adjuvant doxorubicin/cyclophosphamide (started 1 month ago)
 Current medication list: albuterol, montelukast, metformin, aspirin, atorvastatin, vitamin D
-Summary of most recent oncology visit (3 weeks ago): 47-year-old female with a history of stage II breast cancer s/p lumpectomy. She is on adjuvant doxorubicin/cyclophosphamide and tolerating treatment well. Will continue treatment as planned.","['doxorubicin', 'cyclophosphamide']"
+Summary of most recent oncology visit (3 weeks ago): 47-year-old female with a history of stage II breast cancer s/p lumpectomy. She is on adjuvant doxorubicin/cyclophosphamide and tolerating treatment well. Will continue treatment as planned.","['cyclophosphamide', 'doxorubicin']"
 2,"Sample 3 (active treatment):
 EHR Context:
 Age: 68 years
@@ -78,7 +78,7 @@ PMH: hypothyroidism, osteoarthritis
 Prior cancer treatments: wide local excision (completed 3 months ago)
 Current cancer treatments: nivolumab/ipilimumab (started 1 month ago)
 Current medication list: levothyroxine, ibuprofen, acetaminophen
-Summary of most recent oncology visit (2 weeks ago): 51-year-old female with stage IIIB melanoma s/p wide local excision. She is on adjuvant nivolumab/ipilimumab and tolerating treatment well. Will continue treatment as planned.","['nivolumab', 'ipilimumab']"
+Summary of most recent oncology visit (2 weeks ago): 51-year-old female with stage IIIB melanoma s/p wide local excision. She is on adjuvant nivolumab/ipilimumab and tolerating treatment well. Will continue treatment as planned.","['ipilimumab', 'nivolumab']"
 8,"Sample 9 (active treatment):
 EHR Context:
 Age: 45 years
@@ -138,7 +138,7 @@ PMH: None
 Prior cancer treatments: lumpectomy (completed 2 months ago)
 Current cancer treatments: adjuvant dose-dense doxorubicin/cyclophosphamide (started 1 month ago)
 Current medication list: None
-Summary of most recent oncology visit (3 weeks ago): 43-year-old female with stage II triple-negative breast cancer s/p lumpectomy. She is on adjuvant dose-dense doxorubicin/cyclophosphamide and tolerating treatment well. Will continue treatment as planned.","['doxorubicin', 'cyclophosphamide']"
+Summary of most recent oncology visit (3 weeks ago): 43-year-old female with stage II triple-negative breast cancer s/p lumpectomy. She is on adjuvant dose-dense doxorubicin/cyclophosphamide and tolerating treatment well. Will continue treatment as planned.","['cyclophosphamide', 'doxorubicin']"
 14,"Sample 15 (active treatment):
 EHR Context:
 Age: 57 years
@@ -198,7 +198,7 @@ PMH: hypertension, type 2 diabetes
 Prior cancer treatments: None
 Current cancer treatments: gemcitabine/cisplatin (started 2 months ago)
 Current medication list: metformin, lisinopril, amlodipine, aspirin
-Summary of most recent oncology visit (4 weeks ago): 59-year-old female with newly diagnosed stage IV cholangiocarcinoma. She is on first-line gemcitabine/cisplatin and tolerating treatment well. Will continue treatment as planned.","['cisplatin', 'gemcitabine']"
+Summary of most recent oncology visit (4 weeks ago): 59-year-old female with newly diagnosed stage IV cholangiocarcinoma. She is on first-line gemcitabine/cisplatin and tolerating treatment well. Will continue treatment as planned.","['gemcitabine', 'cisplatin']"
 20,"1. Sample Given (active treatment - general chemo):
 EHR Context:
 Age: 62 years
@@ -288,7 +288,7 @@ PMH: diabetes, hypertension
 Prior cancer treatments: surgery, adjuvant chemotherapy with oxaliplatin and capecitabine (completed 3 years ago)
 Current cancer treatments: chemotherapy only (started 2 months ago)
 Current medication list: metformin, lisinopril, atorvastatin, aspirin, insulin glulisine
-Summary of most recent oncology visit (6 weeks ago): 58 year old female with a history of colorectal cancer s/p surgery and adjuvant chemotherapy, now with distant metastases involving the liver, lungs. Since starting systemic therapy, she has had mild diarrhea. Will continue treatment as planned.","['oxaliplatin', 'capecitabine']"
+Summary of most recent oncology visit (6 weeks ago): 58 year old female with a history of colorectal cancer s/p surgery and adjuvant chemotherapy, now with distant metastases involving the liver, lungs. Since starting systemic therapy, she has had mild diarrhea. Will continue treatment as planned.","['capecitabine', 'oxaliplatin']"
 29,"10. Sample Given (active treatment - general chemo):
 EHR Context:
 Age: 61 years
@@ -488,7 +488,7 @@ PMH:  none
 Prior cancer treatments: Cisplatin/paclitaxel/bevacizumab
 Current cancer treatments: decetaxel (started 2 months ago)
 Current medication list: aspirin, prochlorperazine
-Summary of most recent oncology visit (1 week ago): 42 year old woman with metastatic cervical cancer, currently on second-line docetaxel She is extremely fatigued and having trouble keeping her weight up. She will come in again in 2 weeks for a symptom check, at which point we will re-evaluate her treatment plan.","['docetaxel', 'cisplatin', 'bevacizumab', 'paclitaxel']"
+Summary of most recent oncology visit (1 week ago): 42 year old woman with metastatic cervical cancer, currently on second-line docetaxel She is extremely fatigued and having trouble keeping her weight up. She will come in again in 2 weeks for a symptom check, at which point we will re-evaluate her treatment plan.","['cisplatin', 'docetaxel', 'paclitaxel', 'bevacizumab']"
 49,"30. Sample Given (active treatment - general chemo):
 EHR Context:
 Age: 59 years
@@ -520,7 +520,7 @@ PMH: Hypertension, chronic obstructive pulmonary disease (COPD)
 Prior cancer treatments: Chemotherapy with cisplatin and pemetrexed (completed 6 months ago)
 Current cancer treatments: None
 Current medication list: Lisinopril, albuterol, tiotropium, simvastatin, aspirin
-Summary of most recent oncology visit (3 months ago): 52-year-old male with a history of Stage IIIB lung cancer s/p cisplatin and pemetrexed chemotherapy presents for follow-up. Patient reports improvement in his symptoms and is clinically stable. Will continue ongoing surveillance.","['cisplatin', 'pemetrexed']"
+Summary of most recent oncology visit (3 months ago): 52-year-old male with a history of Stage IIIB lung cancer s/p cisplatin and pemetrexed chemotherapy presents for follow-up. Patient reports improvement in his symptoms and is clinically stable. Will continue ongoing surveillance.","['pemetrexed', 'cisplatin']"
 52,"3. Sample Given (Surveillance - specific chemo):
 
 EHR Context:
@@ -531,7 +531,7 @@ PMH: Hypertension, osteoporosis
 Prior cancer treatments: Lumpectomy followed by adjuvant chemotherapy with doxorubicin and cyclophosphamide and radiation (completed 8 months ago)
 Current cancer treatments: None
 Current medication list: Amlodipine, alendronate, oxycodone, ibuprofen
-Summary of most recent oncology visit (4 months ago): 63-year-old female with a history of Stage IIB breast cancer presents for routine follow-up visit. Patient is clinically without evidence of recurrence. Mammogram scheduled in 8 months.","['doxorubicin', 'cyclophosphamide']"
+Summary of most recent oncology visit (4 months ago): 63-year-old female with a history of Stage IIB breast cancer presents for routine follow-up visit. Patient is clinically without evidence of recurrence. Mammogram scheduled in 8 months.","['cyclophosphamide', 'doxorubicin']"
 53,"4. Sample Given (Surveillance - specific chemo):
 
 EHR Context:
@@ -575,7 +575,7 @@ PMH: Hypertension, gastroesophageal reflux disease (GERD)
 Prior cancer treatments: Surgery followed by adjuvant chemotherapy with oxaliplatin and fluorouracil (completed 6 months ago)
 Current cancer treatments: None
 Current medication list: Losartan, omeprazole, simvastatin
-Summary of most recent oncology visit (4 months ago): 59-year-old female with a history of Stage IIA colorectal cancer s/p surgery and adjuvant chemotherapy presents for follow-up. Patient is clinically without evidence of recurrence but ongoing bowel issues with very frequent stools. Will trial bulking agents.","['omeprazole', 'fluorouracil', 'oxaliplatin']"
+Summary of most recent oncology visit (4 months ago): 59-year-old female with a history of Stage IIA colorectal cancer s/p surgery and adjuvant chemotherapy presents for follow-up. Patient is clinically without evidence of recurrence but ongoing bowel issues with very frequent stools. Will trial bulking agents.","['omeprazole', 'oxaliplatin', 'fluorouracil']"
 57,"8. Sample Given (Surveillance - specific chemo):
 
 EHR Context:
@@ -619,7 +619,7 @@ PMH: Diabetes, hypertension
 Prior cancer treatments: Whipple procedure followed by adjuvant chemotherapy with gemcitabine and nab-paclitaxel (completed 5 months ago)
 Current cancer treatments: None
 Current medication list: Insulin, metformin, lisinopril, atorvastatin
-Summary of most recent oncology visit (3 months ago): 74-year-old female with a history of resectable pancreatic cancer s/p surgery and chemotherapy presents for follow-up. Patient is without evidence of recurrence. Will continue ongoing surveillance.","['paclitaxel', 'gemcitabine']"
+Summary of most recent oncology visit (3 months ago): 74-year-old female with a history of resectable pancreatic cancer s/p surgery and chemotherapy presents for follow-up. Patient is without evidence of recurrence. Will continue ongoing surveillance.","['gemcitabine', 'paclitaxel']"
 61,"12. Sample Given (Surveillance - specific chemo):
 
 EHR Context:
@@ -762,7 +762,7 @@ PMH: None
 Prior cancer treatments: Surgery followed by adjuvant chemotherapy with oxaliplatin and fluorouracil (completed 7 months ago)
 Current cancer treatments: None
 Current medication list: None
-Summary of most recent oncology visit (3 months ago): 55-year-old male with a history of Stage IIA colon cancer s/p surgery and chemotherapy presents for follow-up. He is doing well, no evidence of disease recurrence observed.","['fluorouracil', 'oxaliplatin']"
+Summary of most recent oncology visit (3 months ago): 55-year-old male with a history of Stage IIA colon cancer s/p surgery and chemotherapy presents for follow-up. He is doing well, no evidence of disease recurrence observed.","['oxaliplatin', 'fluorouracil']"
 74,"25. Sample Given (Surveillance - specific chemo):
 
 EHR Context:
@@ -795,7 +795,7 @@ PMH: None
 Prior cancer treatments: Lobectomy followed by adjuvant chemotherapy with cisplatin and pemetrexed (completed 6 months ago)
 Current cancer treatments: None
 Current medication list: None
-Summary of most recent oncology visit (3 months ago): 52-year-old female with a history of Stage II lung cancer s/p surgery and chemotherapy presents for routine follow-up. No evidence of disease recurrence observed.","['cisplatin', 'pemetrexed']"
+Summary of most recent oncology visit (3 months ago): 52-year-old female with a history of Stage II lung cancer s/p surgery and chemotherapy presents for routine follow-up. No evidence of disease recurrence observed.","['pemetrexed', 'cisplatin']"
 77,"28. Sample Given (Surveillance - specific chemo):
 
 EHR Context:
