@@ -1,4 +1,0 @@
-model,type,temperature,mean_length,median_length,std_dev,min_length,max_length,valid_responses
-gpt-4o,generic,0.0,3.608108108108108,5.0,1.6131032521516104,1,5,370
-gpt-4o,generic,0.7,3.772972972972973,5.0,1.807039629197374,1,11,370
-gpt-4o,generic,1.0,3.6810810810810812,3.0,2.0734268974572263,1,13,370

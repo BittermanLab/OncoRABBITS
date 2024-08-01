@@ -3,14 +3,12 @@ import os
 import json
 from typing import List, Dict, Any
 
-from list_utils import process_list_preference
+from list_utils import process_list_preference, combine_and_plot_list_preference
 from general_knowledge_utils import process_general_knowledge
 from sentiment_utils import process_sentiment
 
-
 pd.set_option("display.max_columns", None)
 pd.set_option("display.max_colwidth", None)
-
 
 # Directory setup
 data_dir = "data/"
@@ -139,5 +137,9 @@ for task_name, file_name in tasks.items():
         print(f"{task_name} processing completed for model '{model}'.")
         print("\n" * 5)
 
-# Print a message indicating completion
-print("Data processing and saving completed for all tasks and models.")
+
+for model in models:
+    model_output_dir = os.path.join(output_dir, model, "list_preference")
+    combine_and_plot_list_preference(model_output_dir, model)
+
+print("Data processing, combining, and plotting completed for all tasks and models.")

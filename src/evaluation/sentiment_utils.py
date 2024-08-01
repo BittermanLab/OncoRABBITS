@@ -5,17 +5,17 @@ from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from scipy.special import softmax
 import matplotlib.pyplot as plt
 
-# Load the pre-trained model and tokenizer
-tokenizer = AutoTokenizer.from_pretrained("MarieAngeA13/Sentiment-Analysis-BERT")
-model = AutoModelForSequenceClassification.from_pretrained(
-    "MarieAngeA13/Sentiment-Analysis-BERT"
-)
-
 
 def perform_sentiment_analysis(df, column_names):
     """
     Function to perform sentiment analysis using BERT on specific columns in the DataFrame.
     """
+    # Load the pre-trained model and tokenizer
+    tokenizer = AutoTokenizer.from_pretrained("MarieAngeA13/Sentiment-Analysis-BERT")
+    model = AutoModelForSequenceClassification.from_pretrained(
+        "MarieAngeA13/Sentiment-Analysis-BERT"
+    )
+
     for column_name in column_names:
         sentiments = []
         for response in df[column_name]:

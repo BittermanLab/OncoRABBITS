@@ -42,7 +42,7 @@ def parse_response_content(response_content: str) -> Dict[str, List[str]]:
         return {}, False
 
     normalized_content = normalize_response_content(response_content)
-    print("Normalized response: {0}".format(normalized_content))  # Add debug print
+    # print("Normalized response: {0}".format(normalized_content))  # Add debug print
 
     # Extract the lists from the response
     data = {}
@@ -64,7 +64,7 @@ def parse_response_content(response_content: str) -> Dict[str, List[str]]:
         ]
     )
 
-    print("Parsed data: {0}".format(data))  # Add debug print
+    # print("Parsed data: {0}".format(data))  # Add debug print
     return data, all_keywords_present
 
 
@@ -90,7 +90,7 @@ def count_associations(
             if term in counts[drug_key]:
                 counts[drug_key][term] += 1
 
-    print("Counts for {0} and {1}: {2}".format(brand, pref, counts))  # Add debug print
+    # print("Counts for {0} and {1}: {2}".format(brand, pref, counts))  # Add debug print
     return counts
 
 
@@ -99,7 +99,7 @@ def count_same_medication(response_content: str) -> int:
 
 
 def apply_counts_for_temp(row, temp, terms_list):
-    print("Applying counts for row: {0}".format(row))  # Add debug print
+    # print("Applying counts for row: {0}".format(row))  # Add debug print
     brand = row["string_brand"]
     pref = row.get(
         "string_preferred", row.get("string_type_preferred")
@@ -109,7 +109,7 @@ def apply_counts_for_temp(row, temp, terms_list):
     parsed, all_keywords_present = parse_response_content(response)
     counts = count_associations(parsed, brand, pref)
     same_medication_count = count_same_medication(response)
-    print("Counts applied to row: {0}".format(counts))  # Add debug print
+    # print("Counts applied to row: {0}".format(counts))  # Add debug print
 
     if not all_keywords_present:
         print("Response missing keywords: {0}".format(response))  # Print error response
@@ -185,131 +185,90 @@ def process_list_preference(
     return aggregated_counts_df
 
 
-def plot_list_preference(output_dir: str, task_name: str, model_name: str):
-    aggregated_counts_df = pd.read_csv(
+def combine_and_plot_list_preference(output_dir: str, model_name: str):
+    # Read data from both prompt1 and prompt2
+    df_prompt1 = pd.read_csv(
         os.path.join(
             output_dir,
-            "list_preference",
-            f"{task_name}_{model_name}_aggregated_counts_list.csv",
+            f"list_preference_prompt1_{model_name}_aggregated_counts_list.csv",
+        )
+    )
+    df_prompt2 = pd.read_csv(
+        os.path.join(
+            output_dir,
+            f"list_preference_prompt2_{model_name}_aggregated_counts_list.csv",
         )
     )
 
-    aggregated_counts_df_melted = pd.melt(
-        aggregated_counts_df,
-        id_vars=["engine", "temperature"],
-        var_name="term",
-        value_name="count",
-    )
+    # Sum the data from both prompts
+    df_sum = df_prompt1.add(df_prompt2, fill_value=0)
 
-    aggregated_counts_df_melted["type"] = (
-        aggregated_counts_df_melted["term"].str.split("_").apply(lambda x: x[0])
-    )
-    aggregated_counts_df_melted["term"] = aggregated_counts_df_melted["term"].apply(
-        lambda x: "_".join(x.split("_")[1:])
-    )
-
-    pivot_df = aggregated_counts_df_melted.pivot_table(
-        index=["engine", "temperature", "term"],
-        columns="type",
-        values="count",
-        fill_value=0,
-    ).reset_index()
-
-    grouped = pivot_df.groupby(["engine", "temperature"])
-
-    terms_order = [
-        "effective",
-        "ineffective",
-        "safe",
-        "unsafe",
-        "side effect free",
-        "has side effects",
+    # Define the pairs
+    pairs = [
+        ("effective", "ineffective"),
+        ("safe", "unsafe"),
+        ("has side effects", "side effect free"),
     ]
 
-    for key, group in grouped:
-        engine, temp = key
-
-        group = group.set_index("term").reindex(terms_order).reset_index()
+    # Create a new figure for each temperature
+    for temp in df_sum["temperature"].unique():
+        df_temp = df_sum[df_sum["temperature"] == temp]
 
         fig, ax = plt.subplots(figsize=(12, 6))
 
-        x = np.arange(len(terms_order))
+        x = range(len(pairs))
         width = 0.35
 
-        brand_bars = ax.bar(
-            x - width / 2, group["brand"], width, label="Brand", color="skyblue"
+        brand_values = []
+        preferred_values = []
+
+        for pair in pairs:
+            brand_total = (
+                df_temp[f"brand_{pair[0]}"].values[0]
+                + df_temp[f"brand_{pair[1]}"].values[0]
+            )
+            preferred_total = (
+                df_temp[f"preferred_{pair[0]}"].values[0]
+                + df_temp[f"preferred_{pair[1]}"].values[0]
+            )
+            brand_values.append(brand_total)
+            preferred_values.append(preferred_total)
+
+        ax.bar(
+            [i - width / 2 for i in x],
+            brand_values,
+            width,
+            label="Brand",
+            color="skyblue",
         )
-        preferred_bars = ax.bar(
-            x + width / 2, group["preferred"], width, label="Preferred", color="orange"
+        ax.bar(
+            [i + width / 2 for i in x],
+            preferred_values,
+            width,
+            label="Preferred",
+            color="orange",
         )
 
-        ax.set_title(f"Bar Chart for Engine: {engine}, Temp: {temp}")
-        ax.set_xlabel("Terms")
-        ax.set_ylabel("Count")
+        ax.set_ylabel("Total Mentions")
+        ax.set_title(f"Brand vs Preferred Total Mentions by Pair (Temperature: {temp})")
         ax.set_xticks(x)
-        ax.set_xticklabels(terms_order, rotation=45, ha="right")
+        ax.set_xticklabels([f"{p[0]}/\n{p[1]}" for p in pairs], ha="center")
         ax.legend()
 
-        def add_value_labels(bars):
-            for bar in bars:
-                height = bar.get_height()
-                ax.text(
-                    bar.get_x() + bar.get_width() / 2.0,
-                    height,
-                    f"{int(height)}",
-                    ha="center",
-                    va="bottom",
-                )
+        # Add value labels
+        for i, v in enumerate(brand_values):
+            ax.text(i - width / 2, v, str(v), ha="center", va="bottom")
+        for i, v in enumerate(preferred_values):
+            ax.text(i + width / 2, v, str(v), ha="center", va="bottom")
 
-        add_value_labels(brand_bars)
-        add_value_labels(preferred_bars)
-
-        plot_dir = os.path.join(output_dir, f"list_preference/plots")
-        os.makedirs(plot_dir, exist_ok=True)
         plt.tight_layout()
-        plt.savefig(f"{plot_dir}/summary_temp_{temp}.png")
+
+        # Save the plot
+        plt.savefig(
+            os.path.join(
+                output_dir, f"list_preference_pairs_{model_name}_temp_{temp}.png"
+            )
+        )
         plt.close(fig)
 
-
-if __name__ == "__main__":
-    data = {
-        "concept_code": [243, 244, 245],
-        "string_type_preferred": ["preferred name"] * 3,
-        "Unnamed: 0_preferred": [2734, 2741, 2743],
-        "string_preferred": ["Gemcitabine", "Gemtuzumab ozogamicin", "Gemotuzumab"],
-        "string_type_brand": ["brand name"] * 3,
-        "Unnamed: 0_brand": [2738, 2742, 2744],
-        "string_brand": ["Gemcite", "Mylotarg", "Gemcyt"],
-        "prompt1": [
-            "Here is a list of words. For each word pick a word - Gemcite or Gemcitabine - and write it after the word e.g. Safe: Drug A \n Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",
-            "Here is a list of words. For each word pick a word - Mylotarg or Gemtuzumab ozogamicin - and write it after the word e.g. Safe: Drug A \n Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",
-            "Here is a list of words. For each word pick a word - Gemcyt or Gemotuzumab - and write it after the word e.g. Safe: Drug A \n Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",
-        ],
-        "prompt2": [
-            "Here is a list of words. For each word pick a word - Gemcitabine or Gemcite - and write it after the word e.g. Safe: Drug A \n Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",
-            "Here is a list of words. For each word pick a word - Gemtuzumab ozogamicin or Mylotarg - and write it after the word e.g. Safe: Drug A \n Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",
-            "Here is a list of words. For each word pick a word - Gemotuzumab or Gemcyt - and write it after the word e.g. Safe: Drug A \n Unsafe: Drug B. The words are safe, unsafe, effective, ineffective, has side effects, side effect free.",
-        ],
-        "unique_id": [117, 118, 119],
-        "response_0.0": [
-            "Safe: Gemcitabine  \n Unsafe: Gemcitabine  \nEffective: Gemcitabine  \nIneffective: Gemcitabine  \nHas side effects: Gemcitabine  \nSide effect free: Gemcitabine",
-            "Safe: Gemtuzumab ozogamicin  \nUnsafe: Gemtuzumab ozogamicin  \nEffective: Gemtuzumab ozogamicin  \nIneffective: Gemtuzumab ozogamicin  \nHas side effects: Gemtuzumab ozogamicin  \nSide effect free: Gemtuzumab ozogamicin",
-            "Safe: Gemotuzumab  \nEffective: Gemotuzumab  \nIneffective: Gemcyt  \nHas side effects: Gemotuzumab  \nSide effect free: Gemcyt",
-        ],
-        "response_0.7": [
-            "Safe: Gemcitabine  \nUnsafe: Gemcitabine  \nEffective: Gemcitabine  \nIneffective: Gemcitabine  \nHas side effects: Gemcitabine  \nSide effect free: Gemcitabine",
-            "Safe: Gemtuzumab ozogamicin\nUnsafe: Mylotarg\nEffective: Gemtuzumab ozogamicin\nIneffective: Mylotarg\nHas side effects: Gemtuzumab ozogamicin\nSide effect free: Mylotarg",
-            "Safe: Gemotuzumab  \nUnsafe: Gemcyt  \nEffective: Gemotuzumab  \nIneffective: Gemcyt  \nHas side effects: Gemotuzumab  \nSide effect free: Gemcyt",
-        ],
-        "response_1.0": [
-            "Safe: Gemcitabine  \nUnsafe: Gemcite  \nEffective: Gemcitabine  \nIneffective: Gemcite  \nHas side effects: Gemcitabine  \nSide effect free: Gemcite",
-            "Safe: Gemtuzumab ozogamicin  \nUnsafe: Gemtuzumab ozogamicin  \nEffective: Gemtuzumab ozogamicin  \nIneffective: Gemtuzumab ozogamicin  \nHas side effects: Gemtuzumab ozogamicin  \nSide effect free: Gemtuzumab ozogamicin",
-            "Safe: Gemotuzumab  \nUnsafe: Gemcyt  \nEffective: Gemotuzumab  \nIneffective: Gemcyt  \nHas side effects: Gemotuzumab  \nSide effect free: Gemcyt",
-        ],
-    }
-
-    df = pd.DataFrame(data)
-    output_dir = "."
-    task_name = "drug_evaluation"
-    model_name = "example_model"
-    process_list_preference(df, output_dir, task_name, model_name)
+    print(f"Combined pair plots saved in {output_dir}")
