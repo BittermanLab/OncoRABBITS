@@ -5,6 +5,7 @@ import re
 import json
 from collections import Counter
 import pandas as pd
+from drug_mapping import DrugMapper
 
 
 patient_questions = {
@@ -82,6 +83,54 @@ irAE_symptoms = {
 }
 
 
+def create_brand_only_version(df: pd.DataFrame, mapper: DrugMapper) -> pd.DataFrame:
+    """
+    Create a brand-only version of the dataset by replacing generic names with brand names.
+    """
+    generic_to_brand = mapper.load_keywords("generic_to_brand")
+
+    def replace_generic_with_brand(text):
+        for generic, brand in generic_to_brand.items():
+            text = re.sub(
+                r"\b" + re.escape(generic) + r"\b", brand, text, flags=re.IGNORECASE
+            )
+        return text
+
+    brand_only_df = df.copy()
+    brand_only_df["Extracted_Text"] = brand_only_df["Extracted_Text"].apply(
+        replace_generic_with_brand
+    )
+    brand_only_df["Extracted_Text_keywords"] = brand_only_df[
+        "Extracted_Text_keywords"
+    ].apply(lambda x: [replace_generic_with_brand(drug) for drug in x])
+
+    return brand_only_df
+
+
+def create_generic_only_version(df: pd.DataFrame, mapper: DrugMapper) -> pd.DataFrame:
+    """
+    Create a generic-only version of the dataset by replacing brand names with generic names.
+    """
+    brand_to_generic = mapper.load_keywords("brand_to_generic")
+
+    def replace_brand_with_generic(text):
+        for brand, generic in brand_to_generic.items():
+            text = re.sub(
+                r"\b" + re.escape(brand) + r"\b", generic, text, flags=re.IGNORECASE
+            )
+        return text
+
+    generic_only_df = df.copy()
+    generic_only_df["Extracted_Text"] = generic_only_df["Extracted_Text"].apply(
+        replace_brand_with_generic
+    )
+    generic_only_df["Extracted_Text_keywords"] = generic_only_df[
+        "Extracted_Text_keywords"
+    ].apply(lambda x: [replace_brand_with_generic(drug) for drug in x])
+
+    return generic_only_df
+
+
 def extract_text_before_patient_message(df):
     df["Extracted_Text"] = df["Input"].apply(
         lambda x: x.split("Patient message:")[0].strip()
@@ -91,8 +140,7 @@ def extract_text_before_patient_message(df):
 
 def custom_parse_response(response):
     """
-    Custom function to parse drug list from response string, with improved handling
-    for control characters.
+    Custom function to parse drug list from response string, ensuring whole words are extracted.
     """
     if isinstance(response, str):
         try:
@@ -100,25 +148,21 @@ def custom_parse_response(response):
             response = response.strip("[]")
             # Split the response by commas not within quotes
             parts = re.split(r'(?<!"),(?!")', response)
-            # Strip whitespace and add double quotes around parts if not already quoted
-            parts = [part.strip().strip('"') for part in parts]
-            # Properly escape control characters in each part
-            parts = [json.dumps(part) for part in parts]
-            # Join parts back with commas
-            response = ",".join(parts)
-            # Form the final JSON array
-            response = f"[{response}]"
-            # Parse the JSON
-            drug_list = json.loads(response)
-            return drug_list
-        except (json.JSONDecodeError, KeyError, ValueError) as e:
+            # Strip whitespace and quotes from each part
+            parts = [part.strip().strip('"').strip("'") for part in parts]
+            # Remove any empty strings and join characters into whole words
+            parts = ["".join(part.split()) for part in parts if part]
+            return parts
+        except Exception as e:
             print(f"Error parsing response: {response}, error: {e}")
             return []
+    elif isinstance(response, list):
+        return ["".join(item.split()) for item in response if item]
     else:
         return []
 
 
-def extract_keywords_from_col(df, col, keywords):
+def extract_keywords_from_col(df, col, keywords, mapper):
     def extract_keywords(col_value, keywords):
         found_keywords = []
         if col_value is None or (
@@ -129,13 +173,9 @@ def extract_keywords_from_col(df, col, keywords):
         keywords = sorted(keywords, key=len, reverse=True)
 
         if isinstance(col_value, list):
-            for item in col_value:
-                for keyword in keywords:
-                    if re.search(
-                        rf"\b{re.escape(keyword)}\b", str(item), re.IGNORECASE
-                    ):
-                        found_keywords.append(keyword)
-        elif isinstance(col_value, str):
+            col_value = " ".join(col_value)  # Join list elements into a single string
+
+        if isinstance(col_value, str):
             for keyword in keywords:
                 if re.search(rf"\b{re.escape(keyword)}\b", col_value, re.IGNORECASE):
                     found_keywords.append(keyword)
@@ -148,11 +188,59 @@ def extract_keywords_from_col(df, col, keywords):
         lambda x: extract_keywords(custom_parse_response(x), keywords)
     )
 
+    # Add new columns for brand and generic drug names
+    brand_to_generic = mapper.load_keywords("brand_to_generic")
+    generic_to_brand = mapper.load_keywords("generic_to_brand")
+
+    def get_alternative_names(drug_list):
+        brand_names = []
+        generic_names = []
+        for drug in drug_list:
+            drug_lower = drug.lower()
+            if drug_lower in brand_to_generic:
+                generic_names.append(brand_to_generic[drug_lower])
+                brand_names.append(drug)
+            elif drug_lower in generic_to_brand:
+                brand_names.append(generic_to_brand[drug_lower])
+                generic_names.append(drug)
+            else:
+                brand_names.append(drug)
+                generic_names.append(drug)
+        return brand_names, generic_names
+
+    df["brand_names"], df["generic_names"] = zip(
+        *df[new_col_name].apply(get_alternative_names)
+    )
+
     keyword_counts = Counter()
     for keywords_list in df[new_col_name]:
         keyword_counts.update(keywords_list)
 
     return keyword_counts, df
+
+
+def map_immunotherapy_drugs(df, mapper):
+    brand_to_generic = mapper.load_keywords("brand_to_generic")
+    generic_to_brand = mapper.load_keywords("generic_to_brand")
+
+    def map_drugs(drug_list):
+        brand_names = []
+        generic_names = []
+        for drug in drug_list:
+            drug_lower = drug.lower()
+            if drug_lower in brand_to_generic:
+                brand_names.append(drug)
+                generic_names.append(brand_to_generic[drug_lower])
+            elif drug_lower in generic_to_brand:
+                generic_names.append(drug)
+                brand_names.append(generic_to_brand[drug_lower])
+            else:
+                brand_names.append(drug)
+                generic_names.append(drug)
+        return list(set(brand_names)), list(set(generic_names))
+
+    df["brand_names"], df["generic_names"] = zip(*df["Immunotherapy"].apply(map_drugs))
+    return df
 
 
 def filter_df_by_keywords(df, keyword_col, filter_keywords):
@@ -219,55 +307,51 @@ def generate_prompts(df, irAE_symptoms):
     return pd.DataFrame(prompts)
 
 
+def apply_drug_mapping(df, mapper, text_column, keywords_column):
+    """
+    Apply drug mapping to a DataFrame, adding brand and generic name columns.
+    """
+    all_keywords = mapper.load_all_keywords_list()
+    _, df_with_keywords = extract_keywords_from_col(
+        df, text_column, all_keywords, mapper
+    )
+
+    return df_with_keywords
+
+
 if __name__ == "__main__":
     pd.set_option("display.max_columns", 200)
     pd.set_option("display.max_colwidth", None)
 
-    ######### Process OCQA data #########
-    print("Processing OncQA data...")
-
-    # Read in src/irAE/ocqa.csv
-    oncqa = pd.read_csv("src/irAE/oncqa.csv")
-
-    # Extract text before "patient message"
-    oncqa = extract_text_before_patient_message(oncqa)
-
-    ###### Get drug counts ######
-
-    # Load all keywords
-    from drug_mapping import DrugMapper
-
+    # Initialize DrugMapper
     mapper = DrugMapper(
         "data/drug_names/brand_to_generic_df.csv",
         "data/drug_names/generic_to_brand_df.csv",
     )
-    all_keywords = mapper.load_all_keywords_list()
 
-    # Extract keyword counts from the Extracted_Text column
-    full_response_counts, df_keywords = extract_keywords_from_col(
-        oncqa, "Extracted_Text", all_keywords
+    ######### Process OCQA data #########
+    print("Processing OncQA data...")
+    oncqa = pd.read_csv("src/irAE/oncqa.csv")
+    oncqa = extract_text_before_patient_message(oncqa)
+    oncqa_with_drugs = apply_drug_mapping(
+        oncqa, mapper, "Extracted_Text", "Extracted_Text_keywords"
     )
 
-    # Save full DataFrame with keywords to CSV
-    df_keywords.to_csv("src/irAE/full_df_keywords.csv", index=False)
-    print(df_keywords.head())
+    all_keywords = mapper.load_all_keywords_list()
 
     # Calculate full drug counts
+    full_response_counts, df_keywords = extract_keywords_from_col(
+        oncqa_with_drugs, "Extracted_Text", all_keywords, mapper
+    )
+
     full_drug_counts = aggregate_keyword_counts(full_response_counts)
     full_drug_counts = full_drug_counts.sort_values(
         by="response_count", ascending=False
     )
 
-    # Save full drug counts to CSV
-    full_drug_counts.to_csv("src/irAE/full_drug_counts.csv", index=False)
-
     ######### Read in immunotherapy data #########
     print("Processing immunotherapy data...")
     immunotherapy = pd.read_csv("src/irAE/immunotherapy_list.csv")
-
-    print("Original data:")
-    print(immunotherapy.head())
-    print(f"Original shape: {immunotherapy.shape}")
 
     # Remove first row after header (if it's still necessary)
     immunotherapy = immunotherapy.iloc[1:]
@@ -287,22 +371,30 @@ if __name__ == "__main__":
     # add pin column as unique identifier
     immunotherapy_filtered["pin"] = range(1, len(immunotherapy_filtered) + 1)
 
-    print("\nFiltered data:")
-    print(immunotherapy_filtered.head())
-    print(f"Filtered shape: {immunotherapy_filtered.shape}")
+    # Split the Immunotherapy column into a list of drugs
+    immunotherapy_filtered["Immunotherapy"] = immunotherapy_filtered[
+        "Immunotherapy"
+    ].apply(lambda x: [drug.strip() for drug in x.split("+")])
 
-    # Save to csv
-    immunotherapy_filtered.to_csv(
-        "src/irAE/immunotherapy_list_filtered.csv", index=False
+    # Apply our new mapping function
+    immunotherapy_with_drugs = map_immunotherapy_drugs(immunotherapy_filtered, mapper)
+
+    # Print a sample of the results
+    print(
+        immunotherapy_with_drugs[
+            ["Immunotherapy", "brand_names", "generic_names"]
+        ].head()
     )
-    print("\nFiltered data saved to 'src/irAE/immunotherapy_list_filtered.csv'")
+
+    # Save the results
+    immunotherapy_with_drugs.to_csv(
+        "src/irAE/immunotherapy_with_mapped_drugs.csv", index=False
+    )
 
     ####### Filter OncQA data ######
     print("Filtering OncQA data...")
-
-    # Filter rows where keywords are in immunotherapy_list_filtered
     filtered_oncqa = filter_df_by_keywords(
-        df_keywords, "Extracted_Text_keywords", immunotherapy["Immunotherapy"]
+        oncqa_with_drugs, "Extracted_Text_keywords", immunotherapy["Immunotherapy"]
     )
 
     # Save filtered DataFrame to CSV
@@ -325,18 +417,34 @@ if __name__ == "__main__":
     # Save the filtered DataFrame with keywords to CSV
     filtered_oncqa.to_csv("src/irAE/filtered_df_keywords.csv", index=False)
 
-    ### Create IrAEQA data ####
+    print("Filtered oncqa:")
+    print(filtered_oncqa)
+    print("\n")
+    print("Immunotherapy filtered:")
+    print(immunotherapy_filtered)
+    print("Filtered")
 
+    #### THIS ALL WORKS ABOVE - use filtered_oncqa to join to ####
+
+    ### Create IrAEQA data ####
     print("Oncqa dataset shape:", filtered_oncqa.shape)
-    print("Immunotherapy dataset shape:", immunotherapy_filtered.shape)
+    print("Immunotherapy dataset shape:", immunotherapy_with_drugs.shape)
 
     # add type col to immunotherapy_filtered
-    immunotherapy_filtered["type"] = "immunotherapy"
+    immunotherapy_with_drugs["type"] = "immunotherapy"
     filtered_oncqa["type"] = "oncqa"
 
     # Prepare the immunotherapy dataset
-    immunotherapy_subset = immunotherapy_filtered[
-        ["pin", "Example EHR Context", "Immunotherapy", "Regime", "type"]
+    immunotherapy_subset = immunotherapy_with_drugs[
+        [
+            "pin",
+            "Example EHR Context",
+            "Immunotherapy",
+            "Regime",
+            "type",
+            "brand_names",
+            "generic_names",
+        ]
     ].copy()
     immunotherapy_subset.rename(
         columns={
@@ -351,7 +459,15 @@ if __name__ == "__main__":
 
     # Reorder columns in filtered_oncqa to match immunotherapy_subset
     filtered_oncqa = filtered_oncqa[
-        ["pin", "Extracted_Text", "Extracted_Text_keywords", "Regime", "type"]
+        [
+            "pin",
+            "Extracted_Text",
+            "Extracted_Text_keywords",
+            "Regime",
+            "type",
+            "brand_names",
+            "generic_names",
+        ]
     ]
 
     # Stack the datasets
@@ -359,24 +475,52 @@ if __name__ == "__main__":
         [filtered_oncqa, immunotherapy_subset], axis=0, ignore_index=True
     )
 
-    print("\nStacked dataset shape:", stacked_data.shape)
-    print("\nStacked dataset columns:")
-    print(stacked_data.columns)
-
-    # Display a few rows of the stacked dataset
+    # Display a few rows of the stacked dataset from row 4-7
     print("\nSample of stacked dataset:")
-    print(stacked_data.head())
+    print(stacked_data.iloc[2:8])
 
     # Save to csv
     stacked_data.to_csv("src/irAE/merged_df.csv", index=False)
     print("\nStacked dataset saved to 'src/irAE/merged_df.csv'")
 
+    # Create brand-only version
+    brand_only_data = create_brand_only_version(stacked_data, mapper)
+    brand_only_data.to_csv("src/irAE/merged_df_brand_only.csv", index=False)
+    print("\nBrand-only dataset saved to 'src/irAE/merged_df_brand_only.csv'")
+
+    # Create generic-only version
+    generic_only_data = create_generic_only_version(stacked_data, mapper)
+    generic_only_data.to_csv("src/irAE/merged_df_generic_only.csv", index=False)
+    print("\nGeneric-only dataset saved to 'src/irAE/merged_df_generic_only.csv'")
+
     ###### Generate prompts ######
-    # filtered_oncqa = pd.read_csv("src/irAE/filtered_oncqa.csv")
+    # Generate prompts for original stacked data
     prompts_df = generate_prompts(stacked_data, irAE_symptoms)
-
-    # Save the prompts to a CSV file
     prompts_df.to_csv("src/irAE/generated_prompts.csv", index=False)
+    print("\nPrompts for original data saved to 'src/irAE/generated_prompts.csv'")
 
-    # Print a few examples
+    # Generate prompts for brand-only version
+    brand_only_prompts_df = generate_prompts(brand_only_data, irAE_symptoms)
+    brand_only_prompts_df.to_csv(
+        "src/irAE/generated_prompts_brand_only.csv", index=False
+    )
+    print(
+        "\nPrompts for brand-only data saved to 'src/irAE/generated_prompts_brand_only.csv'"
+    )
+
+    # Generate prompts for generic-only version
+    generic_only_prompts_df = generate_prompts(generic_only_data, irAE_symptoms)
+    generic_only_prompts_df.to_csv(
+        "src/irAE/generated_prompts_generic_only.csv", index=False
+    )
+    print(
+        "\nPrompts for generic-only data saved to 'src/irAE/generated_prompts_generic_only.csv'"
+    )
+
+    # Print a few examples from each dataset
+    print("\nSample of original prompts:")
     print(prompts_df.head())
+    print("\nSample of brand-only prompts:")
+    print(brand_only_prompts_df.head())
+    print("\nSample of generic-only prompts:")
+    print(generic_only_prompts_df.head())
