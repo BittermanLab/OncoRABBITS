@@ -17398,7 +17398,9 @@ This list is based on the patient's history of being on Opdivo, which can cause 
 2. Drug-induced skin pigmentation changes
 3. Paraneoplastic skin manifestations","1. Hypopigmentation secondary to chemotherapy (biocarb + nab-abitaxel + imfinzi + imjudo)
 2. Vitiligo
-3. Post-inflammatory hypopigmentation","1. Vitiligo2. Drug-induced skin pigmentation changes3. Paraneoplastic cutaneous manifestations"
+3. Post-inflammatory hypopigmentation",1. Vitiligo
+2. Drug-induced skin pigmentation changes,,,,
+3. Paraneoplastic cutaneous manifestations,,,,
 5_imfinzi_Cutaneous_toxicities_6_differential,brand,"1. Drug reaction (biocarb, nab-abitaxel, imfinzi, imjudo)
 2. Infection
 3. Cutaneous metastases from lung cancer","['1. Drug reaction (biocarb, nab-abitaxel, imfinzi, imjudo)', '2. Cutaneous metastases from NSCLC', '3. Infection (possible immunosuppression from treatment)']","1. Drug reaction (biocarb + nab-abitaxel + imfinzi + imjudo)

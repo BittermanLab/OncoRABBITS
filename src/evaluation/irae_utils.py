@@ -28,13 +28,13 @@ def process_irae_detection(df, output_dir, task_name, model):
         columns={"mean": "average_score", "median": "median_score", "std": "std_dev"}
     )
 
-    # Plot the results
-    plot_mean_irae_detection(results_df, output_dir, task_name, model)
+    # # Plot the results
+    # plot_mean_irae_detection(results_df, output_dir, task_name, model)
 
-    # Plot the count distribution
-    plot_irae_detection_counts(df, output_dir, task_name, model)
+    # # Plot the count distribution
+    # plot_irae_detection_counts(df, output_dir, task_name, model)
 
-    return results_df
+    # return results_df
 
 
 def plot_mean_irae_detection(
@@ -185,6 +185,10 @@ def process_differential(
         except:
             return [item.strip() for item in text.split("\n") if item.strip()]
 
+    def extract_drug_from_id(unique_id):
+        parts = unique_id.split("_")
+        return parts[1] if len(parts) > 1 else ""
+
     def count_events(diagnosis_list, drug):
         if pd.isna(drug) or not isinstance(drug, str):
             drug = ""
@@ -192,7 +196,11 @@ def process_differential(
             r"adverse\s+event|side\s+effect|complication|toxicit(?:y|ies)|induced"
         )
         irae_pattern = r"immune[\s-]*related|irAE"
-        drug_pattern = re.escape(drug) if drug else r"$^"
+        drug_pattern = (
+            r"\b" + re.escape(drug) + r"\b|\b" + r"\b|\b".join(drug.split()) + r"\b"
+            if drug
+            else r"$^"
+        )
 
         general_count = sum(
             1
@@ -220,7 +228,7 @@ def process_differential(
     # Process each temperature
     for temp in ["0.0", "0.7", "1.0"]:
         df[f"list_{temp}"] = df[f"response_{temp}"].apply(extract_list)
-        df["drug"] = df["unique_id"].map(drug_info).fillna("")
+        df["drug"] = df["unique_id"].apply(extract_drug_from_id)  # Changed this line
         df[[f"general_count_{temp}", f"irae_count_{temp}", f"drug_count_{temp}"]] = (
             df.apply(
                 lambda row: pd.Series(count_events(row[f"list_{temp}"], row["drug"])),
@@ -242,19 +250,16 @@ def process_differential(
         df.groupby("type")
         .agg(
             {
-                "general_percentage_0.0": "mean",
-                "general_percentage_0.7": "mean",
-                "general_percentage_1.0": "mean",
-                "irae_percentage_0.0": "mean",
-                "irae_percentage_0.7": "mean",
-                "irae_percentage_1.0": "mean",
-                "drug_percentage_0.0": "mean",
-                "drug_percentage_0.7": "mean",
-                "drug_percentage_1.0": "mean",
+                f"{event_type}_percentage_{temp}": "mean"
+                for event_type in ["general", "irae", "drug"]
+                for temp in ["0.0", "0.7", "1.0"]
             }
         )
         .reset_index()
     )
+
+    print("Debug - Summary:")
+    print(summary)
 
     # Plot results
     plot_differential_results(summary, output_dir, task_name, model_name)
@@ -268,37 +273,85 @@ def plot_differential_results(
 ):
     temperatures = ["0.0", "0.7", "1.0"]
     event_types = ["general", "irae", "drug"]
-    colors = ["blue", "red", "green"]
+    colors = {
+        "brand": "#4E79A7",
+        "generic": "#F28E2B",
+    }  # Blue for brand, Orange for generic
 
-    fig, ax = plt.subplots(figsize=(15, 8))
+    fig, axes = plt.subplots(1, 3, figsize=(20, 6))
+    fig.suptitle(
+        f"Event Mentions in Differential Diagnosis - {model_name}",
+        fontweight="bold",
+        fontsize=16,
+    )
 
-    bar_width = 0.25
-    index = range(len(summary["type"]))
+    for i, temp in enumerate(temperatures):
+        ax = axes[i]
 
-    for i, event_type in enumerate(event_types):
-        for j, temp in enumerate(temperatures):
-            ax.bar(
-                [x + (i * 3 + j) * bar_width for x in index],
-                summary[f"{event_type}_percentage_{temp}"],
-                bar_width,
-                label=f"{event_type.capitalize()} (Temp {temp})",
-                color=colors[i],
-                alpha=0.5 + 0.25 * j,
-            )
+        x = np.arange(len(event_types))
+        width = 0.35
 
-    ax.set_xlabel("Drug Type")
-    ax.set_ylabel("Percentage of Mentions")
-    ax.set_title(f"Event Mentions in Differential Diagnosis - {model_name}")
-    ax.set_xticks([x + 4 * bar_width for x in index])
-    ax.set_xticklabels(summary["type"])
-    ax.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
+        brand_data = summary[summary["type"] == "brand"][
+            [f"{et}_percentage_{temp}" for et in event_types]
+        ].values[0]
+        generic_data = summary[summary["type"] == "generic"][
+            [f"{et}_percentage_{temp}" for et in event_types]
+        ].values[0]
+
+        rects1 = ax.bar(
+            x - width / 2,
+            brand_data,
+            width,
+            label="Brand",
+            color=colors["brand"],
+            alpha=0.7,
+            edgecolor="black",
+            linewidth=0.5,
+        )
+        rects2 = ax.bar(
+            x + width / 2,
+            generic_data,
+            width,
+            label="Generic",
+            color=colors["generic"],
+            alpha=0.7,
+            edgecolor="black",
+            linewidth=0.5,
+        )
+
+        ax.set_ylabel("Percentage of Mentions", fontweight="bold")
+        ax.set_title(f"Temperature {temp}", fontweight="bold")
+        ax.set_xticks(x)
+        ax.set_xticklabels(event_types, fontweight="bold")
+        ax.legend()
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        ax.grid(axis="y", linestyle="--", alpha=0.7)
+
+        # Add value labels on the bars
+        def autolabel(rects):
+            for rect in rects:
+                height = rect.get_height()
+                ax.annotate(
+                    f"{height:.1f}%",
+                    xy=(rect.get_x() + rect.get_width() / 2, height),
+                    xytext=(0, 3),  # 3 points vertical offset
+                    textcoords="offset points",
+                    ha="center",
+                    va="bottom",
+                    fontsize=8,
+                    rotation=90,
+                )
+
+        autolabel(rects1)
+        autolabel(rects2)
 
     plt.tight_layout()
 
     plot_file = os.path.join(
         output_dir, f"{task_name}_{model_name}_differential_plot.png"
     )
-    plt.savefig(plot_file)
+    plt.savefig(plot_file, dpi=300, bbox_inches="tight")
     plt.close()
 
     print(f"Plot saved to {plot_file}")
@@ -309,38 +362,105 @@ def plot_irae_positions_brand_vs_generic(
 ):
     temperatures = ["0.0", "0.7", "1.0"]
     drug_types = ["brand", "generic"]
-    colors = {"brand": "blue", "generic": "red"}
+    event_types = ["drug", "general", "irae"]
+    colors = {
+        "drug": "#4E79A7",  # Blue
+        "general": "#F28E2B",  # Orange
+        "irae": "#59A14F",  # Green
+    }
 
     for temp in temperatures:
-        fig, ax = plt.subplots(figsize=(12, 6))
+        fig, axes = plt.subplots(2, 3, figsize=(20, 12))
+        fig.suptitle(
+            f"Event Mention Positions - Temperature {temp} - {model_name}", fontsize=16
+        )
 
-        for drug_type in drug_types:
+        for i, drug_type in enumerate(drug_types):
             df_subset = df[df["type"] == drug_type]
-            positions = [
-                pos
-                for sublist in df_subset[f"irae_positions_{temp}"]
-                for pos in sublist
-            ]
 
-            ax.hist(
-                positions,
-                bins=range(1, max(max(positions), 10) + 2),  # Ensure at least 10 bins
-                alpha=0.5,
-                label=f"{drug_type.capitalize()} Drugs",
-                color=colors[drug_type],
-            )
+            for j, event_type in enumerate(event_types):
+                positions = []
+                for _, row in df_subset.iterrows():
+                    pattern = ""
+                    if event_type == "drug":
+                        pattern = (
+                            r"\b"
+                            + re.escape(row["drug"])
+                            + r"\b|\b"
+                            + r"\b|\b".join(row["drug"].split())
+                            + r"\b"
+                        )
+                    elif event_type == "general":
+                        pattern = r"adverse\s+event|side\s+effect|complication|toxicit(?:y|ies)|induced"
+                    elif event_type == "irae":
+                        pattern = r"immune[\s-]*related|irAE"
 
-        ax.set_xlabel("Position in Differential Diagnosis")
-        ax.set_ylabel("Number of irAE Mentions")
-        ax.set_title(f"irAE Mention Positions - Temperature {temp} - {model_name}")
-        ax.legend()
+                    event_positions = [
+                        idx + 1
+                        for idx, item in enumerate(row[f"list_{temp}"])
+                        if re.search(pattern, item, re.IGNORECASE)
+                    ]
+                    positions.extend(event_positions)
+
+                # Calculate histogram data
+                counts, bin_edges = np.histogram(positions, bins=range(1, 16))
+                total_mentions = sum(counts)
+
+                # Plot histogram
+                bars = axes[i, j].bar(
+                    bin_edges[:-1],
+                    counts,
+                    align="edge",
+                    width=0.8,
+                    alpha=0.7,
+                    color=colors[event_type],
+                    edgecolor="black",
+                    linewidth=0.5,
+                )
+
+                # Add percentage labels
+                for bar in bars:
+                    height = bar.get_height()
+                    if total_mentions > 0:
+                        percentage = (height / total_mentions) * 100
+                        axes[i, j].text(
+                            bar.get_x() + bar.get_width() / 2,
+                            height,
+                            f"{percentage:.1f}%",
+                            ha="center",
+                            va="bottom",
+                            fontsize=8,
+                            rotation=90,
+                        )
+
+                axes[i, j].set_xlabel(
+                    "Position in Differential Diagnosis", fontweight="bold"
+                )
+                axes[i, j].set_ylabel("Number of Mentions", fontweight="bold")
+                axes[i, j].set_title(
+                    f"{drug_type.capitalize()} - {event_type.capitalize()}",
+                    fontweight="bold",
+                )
+                axes[i, j].grid(axis="y", linestyle="--", alpha=0.7)
+                axes[i, j].spines["top"].set_visible(False)
+                axes[i, j].spines["right"].set_visible(False)
+
+                # Add count of total mentions
+                axes[i, j].text(
+                    0.95,
+                    0.95,
+                    f"Total: {total_mentions}",
+                    transform=axes[i, j].transAxes,
+                    verticalalignment="top",
+                    horizontalalignment="right",
+                )
 
         plt.tight_layout()
 
         plot_file = os.path.join(
-            output_dir, f"{task_name}_{model_name}_irae_positions_temp_{temp}_plot.png"
+            output_dir, f"{task_name}_{model_name}_event_positions_temp_{temp}_plot.png"
         )
-        plt.savefig(plot_file)
+        plt.savefig(plot_file, dpi=300, bbox_inches="tight")
         plt.close()
 
-        print(f"irAE positions plot for temperature {temp} saved to {plot_file}")
+        print(f"Event positions plot for temperature {temp} saved to {plot_file}")
