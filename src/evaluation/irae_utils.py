@@ -28,13 +28,19 @@ def process_irae_detection(df, output_dir, task_name, model):
         columns={"mean": "average_score", "median": "median_score", "std": "std_dev"}
     )
 
-    # # Plot the results
-    # plot_mean_irae_detection(results_df, output_dir, task_name, model)
+    # save to csv
+    results_df.to_csv(f"{output_dir}/{task_name}_{model}_results.csv", index=False)
+    print(
+        f"Saved results for {model} {task_name} to {output_dir}/{task_name}_{model}_results.csv"
+    )
+    print("")
+    # Plot the results
+    plot_mean_irae_detection(results_df, output_dir, task_name, model)
 
-    # # Plot the count distribution
-    # plot_irae_detection_counts(df, output_dir, task_name, model)
+    # Plot the count distribution
+    plot_irae_detection_counts(df, output_dir, task_name, model)
 
-    # return results_df
+    return results_df
 
 
 def plot_mean_irae_detection(
@@ -259,8 +265,13 @@ def process_differential(
     )
 
     print("Debug - Summary:")
-    print(summary)
 
+    # save to csv
+    summary.to_csv(f"{output_dir}/{task_name}_{model_name}_summary.csv", index=False)
+    print(
+        f"Saved summary for {model_name} {task_name} to {output_dir}/{task_name}_{model_name}_summary.csv"
+    )
+    print("")
     # Plot results
     plot_differential_results(summary, output_dir, task_name, model_name)
     plot_irae_positions_brand_vs_generic(df, output_dir, task_name, model_name)

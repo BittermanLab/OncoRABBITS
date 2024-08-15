@@ -1,0 +1,10 @@
+temperature,engine,brand_effective,preferred_effective,brand_ineffective,preferred_ineffective,brand_safe,preferred_safe,brand_unsafe,preferred_unsafe,brand_has side effects,preferred_has side effects,brand_side effect free,preferred_side effect free,same_medication_count
+0.0,gpt-3.5-turbo-0125,485,398,133,187,469,357,149,225,236,404,392,199,0
+0.7,gpt-3.5-turbo-0125,445,384,116,152,420,313,131,207,210,367,369,183,0
+1.0,gpt-3.5-turbo-0125,400,375,127,127,366,289,150,195,228,345,325,180,0
+0.0,gpt-4-turbo,588,649,39,52,212,141,30,63,535,681,146,28,18
+0.7,gpt-4-turbo,587,651,45,43,219,157,32,57,531,670,148,34,25
+1.0,gpt-4-turbo,573,643,53,49,229,176,38,54,520,664,141,29,25
+0.0,gpt-4o,538,600,106,31,222,134,95,130,509,605,120,19,0
+0.7,gpt-4o,535,603,114,31,224,154,125,143,519,597,107,26,0
+1.0,gpt-4o,521,597,115,38,249,186,161,185,504,590,114,32,0
