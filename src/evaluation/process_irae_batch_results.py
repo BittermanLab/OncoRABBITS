@@ -82,7 +82,7 @@ def bind_responses_to_df(
 models = ["gpt-3.5-turbo-0125", "gpt-4o", "gpt-4-turbo"]
 types = ["brand", "generic"]
 # tasks = ["differential", "irae_detection"]
-tasks = ["differential"]  # , "irae_detection"]
+tasks = ["differential"]
 
 
 # Function to process and save responses for a given task

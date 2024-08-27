@@ -2,8 +2,7 @@ import pandas as pd
 import os
 import json
 from typing import List, Dict, Any
-
-from list_utils import plot_list_preference
+from list_utils import combine_and_plot_list_preference, plot_detailed_attribute_counts
 from general_knowledge_utils import plot_general_knowledge
 from sentiment_utils import plot_sentiment
 
@@ -15,9 +14,9 @@ os.makedirs(output_dir, exist_ok=True)
 # Task details
 tasks = {
     # "general_knowledge": "general_knowledge",
-    # "sentiment_question_about": "sentiment",
-    # "sentiment_question_patient": "sentiment",
-    # "sentiment_question_physician": "sentiment",
+    "sentiment_question_about": "sentiment",
+    "sentiment_question_patient": "sentiment",
+    "sentiment_question_physician": "sentiment",
     "list_preference_prompt1": "list_preference",
     "list_preference_prompt2": "list_preference",
     # "coral_sentiment": "sentiment",
@@ -38,11 +37,10 @@ for task_name, file_name in tasks.items():
             task_name == "list_preference_prompt1"
             or task_name == "list_preference_prompt2"
         ):
-            plot_list_preference(
-                model_output_dir,
-                task_name,
-                model,
-            )
+            model_output_dir = os.path.join(output_dir, model, "list_preference")
+            combine_and_plot_list_preference(model_output_dir, model)
+            plot_detailed_attribute_counts(model_output_dir, model)
+
         elif (
             task_name == "sentiment_question_about"
             or task_name == "sentiment_question_patient"

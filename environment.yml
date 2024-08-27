@@ -1,0 +1,36 @@
+name: onco_rabbits
+channels:
+  - pytorch-nightly
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.9
+  - pip
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - scipy
+  - statsmodels
+  - pytorch
+  - torchaudio
+  - torchvision
+  - ipykernel
+  - jupyter
+  - pip:
+    - transformers
+    - datasets
+    - evaluate
+    - accelerate
+    - peft
+    - bitsandbytes
+    - openai
+    - huggingface-hub
+    - nltk
+    - rouge-score
+    - sacrebleu
+    - pytest
+    - lm-eval
+    - python-dotenv
+

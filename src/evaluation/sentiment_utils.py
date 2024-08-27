@@ -11,9 +11,11 @@ def perform_sentiment_analysis(df, column_names):
     Function to perform sentiment analysis using BERT on specific columns in the DataFrame.
     """
     # Load the pre-trained model and tokenizer
-    tokenizer = AutoTokenizer.from_pretrained("MarieAngeA13/Sentiment-Analysis-BERT")
+    tokenizer = AutoTokenizer.from_pretrained(
+        "cardiffnlp/twitter-roberta-base-sentiment-latest"
+    )
     model = AutoModelForSequenceClassification.from_pretrained(
-        "MarieAngeA13/Sentiment-Analysis-BERT"
+        "cardiffnlp/twitter-roberta-base-sentiment-latest"
     )
 
     for column_name in column_names:
@@ -106,21 +108,58 @@ def plot_mean_sentiment(
     x = np.arange(len(temperatures))
     width = 0.35  # the width of the bars
 
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(12, 7), dpi=300)
+
+    colors = {
+        "brand": "#4a7ba7",
+        "generic": "#a77b4a",
+        "preferred": "#a77b4a",
+    }  # Muted blue and orange
 
     for i, string_type in enumerate(string_types):
         subset = sentiment_summary_melted[
             sentiment_summary_melted["string_type"] == string_type
         ]
-        ax.bar(x + i * width, subset["mean_sentiment"], width, label=string_type)
+        bars = ax.bar(
+            x + i * width,
+            subset["mean_sentiment"],
+            width,
+            label=string_type.capitalize(),
+            color=colors[string_type],
+            edgecolor="black",
+            linewidth=0.5,
+        )
 
-    ax.set_xlabel("Temperature")
-    ax.set_ylabel("Mean Sentiment")
-    ax.set_title(f"Mean {task_name} by Temperature for {model_name}")
+        # Add value labels on the bars
+        for bar in bars:
+            height = bar.get_height()
+            ax.annotate(
+                f"{height:.2f}",
+                xy=(bar.get_x() + bar.get_width() / 2, height),
+                xytext=(0, 3),  # 3 points vertical offset
+                textcoords="offset points",
+                ha="center",
+                va="bottom",
+                fontsize=9,
+                fontweight="bold",
+            )
+
+    ax.set_xlabel("Temperature", fontweight="bold", fontsize=12)
+    ax.set_ylabel("Mean Sentiment", fontweight="bold", fontsize=12)
+    ax.set_title(
+        f"Mean {task_name.replace('_', ' ').title()} by Temperature for {model_name}",
+        fontweight="bold",
+        fontsize=14,
+    )
     ax.set_xticks(x + width / 2)
-    ax.set_xticklabels(temperatures)
-    ax.legend(title="String Type")
-    ax.set_ylim(0, 1)
+    ax.set_xticklabels(temperatures, fontweight="bold")
+    ax.legend(title="Drug Name Type", title_fontsize=12, fontsize=10, frameon=False)
+    ax.set_ylim(0, 2)
+
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.tick_params(axis="both", which="major", labelsize=10)
+    ax.grid(axis="y", linestyle="--", alpha=0.7)
 
     if task_name == "coral_sentiment":
         plot_dir = os.path.join(output_dir, "coral_sentiment/plots")
@@ -129,7 +168,7 @@ def plot_mean_sentiment(
     os.makedirs(plot_dir, exist_ok=True)
     plot_file = os.path.join(plot_dir, f"{task_name}_{model_name}_sentiment_plot.png")
     plt.tight_layout()
-    plt.savefig(plot_file)
+    plt.savefig(plot_file, bbox_inches="tight")
     plt.close()
 
     print(f"Plot saved to {plot_file}")

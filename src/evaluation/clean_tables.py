@@ -250,7 +250,11 @@ def create_irae_summary_tables(input_dir):
 
         # Process differential data
         differential_pattern = os.path.join(
-            input_dir, "irae", model, "differential", f"differential_{model}_*.csv"
+            input_dir,
+            "irae",
+            model,
+            "differential",
+            f"differential_{model}_summary.csv",
         )
         differential_files = glob.glob(differential_pattern)
         if differential_files:
@@ -274,12 +278,20 @@ def create_irae_summary_tables(input_dir):
         detection_summary = detection_summary.sort_values(
             ["model", "type", "temperature"]
         )
+        # Set numeric columns to 2 decimal places
+        numeric_columns = ["mean_score", "median_score", "std_score"]
+        detection_summary[numeric_columns] = detection_summary[numeric_columns].round(2)
 
     if differential_data:
         differential_summary = pd.concat(differential_data, ignore_index=True)
         differential_summary = differential_summary.sort_values(
             ["model", "type", "temperature"]
         )
+        # Set numeric columns to 2 decimal places
+        numeric_columns = ["drug", "general", "irae"]
+        differential_summary[numeric_columns] = differential_summary[
+            numeric_columns
+        ].round(2)
 
     return detection_summary, differential_summary
 

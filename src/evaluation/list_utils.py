@@ -185,6 +185,117 @@ def process_list_preference(
     return aggregated_counts_df
 
 
+def plot_detailed_attribute_counts(output_dir: str, model_name: str):
+    # Read data from both prompt1 and prompt2
+    df_prompt1 = pd.read_csv(
+        os.path.join(
+            output_dir,
+            f"list_preference_prompt1_{model_name}_aggregated_counts_list.csv",
+        )
+    )
+    df_prompt2 = pd.read_csv(
+        os.path.join(
+            output_dir,
+            f"list_preference_prompt2_{model_name}_aggregated_counts_list.csv",
+        )
+    )
+
+    # Sum the data from both prompts
+    df_sum = df_prompt1.add(df_prompt2, fill_value=0)
+
+    # Define the attributes
+    attributes = [
+        "effective",
+        "ineffective",
+        "safe",
+        "unsafe",
+        "has side effects",
+        "side effect free",
+    ]
+
+    colors = {"Brand": "#4a7ba7", "Preferred": "#a77b4a"}  # Muted blue and orange
+
+    # Create a new figure for each temperature
+    for temp in df_sum["temperature"].unique():
+        df_temp = df_sum[df_sum["temperature"] == temp]
+
+        fig, ax = plt.subplots(figsize=(14, 8), dpi=300)
+
+        x = np.arange(len(attributes))
+        width = 0.35
+
+        brand_values = [df_temp[f"brand_{attr}"].values[0] for attr in attributes]
+        preferred_values = [
+            df_temp[f"preferred_{attr}"].values[0] for attr in attributes
+        ]
+
+        brand_bars = ax.bar(
+            x - width / 2,
+            brand_values,
+            width,
+            label="Brand",
+            color=colors["Brand"],
+            edgecolor="black",
+            linewidth=0.5,
+        )
+        preferred_bars = ax.bar(
+            x + width / 2,
+            preferred_values,
+            width,
+            label="Preferred",
+            color=colors["Preferred"],
+            edgecolor="black",
+            linewidth=0.5,
+        )
+
+        # Add value labels on the bars
+        def add_value_labels(bars):
+            for bar in bars:
+                height = bar.get_height()
+                ax.annotate(
+                    f"{height}",
+                    xy=(bar.get_x() + bar.get_width() / 2, height),
+                    xytext=(0, 3),  # 3 points vertical offset
+                    textcoords="offset points",
+                    ha="center",
+                    va="bottom",
+                    fontsize=9,
+                    fontweight="bold",
+                )
+
+        add_value_labels(brand_bars)
+        add_value_labels(preferred_bars)
+
+        ax.set_xlabel("Attributes", fontweight="bold", fontsize=12)
+        ax.set_ylabel("Count", fontweight="bold", fontsize=12)
+        ax.set_title(
+            f"Brand vs Preferred Attribute Counts for {model_name}\nTemperature: {temp}",
+            fontweight="bold",
+            fontsize=14,
+        )
+        ax.set_xticks(x)
+        ax.set_xticklabels(attributes, fontweight="bold", rotation=45, ha="right")
+        ax.legend(title="Drug Type", title_fontsize=12, fontsize=10, frameon=False)
+
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        ax.tick_params(axis="both", which="major", labelsize=10)
+        ax.grid(axis="y", linestyle="--", alpha=0.7)
+
+        plt.tight_layout()
+
+        # Save the plot
+        plot_path = os.path.join(
+            output_dir, f"detailed_attribute_counts_{model_name}_temp_{temp}.png"
+        )
+        plt.savefig(plot_path, bbox_inches="tight")
+        plt.close(fig)
+
+        print(f"Detailed attribute count plot saved to {plot_path}")
+
+    print(f"Detailed attribute count plots saved in {output_dir}")
+
+
 def combine_and_plot_list_preference(output_dir: str, model_name: str):
     # Read data from both prompt1 and prompt2
     df_prompt1 = pd.read_csv(
@@ -210,13 +321,15 @@ def combine_and_plot_list_preference(output_dir: str, model_name: str):
         ("has side effects", "side effect free"),
     ]
 
+    colors = {"Brand": "#4a7ba7", "Preferred": "#a77b4a"}  # Muted blue and orange
+
     # Create a new figure for each temperature
     for temp in df_sum["temperature"].unique():
         df_temp = df_sum[df_sum["temperature"] == temp]
 
-        fig, ax = plt.subplots(figsize=(12, 6))
+        fig, ax = plt.subplots(figsize=(12, 7), dpi=300)
 
-        x = range(len(pairs))
+        x = np.arange(len(pairs))
         width = 0.35
 
         brand_values = []
@@ -234,41 +347,68 @@ def combine_and_plot_list_preference(output_dir: str, model_name: str):
             brand_values.append(brand_total)
             preferred_values.append(preferred_total)
 
-        ax.bar(
-            [i - width / 2 for i in x],
+        brand_bars = ax.bar(
+            x - width / 2,
             brand_values,
             width,
             label="Brand",
-            color="skyblue",
+            color=colors["Brand"],
+            edgecolor="black",
+            linewidth=0.5,
         )
-        ax.bar(
-            [i + width / 2 for i in x],
+        preferred_bars = ax.bar(
+            x + width / 2,
             preferred_values,
             width,
             label="Preferred",
-            color="orange",
+            color=colors["Preferred"],
+            edgecolor="black",
+            linewidth=0.5,
         )
 
-        ax.set_ylabel("Total Mentions")
-        ax.set_title(f"Brand vs Preferred Total Mentions by Pair (Temperature: {temp})")
-        ax.set_xticks(x)
-        ax.set_xticklabels([f"{p[0]}/\n{p[1]}" for p in pairs], ha="center")
-        ax.legend()
+        # Add value labels on the bars
+        def add_value_labels(bars):
+            for bar in bars:
+                height = bar.get_height()
+                ax.annotate(
+                    f"{height}",
+                    xy=(bar.get_x() + bar.get_width() / 2, height),
+                    xytext=(0, 3),  # 3 points vertical offset
+                    textcoords="offset points",
+                    ha="center",
+                    va="bottom",
+                    fontsize=9,
+                    fontweight="bold",
+                )
 
-        # Add value labels
-        for i, v in enumerate(brand_values):
-            ax.text(i - width / 2, v, str(v), ha="center", va="bottom")
-        for i, v in enumerate(preferred_values):
-            ax.text(i + width / 2, v, str(v), ha="center", va="bottom")
+        add_value_labels(brand_bars)
+        add_value_labels(preferred_bars)
+
+        ax.set_xlabel("Attribute Pairs", fontweight="bold", fontsize=12)
+        ax.set_ylabel("Total Mentions", fontweight="bold", fontsize=12)
+        ax.set_title(
+            f"Brand vs Preferred Total Mentions by Pair for {model_name}\nTemperature: {temp}",
+            fontweight="bold",
+            fontsize=14,
+        )
+        ax.set_xticks(x)
+        ax.set_xticklabels([f"{p[0]}/\n{p[1]}" for p in pairs], fontweight="bold")
+        ax.legend(title="Drug Type", title_fontsize=12, fontsize=10, frameon=False)
+
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+        ax.tick_params(axis="both", which="major", labelsize=10)
+        ax.grid(axis="y", linestyle="--", alpha=0.7)
 
         plt.tight_layout()
 
         # Save the plot
-        plt.savefig(
-            os.path.join(
-                output_dir, f"list_preference_pairs_{model_name}_temp_{temp}.png"
-            )
+        plot_path = os.path.join(
+            output_dir, f"list_preference_pairs_{model_name}_temp_{temp}.png"
         )
+        plt.savefig(plot_path, bbox_inches="tight")
         plt.close(fig)
+
+        print(f"Plot saved to {plot_path}")
 
     print(f"Combined pair plots saved in {output_dir}")
