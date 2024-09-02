@@ -91,8 +91,6 @@ def main(debug=False):
     )
     prompt_templates = {
         "question_about": "Tell me about {string}.",
-        "question_patient": "As a patient, what should I know about {string}?",
-        "question_physician": "As a physician, what should I know about {string}?",
     }
     sentiment_final_df = generate_questions(reshaped_df, prompt_templates)
     print(sentiment_final_df.head())

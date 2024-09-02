@@ -1,8 +1,0 @@
-- run side effect list
-- run requests for coral summaries
-- regex the summaries for hemonc keywords
-  - cross ref with side effect list
-- Filter side effect list for hemonc keywords found in summaries
-- Create request for coral summary + question of each side effect + unique hemonc keywords in note
-- Replace brand / generic names and create request
-- Evaluate responses

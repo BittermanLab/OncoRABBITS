@@ -4,6 +4,8 @@ import numpy as np
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 from scipy.special import softmax
 import matplotlib.pyplot as plt
+from scipy import stats
+from scipy.stats import chi2_contingency, mannwhitneyu
 
 
 def perform_sentiment_analysis(df, column_names):
@@ -43,23 +45,64 @@ def perform_sentiment_analysis(df, column_names):
 
 def summarize_sentiment(df):
     """
-    Function to summarize sentiment values for brand names and preferred names.
+    Function to summarize sentiment values for brand names and generic names,
+    comparing them at each temperature.
     """
-    # if string_type not in df - check if type is and then rename this to string_type
     if "string_type" not in df:
         df["string_type"] = df["type"]
 
-    sentiment_summary = (
-        df.groupby("string_type")[
-            [
-                "sentiment_response_0.0",
-                "sentiment_response_0.7",
-                "sentiment_response_1.0",
-            ]
-        ]
-        .mean()
-        .reset_index()
-    )
+    temperatures = ["0.0", "0.7", "1.0"]
+    results = []
+
+    for temp in temperatures:
+        sentiment_col = f"sentiment_response_{temp}"
+
+        # Chi-square test
+        contingency_table = pd.crosstab(df["string_type"], df[sentiment_col])
+        chi2, p_value, dof, expected = stats.chi2_contingency(contingency_table)
+
+        # Calculate percentages for each category
+        percentages = contingency_table.div(contingency_table.sum(axis=1), axis=0) * 100
+
+        # Calculate mean sentiment
+        mean_sentiment = df.groupby("string_type")[sentiment_col].mean()
+
+        # Perform Mann-Whitney U test
+        brand_sentiments = df[df["string_type"] == "brand"][sentiment_col]
+        generic_sentiments = df[df["string_type"] == "generic"][sentiment_col]
+        statistic, p_value_mw = mannwhitneyu(
+            brand_sentiments, generic_sentiments, alternative="two-sided"
+        )
+
+        result = {
+            "Temperature": temp,
+            "Chi-square Statistic": chi2,
+            "Chi-square p-value": p_value,
+            "Mann-Whitney U Statistic": statistic,
+            "Mann-Whitney U p-value": p_value_mw,
+            "Degrees of Freedom": dof,
+        }
+
+        for category in ["brand", "generic"]:
+            for sentiment in [0, 1, 2]:
+                label = ["Negative", "Neutral", "Positive"][sentiment]
+                if category in percentages.index and sentiment in percentages.columns:
+                    result[f"{category.capitalize()} {label} %"] = percentages.loc[
+                        category, sentiment
+                    ]
+                else:
+                    result[f"{category.capitalize()} {label} %"] = 0.0
+
+            if category in mean_sentiment.index:
+                result[f"{category.capitalize()} Mean Sentiment"] = mean_sentiment[
+                    category
+                ]
+            else:
+                result[f"{category.capitalize()} Mean Sentiment"] = None
+
+        results.append(result)
+
+    sentiment_summary = pd.DataFrame(results)
     return sentiment_summary
 
 
@@ -69,16 +112,36 @@ def process_sentiment(
     print(f"Processing sentiment data for {task_name}...")
 
     column_names = ["response_0.0", "response_0.7", "response_1.0"]
-    df = perform_sentiment_analysis(df, column_names)
+    # df = perform_sentiment_analysis(df, column_names)
+    df = pd.read_parquet(
+        os.path.join(output_dir, f"{task_name}_{model_name}_sentiment.parquet")
+    )
 
-    # save sentiment data to parquet
+    # Summarize sentiment
+    sentiment_summary = summarize_sentiment(df)
+
+    # Save sentiment summary to CSV
+    summary_file = os.path.join(
+        output_dir, f"{task_name}_{model_name}_sentiment_summary.csv"
+    )
+    sentiment_summary.to_csv(summary_file, index=False)
+
+    # Save full sentiment data to parquet
     sentiment_file = os.path.join(
         output_dir, f"{task_name}_{model_name}_sentiment.parquet"
     )
-
     df.to_parquet(sentiment_file, index=False)
 
-    return df
+    print("Sentiment Summary:")
+    print(sentiment_summary)
+
+    save_to_csv(
+        f"{task_name}_{model_name}_sentiment_summary.csv",
+        sentiment_summary.columns.tolist(),
+        sentiment_summary.values.tolist(),
+    )
+
+    return df, sentiment_summary
 
 
 def plot_mean_sentiment(

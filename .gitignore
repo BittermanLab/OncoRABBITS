@@ -6,3 +6,4 @@ src/coral_count/coral-expert-curated-medical-oncology-reports-to-advance-languag
 UMLS/
 faers/
 *.DS_Store
+src/hemonc_processing/kg.csv

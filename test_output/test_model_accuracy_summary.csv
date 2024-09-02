@@ -1,0 +1,8 @@
+Temperature,Type,Correct,Total,Accuracy (%),Standard Error
+0.0,brand name,3,5,60.0,21.908902300206645
+0.0,preferred name,1,5,20.0,17.888543819998322
+0.7,brand name,3,5,60.0,21.908902300206645
+0.7,preferred name,0,5,0.0,0.0
+1.0,brand name,4,5,80.0,17.888543819998315
+1.0,preferred name,0,5,0.0,0.0
+Overall,All,11,30,36.666666666666664,8.798147953257402

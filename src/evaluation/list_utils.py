@@ -6,6 +6,7 @@ from typing import List, Dict, Any
 import unicodedata
 import re
 import numpy as np
+from scipy import stats
 
 
 def normalize_response_content(response_content: str) -> str:

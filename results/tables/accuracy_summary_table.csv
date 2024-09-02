@@ -1,19 +1,10 @@
-Model,Temperature,Type,Accuracy (%)
-gpt-4-turbo,0.0,brand name,96.02
-gpt-4-turbo,0.0,preferred name,93.90
-gpt-4-turbo,0.7,brand name,95.69
-gpt-4-turbo,0.7,preferred name,93.84
-gpt-4-turbo,1.0,brand name,95.59
-gpt-4-turbo,1.0,preferred name,93.30
-gpt-3.5-turbo-0125,0.0,brand name,84.31
-gpt-3.5-turbo-0125,0.0,preferred name,84.85
-gpt-3.5-turbo-0125,0.7,brand name,83.65
-gpt-3.5-turbo-0125,0.7,preferred name,85.01
-gpt-3.5-turbo-0125,1.0,brand name,83.16
-gpt-3.5-turbo-0125,1.0,preferred name,84.31
-gpt-4o,0.0,brand name,96.78
-gpt-4o,0.0,preferred name,95.26
-gpt-4o,0.7,brand name,96.62
-gpt-4o,0.7,preferred name,95.04
-gpt-4o,1.0,brand name,96.62
-gpt-4o,1.0,preferred name,94.88
+Model,Temperature,Brand Accuracy (%),Generic Accuracy (%),T-statistic,P-value
+gpt-3.5-turbo-0125,0.0,24.25,23.65,0.4255,0.6705
+gpt-3.5-turbo-0125,0.7,23.98,23.38,0.4271,0.6693
+gpt-3.5-turbo-0125,1.0,23.81,23.92,-0.0774,0.9383
+gpt-4-turbo,0.0,24.41,23.27,0.8136,0.4159
+gpt-4-turbo,0.7,24.52,23.43,0.7733,0.4394
+gpt-4-turbo,1.0,24.47,23.32,0.8129,0.4163
+gpt-4o,0.0,23.54,23.32,0.1559,0.8761
+gpt-4o,0.7,23.60,23.71,-0.0777,0.9381
+gpt-4o,1.0,23.65,23.43,0.1556,0.8763

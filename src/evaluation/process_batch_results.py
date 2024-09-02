@@ -75,11 +75,9 @@ def save_df(df: pd.DataFrame, file_path: str):
 # Task details
 tasks = {
     # "general_knowledge": "general_knowledge",
-    # "sentiment_question_about": "sentiment",
-    # "sentiment_question_patient": "sentiment",
-    # "sentiment_question_physician": "sentiment",
-    "list_preference_prompt1": "list_preference",
-    "list_preference_prompt2": "list_preference",
+    "sentiment_question_about": "sentiment",
+    # "list_preference_prompt1": "list_preference",
+    # "list_preference_prompt2": "list_preference",
 }
 
 models = ["gpt-3.5-turbo-0125", "gpt-4o", "gpt-4-turbo"]
@@ -92,6 +90,7 @@ for task_name, file_name in tasks.items():
         responses_path = os.path.join(
             data_dir, f"api_responses/{model}/{task_name}_responses.jsonl"
         )
+        print(f"Processing task '{task_name}' for model '{model}'")
 
         # Check output directory exists for each model
         model_output_dir = os.path.join(output_dir, model, file_name)
@@ -121,12 +120,8 @@ for task_name, file_name in tasks.items():
                 task_name,
                 model,
             )
-        elif (
-            task_name == "sentiment_question_about"
-            or task_name == "sentiment_question_patient"
-            or task_name == "sentiment_question_physician"
-        ):
-            results_df = process_sentiment(
+        elif task_name == "sentiment_question_about":
+            results_df, sentiment_summary = process_sentiment(
                 df_updated, model_output_dir, task_name, model
             )
         elif task_name == "general_knowledge":
@@ -137,9 +132,9 @@ for task_name, file_name in tasks.items():
         print(f"{task_name} processing completed for model '{model}'.")
         print("\n" * 5)
 
-
-for model in models:
-    model_output_dir = os.path.join(output_dir, model, "list_preference")
-    combine_and_plot_list_preference(model_output_dir, model)
+if task_name == "list_preference_prompt1" or task_name == "list_preference_prompt2":
+    for model in models:
+        model_output_dir = os.path.join(output_dir, model, "list_preference")
+        combine_and_plot_list_preference(model_output_dir, model)
 
 print("Data processing, combining, and plotting completed for all tasks and models.")

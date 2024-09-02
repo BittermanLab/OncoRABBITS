@@ -1,19 +1,10 @@
-Model,String Type,Question Type,Temp 0.0,Temp 0.7,Temp 1.0
-gpt-3.5-turbo-0125,brand,about,0.67,0.68,0.69
-gpt-3.5-turbo-0125,brand,patient,0.87,0.89,0.90
-gpt-3.5-turbo-0125,brand,physician,0.85,0.87,0.89
-gpt-3.5-turbo-0125,preferred,about,0.95,0.95,0.93
-gpt-3.5-turbo-0125,preferred,patient,0.98,0.98,0.99
-gpt-3.5-turbo-0125,preferred,physician,0.97,0.99,0.97
-gpt-4-turbo,brand,about,0.96,0.97,0.93
-gpt-4-turbo,brand,patient,0.99,0.98,0.99
-gpt-4-turbo,brand,physician,1.00,1.00,0.99
-gpt-4-turbo,preferred,about,0.98,0.99,0.98
-gpt-4-turbo,preferred,patient,1.00,0.99,1.00
-gpt-4-turbo,preferred,physician,0.99,1.00,1.01
-gpt-4o,brand,about,0.93,0.93,0.93
-gpt-4o,brand,patient,0.98,0.99,0.98
-gpt-4o,brand,physician,1.00,1.01,1.00
-gpt-4o,preferred,about,1.00,0.99,0.99
-gpt-4o,preferred,patient,1.00,1.00,1.00
-gpt-4o,preferred,physician,1.00,1.01,1.01
+Model,Temperature,Brand Mean,Generic Mean,Chi-square,p-value
+gpt-3.5-turbo-0125,0.0,0.6703,0.9482,108.2203,0.0000
+gpt-3.5-turbo-0125,0.7,0.6839,0.9537,99.3259,0.0000
+gpt-3.5-turbo-0125,1.0,0.6866,0.9264,85.5705,0.0000
+gpt-4-turbo,0.0,0.9591,0.9782,1.6159,0.2037
+gpt-4-turbo,0.7,0.9673,0.9864,4.6688,0.0969
+gpt-4-turbo,1.0,0.9292,0.9809,10.2804,0.0013
+gpt-4o,0.0,0.9319,0.9973,29.4200,0.0000
+gpt-4o,0.7,0.9292,0.9864,20.9871,0.0000
+gpt-4o,1.0,0.9319,0.9946,22.2042,0.0000

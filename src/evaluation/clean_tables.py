@@ -3,6 +3,8 @@ import os
 import glob
 from collections import defaultdict
 import pandas as pd
+import numpy as np
+from scipy import stats
 
 
 def read_csv(file_path):
@@ -12,26 +14,60 @@ def read_csv(file_path):
 
 
 def process_accuracy_data(data):
-    processed = {}
+    processed = defaultdict(dict)
+
     for row in data:
-        temp = row["Temperature"]
-        type_ = row["Type"]
-        accuracy = float(row["Accuracy (%)"])
-        key = f"{temp}_{type_}"
-        processed[key] = accuracy
+        if row["Temperature"] != "Overall":
+            temp = row["Temperature"]
+            type_ = row["Type"]
+            key = f"{temp}_{type_}"
+            processed[key] = {
+                "Accuracy (%)": float(row["Accuracy (%)"]),
+                "Standard Error": row["Standard Error"],
+                "T-Statistic": row["T-Statistic"],
+                "P-Value": row["P-Value"],
+            }
+            # make sure temp, acc, se, t-stat, p-value are floats
+            processed[key]["Accuracy (%)"] = float(processed[key]["Accuracy (%)"])
+            processed[key]["Standard Error"] = float(processed[key]["Standard Error"])
+            processed[key]["T-Statistic"] = float(processed[key]["T-Statistic"])
+            processed[key]["P-Value"] = float(processed[key]["P-Value"])
+
     return processed
 
 
 def create_accuracy_summary_table(models):
-    headers = ["Model", "Temperature", "Type", "Accuracy (%)"]
+    headers = [
+        "Model",
+        "Temperature",
+        "Brand Accuracy (%)",
+        "Generic Accuracy (%)",
+        "T-statistic",
+        "P-value",
+    ]
     rows = []
 
     for model, data in models.items():
         for temp in ["0.0", "0.7", "1.0"]:
-            for type_ in ["brand name", "preferred name"]:
-                key = f"{temp}_{type_}"
-                if key in data:
-                    rows.append([model, temp, type_, f"{data[key]:.2f}"])
+            brand_key = f"{temp}_brand name"
+            preferred_key = f"{temp}_preferred name"
+
+            if brand_key in data and preferred_key in data:
+                brand_data = data[brand_key]
+                preferred_data = data[preferred_key]
+
+                row = [
+                    model,
+                    temp,
+                    f"{brand_data['Accuracy (%)']:.2f}",
+                    f"{preferred_data['Accuracy (%)']:.2f}",
+                    f"{brand_data['T-Statistic']:.4f}",
+                    f"{brand_data['P-Value']:.4f}",
+                ]
+                rows.append(row)
+
+    # Sort rows by model and temperature
+    rows.sort(key=lambda x: (x[0], x[1]))
 
     return headers, rows
 
@@ -129,28 +165,19 @@ def generate_markdown_table(headers, rows):
 
 
 def process_sentiment_data(model_name):
-    file_paths = [
-        f"results/{model_name}/sentiment/summary_sentiment_question_about_{model_name}.csv",
-        f"results/{model_name}/sentiment/summary_sentiment_question_patient_{model_name}.csv",
-        f"results/{model_name}/sentiment/summary_sentiment_question_physician_{model_name}.csv",
-    ]
+    file_path = f"results/{model_name}/sentiment/sentiment_question_about_{model_name}_sentiment_summary.csv"
+    data = pd.read_csv(file_path)
 
-    combined_data = defaultdict(dict)
+    combined_data = defaultdict(lambda: defaultdict(dict))
 
-    for file_path in file_paths:
-        data = read_csv(file_path)
-        question_type = file_path.split("_")[
-            -2
-        ]  # Extract 'about', 'patient', or 'physician'
-
-        for row in data:
-            string_type = row["string_type"]
-            for temp in ["0.0", "0.7", "1.0"]:
-                key = f"{question_type}_{temp}"
-                # Round the sentiment value to 2 decimal places
-                combined_data[string_type][
-                    key
-                ] = f"{float(row[f'sentiment_response_{temp}']):.2f}"
+    for _, row in data.iterrows():
+        temp = row["Temperature"]
+        combined_data[temp] = {
+            "Brand Mean": row["Brand Mean Sentiment"],
+            "Generic Mean": row["Preferred Mean Sentiment"],
+            "Chi-square": row["Chi-square Statistic"],
+            "p-value": row["Chi-square p-value"],
+        }
 
     return combined_data
 
@@ -158,29 +185,46 @@ def process_sentiment_data(model_name):
 def create_combined_sentiment_table(models):
     headers = [
         "Model",
-        "String Type",
-        "Question Type",
-        "Temp 0.0",
-        "Temp 0.7",
-        "Temp 1.0",
+        "Temperature",
+        "Brand Mean",
+        "Generic Mean",
+        "Chi-square",
+        "p-value",
     ]
     rows = []
 
     for model in models:
         data = process_sentiment_data(model)
-        for string_type, values in data.items():
-            for question_type in ["about", "patient", "physician"]:
-                row = [
-                    model,
-                    string_type,
-                    question_type,
-                    values[f"{question_type}_0.0"],
-                    values[f"{question_type}_0.7"],
-                    values[f"{question_type}_1.0"],
-                ]
-                rows.append(row)
+        for temp, metrics in data.items():
+            row = [
+                model,
+                temp,
+                f"{metrics['Brand Mean']:.4f}",
+                f"{metrics['Generic Mean']:.4f}",
+                f"{metrics['Chi-square']:.4f}",
+                f"{metrics['p-value']:.4f}",
+            ]
+            rows.append(row)
 
     return headers, rows
+
+
+def print_table(headers, rows):
+    # Calculate column widths
+    col_widths = [
+        max(len(str(row[i])) for row in rows + [headers]) for i in range(len(headers))
+    ]
+
+    # Print headers
+    header_row = " | ".join(
+        f"{headers[i]:<{col_widths[i]}}" for i in range(len(headers))
+    )
+    print(header_row)
+    print("-" * len(header_row))
+
+    # Print rows
+    for row in rows:
+        print(" | ".join(f"{str(row[i]):<{col_widths[i]}}" for i in range(len(row))))
 
 
 def load_and_process_csv(file_path, task, model):
@@ -317,28 +361,28 @@ def main():
     print("Accuracy Summary Table (Markdown):")
     print(accuracy_markdown)
 
-    # Process list preference data
-    list_preference_models = ["gpt-3.5-turbo-0125", "gpt-4-turbo", "gpt-4o"]
-    list_preference_data = []
+    # # Process list preference data
+    # list_preference_models = ["gpt-3.5-turbo-0125", "gpt-4-turbo", "gpt-4o"]
+    # list_preference_data = []
 
-    for model in list_preference_models:
-        list_preference_data.extend(process_list_preference_model(model))
+    # for model in list_preference_models:
+    #     list_preference_data.extend(process_list_preference_model(model))
 
-    list_preference_data.sort(key=lambda x: (x["engine"], float(x["temperature"])))
+    # list_preference_data.sort(key=lambda x: (x["engine"], float(x["temperature"])))
 
-    list_preference_headers = list_preference_data[0].keys()
-    list_preference_rows = [list(row.values()) for row in list_preference_data]
-    save_to_csv(
-        "list_preference_summary_table.csv",
-        list_preference_headers,
-        list_preference_rows,
-    )
+    # list_preference_headers = list_preference_data[0].keys()
+    # list_preference_rows = [list(row.values()) for row in list_preference_data]
+    # save_to_csv(
+    #     "list_preference_summary_table.csv",
+    #     list_preference_headers,
+    #     list_preference_rows,
+    # )
 
-    list_preference_markdown = generate_markdown_table(
-        list_preference_headers, list_preference_rows
-    )
-    print("\nList Preference Summary Table (Markdown):")
-    print(list_preference_markdown)
+    # list_preference_markdown = generate_markdown_table(
+    #     list_preference_headers, list_preference_rows
+    # )
+    # print("\nList Preference Summary Table (Markdown):")
+    # print(list_preference_markdown)
 
     # Process sentiment data
     sentiment_models = ["gpt-3.5-turbo-0125", "gpt-4-turbo", "gpt-4o"]
@@ -346,6 +390,8 @@ def main():
         sentiment_models
     )
     save_to_csv("sentiment_summary_table.csv", sentiment_headers, sentiment_rows)
+    print("\nSentiment Summary Table:")
+    print_table(sentiment_headers, sentiment_rows)
 
     # Process iRAE data
     irae_input_dir = "results"  # This should be the path to the directory containing the "irae" folder
