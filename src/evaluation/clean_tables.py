@@ -102,32 +102,57 @@ def sum_list_preference_tables(prompt1_data, prompt2_data):
         summed_row = {
             "temperature": row1["temperature"],
             "engine": row1["engine"],
-            "brand_effective": int(row1["brand_effective"])
-            + int(row2["brand_effective"]),
-            "preferred_effective": int(row1["preferred_effective"])
-            + int(row2["preferred_effective"]),
-            "brand_ineffective": int(row1["brand_ineffective"])
-            + int(row2["brand_ineffective"]),
-            "preferred_ineffective": int(row1["preferred_ineffective"])
-            + int(row2["preferred_ineffective"]),
-            "brand_safe": int(row1["brand_safe"]) + int(row2["brand_safe"]),
-            "preferred_safe": int(row1["preferred_safe"]) + int(row2["preferred_safe"]),
-            "brand_unsafe": int(row1["brand_unsafe"]) + int(row2["brand_unsafe"]),
-            "preferred_unsafe": int(row1["preferred_unsafe"])
-            + int(row2["preferred_unsafe"]),
-            "brand_has side effects": int(row1["brand_has side effects"])
-            + int(row2["brand_has side effects"]),
-            "preferred_has side effects": int(row1["preferred_has side effects"])
-            + int(row2["preferred_has side effects"]),
-            "brand_side effect free": int(row1["brand_side effect free"])
-            + int(row2["brand_side effect free"]),
-            "preferred_side effect free": int(row1["preferred_side effect free"])
-            + int(row2["preferred_side effect free"]),
+            "effective": (
+                int(row1["brand_effective"]) + int(row2["brand_effective"]),
+                int(row1["preferred_effective"]) + int(row2["preferred_effective"]),
+                float(row1["effective_odds_ratio"]),
+                float(row1["effective_p_value"]),
+            ),
+            "ineffective": (
+                int(row1["brand_ineffective"]) + int(row2["brand_ineffective"]),
+                int(row1["preferred_ineffective"]) + int(row2["preferred_ineffective"]),
+                float(row1["ineffective_odds_ratio"]),
+                float(row1["ineffective_p_value"]),
+            ),
+            "safe": (
+                int(row1["brand_safe"]) + int(row2["brand_safe"]),
+                int(row1["preferred_safe"]) + int(row2["preferred_safe"]),
+                float(row1["safe_odds_ratio"]),
+                float(row1["safe_p_value"]),
+            ),
+            "unsafe": (
+                int(row1["brand_unsafe"]) + int(row2["brand_unsafe"]),
+                int(row1["preferred_unsafe"]) + int(row2["preferred_unsafe"]),
+                float(row1["unsafe_odds_ratio"]),
+                float(row1["unsafe_p_value"]),
+            ),
+            "has side effects": (
+                int(row1["brand_has side effects"])
+                + int(row2["brand_has side effects"]),
+                int(row1["preferred_has side effects"])
+                + int(row2["preferred_has side effects"]),
+                float(row1["has side effects_odds_ratio"]),
+                float(row1["has side effects_p_value"]),
+            ),
+            "side effect free": (
+                int(row1["brand_side effect free"])
+                + int(row2["brand_side effect free"]),
+                int(row1["preferred_side effect free"])
+                + int(row2["preferred_side effect free"]),
+                float(row1["side effect free_odds_ratio"]),
+                float(row1["side effect free_p_value"]),
+            ),
             "same_medication_count": int(row1["same_medication_count"])
             + int(row2["same_medication_count"]),
         }
         summed_data.append(summed_row)
     return summed_data
+
+
+def format_cell(data):
+    brand, preferred, odds_ratio, p_value = data
+    significance = "*" if p_value < 0.05 else ""
+    return f"{brand}/{preferred} ({odds_ratio:.2f}{significance})"
 
 
 def process_list_preference_model(model_name):
@@ -162,6 +187,39 @@ def generate_markdown_table(headers, rows):
         markdown_table += "| " + " | ".join(str(cell) for cell in row) + " |\n"
 
     return markdown_table
+
+
+def generate_list_preference_markdown_table(data):
+    headers = [
+        "Model",
+        "Temp",
+        "Effective",
+        "Ineffective",
+        "Safe",
+        "Unsafe",
+        "Has Side Effects",
+        "Side Effect Free",
+        "Same Med",
+    ]
+    markdown = "| " + " | ".join(headers) + " |\n"
+    markdown += "| " + " | ".join(["---"] * len(headers)) + " |\n"
+
+    for row in data:
+        formatted_row = [
+            row["engine"],
+            row["temperature"],
+            format_cell(row["effective"]),
+            format_cell(row["ineffective"]),
+            format_cell(row["safe"]),
+            format_cell(row["unsafe"]),
+            format_cell(row["has side effects"]),
+            format_cell(row["side effect free"]),
+            str(row["same_medication_count"]),
+        ]
+        markdown += "| " + " | ".join(formatted_row) + " |\n"
+
+    markdown += "\n* Asterisk indicates statistical significance (p < 0.05)"
+    return markdown
 
 
 def process_sentiment_data(model_name):
@@ -361,28 +419,28 @@ def main():
     print("Accuracy Summary Table (Markdown):")
     print(accuracy_markdown)
 
-    # # Process list preference data
-    # list_preference_models = ["gpt-3.5-turbo-0125", "gpt-4-turbo", "gpt-4o"]
-    # list_preference_data = []
+    # Process list preference data
+    list_preference_models = ["gpt-3.5-turbo-0125", "gpt-4-turbo", "gpt-4o"]
+    list_preference_data = []
 
-    # for model in list_preference_models:
-    #     list_preference_data.extend(process_list_preference_model(model))
+    for model in list_preference_models:
+        list_preference_data.extend(process_list_preference_model(model))
 
-    # list_preference_data.sort(key=lambda x: (x["engine"], float(x["temperature"])))
+    list_preference_data.sort(key=lambda x: (x["engine"], float(x["temperature"])))
 
-    # list_preference_headers = list_preference_data[0].keys()
-    # list_preference_rows = [list(row.values()) for row in list_preference_data]
-    # save_to_csv(
-    #     "list_preference_summary_table.csv",
-    #     list_preference_headers,
-    #     list_preference_rows,
-    # )
+    list_preference_headers = list_preference_data[0].keys()
+    list_preference_rows = [list(row.values()) for row in list_preference_data]
+    save_to_csv(
+        "list_preference_summary_table.csv",
+        list_preference_headers,
+        list_preference_rows,
+    )
 
-    # list_preference_markdown = generate_markdown_table(
-    #     list_preference_headers, list_preference_rows
-    # )
-    # print("\nList Preference Summary Table (Markdown):")
-    # print(list_preference_markdown)
+    list_preference_markdown = generate_list_preference_markdown_table(
+        list_preference_data
+    )
+    print("\nList Preference Summary Table (Markdown):")
+    print(list_preference_markdown)
 
     # Process sentiment data
     sentiment_models = ["gpt-3.5-turbo-0125", "gpt-4-turbo", "gpt-4o"]

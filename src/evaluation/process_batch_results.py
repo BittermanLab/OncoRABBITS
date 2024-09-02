@@ -75,9 +75,9 @@ def save_df(df: pd.DataFrame, file_path: str):
 # Task details
 tasks = {
     # "general_knowledge": "general_knowledge",
-    "sentiment_question_about": "sentiment",
-    # "list_preference_prompt1": "list_preference",
-    # "list_preference_prompt2": "list_preference",
+    # "sentiment_question_about": "sentiment",
+    "list_preference_prompt1": "list_preference",
+    "list_preference_prompt2": "list_preference",
 }
 
 models = ["gpt-3.5-turbo-0125", "gpt-4o", "gpt-4-turbo"]

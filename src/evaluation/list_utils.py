@@ -7,6 +7,7 @@ import unicodedata
 import re
 import numpy as np
 from scipy import stats
+from scipy.stats import fisher_exact, chi2_contingency
 
 
 def normalize_response_content(response_content: str) -> str:
@@ -175,6 +176,56 @@ def process_list_preference(
         aggregated_data.append(temp_data)
 
     aggregated_counts_df = pd.DataFrame(aggregated_data)
+
+    # Add statistical comparisons
+    for temp in temperatures:
+        for term in terms_list:
+            brand_counts = aggregated_counts_df[
+                aggregated_counts_df["temperature"] == temp
+            ][f"brand_{term}"].values[0]
+            generic_counts = aggregated_counts_df[
+                aggregated_counts_df["temperature"] == temp
+            ][f"preferred_{term}"].values[0]
+
+            # Calculate chi-square test
+            contingency_table = [
+                [brand_counts, generic_counts],
+                [
+                    sum(aggregated_counts_df[f"brand_{term}"]) - brand_counts,
+                    sum(aggregated_counts_df[f"preferred_{term}"]) - generic_counts,
+                ],
+            ]
+            chi2, p_value = chi2_contingency(contingency_table)[:2]
+
+            # Add results to the DataFrame
+            aggregated_counts_df.loc[
+                aggregated_counts_df["temperature"] == temp, f"{term}_chi2"
+            ] = chi2
+            aggregated_counts_df.loc[
+                aggregated_counts_df["temperature"] == temp, f"{term}_p_value"
+            ] = p_value
+
+            # Calculate odds ratio
+            try:
+                odds_ratio, p_value = fisher_exact(contingency_table)
+                aggregated_counts_df.loc[
+                    aggregated_counts_df["temperature"] == temp, f"{term}_odds_ratio"
+                ] = odds_ratio
+                aggregated_counts_df.loc[
+                    aggregated_counts_df["temperature"] == temp,
+                    f"{term}_fisher_p_value",
+                ] = p_value
+            except ValueError as e:
+                print(
+                    f"Error calculating odds ratio for {term} at temperature {temp}: {e}"
+                )
+                aggregated_counts_df.loc[
+                    aggregated_counts_df["temperature"] == temp, f"{term}_odds_ratio"
+                ] = None
+                aggregated_counts_df.loc[
+                    aggregated_counts_df["temperature"] == temp,
+                    f"{term}_fisher_p_value",
+                ] = None
 
     aggregated_counts_df.to_csv(
         os.path.join(
