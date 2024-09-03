@@ -6,6 +6,8 @@ import pandas as pd
 import numpy as np
 from scipy import stats
 
+from cx_utils import cx_evaluation_main
+
 
 def read_csv(file_path):
     with open(file_path, "r") as f:
@@ -292,9 +294,9 @@ def load_and_process_csv(file_path, task, model):
     return df
 
 
-def process_detection_data(df):
+def process_detection_data(df, stats_df):
     df = df.rename(columns={"average_score": "mean_score", "std_dev": "std_score"})
-    return df[
+    df = df[
         [
             "task",
             "model",
@@ -306,8 +308,14 @@ def process_detection_data(df):
         ]
     ]
 
+    # Merge with stats data
+    df = pd.merge(df, stats_df, on="temperature", how="left")
 
-def process_differential_data(df):
+    return df
+
+
+def process_differential_data(df, stats_df):
+
     df_melted = pd.melt(
         df,
         id_vars=["type", "task", "model"],
@@ -315,18 +323,48 @@ def process_differential_data(df):
         value_name="percentage",
     )
 
-    df_melted[["event_type", "temp"]] = df_melted["metric"].str.extract(
-        r"(\w+)_percentage_(\d+\.\d+)"
+    df_melted[["event_type", "temp", "stat"]] = df_melted["metric"].str.extract(
+        r"(\w+)_percentage_(\d+\.\d+)_(\w+)"
     )
 
     df_pivot = df_melted.pivot_table(
         values="percentage",
-        index=["task", "model", "type", "temp"],
+        index=["task", "model", "type", "temp", "event_type", "stat"],
         columns="event_type",
         aggfunc="first",
     ).reset_index()
 
+    df_pivot.columns.name = None
     df_pivot = df_pivot.rename(columns={"temp": "temperature"})
+
+    # Rename columns to ensure uniqueness
+    df_pivot = df_pivot.rename(
+        columns={
+            "drug": "drug_percentage",
+            "general": "general_percentage",
+            "irae": "irae_percentage",
+        }
+    )
+
+    # Convert 'temperature' to float in both dataframes
+    df_pivot["temperature"] = df_pivot["temperature"].astype(float)
+    stats_df["temperature"] = stats_df["temperature"].astype(float)
+
+    # Ensure 'event_type' values match between dataframes
+    df_pivot["event_type"] = df_pivot["event_type"].str.lower()
+    stats_df["event_type"] = stats_df["event_type"].str.lower()
+
+    # Merge with stats data
+    df_pivot = pd.merge(
+        df_pivot,
+        stats_df,
+        on=["temperature", "event_type"],
+        how="left",
+        suffixes=("", "_stats"),
+    )
+    duplicate_columns = df_pivot.columns[df_pivot.columns.duplicated(keep="first")]
+    # Drop duplicate columns
+    df_pivot = df_pivot.drop(columns=duplicate_columns)
 
     return df_pivot
 
@@ -341,14 +379,26 @@ def create_irae_summary_tables(input_dir):
     for model in models:
         # Process detection data
         detection_file = os.path.join(
-            input_dir, "irae", model, "irae_detection", "irae_detection_results.csv"
+            input_dir,
+            "irae",
+            model,
+            "irae_detection",
+            f"irae_detection_{model}_results.csv",
         )
-        if os.path.exists(detection_file):
+        detection_stats_file = os.path.join(
+            input_dir,
+            "irae",
+            model,
+            "irae_detection",
+            f"irae_detection_{model}_stats.csv",
+        )
+        if os.path.exists(detection_file) and os.path.exists(detection_stats_file):
             df = load_and_process_csv(detection_file, "detection", model)
-            processed_df = process_detection_data(df)
+            stats_df = pd.read_csv(detection_stats_file)
+            processed_df = process_detection_data(df, stats_df)
             detection_data.append(processed_df)
         else:
-            print(f"Warning: No detection file found for {model}")
+            print(f"Warning: No detection file or stats file found for {model}")
 
         # Process differential data
         differential_pattern = os.path.join(
@@ -358,14 +408,23 @@ def create_irae_summary_tables(input_dir):
             "differential",
             f"differential_{model}_summary.csv",
         )
+        differential_stats_pattern = os.path.join(
+            input_dir,
+            "irae",
+            model,
+            "differential",
+            f"differential_{model}_stats.csv",
+        )
         differential_files = glob.glob(differential_pattern)
-        if differential_files:
-            for file in differential_files:
+        differential_stats_files = glob.glob(differential_stats_pattern)
+        if differential_files and differential_stats_files:
+            for file, stats_file in zip(differential_files, differential_stats_files):
                 df = load_and_process_csv(file, "differential", model)
-                processed_df = process_differential_data(df)
+                stats_df = pd.read_csv(stats_file)
+                processed_df = process_differential_data(df, stats_df)
                 differential_data.append(processed_df)
         else:
-            print(f"Warning: No differential file found for {model}")
+            print(f"Warning: No differential file or stats file found for {model}")
 
     if not detection_data and not differential_data:
         raise ValueError(
@@ -377,23 +436,106 @@ def create_irae_summary_tables(input_dir):
 
     if detection_data:
         detection_summary = pd.concat(detection_data, ignore_index=True)
-        detection_summary = detection_summary.sort_values(
-            ["model", "type", "temperature"]
+        detection_summary = detection_summary.sort_values(["model", "temperature"])
+
+        # Pivot the detection summary to have brand and generic side by side
+        detection_summary = detection_summary.pivot(
+            index=["model", "temperature"],
+            columns="type",
+            values=[
+                "mean_score",
+                "median_score",
+                "std_score",
+                "t_statistic",
+                "p_value",
+            ],
         )
-        # Set numeric columns to 2 decimal places
-        numeric_columns = ["mean_score", "median_score", "std_score"]
+        detection_summary.columns = [
+            f"{col[1]}_{col[0]}" for col in detection_summary.columns
+        ]
+        detection_summary = detection_summary.reset_index()
+
+        # Reorder columns
+        column_order = [
+            "model",
+            "temperature",
+            "brand_mean_score",
+            "generic_mean_score",
+            "brand_median_score",
+            "generic_median_score",
+            "brand_std_score",
+            "generic_std_score",
+            "brand_t_statistic",
+            "generic_t_statistic",
+            "brand_p_value",
+            "generic_p_value",
+        ]
+        detection_summary = detection_summary[column_order]
+
+        # Round numeric columns to 2 decimal places
+        numeric_columns = detection_summary.columns.drop(["model", "temperature"])
         detection_summary[numeric_columns] = detection_summary[numeric_columns].round(2)
 
     if differential_data:
         differential_summary = pd.concat(differential_data, ignore_index=True)
-        differential_summary = differential_summary.sort_values(
-            ["model", "type", "temperature"]
+
+        # Pivot the table to create the new format
+        pivoted = differential_summary.pivot_table(
+            index=["temperature"],
+            columns=["type", "event_type", "stat"],
+            values=["t_statistic", "p_value"],
+            aggfunc="first",
         )
-        # Set numeric columns to 2 decimal places
-        numeric_columns = ["drug", "general", "irae"]
-        differential_summary[numeric_columns] = differential_summary[
-            numeric_columns
-        ].round(2)
+
+        # Flatten column names
+        pivoted.columns = [
+            f"{col[1]}_{col[2]}_{col[3]}_{col[0]}" for col in pivoted.columns
+        ]
+
+        # Round numeric values to 2 decimal places
+        pivoted = pivoted.round(2)
+
+        # Combine t_statistic and p_value into a single column
+        new_columns = []
+        for base_col in [
+            "brand_drug_mean",
+            "brand_drug_std",
+            "brand_general_mean",
+            "brand_general_std",
+            "brand_irae_mean",
+            "brand_irae_std",
+            "generic_drug_mean",
+            "generic_drug_std",
+            "generic_general_mean",
+            "generic_general_std",
+            "generic_irae_mean",
+            "generic_irae_std",
+        ]:
+            t_stat_col = f"{base_col}_t_statistic"
+            p_value_col = f"{base_col}_p_value"
+
+            if t_stat_col in pivoted.columns and p_value_col in pivoted.columns:
+                pivoted[base_col] = (
+                    pivoted[t_stat_col].astype(str)
+                    + " ("
+                    + pivoted[p_value_col].astype(str)
+                    + ")"
+                )
+                new_columns.append(base_col)
+
+        # Keep only the new combined columns
+        pivoted = pivoted[new_columns]
+
+        # Reset index to make temperature a regular column
+        pivoted = pivoted.reset_index()
+
+        # Replace NaN with '-'
+        pivoted = pivoted.fillna("-")
+
+        # Reorder columns to match the desired output
+        column_order = ["temperature"] + new_columns
+
+        differential_summary = pivoted[column_order]
 
     return detection_summary, differential_summary
 
@@ -488,6 +630,10 @@ def main():
 
     except ValueError as e:
         print(f"Error processing iRAE data: {e}")
+
+    # Process CX data
+    summary_table = cx_evaluation_main()
+    print(summary_table)
 
 
 if __name__ == "__main__":

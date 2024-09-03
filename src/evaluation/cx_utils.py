@@ -5,6 +5,7 @@ import ast
 import matplotlib.pyplot as plt
 import numpy as np
 from typing import List, Dict
+from scipy import stats
 
 
 def load_parquet_files():
@@ -38,8 +39,6 @@ def process_responses(
     temperatures = ["0.0", "0.7", "1.0"]
     results = []
 
-    print(df.columns)
-
     # Adding the correct index to the DataFrame
     df["correct_index"] = df.apply(
         lambda row: find_correct_index(
@@ -65,10 +64,13 @@ def process_responses(
                         api_response[0], df.at[index, "correct_index"]
                     )
 
-        # Calculate counts and accuracy
+        # Calculate counts, accuracy, and standard error
         correct_count = df[correct_col].sum()
         total_count = df[correct_col].count()
         accuracy = correct_count / total_count * 100 if total_count > 0 else 0
+
+        # Calculate standard error
+        std_error = np.sqrt((accuracy * (100 - accuracy)) / total_count)
 
         results.append(
             {
@@ -78,10 +80,72 @@ def process_responses(
                 "Correct": correct_count,
                 "Total": total_count,
                 "Accuracy (%)": accuracy,
+                "Std Error": std_error,
             }
         )
 
-    return pd.DataFrame(results)
+    # Convert results to DataFrame
+    results_df = pd.DataFrame(results)
+
+    return results_df
+
+
+# Add this function to calculate t-test between brand and generic
+def calculate_t_test(results_df):
+    temperatures = ["0.0", "0.7", "1.0"]
+    models = results_df["Model"].unique()
+
+    # Add new columns for T-Statistic and P-Value
+    results_df["T-Statistic"] = np.nan
+    results_df["P-Value"] = np.nan
+
+    for model in models:
+        for temp in temperatures:
+            generic_data = results_df[
+                (results_df["Model"] == model)
+                & (results_df["Temperature"] == temp)
+                & (results_df["Type"] == "generic")
+            ]
+            brand_data = results_df[
+                (results_df["Model"] == model)
+                & (results_df["Temperature"] == temp)
+                & (results_df["Type"] == "brand")
+            ]
+
+            if generic_data.empty or brand_data.empty:
+                continue
+
+            generic_accuracy = generic_data["Accuracy (%)"].values[0]
+            brand_accuracy = brand_data["Accuracy (%)"].values[0]
+            generic_total = generic_data["Total"].values[0]
+            brand_total = brand_data["Total"].values[0]
+
+            # Calculate standard errors
+            generic_se = generic_data["Std Error"].values[0]
+            brand_se = brand_data["Std Error"].values[0]
+
+            # Calculate t-statistic and p-value
+            t_stat = (generic_accuracy - brand_accuracy) / np.sqrt(
+                generic_se**2 + brand_se**2
+            )
+            df = generic_total + brand_total - 2  # Degrees of freedom
+            p_value = 2 * (1 - stats.t.cdf(abs(t_stat), df))
+
+            # Add t-test results to results_df
+            results_df.loc[
+                (results_df["Model"] == model)
+                & (results_df["Temperature"] == temp)
+                & (results_df["Type"] == "generic"),
+                ["T-Statistic", "P-Value"],
+            ] = [t_stat, p_value]
+            results_df.loc[
+                (results_df["Model"] == model)
+                & (results_df["Temperature"] == temp)
+                & (results_df["Type"] == "brand"),
+                ["T-Statistic", "P-Value"],
+            ] = [t_stat, p_value]
+
+    return results_df
 
 
 def plot_results(results_df: pd.DataFrame, output_dir: str):
@@ -146,7 +210,7 @@ def plot_results(results_df: pd.DataFrame, output_dir: str):
         plot_dir = os.path.join(output_dir, "plots")
         os.makedirs(plot_dir, exist_ok=True)
         plot_path = os.path.join(plot_dir, f"{model}_accuracy_all_temps.png")
-        print(f"Saving plot to {plot_path}")
+        # print(f"Saving plot to {plot_path}")
         plt.savefig(plot_path, bbox_inches="tight")
         plt.close()
 
@@ -210,12 +274,50 @@ def plot_models_comparison(results_df: pd.DataFrame, output_dir: str):
     plot_dir = os.path.join(output_dir, "plots")
     os.makedirs(plot_dir, exist_ok=True)
     plot_path = os.path.join(plot_dir, "model_comparison_temp_0.png")
-    print(f"Saving plot to {plot_path}")
+    # print(f"Saving plot to {plot_path}")
     plt.savefig(plot_path, bbox_inches="tight")
     plt.close()
 
 
-def main():
+def process_results_summary(df):
+    # Group by Model and Type, then calculate mean Accuracy and mean Std Error
+    grouped = (
+        df.groupby(["Model", "Type"])
+        .agg({"Accuracy (%)": "mean", "Std Error": "mean"})
+        .unstack()
+    )
+
+    # Rename columns for clarity
+    grouped.columns = [
+        "Generic Mean Accuracy (%)",
+        "Brand Mean Accuracy (%)",
+        "Generic Mean Std Error",
+        "Brand Mean Std Error",
+    ]
+
+    # Reset index to make 'Model' a column
+    grouped = grouped.reset_index()
+
+    # Round the values to two decimal places
+    for col in grouped.columns:
+        if col != "Model":
+            grouped[col] = grouped[col].round(2)
+
+    # Add T-test results
+    t_test_results = (
+        df[df["Temperature"] == "0.0"]
+        .groupby("Model")
+        .agg({"T-Statistic": "first", "P-Value": "first"})
+    )
+
+    grouped = pd.merge(grouped, t_test_results, on="Model", how="left")
+    grouped["T-Statistic"] = grouped["T-Statistic"].round(2)
+    grouped["P-Value"] = grouped["P-Value"].round(4)
+
+    return grouped
+
+
+def cx_evaluation_main():
     output_dir = "results/cx_mcq"
     os.makedirs(output_dir, exist_ok=True)
 
@@ -223,6 +325,8 @@ def main():
 
     models = ["gpt-3.5-turbo-0125", "gpt-4-turbo", "gpt-4o"]
     all_results = []
+    generic_results_all = []
+    brand_results_all = []
 
     for model in models:
         generic_responses = load_api_responses(
@@ -238,17 +342,26 @@ def main():
         brand_results = process_responses(brand_df, brand_responses, "brand", model)
 
         all_results.extend([generic_results, brand_results])
+        generic_results_all.append(generic_results)
+        brand_results_all.append(brand_results)
 
     # Combine results
     results_df = pd.concat(all_results, ignore_index=True)
 
-    # Display the final results summary
-    print("Final Results Summary:")
-    print(results_df)
+    # perform t test
+    t_test_results = calculate_t_test(results_df)
 
     # Save the final results summary to a CSV file
-    results_df.to_csv(
-        os.path.join(output_dir, "all_models_accuracy_summary.csv"), index=False
+    t_test_results.to_csv(
+        os.path.join(output_dir, "all_models_contradictions_accuracy_summary.csv"),
+        index=False,
+    )
+    # Process the results
+    summary_table = process_results_summary(t_test_results)
+
+    # Optionally, save to a new CSV file
+    summary_table.to_csv(
+        os.path.join(output_dir, "processed_accuracy_summary.csv"), index=False
     )
 
     # Create a bar plot for each model
@@ -257,8 +370,8 @@ def main():
     # Create a bar plot comparing all models at temperature 0
     plot_models_comparison(results_df, output_dir)
 
-    print(f"Results saved to {output_dir}")
+    return summary_table
 
 
 if __name__ == "__main__":
-    main()
+    summary_table = cx_evaluation_main()

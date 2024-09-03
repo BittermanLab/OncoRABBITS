@@ -6,6 +6,11 @@ import re
 import ast
 from matplotlib.colors import LinearSegmentedColormap
 import csv
+from scipy.stats import ttest_ind
+
+import pandas as pd
+import numpy as np
+from scipy import stats
 
 
 def process_irae_detection(df, output_dir, task_name, model):
@@ -16,6 +21,7 @@ def process_irae_detection(df, output_dir, task_name, model):
 
     # Calculate statistics
     results = []
+    stats_results = []
     for temp in ["0.0", "0.7", "1.0"]:
         temp_stats = (
             df.groupby("type")[f"score_{temp}"]
@@ -25,16 +31,35 @@ def process_irae_detection(df, output_dir, task_name, model):
         temp_stats["temperature"] = temp
         results.append(temp_stats)
 
+        # Perform statistical test
+        brand_data = df[df["type"] == "brand"][f"score_{temp}"]
+        generic_data = df[df["type"] == "generic"][f"score_{temp}"]
+
+        t_stat, p_value = stats.ttest_ind(brand_data, generic_data)
+
+        stats_results.append(
+            {"temperature": temp, "t_statistic": t_stat, "p_value": p_value}
+        )
+
     results_df = pd.concat(results, ignore_index=True)
     results_df = results_df.rename(
         columns={"mean": "average_score", "median": "median_score", "std": "std_dev"}
     )
 
-    # save to csv
+    stats_df = pd.DataFrame(stats_results)
+
+    # save results to csv
     results_df.to_csv(f"{output_dir}/{task_name}_{model}_results.csv", index=False)
     print(
         f"Saved results for {model} {task_name} to {output_dir}/{task_name}_{model}_results.csv"
     )
+
+    # save statistical test results to csv
+    stats_df.to_csv(f"{output_dir}/{task_name}_{model}_stats.csv", index=False)
+    print(
+        f"Saved statistical test results for {model} {task_name} to {output_dir}/{task_name}_{model}_stats.csv"
+    )
+
     print("")
     # Plot the results
     plot_mean_irae_detection(results_df, output_dir, task_name, model)
@@ -47,6 +72,139 @@ def process_irae_detection(df, output_dir, task_name, model):
     plot_irae_detection_temp_0(df, output_dir, task_name, model)
 
     return results_df
+
+
+def process_differential(
+    df: pd.DataFrame, output_dir: str, task_name: str, model_name: str
+):
+    # Load drug information
+    drug_info = load_drug_info(
+        "src/irAE/generated_prompts_brand_only.csv",
+        "src/irAE/generated_prompts_generic_only.csv",
+    )
+
+    def extract_list(text):
+        if pd.isna(text):
+            return []
+        text = re.sub(r"```python|```", "", text)
+        try:
+            return ast.literal_eval(text)
+        except:
+            return [item.strip() for item in text.split("\n") if item.strip()]
+
+    def extract_drug_from_id(unique_id):
+        parts = unique_id.split("_")
+        return parts[1] if len(parts) > 1 else ""
+
+    def count_events(diagnosis_list, drug):
+        if pd.isna(drug) or not isinstance(drug, str):
+            drug = ""
+        general_pattern = (
+            r"adverse\s+event|side\s+effect|complication|toxicit(?:y|ies)|induced"
+        )
+        irae_pattern = r"immune[\s-]*related|irAE"
+        drug_pattern = (
+            r"\b" + re.escape(drug) + r"\b|\b" + r"\b|\b".join(drug.split()) + r"\b"
+            if drug
+            else r"$^"
+        )
+
+        general_count = sum(
+            1
+            for item in diagnosis_list
+            if re.search(general_pattern, item, re.IGNORECASE)
+        )
+        irae_count = sum(
+            1 for item in diagnosis_list if re.search(irae_pattern, item, re.IGNORECASE)
+        )
+        drug_count = sum(
+            1 for item in diagnosis_list if re.search(drug_pattern, item, re.IGNORECASE)
+        )
+
+        return general_count, irae_count, drug_count
+
+    def count_irae_positions(diagnosis_list):
+        irae_pattern = r"immune[\s-]*related|irAE"
+        positions = [
+            i + 1
+            for i, item in enumerate(diagnosis_list)
+            if re.search(irae_pattern, item, re.IGNORECASE)
+        ]
+        return positions
+
+    # Process each temperature
+    for temp in ["0.0", "0.7", "1.0"]:
+        df[f"list_{temp}"] = df[f"response_{temp}"].apply(extract_list)
+        df["drug"] = df["unique_id"].apply(extract_drug_from_id)
+        df[[f"general_count_{temp}", f"irae_count_{temp}", f"drug_count_{temp}"]] = (
+            df.apply(
+                lambda row: pd.Series(count_events(row[f"list_{temp}"], row["drug"])),
+                axis=1,
+            )
+        )
+        df[f"total_items_{temp}"] = df[f"list_{temp}"].apply(len)
+        df[f"irae_positions_{temp}"] = df[f"list_{temp}"].apply(count_irae_positions)
+
+    # Calculate percentages
+    for temp in ["0.0", "0.7", "1.0"]:
+        for event_type in ["general", "irae", "drug"]:
+            df[f"{event_type}_percentage_{temp}"] = (
+                df[f"{event_type}_count_{temp}"] / df[f"total_items_{temp}"]
+            ) * 100
+
+    # Group by type and calculate mean percentages
+    summary = (
+        df.groupby("type")
+        .agg(
+            {
+                f"{event_type}_percentage_{temp}": ["mean", "std"]
+                for event_type in ["general", "irae", "drug"]
+                for temp in ["0.0", "0.7", "1.0"]
+            }
+        )
+        .reset_index()
+    )
+
+    # Flatten column names
+    summary.columns = [
+        f"{col[0]}_{col[1]}" if col[1] else col[0] for col in summary.columns
+    ]
+
+    # Perform statistical tests
+    stats_results = []
+    for temp in ["0.0", "0.7", "1.0"]:
+        for event_type in ["general", "irae", "drug"]:
+            brand_data = df[df["type"] == "brand"][f"{event_type}_percentage_{temp}"]
+            generic_data = df[df["type"] == "generic"][
+                f"{event_type}_percentage_{temp}"
+            ]
+
+            t_stat, p_value = stats.ttest_ind(brand_data, generic_data)
+
+            stats_results.append(
+                {
+                    "temperature": temp,
+                    "event_type": event_type,
+                    "t_statistic": t_stat,
+                    "p_value": p_value,
+                }
+            )
+
+    stats_df = pd.DataFrame(stats_results)
+
+    # Save summary to csv
+    summary.to_csv(f"{output_dir}/{task_name}_{model_name}_summary.csv", index=False)
+    print(
+        f"Saved summary for {model_name} {task_name} to {output_dir}/{task_name}_{model_name}_summary.csv"
+    )
+
+    # Save statistical test results to csv
+    stats_df.to_csv(f"{output_dir}/{task_name}_{model_name}_stats.csv", index=False)
+    print(
+        f"Saved statistical test results for {model_name} {task_name} to {output_dir}/{task_name}_{model_name}_stats.csv"
+    )
+
+    return summary
 
 
 def plot_mean_irae_detection(
@@ -395,7 +553,7 @@ def process_differential(
     # Process each temperature
     for temp in ["0.0", "0.7", "1.0"]:
         df[f"list_{temp}"] = df[f"response_{temp}"].apply(extract_list)
-        df["drug"] = df["unique_id"].apply(extract_drug_from_id)  # Changed this line
+        df["drug"] = df["unique_id"].apply(extract_drug_from_id)
         df[[f"general_count_{temp}", f"irae_count_{temp}", f"drug_count_{temp}"]] = (
             df.apply(
                 lambda row: pd.Series(count_events(row[f"list_{temp}"], row["drug"])),
@@ -417,7 +575,7 @@ def process_differential(
         df.groupby("type")
         .agg(
             {
-                f"{event_type}_percentage_{temp}": "mean"
+                f"{event_type}_percentage_{temp}": ["mean", "std"]
                 for event_type in ["general", "irae", "drug"]
                 for temp in ["0.0", "0.7", "1.0"]
             }
@@ -425,20 +583,46 @@ def process_differential(
         .reset_index()
     )
 
-    print("Debug - Summary:")
+    # Flatten column names
+    summary.columns = [
+        f"{col[0]}_{col[1]}" if col[1] else col[0] for col in summary.columns
+    ]
 
-    # save to csv
+    # Perform statistical tests
+    stats_results = []
+    for temp in ["0.0", "0.7", "1.0"]:
+        for event_type in ["general", "irae", "drug"]:
+            brand_data = df[df["type"] == "brand"][f"{event_type}_percentage_{temp}"]
+            generic_data = df[df["type"] == "generic"][
+                f"{event_type}_percentage_{temp}"
+            ]
+
+            t_stat, p_value = ttest_ind(brand_data, generic_data)
+
+            stats_results.append(
+                {
+                    "temperature": temp,
+                    "event_type": event_type,
+                    "t_statistic": t_stat,
+                    "p_value": p_value,
+                }
+            )
+
+    stats_df = pd.DataFrame(stats_results)
+
+    # Save summary to csv
     summary.to_csv(f"{output_dir}/{task_name}_{model_name}_summary.csv", index=False)
     print(
         f"Saved summary for {model_name} {task_name} to {output_dir}/{task_name}_{model_name}_summary.csv"
     )
-    print("")
 
-    # Plot results
-    plot_differential_results(summary, output_dir, task_name, model_name)
-    plot_irae_positions_brand_vs_generic(df, output_dir, task_name, model_name)
+    # Save statistical test results to csv
+    stats_df.to_csv(f"{output_dir}/{task_name}_{model_name}_stats.csv", index=False)
+    print(
+        f"Saved statistical test results for {model_name} {task_name} to {output_dir}/{task_name}_{model_name}_stats.csv"
+    )
 
-    return df
+    return summary
 
 
 def plot_differential_results(

@@ -6,6 +6,7 @@ from typing import List, Dict, Any
 from list_utils import process_list_preference, combine_and_plot_list_preference
 from general_knowledge_utils import process_general_knowledge
 from sentiment_utils import process_sentiment
+from cx_utils import cx_evaluation_main
 
 pd.set_option("display.max_columns", None)
 pd.set_option("display.max_colwidth", None)
@@ -74,10 +75,10 @@ def save_df(df: pd.DataFrame, file_path: str):
 
 # Task details
 tasks = {
-    # "general_knowledge": "general_knowledge",
+    "general_knowledge": "general_knowledge",
     # "sentiment_question_about": "sentiment",
-    "list_preference_prompt1": "list_preference",
-    "list_preference_prompt2": "list_preference",
+    # "list_preference_prompt1": "list_preference",
+    # "list_preference_prompt2": "list_preference",
 }
 
 models = ["gpt-3.5-turbo-0125", "gpt-4o", "gpt-4-turbo"]
