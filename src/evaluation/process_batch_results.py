@@ -86,11 +86,13 @@ models = ["gpt-3.5-turbo-0125", "gpt-4o", "gpt-4-turbo"]
 # Iterate through each task and model
 for task_name, file_name in tasks.items():
     df_path = os.path.join(data_dir, f"questions/{file_name}_df.csv")
+    print(df_path)
 
     for model in models:
         responses_path = os.path.join(
             data_dir, f"api_responses/{model}/{task_name}_responses.jsonl"
         )
+        print(responses_path)
         print(f"Processing task '{task_name}' for model '{model}'")
 
         # Check output directory exists for each model
