@@ -42,8 +42,8 @@ def create_accuracy_summary_table(models):
     headers = [
         "Model",
         "Temperature",
-        "Brand Accuracy (%)",
-        "Generic Accuracy (%)",
+        "Brand Accuracy (%) [SE]",
+        "Generic Accuracy (%) [SE]",
         "T-statistic",
         "P-value",
     ]
@@ -61,8 +61,8 @@ def create_accuracy_summary_table(models):
                 row = [
                     model,
                     temp,
-                    f"{brand_data['Accuracy (%)']:.2f}",
-                    f"{preferred_data['Accuracy (%)']:.2f}",
+                    f"{brand_data['Accuracy (%)']:.2f} [{brand_data['Standard Error']:.2f}]",
+                    f"{preferred_data['Accuracy (%)']:.2f} [{preferred_data['Standard Error']:.2f}]",
                     f"{brand_data['T-Statistic']:.4f}",
                     f"{brand_data['P-Value']:.4f}",
                 ]
@@ -71,7 +71,13 @@ def create_accuracy_summary_table(models):
     # Sort rows by model and temperature
     rows.sort(key=lambda x: (x[0], x[1]))
 
-    return headers, rows
+    footnotes = [
+        "SE: Standard Error",
+        "T-statistic: Measure of the difference between brand and generic accuracy",
+        "P-value: Statistical significance of the difference (p < 0.05 is considered significant)",
+    ]
+
+    return headers, rows, footnotes
 
 
 def join_list_preference_tables(prompt1_data, prompt2_data):
@@ -181,12 +187,17 @@ def save_to_csv(filename, headers, rows):
         writer.writerows(rows)
 
 
-def generate_markdown_table(headers, rows):
+def generate_markdown_table(headers, rows, footnotes=None):
     markdown_table = "| " + " | ".join(headers) + " |\n"
     markdown_table += "|" + "|".join(["---" for _ in headers]) + "|\n"
 
     for row in rows:
         markdown_table += "| " + " | ".join(str(cell) for cell in row) + " |\n"
+
+    if footnotes:
+        markdown_table += "\n"
+        for note in footnotes:
+            markdown_table += f"- {note}\n"
 
     return markdown_table
 
@@ -195,12 +206,12 @@ def generate_list_preference_markdown_table(data):
     headers = [
         "Model",
         "Temp",
-        "Effective",
-        "Ineffective",
-        "Safe",
-        "Unsafe",
-        "Has Side Effects",
-        "Side Effect Free",
+        "Effective\nBrand/Generic (OR)",
+        "Ineffective\nBrand/Generic (OR)",
+        "Safe\nBrand/Generic (OR)",
+        "Unsafe\nBrand/Generic (OR)",
+        "Has Side Effects\nBrand/Generic (OR)",
+        "Side Effect Free\nBrand/Generic (OR)",
         "Same Med",
     ]
     markdown = "| " + " | ".join(headers) + " |\n"
@@ -220,7 +231,9 @@ def generate_list_preference_markdown_table(data):
         ]
         markdown += "| " + " | ".join(formatted_row) + " |\n"
 
-    markdown += "\n* Asterisk indicates statistical significance (p < 0.05)"
+    markdown += "\n* Asterisk indicates statistical significance (p < 0.05)\n"
+    markdown += "OR: Odds Ratio. Values > 1 indicate higher odds for brand names, < 1 for generic names.\n"
+    markdown += "Each cell format: Brand count / Generic count (Odds Ratio)"
     return markdown
 
 
@@ -266,10 +279,16 @@ def create_combined_sentiment_table(models):
             ]
             rows.append(row)
 
-    return headers, rows
+    footnotes = [
+        "Brand Mean and Generic Mean: Average sentiment scores (higher values indicate more positive sentiment)",
+        "Chi-square: Measure of the difference between brand and generic sentiment distributions",
+        "p-value: Statistical significance of the difference (p < 0.05 is considered significant)",
+    ]
+
+    return headers, rows, footnotes
 
 
-def print_table(headers, rows):
+def print_table(headers, rows, footnotes=None):
     # Calculate column widths
     col_widths = [
         max(len(str(row[i])) for row in rows + [headers]) for i in range(len(headers))
@@ -285,6 +304,12 @@ def print_table(headers, rows):
     # Print rows
     for row in rows:
         print(" | ".join(f"{str(row[i]):<{col_widths[i]}}" for i in range(len(row))))
+
+    # Print footnotes
+    if footnotes:
+        print("\nFootnotes:")
+        for note in footnotes:
+            print(f"- {note}")
 
 
 def load_and_process_csv(file_path, task, model):
@@ -444,7 +469,6 @@ def create_irae_summary_tables(input_dir):
             columns="type",
             values=[
                 "mean_score",
-                "median_score",
                 "std_score",
                 "t_statistic",
                 "p_value",
@@ -461,8 +485,6 @@ def create_irae_summary_tables(input_dir):
             "temperature",
             "brand_mean_score",
             "generic_mean_score",
-            "brand_median_score",
-            "generic_median_score",
             "brand_std_score",
             "generic_std_score",
             "brand_t_statistic",
@@ -476,12 +498,35 @@ def create_irae_summary_tables(input_dir):
         numeric_columns = detection_summary.columns.drop(["model", "temperature"])
         detection_summary[numeric_columns] = detection_summary[numeric_columns].round(2)
 
+        # Format mean and stderr columns
+        for prefix in ["brand", "generic"]:
+            detection_summary[f"{prefix}_formatted"] = detection_summary.apply(
+                lambda row: f"{row[f'{prefix}_mean_score']:.2f} ({row[f'{prefix}_std_score']:.2f})",
+                axis=1,
+            )
+
+        # Create t-statistic and p-value column
+        detection_summary["t_stat_p_value"] = detection_summary.apply(
+            lambda row: f"{row['brand_t_statistic']:.2f} ({row['brand_p_value']:.3f})",
+            axis=1,
+        )
+
+        # Final column order
+        final_columns = [
+            "model",
+            "temperature",
+            "brand_formatted",
+            "generic_formatted",
+            "t_stat_p_value",
+        ]
+        detection_summary = detection_summary[final_columns]
+
     if differential_data:
         differential_summary = pd.concat(differential_data, ignore_index=True)
 
         # Pivot the table to create the new format
         pivoted = differential_summary.pivot_table(
-            index=["temperature"],
+            index=["model", "temperature"],  # Include 'model' in the index
             columns=["type", "event_type", "stat"],
             values=["t_statistic", "p_value"],
             aggfunc="first",
@@ -492,50 +537,52 @@ def create_irae_summary_tables(input_dir):
             f"{col[1]}_{col[2]}_{col[3]}_{col[0]}" for col in pivoted.columns
         ]
 
+        # Reset index to make 'model' and 'temperature' regular columns
+        pivoted = pivoted.reset_index()
+
         # Round numeric values to 2 decimal places
-        pivoted = pivoted.round(2)
+        numeric_columns = pivoted.columns.drop(["model", "temperature"])
+        pivoted[numeric_columns] = pivoted[numeric_columns].round(2)
 
         # Combine t_statistic and p_value into a single column
-        new_columns = []
+        new_columns = ["model", "temperature"]
         for base_col in [
-            "brand_drug_mean",
-            "brand_drug_std",
-            "brand_general_mean",
-            "brand_general_std",
-            "brand_irae_mean",
-            "brand_irae_std",
-            "generic_drug_mean",
-            "generic_drug_std",
-            "generic_general_mean",
-            "generic_general_std",
-            "generic_irae_mean",
-            "generic_irae_std",
+            "brand_drug",
+            "brand_general",
+            "brand_irae",
+            "generic_drug",
+            "generic_general",
+            "generic_irae",
         ]:
-            t_stat_col = f"{base_col}_t_statistic"
-            p_value_col = f"{base_col}_p_value"
+            mean_col = f"{base_col}_mean_t_statistic"
+            std_col = f"{base_col}_std_t_statistic"
+            t_stat_col = f"{base_col}_mean_t_statistic"
+            p_value_col = f"{base_col}_mean_p_value"
 
-            if t_stat_col in pivoted.columns and p_value_col in pivoted.columns:
-                pivoted[base_col] = (
-                    pivoted[t_stat_col].astype(str)
-                    + " ("
-                    + pivoted[p_value_col].astype(str)
-                    + ")"
+            if all(
+                col in pivoted.columns
+                for col in [mean_col, std_col, t_stat_col, p_value_col]
+            ):
+                pivoted[f"{base_col}_mean_std"] = pivoted.apply(
+                    lambda row: f"{row[mean_col]:.2f} ({row[std_col]:.2f})",
+                    axis=1,
                 )
-                new_columns.append(base_col)
+                pivoted[f"{base_col}_t_p"] = pivoted.apply(
+                    lambda row: f"{row[t_stat_col]:.2f} ({row[p_value_col]:.3f})",
+                    axis=1,
+                )
+                new_columns.extend([f"{base_col}_mean_std", f"{base_col}_t_p"])
 
         # Keep only the new combined columns
         pivoted = pivoted[new_columns]
 
-        # Reset index to make temperature a regular column
-        pivoted = pivoted.reset_index()
-
         # Replace NaN with '-'
         pivoted = pivoted.fillna("-")
 
-        # Reorder columns to match the desired output
-        column_order = ["temperature"] + new_columns
+        # Sort by model and temperature
+        pivoted = pivoted.sort_values(["model", "temperature"])
 
-        differential_summary = pivoted[column_order]
+        differential_summary = pivoted
 
     return detection_summary, differential_summary
 
@@ -553,11 +600,13 @@ def main():
         csv_data = read_csv(file_path)
         accuracy_models_data[model] = process_accuracy_data(csv_data)
 
-    accuracy_headers, accuracy_rows = create_accuracy_summary_table(
+    accuracy_headers, accuracy_rows, accuracy_footnotes = create_accuracy_summary_table(
         accuracy_models_data
     )
     save_to_csv("accuracy_summary_table.csv", accuracy_headers, accuracy_rows)
-    accuracy_markdown = generate_markdown_table(accuracy_headers, accuracy_rows)
+    accuracy_markdown = generate_markdown_table(
+        accuracy_headers, accuracy_rows, accuracy_footnotes
+    )
     print("Accuracy Summary Table (Markdown):")
     print(accuracy_markdown)
 
@@ -586,12 +635,15 @@ def main():
 
     # Process sentiment data
     sentiment_models = ["gpt-3.5-turbo-0125", "gpt-4-turbo", "gpt-4o"]
-    sentiment_headers, sentiment_rows = create_combined_sentiment_table(
-        sentiment_models
+    sentiment_headers, sentiment_rows, sentiment_footnotes = (
+        create_combined_sentiment_table(sentiment_models)
     )
     save_to_csv("sentiment_summary_table.csv", sentiment_headers, sentiment_rows)
-    print("\nSentiment Summary Table:")
-    print_table(sentiment_headers, sentiment_rows)
+    sentiment_markdown = generate_markdown_table(
+        sentiment_headers, sentiment_rows, sentiment_footnotes
+    )
+    print("\nSentiment Summary Table (Markdown):")
+    print(sentiment_markdown)
 
     # Process iRAE data
     irae_input_dir = "results"  # This should be the path to the directory containing the "irae" folder
@@ -604,10 +656,21 @@ def main():
             detection_summary.to_csv(
                 "results/tables/irae_detection_summary_table.csv", index=False
             )
-            detection_headers = detection_summary.columns.tolist()
+            detection_headers = [
+                "Model",
+                "Temperature",
+                "Brand Mean (SE)",
+                "Generic Mean (SE)",
+                "T-statistic (p-value)",
+            ]
             detection_rows = detection_summary.values.tolist()
+            detection_footnotes = [
+                "SE: Standard Error",
+                "T-statistic: Measure of the difference between brand and generic scores",
+                "p-value: Statistical significance of the difference (p < 0.05 is considered significant)",
+            ]
             detection_markdown = generate_markdown_table(
-                detection_headers, detection_rows
+                detection_headers, detection_rows, detection_footnotes
             )
             print("\niRAE Detection Summary Table (Markdown):")
             print(detection_markdown)
@@ -618,10 +681,31 @@ def main():
             differential_summary.to_csv(
                 "results/tables/irae_differential_summary_table.csv", index=False
             )
-            differential_headers = differential_summary.columns.tolist()
+            differential_headers = [
+                "Model",
+                "Temperature",
+                "Brand Drug Mean (Std)",
+                "Brand Drug T (p)",
+                "Brand General Mean (Std)",
+                "Brand General T (p)",
+                "Brand iRAE Mean (Std)",
+                "Brand iRAE T (p)",
+                "Generic Drug Mean (Std)",
+                "Generic Drug T (p)",
+                "Generic General Mean (Std)",
+                "Generic General T (p)",
+                "Generic iRAE Mean (Std)",
+                "Generic iRAE T (p)",
+            ]
             differential_rows = differential_summary.values.tolist()
+            differential_footnotes = [
+                "Mean: Average t-statistic for the comparison",
+                "Std: Standard deviation of the t-statistic",
+                "p-value: Statistical significance of the difference (p < 0.05 is considered significant)",
+                "iRAE: immune-related Adverse Event",
+            ]
             differential_markdown = generate_markdown_table(
-                differential_headers, differential_rows
+                differential_headers, differential_rows, differential_footnotes
             )
             print("\niRAE Differential Summary Table (Markdown):")
             print(differential_markdown)
@@ -633,7 +717,16 @@ def main():
 
     # Process CX data
     summary_table = cx_evaluation_main()
-    print(summary_table)
+    cx_footnotes = [
+        "SE: Standard Error",
+        "T-statistic: Measure of the difference between brand and generic scores",
+        "p-value: Statistical significance of the difference (p < 0.05 is considered significant)",
+    ]
+    summary_markdown = generate_markdown_table(
+        summary_table.columns, summary_table.values, cx_footnotes
+    )
+    print("\nCX Summary Table (Markdown):")
+    print(summary_markdown)
 
 
 if __name__ == "__main__":
