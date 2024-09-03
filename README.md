@@ -7,7 +7,7 @@
 
 **OncoRABBITS** extends the [RABBITS](https://github.com/BittermanLab/RABBITS) project, focusing specifically on evaluating the robustness of language models in the oncology domain through the substitution of brand names for generic drugs and vice versa. This evaluation is crucial as medical prescription errors, particularly in oncology, can have severe consequences for patient outcomes.
 
-![OncoRABBITS Plot](onco_rabbits_plot.png)
+![OncoRABBITS Plot](workflow.png)
 
 ## Motivation
 
@@ -132,6 +132,7 @@ This project is licensed under the Apache 2.0 License - see the [LICENSE.txt](LI
 
 ## Citing
 
+```bibtex
 @article{onco_rabbits2024,
 title={OncoRABBITS: Oncology-focused Robust Assessment of Biomedical Benchmarks Involving drug Term Substitutions},
 author={[Author List]},
@@ -139,9 +140,11 @@ journal={[Journal]},
 year={2024},
 note={[Publication Date]}
 }
+```
 
 For the foundational RABBITS work, please also cite:
 
+```bibtex
 @article{gallifant2024rabbits,
 title={Language Models are Surprisingly Fragile to Drug Names in Biomedical Benchmarks},
 author={Gallifant, Jack and Chen, Shan and Moreira, Pedro and Munch, Nikolaj and Gao, Mingye and Pond, Jackson and Aerts, Hugo and Celi, Leo Anthony and Hartvigsen, Thomas and Bitterman, Danielle S.},
@@ -149,6 +152,7 @@ journal={arXiv preprint arXiv:2406.12066v1 [cs.CL]},
 year={2024},
 note={17 Jun 2024}
 }
+```
 
 ## Contact
 
