@@ -717,6 +717,7 @@ def main():
 
     # Process CX data
     summary_table = cx_evaluation_main()
+    summary_table.to_csv("results/tables/cx_summary_table.csv", index=False)
     cx_footnotes = [
         "SE: Standard Error",
         "T-statistic: Measure of the difference between brand and generic scores",
