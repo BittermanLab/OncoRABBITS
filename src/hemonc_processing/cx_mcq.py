@@ -146,9 +146,9 @@ def process_target_relation(
 # Function to create the question template
 def create_question(row):
     if "type_direction" in row and row["type_direction"] == "drug -> disease":
-        return f"Which of the following diseases are contraindicated with the drug {row['question_option']}?"
+        return f"Which of the following diseases interact with the drug {row['question_option']}?"
     else:
-        return f"Which of the following drugs are contraindicated with {row['question_option']}?"
+        return f"Which of the following drugs interact with {row['question_option']}?"
 
 
 # Function to find the correct label index

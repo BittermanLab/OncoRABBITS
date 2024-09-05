@@ -192,7 +192,7 @@ def plot_results(results_df: pd.DataFrame, output_dir: str):
         ax.set_xlabel("Temperature", fontweight="bold", fontsize=12)
         ax.set_ylabel("Accuracy (%)", fontweight="bold", fontsize=12)
         ax.set_title(
-            f"Contraindication Accuracy by Temperature for {model}",
+            f"Drug Interaction Accuracy by Temperature for {model}",
             fontweight="bold",
             fontsize=14,
         )
