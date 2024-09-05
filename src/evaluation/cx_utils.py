@@ -256,7 +256,7 @@ def plot_models_comparison(results_df: pd.DataFrame, output_dir: str):
     ax.set_xlabel("Model", fontweight="bold", fontsize=12)
     ax.set_ylabel("Accuracy (%)", fontweight="bold", fontsize=12)
     ax.set_title(
-        "Contraindication Accuracy Comparison (Temperature 0.0)",
+        "Drug Interaction Accuracy Comparison (Temperature 0.0)",
         fontweight="bold",
         fontsize=14,
     )
